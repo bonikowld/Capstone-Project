@@ -1,7 +1,7 @@
 <?php include '../assets/lib/header.php';?>
 <!DOCTYPE html>
     <body>
-            <div class="navbar-main">
+            <!-- <div class="navbar-main">
                     
                   
                   <div class="container">
@@ -16,7 +16,7 @@
     
                       </button>
                       
-                      <!-- <a class="navbar-brand" href="index.html"><img src="assets/images/sadaka-logo.png" alt=""></a> -->
+                     
                       
                     </div>
                 
@@ -30,26 +30,27 @@
                             <li><a href="#">Update Record</a></li>
                             <li><a href="#">Reports</a></li>
                             <li><a href="logout.php">Log-out</a></li>
-                            <!-- <li><a>Welcome</a></li> -->
+                         
                          
                         </ul>
                         
     
-                    </div> <!-- /#navbar -->
+                    </div>
                    
     
-                  </div> <!-- /.container -->
+                  </div> 
                   
-                </div> <!-- /.navbar-main -->
+                </div>  -->
                 
-
-
-
-
-
-
-
-
+                <div id="side-nav">
+           
+                            <a href="#">Dashboard</a>
+                            <a href="admin_view_record.html">View Record</a>
+                            <a href="admin_delete_record.html">Delete Record</a>
+                            <a href="#">Update Record</a>
+                            <a href="#">Reports</a>
+                            <a href="logout.php">Log-out</a>               
+                </div>
 
 
 </body>

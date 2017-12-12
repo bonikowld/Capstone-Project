@@ -24,5 +24,10 @@
         <!-- Modernizr -->
         <script src="assets/js/modernizr-2.6.2.min.js"></script>
 
-
     </head>
+
+    <body>
+    <div id="banner" >
+        <img class="logo" src="../assets/images/Philippine_Red_Cross_logo.jpg" >
+</div>
+  </body>
