@@ -1,5 +1,10 @@
-<?php include '../assets/lib/header.php';?>
+<?php include "../assets/lib/header.php";?>
 <!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="../assets/css/admin.css"></link>
+<script src="../assets/lib/timeclock.js"></script>
+
+</head>
     <body>
             <!-- <div class="navbar-main">
                     
@@ -41,8 +46,9 @@
                   </div> 
                   
                 </div>  -->
-                
-                <div id="side-nav">
+                <b> Welcome to Project Blood Seeker </b>
+
+                <div class="sidenav">
            
                             <a href="#">Dashboard</a>
                             <a href="admin_view_record.html">View Record</a>
@@ -52,6 +58,6 @@
                             <a href="logout.php">Log-out</a>               
                 </div>
 
-
 </body>
+
 </html>

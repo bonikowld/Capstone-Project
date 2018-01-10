@@ -1065,7 +1065,7 @@ form .alert {
   width: 200px;
   position: fixed;
   z-index: 1;
-  top: 8%;
+  top: 10%;
   left: 0;
   background-color: #6F0B0B;
   overflow-x: hidden;

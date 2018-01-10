@@ -1,3 +1,4 @@
+<title>Admin - Project Blood Seeker</title>
 <?php
         session_start();
 
@@ -56,7 +57,6 @@
                     <input type="text" name="username" placeholder="Username"/>
                     <input type="password" name="password" placeholder="Password"/>
                     <button name="signin_btn">login</button>
-                    <p class="message">Not registered? <a href="#">Create an account</a></p>
                   </form>
                 </div>
               </div>
