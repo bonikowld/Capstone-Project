@@ -1058,28 +1058,6 @@ form .alert {
   -webkit-animation-name: zoomIn;
   animation-name: zoomIn;
 }
-
-
-.sidenav {
-  height: 100%;
-  width: 200px;
-  position: fixed;
-  z-index: 1;
-  top: 10%;
-  left: 0;
-  background-color: #6F0B0B;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-.sidenav a {
-  padding: 6px 6px 6px 32px;
-  text-decoration: none;
-  font-size: 19px;
-  color: #818181;
-  display: block;
-}
-
 .sidenav a:hover {
   color: #f1f1f1;
 }

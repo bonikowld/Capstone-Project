@@ -1,0 +1,17 @@
+.page-header{
+      position:absolute;
+      background-color:red;
+      padding:10px;
+      margin-top:0%;
+      height:12%;
+      width: 84%;
+      right:0%;
+  }
+.sidenav {
+    position:fixed;
+    padding-top: 130px;
+    background-color:red;
+    height: 100%;
+    margin-top:0%;
+    margin-bottom:100%;  
+}

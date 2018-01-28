@@ -21,7 +21,7 @@
               while($row = mysqli_fetch_assoc($result))
               echo "Log in Successfull";
 
-              header("location: ../admin/admin_index.php");
+              header("location: ../admin/index.html");
           }
           else{
                 $prompt = "Log in Failed Invalid Username or Password";
