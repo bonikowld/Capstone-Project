@@ -1,3 +1,35 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "blood_bank";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+if(isset($_POST['addrecord'])){
+  
+            $serialnumber = $_POST['serialnumber'];
+            $patientname = $_POST['name_of_patient'];
+            $bloodtype = $_POST['blood_type'];
+            $component = $_POST['component'];
+            $quantity = $_POST['quantity'];
+            $extractiondate = $_POST['extraction_date'];
+            $expirationdate = $_POST['expiration_date'];
+  
+            $sql = "INSERT INTO blood(serialnumber, name_of_patient, blood_type, component, quantity, extraction_date, expiration_date)
+            VALUES ('$serialnumber', '$patientname', '$bloodtype', '$component', '$quantity', '$extractiondate', '$expirationdate' )";
+            $result = mysqli_query($conn, $sql);
+          }
+
+$conn->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,23 +52,18 @@
   
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Project Blood Seeker</a>
+    <a class="navbar-brand" href="index.php">Project Blood Seeker</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="index.php">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
-          
-
-
-
-
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
@@ -61,10 +88,11 @@
             
           </ul>
         </li>
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">Example Pages</span>
+            <span class="nav-link-text">Reports</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
@@ -81,47 +109,8 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Menu Levels</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseMulti">
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
-              <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="tables.html">
-            <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">Reports</span>
-          </a>
       </ul>
-
-      
-
-
+      <!-- End of side navbar -->
 
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
@@ -177,45 +166,42 @@
 
 
     <!-- Add record input fields -->
-    <div class="col-6 col-sm-2">
-<div class="form-group enteremail">
-            <label for="exampleInputEmail1">Serial Number</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Serial Number">
-          </div>
-          <div class="form-group enteremail">
-            <label for="exampleInputEmail1">Name</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Name">
-          </div>
-          <div class="form-group enteremail">
-            <label for="exampleInputEmail1">Blood Type</label>
-            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Blood Type">
-          </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<table class="table table-bordered table-condensed" method="POST">
+    <tbody>
+        <tr>
+          
+           <td>
+           <label>Serial Number</label>
+           <input type="text" class="form-control" name="serialnumber"/>
+          </td>
+           <td>
+           <label>Name</label>
+             <input type="text" class="form-control" name="patientname" />
+            </td>
+           <td>
+           <label>Blood Type</label>
+             <input type="text" class="form-control" name="bloodtype"/>
+            </td>
+           <td>
+           <label>Component</label>
+             <input type="text" class="form-control" name="component"/>
+            </td>
+            <td>
+           <label>Quantity</label>
+             <input type="text" class="form-control" name="quantity"/>
+            </td>
+            <td>
+           <label>Extraction Date</label>
+             <input type="text" class="form-control" name="extractiondate"/>
+            </td>
+            <td>
+           <label>Expiration Date</label>
+             <input type="text" class="form-control" name="expirationdate"/>
+            </td> 
+        </tr>
+    </tbody>
+</table>
+<button type="button" class="btn btn-success" name="addrecord">Success</button>
 
 
   <!-- Bootstrap core JavaScript-->
