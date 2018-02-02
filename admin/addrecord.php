@@ -88,7 +88,7 @@ $conn->close();
             
           </ul>
         </li>
-
+        
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-file"></i>
@@ -176,12 +176,12 @@ $conn->close();
           </td>
            <td>
            <label>Name</label>
-             <input type="text" class="form-control" name="patientname" />
+             <input type="text" class="form-control" name="patientname"/>
             </td>
            <td>
            <label>Blood Type</label>
              <input type="text" class="form-control" name="bloodtype"/>
-            </td>
+          </td>
            <td>
            <label>Component</label>
              <input type="text" class="form-control" name="component"/>
@@ -201,7 +201,33 @@ $conn->close();
         </tr>
     </tbody>
 </table>
-<button type="button" class="btn btn-success" name="addrecord">Success</button>
+<button type="button" class="btn btn-success" name="addrecord">Add record</button>
+<br><br>
+<div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i>Added Records</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Serial Number</th>
+                  <th>Name</th>
+                  <th>Blood Type</th>
+                  <th>Component</th>
+                  <th>Quantity</th>
+                  <th>Extraction Date</th>
+                  <th>Expiration Date</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
 
   <!-- Bootstrap core JavaScript-->
