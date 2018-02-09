@@ -177,13 +177,9 @@ if(isset($_POST['add'])){
            <input type="text" class="form-control" name="serialnumber"/>
           </td>
            <td>
-<<<<<<< HEAD
+
            <label>Donor</label>
              <input type="text" class="form-control" name="donor" />
-=======
-           <label>Name</label>
-             <input type="text" class="form-control" name="patientname"/>
->>>>>>> 3aa0ff2eedacef37ebb9b77c20759b474bd91676
             </td>
            <td>
            <label>Blood Type</label>
@@ -208,14 +204,11 @@ if(isset($_POST['add'])){
         </tr>
     </tbody>
 </table>
-<<<<<<< HEAD
+
 <button class="btn btn-success" name="add">Add Record</button>
 
 </form>
 
-
-=======
-<button type="button" class="btn btn-success" name="addrecord">Add record</button>
 <br><br>
 <div class="card mb-3">
         <div class="card-header">
@@ -242,7 +235,7 @@ if(isset($_POST['add'])){
           </div>
         </div>
       </div>
->>>>>>> 3aa0ff2eedacef37ebb9b77c20759b474bd91676
+
 
 
   <!-- Bootstrap core JavaScript-->
