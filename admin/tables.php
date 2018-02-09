@@ -1,34 +1,3 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "blood_bank";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-if(isset($_POST['add'])){
-  
-            $sql = "INSERT INTO blood (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate)
-            VALUES ('".$_POST["serialnumber"]."','".$_POST["donor"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["quantity"]."','".$_POST["extractiondate"]."','".$_POST["expirationdate"]."')";
-
-
-            if ($conn->query($sql) === TRUE) {
-              echo "<script type= 'text/javascript'>alert('New record created successfully');</script>";
-              } else {
-              echo "<script type= 'text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
-              }
-              
-              $conn->close();
-           
-            }
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,9 +17,10 @@ if(isset($_POST['add'])){
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 </head>
-  
+
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.php">Project Blood Seeker</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -108,20 +78,13 @@ if(isset($_POST['add'])){
             </li>
           </ul>
         </li>
-      </ul>
-      <!-- End of side navbar -->
 
-      
+      </ul> 
+      <!-- <End of Side Navbar -->
 
-      <ul class="navbar-nav sidenav-toggler">
-        <li class="nav-item">
-          <a class="nav-link text-center" id="sidenavToggler">
-            <i class="fa fa-fw fa-angle-left"></i>
-          </a>
-        </li>
-      </ul>
       <ul class="navbar-nav ml-auto">
-         <li class="nav-item">
+        
+        <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
         </li>
@@ -132,9 +95,79 @@ if(isset($_POST['add'])){
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active">Add Record</li>
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Tables</li>
       </ol>
- <!--    sticky footer start here -->
+      <!-- Example DataTables Card-->
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Blood Records </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Serial Number</th>
+                  <th>Donor</th>
+                  <th>Blood Type</th>
+                  <th>Component</th>
+                  <th>Quantity</th>
+                  <th>Extraction Date</th>
+
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Serial Number</th>
+                  <th>Donor</th>
+                  <th>Blood Type</th>
+                  <th>Component</th>
+                  <th>Quantity</th>
+                  <th>Extraction Date</th>
+                </tr>
+              </tfoot>
+              
+              <tbody>
+                <?php 
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "blood_bank";
+
+                // Create connection
+                $conn = mysqli_connect($servername, $username, $password, $dbname);
+                // Check connection
+                if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
+                $result = mysqli_query($conn,"SELECT * FROM blood");
+                      
+                    while($row = mysqli_fetch_array($result))  
+                {
+                echo "<tr>";
+                echo "<td>".$row['serialnumber']."</td>";
+                echo "<td>".$row['donor']."</td>";
+                echo "<td>".$row['bloodtype']."</td>";
+                echo "<td>".$row['component']."</td>";
+                echo "<td>".$row['quantity']."</td>";
+                echo "<td>".$row['extractiondate']."</td>";
+                echo "</tr>";
+                };
+                ?>
+          
+              </tbody>
+              
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
@@ -164,66 +197,18 @@ if(isset($_POST['add'])){
         </div>
       </div>
     </div>
-
-
-    <!-- Add record input fields -->
-
-<table class="table table-bordered table-condensed">
-<form action="" method="POST">
-    <tbody>
-        <tr>
-           <td>
-           <label>Serial Number</label>
-           <input type="text" class="form-control" name="serialnumber"/>
-          </td>
-           <td>
-           <label>Donor</label>
-             <input type="text" class="form-control" name="donor" />
-            </td>
-           <td>
-           <label>Blood Type</label>
-             <input type="text" class="form-control" name="bloodtype"/>
-            </td>
-           <td>
-           <label>Component</label>
-             <input type="text" class="form-control" name="component"/>
-            </td>
-            <td>
-           <label>Quantity</label>
-             <input type="text" class="form-control" name="quantity"/>
-            </td>
-            <td>
-           <label>Extraction Date</label>
-             <input type="text" class="form-control" name="extractiondate"/>
-            </td>
-            <td>
-           <label>Expiration Date</label>
-             <input type="text" class="form-control" name="expirationdate"/>
-            </td> 
-        </tr>
-    </tbody>
-</table>
-<button class="btn btn-success" name="add">Add Record</button>
-
-</form>
-
-
-
-
-  <!-- Bootstrap core JavaScript-->
+    <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
-   <!--  <script src="vendor/chart.js/Chart.min.js"></script> -->
     <script src="vendor/datatables/jquery.dataTables.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
-    <script src="js/sb-admin-charts.min.js"></script>
   </div>
 </body>
 

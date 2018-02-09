@@ -41,18 +41,18 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
              <li>
-              <a href="tables.html">Blood Records</a>
+              <a href="tables.php">Blood Records</a>
             </li>
              <li>
               <a href="addrecord.php">Add Records</a>
 
             </li>
             <li>
-              <a href="tables.html">Requested Bloods</a>
+              <a href="tables.php">Requested Bloods</a>
 
             </li>
             <li>
-              <a href="tables.html">Reserved Bloods</a>
+              <a href="tables.php">Reserved Bloods</a>
             </li>
             
           </ul>
@@ -230,7 +230,7 @@
             </div>
           </form>
         </li> -->
-        <a class="navbar-brand" href="#">Welcome</a>
+        <a class="navbar-brand" href="#">Welcome<?php ?></a>
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
