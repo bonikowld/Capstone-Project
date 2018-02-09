@@ -224,19 +224,42 @@ if(isset($_POST['add'])){
                   <th>Component</th>
                   <th>Quantity</th>
                   <th>Extraction Date</th>
-                  <th>Expiration Date</th>
                 </tr>
               </thead>
 
               <tbody>
+              <?php 
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "blood_bank";
+
+                // Create connection
+                $conn = mysqli_connect($servername, $username, $password, $dbname);
+                // Check connection
+                if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
+                $result = mysqli_query($conn,"SELECT * FROM blood");
+                      
+                    while($row = mysqli_fetch_array($result))  
+                {
+                echo "<tr>";
+                echo "<td>".$row['serialnumber']."</td>";
+                echo "<td>".$row['donor']."</td>";
+                echo "<td>".$row['bloodtype']."</td>";
+                echo "<td>".$row['component']."</td>";
+                echo "<td>".$row['quantity']."</td>";
+                echo "<td>".$row['extractiondate']."</td>";
+                echo "</tr>";
+                };
+                ?>
                 
               </tbody>
             </table>
           </div>
         </div>
       </div>
-
-
 
   <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
