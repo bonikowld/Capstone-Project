@@ -4,6 +4,14 @@ $username = "root";
 $password = "";
 $dbname = "blood_bank";
 
+// for Validation
+$donorError ="";
+$bloodTypeError = "";
+$componentError ="";
+$numberError = "";
+$temp = "";
+
+
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
@@ -16,6 +24,49 @@ if(isset($_POST['add'])){
             $sql = "INSERT INTO blood (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate)
             VALUES ('".$_POST["serialnumber"]."','".$_POST["donor"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["quantity"]."','".$_POST["extractiondate"]."','".$_POST["expirationdate"]."')";
 
+          // Donor Name Validation
+              if (empty($_POST["donor"])) {
+              $donorError = "Donor name is required";
+              } 
+              else {
+               $donor = test_input($_POST["donor"]);
+              // check donor name only contains letters and whitespace
+                if (!preg_match("/^[a-zA-Z-. ]*$/",$donor)) {
+                $donorError = "Only letters and white space allowed";
+                }
+              }
+
+          // Blood Type Validation
+              if($_POST) {
+                if(isset($_POST['bloodtype'])) {
+                    if($_POST['bloodtype'] == 'NULL') {
+                      $bloodTypeError = '<p>Please select an option from the select box.</p>';
+                    }
+                }
+              }
+          
+          // Component Validation
+              if($_POST) {
+                if(isset($_POST['component'])) {
+                    if($_POST['component'] == 'NULL') {
+                      $componentError = '<p>Please select an option from the select box.</p>';
+                    }
+                }
+              }
+              
+          // Quantity Validation
+              $number = $_POST["quantity"];
+
+              if(empty($number)) {
+                $numberError = '<span class="error">Please enter a value</span>';
+                } 
+              else if(!is_numeric($number)) {
+                $numberError = '<span class="error">Data entered was not numeric</span>';
+                } 
+              else {
+                echo "valid";
+                }
+
 
             if ($conn->query($sql) === TRUE) {
               echo "<script type= 'text/javascript'>alert('New record created successfully');</script>";
@@ -26,6 +77,12 @@ if(isset($_POST['add'])){
               $conn->close();
            
             }
+            function test_input($data) {
+              $data = trim($data);
+              $data = stripslashes($data);
+              $data = htmlspecialchars($data);
+              return $data;
+              }
 
 ?>
 
@@ -47,6 +104,11 @@ if(isset($_POST['add'])){
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  <style>
+  .error{
+   color:red
+  }
+  </style>
 </head>
   
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -151,15 +213,15 @@ if(isset($_POST['add'])){
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-body"></div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="../index.html">Logout</a>
           </div>
         </div>
       </div>
@@ -179,27 +241,50 @@ if(isset($_POST['add'])){
            <td>
 
            <label>Donor</label>
-             <input type="text" class="form-control" name="donor" />
+             <input type="text" class="form-control" name="donor"/>
+             <span class="error"><?php echo $donorError;?></span>
             </td>
            <td>
-           <label>Blood Type</label>
-             <input type="text" class="form-control" name="bloodtype"/>
+           <label>Bloodtype</label>
+             <select name="bloodtype" class="form-control">
+              <option value="NULL">Select</option>
+              <option value="O-">O-</option>
+              <option value="O+">O+</option>
+              <option value="A-">A-</option>
+              <option value="A+">A+</option>
+              <option value="B-">B-</option>
+              <option value="B+">B+</option>
+              <option value="AB-">AB-</option>
+              <option value="AB+">AB+</option>
+             </select>
+             <span class="error"><?php echo $bloodTypeError;?></span>
+             <!--<input type="text" class="form-control" name="bloodtype"/>-->
           </td>
            <td>
            <label>Component</label>
-             <input type="text" class="form-control" name="component"/>
+             <select name="component" class="form-control">
+              <option value="NULL">Select</option>
+              <option value="Whole Blood">Whole Blood</option>
+              <option value="Red Cells">Red Cells</option>
+              <option value="Platelets">Platelets</option>
+              <option value="Plasma">Plasma</option>
+              <option value="Cryoprecipitated AHF">Cryoprecipitated AHF</option>
+             </select>
+             <span class="error"><?php echo $componentError;?></span>
+             <!--<input type="text" class="form-control" name="component"/>-->
             </td>
             <td>
            <label>Quantity</label>
-             <input type="text" class="form-control" name="quantity"/>
+             <input type="text" class="form-control" name="quantity" value="<?php echo   $temp ?>"/>
+             <span class="error"><?php echo $numberError; ?></span>
             </td>
             <td>
            <label>Extraction Date</label>
-             <input type="text" class="form-control" name="extractiondate"/>
+             <input class="form-control" name="extractiondate" type="date"/>
             </td>
             <td>
            <label>Expiration Date</label>
-             <input type="text" class="form-control" name="expirationdate"/>
+             <input class="form-control" name="expirationdate" type="date"/>
             </td> 
         </tr>
     </tbody>
@@ -212,7 +297,7 @@ if(isset($_POST['add'])){
 <br><br>
 <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i>Added Records</div>
+          <i class="fa fa-table">  Records</i></div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
