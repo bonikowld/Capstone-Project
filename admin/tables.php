@@ -153,7 +153,7 @@
                       
                     while($row = mysqli_fetch_array($result))  
                 {
-                echo "<tr>";
+                echo "<tr class='clickable-row' data-href='url://' data-toggle='modal' data-target='#myModal'>";
                 echo "<td>".$row['serialnumber']."</td>";
                 echo "<td>".$row['donor']."</td>";
                 echo "<td>".$row['bloodtype']."</td>";
@@ -163,7 +163,7 @@
                 echo "</tr>";
                 };
                 ?>
-          
+              
               </tbody>
               
             </table>
@@ -202,6 +202,30 @@
         </div>
       </div>
     </div>
+
+<!-- Modal for editing and deleting data-->
+<div id="myModal" class="modal fade " role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of modal -->
+
+
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -214,6 +238,7 @@
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
+    
   </div>
 </body>
 
