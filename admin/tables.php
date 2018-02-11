@@ -113,7 +113,7 @@
           <i class="fa fa-table"></i> Blood Records </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
                   <th>Serial Number</th>
@@ -197,7 +197,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="../index.html">Logout</a>
           </div>
         </div>
       </div>
@@ -214,7 +214,8 @@
         <h4 class="modal-title"></h4>
       </div>
       <div class="modal-body">
-        <p>Some text in the modal.</p>
+      <p id="bloodpic"><img class="bloodimg" src="../admin/img/img.jpg" alt="Blood" height="218px" width="207px" ></p>
+      
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>

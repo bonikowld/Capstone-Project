@@ -479,3 +479,14 @@ footer.sticky-footer {
 .enteremail{
   margin-left:-15px;
 }
+#bloodpic{
+  border-radius: 25px;
+  border: 5px solid #343a40;
+  padding: 20px; 
+  width: 250px;
+  height: 250px;    
+}
+#bloodimg{
+  height: 218px;
+  width: 207px;
+}
