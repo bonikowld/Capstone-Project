@@ -490,3 +490,7 @@ footer.sticky-footer {
   height: 218px;
   width: 207px;
 }
+.bloodData{
+  position: fixed;
+  left: 275px;
+}

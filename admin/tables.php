@@ -113,7 +113,7 @@
           <i class="fa fa-table"></i> Blood Records </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-hover " id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
                   <th>Serial Number</th>
@@ -162,7 +162,9 @@
                 echo "<td>".$row['extractiondate']."</td>";
                 echo "</tr>";
                 };
-                ?>
+                  
+                mysqli_close($conn); 
+               ?>
               
               </tbody>
               
@@ -213,11 +215,21 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"></h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="orderDetails">
+      <div class="bloodData" >
+      <b>Serial Number:</b><br>
+      <b>Donor:</b><br>
+      <b>Blood Type: </b><br>
+      <b>Component:</b><br>
+      <b>Quantity: </b><br>
+      <b>Extraction Date:</b>
+      </div>
       <p id="bloodpic"><img class="bloodimg" src="../admin/img/img.jpg" alt="Blood" height="218px" width="207px" ></p>
       
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Update</button>
+        <button type="button" method="POST" action="tables.php" class="btn btn-danger" data-dismiss="modal" id="delete" name="delete">Delete</button>   
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
       </div>
     </div>
