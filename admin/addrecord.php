@@ -236,17 +236,17 @@ if(isset($_POST['add'])){
         <tr>
            <td>
            <label>Serial Number</label>
-           <input type="text" class="form-control" name="serialnumber"/>
+           <input type="text" class="form-control" name="serialnumber" id="serialnumber"/>
           </td>
            <td>
 
            <label>Donor</label>
-             <input type="text" class="form-control" name="donor"/>
+             <input type="text" class="form-control" name="donor" id="donor"/>
              <span class="error"><?php echo $donorError;?></span>
             </td>
            <td>
            <label>Bloodtype</label>
-             <select name="bloodtype" class="form-control">
+             <select name="bloodtype" id="bloodtype" class="form-control">
               <option value="NULL">Select</option>
               <option value="O-">O-</option>
               <option value="O+">O+</option>
@@ -262,7 +262,7 @@ if(isset($_POST['add'])){
           </td>
            <td>
            <label>Component</label>
-             <select name="component" class="form-control">
+             <select name="component" id="component" class="form-control">
               <option value="NULL">Select</option>
               <option value="Whole Blood">Whole Blood</option>
               <option value="Red Cells">Red Cells</option>
@@ -275,22 +275,22 @@ if(isset($_POST['add'])){
             </td>
             <td>
            <label>Quantity</label>
-             <input type="text" class="form-control" name="quantity" value="<?php echo   $temp ?>"/>
+             <input type="text" class="form-control" name="quantity" id="quantity" value="<?php echo   $temp ?>"/>
              <span class="error"><?php echo $numberError; ?></span>
             </td>
             <td>
            <label>Extraction Date</label>
-             <input class="form-control" name="extractiondate" type="date"/>
+             <input class="form-control" name="extractiondate" id="extractiondate" type="date"/>
             </td>
             <td>
            <label>Expiration Date</label>
-             <input class="form-control" name="expirationdate" type="date"/>
+             <input class="form-control" name="expirationdate" id="expirationdate" type="date"/>
             </td> 
         </tr>
     </tbody>
 </table>
 
-<button class="btn btn-success" name="add">Add Record</button>
+<button class="btn btn-success" name="add" id="add">Add default</button>
 
 </form>
 
@@ -345,19 +345,32 @@ if(isset($_POST['add'])){
           </div>
         </div>
       </div>
-
+    
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/snbutton.js"></script>
+    <script>
+     $(document).ready(function(){
+         SNButton.init("add",{
+             fields: ["serialnumber","donor","bloodtype","component","quantity","extractiondate","expirationdate"],
+             enabletext: "Add Record",
+             disabletext: "Please input all text field to add record"
+         })
+     })
+    </script>
   <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
+  <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Page level plugin JavaScript-->
-   <!--  <script src="vendor/chart.js/Chart.min.js"></script> -->
+  <!-- Page level plugin JavaScript-->
+  <!--  <script src="vendor/chart.js/Chart.min.js"></script> -->
     <script src="vendor/datatables/jquery.dataTables.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-    <!-- Custom scripts for all pages-->
+  <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
-    <!-- Custom scripts for this page-->
+  <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
     <script src="js/sb-admin-charts.min.js"></script>
   </div>
