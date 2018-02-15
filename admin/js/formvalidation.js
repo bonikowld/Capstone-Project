@@ -98,7 +98,7 @@
         $("#btype_error_message").hide();
         $("#bloodtype").css("border-bottom","2px solid #34F458");
       } else {
-        $("#btype_error_message").html("Should select an option");
+        $("#btype_error_message").html("Should select an item in the list");
         $("#btype_error_message").show();
         $("#bloodtype").css("border-bottom","2px solid #F90A0A");
         error_btype = true;
@@ -112,7 +112,7 @@
         $("#component_error_message").hide();
         $("#component").css("border-bottom","2px solid #34F458");
       } else {
-        $("#component_error_message").html("Should select an option");
+        $("#component_error_message").html("Should select an item in the list");
         $("#component_error_message").show();
         $("#component").css("border-bottom","2px solid #F90A0A");
         error_component = true;
