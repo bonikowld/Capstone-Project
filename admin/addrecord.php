@@ -24,49 +24,7 @@ if(isset($_POST['add'])){
             $sql = "INSERT INTO blood (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate)
             VALUES ('".$_POST["serialnumber"]."','".$_POST["donor"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["quantity"]."','".$_POST["extractiondate"]."','".$_POST["expirationdate"]."')";
 
-          // Donor Name Validation
-              if (empty($_POST["donor"])) {
-              $donorError = "Donor name is required";
-              } 
-              else {
-               $donor = test_input($_POST["donor"]);
-              // check donor name only contains letters and whitespace
-                if (!preg_match("/^[a-zA-Z-. ]*$/",$donor)) {
-                $donorError = "Only letters and white space allowed";
-                }
-              }
-
-          // Blood Type Validation
-              if($_POST) {
-                if(isset($_POST['bloodtype'])) {
-                    if($_POST['bloodtype'] == 'NULL') {
-                      $bloodTypeError = '<p>Please select an option from the select box.</p>';
-                    }
-                }
-              }
           
-          // Component Validation
-              if($_POST) {
-                if(isset($_POST['component'])) {
-                    if($_POST['component'] == 'NULL') {
-                      $componentError = '<p>Please select an option from the select box.</p>';
-                    }
-                }
-              }
-              
-          // Quantity Validation
-              $number = $_POST["quantity"];
-
-              if(empty($number)) {
-                $numberError = '<span class="error">Please enter a value</span>';
-                } 
-              else if(!is_numeric($number)) {
-                $numberError = '<span class="error">Data entered was not numeric</span>';
-                } 
-              else {
-                echo "valid";
-                }
-
 
             if ($conn->query($sql) === TRUE) {
               echo "<script type= 'text/javascript'>alert('New record created successfully');</script>";
@@ -77,12 +35,6 @@ if(isset($_POST['add'])){
               $conn->close();
            
             }
-            function test_input($data) {
-              $data = trim($data);
-              $data = stripslashes($data);
-              $data = htmlspecialchars($data);
-              return $data;
-              }
 
 ?>
 
@@ -236,17 +188,18 @@ if(isset($_POST['add'])){
         <tr>
            <td>
            <label>Serial Number</label>
-           <input type="text" class="form-control" name="serialnumber" id="serialnumber"/>
-          </td>
+           <input type="text" class="form-control" name="serialnumber" id="serialnumber" placeholder="1234-567890-1"required/>
+           <span class="error_form" id="snum_error_message"></span>
+           </td>
            <td>
 
            <label>Donor</label>
-             <input type="text" class="form-control" name="donor" id="donor"/>
-             <span class="error"><?php echo $donorError;?></span>
+             <input type="name" class="form-control" name="donor" id="donor" required/>
+             <span class="error_form" id="dname_error_message"></span>
             </td>
            <td>
            <label>Bloodtype</label>
-             <select name="bloodtype" id="bloodtype" class="form-control">
+             <select name="bloodtype" id="bloodtype" class="form-control" required>
               <option value="NULL">Select</option>
               <option value="O-">O-</option>
               <option value="O+">O+</option>
@@ -257,12 +210,11 @@ if(isset($_POST['add'])){
               <option value="AB-">AB-</option>
               <option value="AB+">AB+</option>
              </select>
-             <span class="error"><?php echo $bloodTypeError;?></span>
-             <!--<input type="text" class="form-control" name="bloodtype"/>-->
+             <span class="error_form" id="btype_error_message"></span>
           </td>
            <td>
            <label>Component</label>
-             <select name="component" id="component" class="form-control">
+             <select name="component" id="component" class="form-control" required>
               <option value="NULL">Select</option>
               <option value="Whole Blood">Whole Blood</option>
               <option value="Red Cells">Red Cells</option>
@@ -270,21 +222,22 @@ if(isset($_POST['add'])){
               <option value="Plasma">Plasma</option>
               <option value="Cryoprecipitated AHF">Cryoprecipitated AHF</option>
              </select>
-             <span class="error"><?php echo $componentError;?></span>
-             <!--<input type="text" class="form-control" name="component"/>-->
+             <span class="error_form" id="component_error_message"></span>
             </td>
             <td>
            <label>Quantity</label>
-             <input type="text" class="form-control" name="quantity" id="quantity" value="<?php echo   $temp ?>"/>
-             <span class="error"><?php echo $numberError; ?></span>
+             <input type="number" class="form-control" name="quantity" id="quantity" value="<?php echo   $temp ?>" required/>
+             <span class="error_form" id="quantity_error_message"></span>
             </td>
             <td>
            <label>Extraction Date</label>
-             <input class="form-control" name="extractiondate" id="extractiondate" type="date"/>
+             <input class="form-control" name="extractiondate" id="extractiondate" type="date" required/>
+             <span class="error_form" id="extdate_error_message"></span>
             </td>
             <td>
            <label>Expiration Date</label>
-             <input class="form-control" name="expirationdate" id="expirationdate" type="date"/>
+             <input class="form-control" name="expirationdate" id="expirationdate" type="date" required/>
+             <span class="error_form" id="expdate_error_message"></span>
             </td> 
         </tr>
     </tbody>
@@ -350,6 +303,101 @@ if(isset($_POST['add'])){
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/snbutton.js"></script>
+    <script>
+    $(function() {
+    
+    $("#snum_error_message").hide();
+    $("#dname_error_message").hide();
+    $("#btype_error_message").hide();
+    $("#component_error_message").hide();
+    $("#quantity_error_message").hide();
+    $("extdate_error_message").hide();
+    $("expdate_error_message").hide();
+    
+    var error_snum = false;
+    var error_dname = false;
+    var error_btype = false;
+    var error_component = false;
+    var error_quantity = false;
+    var error_extdate = false;
+    var error_expdate = false;
+
+    $("#serialnumber").focusout(function(){
+        check_snum();
+        });
+
+    $("#donor").focusout(function(){
+        check_dname();
+        });
+        
+    $("#bloodtype").focusout(function() {
+        check_btype();
+        });
+        
+    $("#component").focusout(function() {
+        check_component();
+        });
+        
+    $("#quantity").focusout(function() {
+        check_quantity();
+        });
+        
+    $("#extractiondate").focusout(function() {
+        check_extdate();
+        });
+
+    $("#expirationdate").focusout(function() {
+        check_expdate();
+        });
+
+    })
+    
+    function check_snum() {
+    var pattern = /^\w{4}-\w{6}-\w{1}$/;
+    var snum = $("#serialnumber").val();
+
+      if (pattern.test(snum) && snum !== '') {
+        $("#snum_error_message").hide();
+        $("#serialnumber").css("border-bottom","2px solid #34F458");
+      } else {
+        $("#snum_error_message").html("Not a serial number");
+        $("#snum_error_message").show();
+        $("#serialnumber").css("border-bottom","2px solid #F90A0A");
+        error_snum = true;
+      }
+    }
+
+    function check_dname() {
+    var pattern = /^[a-zA-Z-. ]*$/;
+    var dname = $("#donor").val();
+
+      if (pattern.test(dname) && dname !== '') {
+        $("#dname_error_message").hide();
+        $("#donor").css("border-bottom","2px solid #34F458");
+      } else {
+        $("#dname_error_message").html("Should contain only Characters");
+        $("#dname_error_message").show();
+        $("#donor").css("border-bottom","2px solid #F90A0A");
+        error_dname = true;
+      }
+    }
+
+    function check_quantity() {
+    var pattern = /^[0-9]+$/;
+    var quantity = $("#quantity").val();
+
+      if (pattern.test(quantity) && quantity !== '') {
+        $("#quantity_error_message").hide();
+        $("#quantity").css("border-bottom","2px solid #34F458");
+      } else {
+        $("#quantity_error_message").html("Should contain only numbers");
+        $("#quantity_error_message").show();
+        $("#quantity").css("border-bottom","2px solid #F90A0A");
+        error_quantity = true;
+      }
+    }
+    </script>
+
     <script>
      $(document).ready(function(){
          SNButton.init("add",{
