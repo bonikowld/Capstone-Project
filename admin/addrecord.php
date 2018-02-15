@@ -210,6 +210,7 @@ if(isset($_POST['add'])){
               <option value="AB-">AB-</option>
               <option value="AB+">AB+</option>
              </select>
+             <span class="error_form" id="btype_error_message"></span>
           </td>
            <td>
            <label>Component</label>
@@ -221,6 +222,7 @@ if(isset($_POST['add'])){
               <option value="Plasma">Plasma</option>
               <option value="Cryoprecipitated AHF">Cryoprecipitated AHF</option>
              </select>
+             <span class="error_form" id="component_error_message"></span>
             </td>
             <td>
            <label>Quantity</label>
@@ -230,10 +232,12 @@ if(isset($_POST['add'])){
             <td>
            <label>Extraction Date</label>
              <input class="form-control" name="extractiondate" id="extractiondate" type="date" required/>
+             <span class="error_form" id="extdate_error_message"></span>
             </td>
             <td>
            <label>Expiration Date</label>
              <input class="form-control" name="expirationdate" id="expirationdate" type="date" required/>
+             <span class="error_form" id="expdate_error_message"></span>
             </td> 
         </tr>
     </tbody>
@@ -299,78 +303,9 @@ if(isset($_POST['add'])){
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/snbutton.js"></script>
+    <script src="js/formvalidation.js"></script>
 
-    <!-- JavaScript for validation-->
-    <script>
-    $(function() {
     
-    $("#snum_error_message").hide();
-    $("#dname_error_message").hide();
-    $("#quantity_error_message").hide();
-    
-    var error_snum = false;
-    var error_dname = false;
-    var error_quantity = false;
-
-    $("#serialnumber").focusout(function(){
-        check_snum();
-        });
-
-    $("#donor").focusout(function(){
-        check_dname();
-        });
-                
-    $("#quantity").focusout(function() {
-        check_quantity();
-        });
-    })
-    
-    function check_snum() {
-    var pattern = /^\w{4}-\w{6}-\w{1}$/;
-    var snum = $("#serialnumber").val();
-
-      if (pattern.test(snum) && snum !== '') {
-        $("#snum_error_message").hide();
-        $("#serialnumber").css("border-bottom","2px solid #34F458");
-      } else {
-        $("#snum_error_message").html("Not a serial number");
-        $("#snum_error_message").show();
-        $("#serialnumber").css("border-bottom","2px solid #F90A0A");
-        error_snum = true;
-      }
-    }
-
-    function check_dname() {
-    var pattern = /^[a-zA-Z-. ]*$/;
-    var dname = $("#donor").val();
-
-      if (pattern.test(dname) && dname !== '') {
-        $("#dname_error_message").hide();
-        $("#donor").css("border-bottom","2px solid #34F458");
-      } else {
-        $("#dname_error_message").html("Should contain only Characters");
-        $("#dname_error_message").show();
-        $("#donor").css("border-bottom","2px solid #F90A0A");
-        error_dname = true;
-      }
-    }
-
-    function check_quantity() {
-    var pattern = /^[0-9]+$/;
-    var quantity = $("#quantity").val();
-
-      if (pattern.test(quantity) && quantity !== '') {
-        $("#quantity_error_message").hide();
-        $("#quantity").css("border-bottom","2px solid #34F458");
-      } else {
-        $("#quantity_error_message").html("Should contain only numbers");
-        $("#quantity_error_message").show();
-        $("#quantity").css("border-bottom","2px solid #F90A0A");
-        error_quantity = true;
-      }
-    }
-    </script>
-
     <!-- JavaScript for enable/disable button-->
     <script>
      $(document).ready(function(){
