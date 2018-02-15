@@ -200,7 +200,7 @@ if(isset($_POST['add'])){
            <td>
            <label>Bloodtype</label>
              <select name="bloodtype" id="bloodtype" class="form-control" required>
-              <option value="NULL">Select</option>
+              <option value="">select</option>
               <option value="O-">O-</option>
               <option value="O+">O+</option>
               <option value="A-">A-</option>
@@ -210,19 +210,17 @@ if(isset($_POST['add'])){
               <option value="AB-">AB-</option>
               <option value="AB+">AB+</option>
              </select>
-             <span class="error_form" id="btype_error_message"></span>
           </td>
            <td>
            <label>Component</label>
              <select name="component" id="component" class="form-control" required>
-              <option value="NULL">Select</option>
+              <option value="">select</option>
               <option value="Whole Blood">Whole Blood</option>
               <option value="Red Cells">Red Cells</option>
               <option value="Platelets">Platelets</option>
               <option value="Plasma">Plasma</option>
               <option value="Cryoprecipitated AHF">Cryoprecipitated AHF</option>
              </select>
-             <span class="error_form" id="component_error_message"></span>
             </td>
             <td>
            <label>Quantity</label>
@@ -232,12 +230,10 @@ if(isset($_POST['add'])){
             <td>
            <label>Extraction Date</label>
              <input class="form-control" name="extractiondate" id="extractiondate" type="date" required/>
-             <span class="error_form" id="extdate_error_message"></span>
             </td>
             <td>
            <label>Expiration Date</label>
              <input class="form-control" name="expirationdate" id="expirationdate" type="date" required/>
-             <span class="error_form" id="expdate_error_message"></span>
             </td> 
         </tr>
     </tbody>
@@ -303,24 +299,18 @@ if(isset($_POST['add'])){
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/snbutton.js"></script>
+
+    <!-- JavaScript for validation-->
     <script>
     $(function() {
     
     $("#snum_error_message").hide();
     $("#dname_error_message").hide();
-    $("#btype_error_message").hide();
-    $("#component_error_message").hide();
     $("#quantity_error_message").hide();
-    $("extdate_error_message").hide();
-    $("expdate_error_message").hide();
     
     var error_snum = false;
     var error_dname = false;
-    var error_btype = false;
-    var error_component = false;
     var error_quantity = false;
-    var error_extdate = false;
-    var error_expdate = false;
 
     $("#serialnumber").focusout(function(){
         check_snum();
@@ -329,27 +319,10 @@ if(isset($_POST['add'])){
     $("#donor").focusout(function(){
         check_dname();
         });
-        
-    $("#bloodtype").focusout(function() {
-        check_btype();
-        });
-        
-    $("#component").focusout(function() {
-        check_component();
-        });
-        
+                
     $("#quantity").focusout(function() {
         check_quantity();
         });
-        
-    $("#extractiondate").focusout(function() {
-        check_extdate();
-        });
-
-    $("#expirationdate").focusout(function() {
-        check_expdate();
-        });
-
     })
     
     function check_snum() {
@@ -398,6 +371,7 @@ if(isset($_POST['add'])){
     }
     </script>
 
+    <!-- JavaScript for enable/disable button-->
     <script>
      $(document).ready(function(){
          SNButton.init("add",{
