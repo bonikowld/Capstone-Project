@@ -494,3 +494,9 @@ footer.sticky-footer {
   position: fixed;
   left: 275px;
 }
+@media (min-width: 768px) {
+  .modal-xl {
+    width: 100%;
+   max-width:98%;
+  }
+}
