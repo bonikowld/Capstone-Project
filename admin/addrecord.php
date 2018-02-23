@@ -4,19 +4,11 @@ $username = "root";
 $password = "";
 $dbname = "blood_bank";
 
-// for Validation
-$donorError ="";
-$bloodTypeError = "";
-$componentError ="";
-$numberError = "";
-$temp = "";
-
-
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
 if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+    die("Connection failed: " .mysqli_connect_error());
 }
 
 if(isset($_POST['add'])){
@@ -26,10 +18,10 @@ if(isset($_POST['add'])){
 
           
 
-            if ($conn->query($sql) === TRUE) {
-              echo "<script type= 'text/javascript'>alert('New record created successfully');</script>";
+            if ($conn->query($sql) == TRUE) {
+              echo "<script type='text/javascript'>alert('New record created successfully');</script>";
               } else {
-              echo "<script type= 'text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
+              echo "<script type='text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
               }
               
               $conn->close();
@@ -128,20 +120,20 @@ if(isset($_POST['add'])){
       
 
       <ul class="navbar-nav sidenav-toggler">
-        <li class="nav-item">
-          <a class="nav-link text-center" id="sidenavToggler">
-            <i class="fa fa-fw fa-angle-left"></i>
-          </a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+      <li class="nav-item">
+        <a class="nav-link text-center" id="sidenavToggler">
+          <i class="fa fa-fw fa-angle-left"></i>
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+       <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+          <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -200,7 +192,7 @@ if(isset($_POST['add'])){
            <td>
            <label>Bloodtype</label>
              <select name="bloodtype" id="bloodtype" class="form-control" required>
-              <option value="">select</option>
+              <option value="">-</option>
               <option value="O-">O-</option>
               <option value="O+">O+</option>
               <option value="A-">A-</option>
@@ -215,7 +207,7 @@ if(isset($_POST['add'])){
            <td>
            <label>Component</label>
              <select name="component" id="component" class="form-control" required>
-              <option value="">select</option>
+              <option value="">-</option>
               <option value="Whole Blood">Whole Blood</option>
               <option value="Red Cells">Red Cells</option>
               <option value="Platelets">Platelets</option>
@@ -226,7 +218,7 @@ if(isset($_POST['add'])){
             </td>
             <td>
            <label>Quantity</label>
-             <input type="number" class="form-control" name="quantity" id="quantity" value="<?php echo   $temp ?>" required/>
+             <input type="number" class="form-control" name="quantity" id="quantity" required/>
              <span class="error_form" id="quantity_error_message"></span>
             </td>
             <td>
@@ -312,7 +304,7 @@ if(isset($_POST['add'])){
          SNButton.init("add",{
              fields: ["serialnumber","donor","bloodtype","component","quantity","extractiondate","expirationdate"],
              enabletext: "Add Record",
-             disabletext: "Please input all text field to add record"
+             disabletext: "Add Record"
          })
      })
     </script>
