@@ -1,28 +1,3 @@
-<?php 
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "blood_bank";
-
-                // Create connection
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-                
-                if(isset($_POST['delete_btn'])){
-                  $serialnumber = $row['serialnumber'];
-                  $sql = "DELETE FROM blood WHERE serialnumber='$serialnumber'";
-                  
-                  if ($conn->query($sql) === TRUE) {
-                   echo "<script type= 'text/javascript'>alert('Deleted successfully');</script>";
-                  } else {
-                      echo "Error deleting record: " . $conn->error;
-                  }
-                }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +16,6 @@
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
-
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -86,7 +60,7 @@
         </li>
         
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-          <a class="nav-link"  href="reports.php">
+          <a class="nav-link" data-toggle="collapse" href="reports.php" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-file"></i>
             <span class="nav-link-text">Reports</span>
           </a>
@@ -111,8 +85,6 @@
       </ul>
       <!-- End of side navbar -->
 
-
-
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
           <a class="nav-link text-center" id="sidenavToggler">
@@ -130,83 +102,51 @@
   </nav>
   <div class="content-wrapper">
     <div class="container-fluid">
-      <!-- Breadcrumbs
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item active">Blood Records</li>
-      </ol>-->
+     
 
-      <!-- Example DataTables Card-->
-
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-table"></i> Blood Records </div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-bordered table-hover " id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                <tr>
-                  <th>Serial Number</th>
-                  <th>Donor</th>
-                  <th>Blood Type</th>
-                  <th>Component</th>
-                  <th>Quantity</th>
-                  <th>Extraction Date</th>
-                  <th>Expiration Date</th>
-
-                </tr>
-              </thead>
-              <tfoot>
-                <tr>
-                  <th>Serial Number</th>
-                  <th>Donor</th>
-                  <th>Blood Type</th>
-                  <th>Component</th>
-                  <th>Quantity</th>
-                  <th>Extraction Date</th>
-                  <th>Expiration Date</th>
-                </tr>
-              </tfoot>
-              
-              <tbody>
-                <?php 
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "blood_bank";
-
-                // Create connection
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-                $result = mysqli_query($conn,"SELECT * FROM blood");
-
-                      
-                while($row = mysqli_fetch_array($result))  
-                {
-                echo "<tr class='clickable-row row-data' data-href='url://'>";
-                echo "<td class='serialnumber'>".$row['serialnumber']."</td>";
-                echo "<td class='donor'>".$row['donor']."</td>";
-                echo "<td class='bloodtype'>".$row['bloodtype']."</td>";
-                echo "<td class='component'>".$row['component']."</td>";
-                echo "<td class='quantity'>".$row['quantity']."</td>";
-                echo "<td class='extractiondate'>".$row['extractiondate']."</td>";
-                echo "<td class='expirationdate'>".$row['expirationdate']."</td>";
-                echo "</tr>";
-                };
-                
-                mysqli_close($conn); 
-               ?>
-              
-              </tbody>
-              
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /.container-fluid-->
+    <table class="table table-bordered table-condensed">
+<form >
+    <tbody>
+        <tr>
+            <td>
+           <label>Month</label>
+             <select name="bloodtype" id="bloodtype" class="form-control" required>
+              <option value="">select</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+             </select>
+          </td>
+           <td>
+           <label>Year</label>
+             <select name="component" id="component" class="form-control" required>
+              <option value="">select</option>
+              <option value="2010">2010</option>
+              <option value="2011">2011</option>
+              <option value="2012">2012</option>
+              <option value="2013">2013</option>
+              <option value="2014">2014</option>
+              <option value="2015">2015</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              \<option value="2020">2020</option>
+             </select>
+            </td>
+        </tr>
+    </tbody>
+</table>  
+   
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">
       <div class="container">
@@ -248,56 +188,28 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"></h4>
       </div>
-      <div class="modal-body" >
+      <div class="modal-body" id="orderDetails">
       <div class="bloodData" >
       <b>Serial Number:</b> <span class="serialnumber"></span><br>
       <b>Donor:</b> <span class="donor"></span><br> 
       <b>Blood Type: </b> <span class="bloodtype"></span><br>
       <b>Component:</b> <span class="component"></span><br>
       <b>Quantity: </b> <span class="quantity"></span><br>
-      <b>Extraction Date:</b> <span class="extractiondate"></span><br>
-      <b>Expiration Date:</b> <span class="expirationdate"></span>
+      <b>Extraction Date:</b> <span class="extractiondate"></span>
       </div>
       <p id="bloodpic"><img class="bloodimg" src="../admin/img/img.jpg" alt="Blood" height="218px" width="207px" ></p>
+      
       </div>
-
-    <form method="post" action="">
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle='modal' data-target='#updateModal'>Update</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle='modal' data-target="#deleteModal" >Delete</button> 
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>  
-     </div>
-    </form> 
+        <button type="button" method="POST" action="table.php" class="btn btn-danger" data-dismiss="modal" id="delete" name="delete" >Delete</button>   
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>
 <!-- end of modal -->
 
-<!-- modal for deleting -->
-<div id="deleteModal" class="modal fade " role="dialog">
-  <div class="modal-dialog modal-sm">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>Are you sure?</h3>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
-      </div>
-      <div class="modal-body" >
-      <form method="post" action="" >
-      <button type="button" class="btn btn-success" name="delete">Confirm</button>  
-      <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>  
-      </form>
-      </div>
-
-
-      <div class="modal-footer">
-     </div>
-      </div>
-    </div>
-  </div>
-<!-- end of modal -->
 
 
 
@@ -315,9 +227,10 @@
       <table class="table table-bordered table-condensed">
       <tbody>
         <tr>
+        
           <td>
           <label>Serial Number</label>
-          <input type="text" name="serialnumber" class="form-control" >
+          <input type="text" class="form-control" >
           </td>
           <td>
           <label>Donor</label>
@@ -396,7 +309,6 @@
     $('#myModal .component').text( $('.component', this).text() );
     $('#myModal .quantity').text( $('.quantity', this).text() );
     $('#myModal .extractiondate').text( $('.extractiondate', this).text() );
-    $('#myModal .expirationdate').text( $('.expirationdate', this).text() );
 
     $('#myModal').modal();
   });

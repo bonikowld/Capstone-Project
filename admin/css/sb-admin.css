@@ -500,3 +500,8 @@ footer.sticky-footer {
    max-width:98%;
   }
 }
+#deleteModal{
+  top:35%;
+  right:-7%;
+  outline: none;
+}
