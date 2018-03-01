@@ -286,7 +286,7 @@
       </div>
       <div class="modal-body" >
       <form method="post" action="" >
-      <button type="button" class="btn btn-success" name="delete">Confirm</button>  
+      <button type="button" class="btn btn-success" name="delete_btn">Confirm</button>  
       <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>  
       </form>
       </div>
@@ -403,6 +403,8 @@
 
 //})(jQuery);
 </script>
+
+
     
   </div>
 </body>

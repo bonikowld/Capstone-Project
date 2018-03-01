@@ -146,6 +146,43 @@
         </tr>
     </tbody>
 </table>  
+
+<div class="title">
+<h5>Philippine Red Cross</h5>
+<h6>Ozamiz City Branch</h6>
+<h6>Philippines, 7200</h6>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+      <tr>
+          <th>Serial Number</th>
+          <th>Donor Name</th> 
+          <th>Blood Type</th>
+          <th>Component</th>  
+          <th>Quantity</th>
+          <th>Borrower</th> 
+          <th>Borrowed Date</th>
+          <th>OR number</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+
+
+  </tbody>
+
+</table>
+
    
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">
