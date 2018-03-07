@@ -2,10 +2,9 @@
 <html class="no-js">
     <head>
         <meta charset="utf-8">
-        <title>Gallery | Charity / Non-profit responsive Bootstrap HTML5 template</title>
+        <title>Donate - Project Blood Seeker</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <!-- Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
@@ -13,26 +12,29 @@
         <!-- Bootsrap -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
-
         <!-- Font awesome -->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
-        <!-- PrettyPhoto -->
-        <link rel="stylesheet" href="assets/css/prettyPhoto.css">
+        <!-- Owl carousel -->
+        <link rel="stylesheet" href="assets/css/owl.carousel.css">
 
         <!-- Template main Css -->
         <link rel="stylesheet" href="assets/css/style.css">
         
         <!-- Modernizr -->
         <script src="assets/js/modernizr-2.6.2.min.js"></script>
-
+        
+        <style>
+          .error{
+           color:red
+          }
+        </style>
 
     </head>
-    <body>
-    <!-- NAVBAR
-    ================================================== -->
 
-  
+    <body>
+
+
     <header class="main-header">
         
     
@@ -63,10 +65,9 @@
 
                   
                     <ul class="nav navbar-nav">
-                        <li><a class="is-active" href="index.html">HOME</a></li>
-                        <li><a class="search" href="about.html">SEARCH</a></li>
-                        <li class="has-child"><a href="#">REQUEST</a>
-                        </li>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="about.html">SEARCH</a></li>
+                        <li><a class="is-active" href="contact.html">REQUEST</a></li>
                         <li><a href="gallery.html">DONATE</a></li>
                         <li><a href="admin/admin_login.php">ADMIN</a></li>
                         <li><a href="admin/admin_login.html" class="login">LOG-IN</a></li>
@@ -84,6 +85,224 @@
 
     </header> <!-- /. main-header -->
 
-           
+
+        <center>
+ <h1>DONATE BLOOD</h1>
+
+        <div class="container">
+
+    <form class="form-horizontal" action=" "  id="contact_form">
+
+<!-- Form Name -->
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Last Name</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"></i></span>
+  <input  name="last_name" id="last_name" placeholder="Last Name" class="form-control"  type="text">
+  <span class="error_form" id="lname_error_message"></span>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >First Name</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"></span>
+  <input name="first_name" id="first_name" placeholder="First Name" class="form-control"  type="text">
+  <span class="error_form" id="fname_error_message"></span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Middle Name</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"></i></span>
+  <input name="middle_name" id="middle_name" placeholder="Middle Name" class="form-control"  type="text">
+  <span class="error_form" id="mname_error_message"></span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Age</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"></i></span>
+  <input name="age" id="age" placeholder="Age" class="form-control"  type="number">
+  <span class="error_form" id="age_error_message"></span>
+    </div>
+  </div>
+</div>
+<div>
+  
+<div class="form-group">
+  <label class="col-md-4 control-label" >Birth Date</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"></i></span>
+  <input name="bdate" id="bdate" placeholder="Birth Date" class="form-control"  type="date">
+  <span class="error_form" id="bdate_error_message"></span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Sex</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"></i></span>
+  <select name="sex" id="sex" id="sex" class="form-control" required>
+              <option value="">Sex</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+  </select>
+  <span class="error_form" id="sex_error_message"></span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Religion</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"></i></span>
+  <input name="religion" id="religion" placeholder="Religion" class="form-control"  type="text">
+  <span class="error_form" id="religion_error_message"></span>
+    </div>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Nationality</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"></i></span>
+  <input name="nationality" id="nationality" placeholder="Nationality" class="form-control"  type="text">
+  <span class="error_form" id="nationality_error_message"></span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-4 control-label" >Education</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"></i></span>
+    <input name="education" id="education" placeholder="Education" class="form-control"  type="text">
+    <span class="error_form" id="education_error_message"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" >Occupation</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"></i></span>
+    <input name="occupation" id="occupation" placeholder="Occupation" class="form-control"  type="text">
+    <span class="error_form" id="occupation_error_message"></span>
+      </div>
+    </div>
+  </div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Telephone No</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"></i></span>
+  <input name="tel_no" id="tel_no" placeholder="Telephone No." class="form-control"  type="text">
+  <span class="error_form" id="telno_error_message"></span>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-4 control-label" >Cellphone No</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"></i></span>
+    <input name="cel_no" id="cel_no" placeholder="Cellphone No." class="form-control"  type="text">
+    <span class="error_form" id="celno_error_message"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" >Email Address</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"></i></span>
+    <input name="email_add" id="email_add" placeholder="Email Address" class="form-control"  type="email">
+    <span class="error_form" id="email_error_message"></span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" >Identification No.</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"></i></span>
+    <input name="idNo" id="idNo" placeholder="Identification No." class="form-control"  type="text">
+    <span class="error_form" id="idNo_error_message"></span>
+      </div>
+    </div>
+  </div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-primary" >Submit</button>
+  </div>
+</div>
+
+</form>
+</div>
+    </div><!-- /.container -->
+
+
+
+
+
+
+    <!--  Scripts
+    ================================================== -->
+
+    <!-- jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Bootsrap javascript file -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    
+    <!-- owl carouseljavascript file -->
+    <script src="assets/js/owl.carousel.min.js"></script>
+
+    <!-- Template main javascript -->
+    <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/formvalidation.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
     </body>
 </html>

@@ -1,5 +1,5 @@
     $(function() {
-    
+    // for add record
     $("#snum_error_message").hide();
     $("#dname_error_message").hide();
     $("#quantity_error_message").hide();
@@ -7,7 +7,8 @@
     $("#component_error_message").hide();
     $("#extdate_error_message").hide();
     $("#expdate_error_message").hide();
-    
+
+    // for add record
     var error_snum = false;
     var error_dname = false;
     var error_quantity = false;
@@ -16,6 +17,7 @@
     var error_extdate = false;
     var error_expdate = false;
 
+    // for add record
     $("#serialnumber").focusout(function(){
         check_snum();
         });
@@ -45,7 +47,8 @@
         });
 
     })
-    
+
+    // for add record
     function check_snum() {
     var pattern = /^\w{4}-\w{6}-\w{1}$/;
     var snum = $("#serialnumber").val();
