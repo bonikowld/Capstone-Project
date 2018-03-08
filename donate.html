@@ -66,9 +66,9 @@
                   
                     <ul class="nav navbar-nav">
                         <li><a href="index.html">HOME</a></li>
-                        <li><a href="about.html">SEARCH</a></li>
-                        <li><a class="is-active" href="contact.html">REQUEST</a></li>
-                        <li><a href="gallery.html">DONATE</a></li>
+                        <li><a href="search.php">SEARCH</a></li>
+                        <li><a class="is-active" href="request.html">REQUEST</a></li>
+                        <li><a href="donate.html">DONATE</a></li>
                         <li><a href="admin/admin_login.php">ADMIN</a></li>
                         <li><a href="admin/admin_login.html" class="login">LOG-IN</a></li>
                     </ul>
@@ -102,7 +102,7 @@
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"></i></span>
-  <input  name="last_name" id="last_name" placeholder="Last Name" class="form-control"  type="text">
+  <input  name="last_name" id="last_name" placeholder="Last Name" class="form-control"  type="text" required>
   <span class="error_form" id="lname_error_message"></span>
     </div>
   </div>
@@ -115,7 +115,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"></span>
-  <input name="first_name" id="first_name" placeholder="First Name" class="form-control"  type="text">
+  <input name="first_name" id="first_name" placeholder="First Name" class="form-control"  type="text" required>
   <span class="error_form" id="fname_error_message"></span>
     </div>
   </div>
@@ -126,7 +126,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"></i></span>
-  <input name="middle_name" id="middle_name" placeholder="Middle Name" class="form-control"  type="text">
+  <input name="middle_name" id="middle_name" placeholder="Middle Name" class="form-control"  type="text" required>
   <span class="error_form" id="mname_error_message"></span>
     </div>
   </div>
@@ -137,7 +137,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"></i></span>
-  <input name="age" id="age" placeholder="Age" class="form-control"  type="number">
+  <input name="age" id="age" placeholder="Age" class="form-control"  type="type" required>
   <span class="error_form" id="age_error_message"></span>
     </div>
   </div>
@@ -149,7 +149,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"></i></span>
-  <input name="bdate" id="bdate" placeholder="Birth Date" class="form-control"  type="date">
+  <input name="bdate" id="bdate" placeholder="Birth Date" class="form-control"  type="date" required>
   <span class="error_form" id="bdate_error_message"></span>
     </div>
   </div>
@@ -220,7 +220,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"></i></span>
-  <input name="tel_no" id="tel_no" placeholder="Telephone No." class="form-control"  type="text">
+  <input name="tel_no" id="tel_no" placeholder="Telephone No." class="form-control"  type="text" required>
   <span class="error_form" id="telno_error_message"></span>
     </div>
   </div>
@@ -231,7 +231,7 @@
       <div class="col-md-4 inputGroupContainer">
       <div class="input-group">
     <span class="input-group-addon"></i></span>
-    <input name="cel_no" id="cel_no" placeholder="Cellphone No." class="form-control"  type="text">
+    <input name="cel_no" id="cel_no" placeholder="Cellphone No." class="form-control"  type="text" required>
     <span class="error_form" id="celno_error_message"></span>
       </div>
     </div>
@@ -242,7 +242,7 @@
       <div class="col-md-4 inputGroupContainer">
       <div class="input-group">
     <span class="input-group-addon"></i></span>
-    <input name="email_add" id="email_add" placeholder="Email Address" class="form-control"  type="email">
+    <input name="email_add" id="email_add" placeholder="Email Address" class="form-control"  type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
     <span class="error_form" id="email_error_message"></span>
       </div>
     </div>
