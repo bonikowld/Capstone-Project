@@ -124,6 +124,7 @@
             <th class="text-center">Reserve</th>
         </tr>
     </thead>
+<<<<<<< HEAD:search.php
 <<<<<<< HEAD:about.html
             <tr>
               <td class="text-center"> 1234-112231</td>
@@ -144,6 +145,8 @@
                 <td class="text-center"><a class='btn btn-info btn-xs' href="Reserve.html"><span class="glyphicon glyphicon-ok"></span> Yes</a></td>
             </tr>
 =======
+=======
+>>>>>>> 0bab64d3daef5ae8892de4d3a6723d329a2e97ac:search.php
     <tbody>
             <?php
               $servername = "localhost";
@@ -179,6 +182,9 @@
            ?>
            
   </tbody>
+<<<<<<< HEAD:search.php
+>>>>>>> 0bab64d3daef5ae8892de4d3a6723d329a2e97ac:search.php
+=======
 >>>>>>> 0bab64d3daef5ae8892de4d3a6723d329a2e97ac:search.php
     </table>
     </div>
