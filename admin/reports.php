@@ -16,6 +16,17 @@
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+
+  <style media="screen">
+  noPrint{ display: block; }
+  yesPrint{ display: block !important; }
+</style>
+
+<style media="print">
+  noPrint{ display: none; }
+  yesPrint{ display: block !important; }
+</style>
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -93,6 +104,7 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
+      <a class="navbar-brand" href="#"><input type="button" class="btn-danger" onClick="window.print()" value="Print The Report"/></a>
          <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
@@ -153,6 +165,7 @@
 <h6>Philippines, 7200</h6>
 </div>
 
+<div class="yesPrint">
 <table class="table table-bordered">
   <thead>
       <tr>
@@ -182,6 +195,7 @@
   </tbody>
 
 </table>
+</div>
 
    
     <!-- /.content-wrapper-->

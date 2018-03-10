@@ -2,7 +2,7 @@
 <html class="no-js">
     <head>
         <meta charset="utf-8">
-        <title>Request - Project Blood Seeker</title>
+        <title>Donate - Project Blood Seeker</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Fonts -->
@@ -23,7 +23,12 @@
         
         <!-- Modernizr -->
         <script src="assets/js/modernizr-2.6.2.min.js"></script>
-
+        
+        <style>
+          .error{
+           color:red
+          }
+        </style>
 
     </head>
 
@@ -61,9 +66,9 @@
                   
                     <ul class="nav navbar-nav">
                         <li><a href="index.html">HOME</a></li>
-                        <li><a href="about.html">SEARCH</a></li>
-                        <li><a class="is-active" href="contact.html">REQUEST</a></li>
-                        <li><a href="gallery.html">DONATE</a></li>
+                        <li><a href="search.php">SEARCH</a></li>
+                        <li><a class="is-active" href="request.html">REQUEST</a></li>
+                        <li><a href="donate.html">DONATE</a></li>
                         <li><a href="admin/admin_login.php">ADMIN</a></li>
                         <li><a href="admin/admin_login.html" class="login">LOG-IN</a></li>
                     </ul>
@@ -82,7 +87,7 @@
 
 
         <center>
- <h1>REQUEST BLOOD</h1>
+ <h1>DONATE BLOOD</h1>
 
         <div class="container">
 
@@ -97,7 +102,8 @@
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"></i></span>
-  <input  name="first_name" placeholder="Last Name" class="form-control"  type="text">
+  <input  name="last_name" id="last_name" placeholder="Last Name" class="form-control"  type="text" required>
+  <span class="error_form" id="lname_error_message"></span>
     </div>
   </div>
 </div>
@@ -109,21 +115,19 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"></span>
-  <input name="last_name" placeholder="First Name" class="form-control"  type="text">
+  <input name="first_name" id="first_name" placeholder="First Name" class="form-control"  type="text" required>
+  <span class="error_form" id="fname_error_message"></span>
     </div>
   </div>
 </div>
-
-
-<!-- Text input-->
 
 <div class="form-group">
   <label class="col-md-4 control-label" >Middle Name</label> 
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"></i></span>
-  <input name="last_name" placeholder="Middle Name" class="form-control"  type="text">
-
+  <input name="middle_name" id="middle_name" placeholder="Middle Name" class="form-control"  type="text" required>
+  <span class="error_form" id="mname_error_message"></span>
     </div>
   </div>
 </div>
@@ -133,113 +137,133 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"></i></span>
-  <input name="last_name" placeholder="Age" class="form-control"  type="number">
-
+  <input name="age" id="age" placeholder="Age" class="form-control"  type="type" required>
+  <span class="error_form" id="age_error_message"></span>
     </div>
   </div>
 </div>
 <div>
-    <div class="form-group">
+  
+<div class="form-group">
   <label class="col-md-4 control-label" >Birth Date</label> 
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"></i></span>
-  <input name="last_name" placeholder="Birth Date" class="form-control"  type="date"">
-
+  <input name="bdate" id="bdate" placeholder="Birth Date" class="form-control"  type="date" required>
+  <span class="error_form" id="bdate_error_message"></span>
     </div>
   </div>
 </div>
+
 <div class="form-group">
   <label class="col-md-4 control-label" >Sex</label> 
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"></i></span>
-  <select name="bloodtype" id="bloodtype" class="form-control" required>
+  <select name="sex" id="sex" id="sex" class="form-control" required>
               <option value="">Sex</option>
-              <option value="Ozamiz-">Male</option>
-              <option value="Oroquieta">Female</option>
-             </select>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+  </select>
+  <span class="error_form" id="sex_error_message"></span>
     </div>
   </div>
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" >Hospital</label> 
+  <label class="col-md-4 control-label">Religion</label> 
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"></i></span>
-  <input name="last_name" placeholder="Hospital" class="form-control"  type="text">
-
-    </div>
-  </div>
-</div>
-
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Room No</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="last_name" placeholder="Room No" class="form-control"  type="Number">
-
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Tel No</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="last_name" placeholder="Tel No" class="form-control"  type="Text">
-
-    </div>
-  </div>
-</div>
-
-
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Blood type</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
- <select name="bloodtype" id="bloodtype" class="form-control" required>
-              <option value="">Blood Type</option>
-              <option value="O-">O-</option>
-              <option value="O+">O+</option>
-              <option value="A-">A-</option>
-              <option value="A+">A+</option>
-              <option value="B-">B-</option>
-              <option value="B+">B+</option>
-              <option value="AB-">AB-</option>
-              <option value="AB+">AB+</option>
-             </select>
+  <input name="religion" id="religion" placeholder="Religion" class="form-control"  type="text">
+  <span class="error_form" id="religion_error_message"></span>
     </div>
   </div>
 </div>
 
 
 <div class="form-group">
-  <label class="col-md-4 control-label" >Tel No</label> 
+  <label class="col-md-4 control-label" >Nationality</label> 
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"></i></span>
-  <input name="last_name" placeholder="Tel No" class="form-control"  type="Text">
-
+  <input name="nationality" id="nationality" placeholder="Nationality" class="form-control"  type="text">
+  <span class="error_form" id="nationality_error_message"></span>
     </div>
   </div>
 </div>
 
-<div>
-    
+<div class="form-group">
+    <label class="col-md-4 control-label" >Education</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"></i></span>
+    <input name="education" id="education" placeholder="Education" class="form-control"  type="text">
+    <span class="error_form" id="education_error_message"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" >Occupation</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"></i></span>
+    <input name="occupation" id="occupation" placeholder="Occupation" class="form-control"  type="text">
+    <span class="error_form" id="occupation_error_message"></span>
+      </div>
+    </div>
+  </div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Telephone No</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"></i></span>
+  <input name="tel_no" id="tel_no" placeholder="Telephone No." class="form-control"  type="text" required>
+  <span class="error_form" id="telno_error_message"></span>
+    </div>
+  </div>
 </div>
 
+<div class="form-group">
+    <label class="col-md-4 control-label" >Cellphone No</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"></i></span>
+    <input name="cel_no" id="cel_no" placeholder="Cellphone No." class="form-control"  type="text" required>
+    <span class="error_form" id="celno_error_message"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" >Email Address</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"></i></span>
+    <input name="email_add" id="email_add" placeholder="Email Address" class="form-control"  type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+    <span class="error_form" id="email_error_message"></span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" >Identification No.</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"></i></span>
+    <input name="idNo" id="idNo" placeholder="Identification No." class="form-control"  type="text">
+    <span class="error_form" id="idNo_error_message"></span>
+      </div>
+    </div>
+  </div>
 
 <div class="form-group">
   <label class="col-md-4 control-label"></label>
   <div class="col-md-4">
-    <button type="submit" class="btn btn-primary" >Request</button>
+    <button type="submit" class="btn btn-primary" >Submit</button>
   </div>
 </div>
 
@@ -267,6 +291,8 @@
 
     <!-- Template main javascript -->
     <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/formvalidation.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>

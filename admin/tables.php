@@ -1,28 +1,3 @@
-<?php 
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "blood_bank";
-
-                // Create connection
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-                
-                if(isset($_POST['delete_btn'])){
-                  $serialnumber = $row['serialnumber'];
-                  $sql = "DELETE FROM blood WHERE serialnumber='$serialnumber'";
-                  
-                  if ($conn->query($sql) === TRUE) {
-                   echo "<script type= 'text/javascript'>alert('Deleted successfully');</script>";
-                  } else {
-                      echo "Error deleting record: " . $conn->error;
-                  }
-                }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -261,44 +236,69 @@
       <p id="bloodpic"><img class="bloodimg" src="../admin/img/img.jpg" alt="Blood" height="218px" width="207px" ></p>
       </div>
 
-    <form method="post" action="">
+   
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle='modal' data-target='#updateModal'>Update</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle='modal' data-target="#deleteModal" >Delete</button> 
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>  
      </div>
-    </form> 
       </div>
     </div>
   </div>
 <!-- end of modal -->
 
+<form action="" method="get">
 <!-- modal for deleting -->
 <div id="deleteModal" class="modal fade " role="dialog">
   <div class="modal-dialog modal-sm">
 
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header">
-        <h3>Are you sure?</h3>
+      <!-- <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"></h4>
+      </div> -->
+  
+      <div class='modal-body' >
+      <h6>Are you Sure?</h6>
+      <button type='button' class='btn btn-success' name="delete_btn">Confirm</button>
+      <button type='button' class='btn btn-warning' data-dismiss='modal'>Cancel</button> 
       </div>
-      <div class="modal-body" >
-      <form method="post" action="" >
-      <button type="button" class="btn btn-success" name="delete_btn">Confirm</button>  
-      <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>  
-      </form>
-      </div>
-
-
-      <div class="modal-footer">
-     </div>
+   
+      <!-- <div class="modal-footer">
+     </div> -->
       </div>
     </div>
   </div>
 <!-- end of modal -->
+</form>
 
+
+    <?php 
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "blood_bank";
+
+                // Create connection
+                $conn = mysqli_connect($servername, $username, $password, $dbname);
+                // Check connection
+                if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
+
+                if(isset($_GET['delete_btn'])){
+                  $sql = "DELETE FROM blood WHERE serialnumber = '".$serialnumber."' ";
+                  
+                  if ($conn->query($sql) === TRUE) {
+                   echo "<script type= 'text/javascript'>alert('Deleted successfully');</script>";
+                  } else {
+                      echo "Error deleting record: " . $conn->error;
+                  }
+                }
+
+                mysqli_close($conn); 
+    ?>
 
 
 <!-- Modal for updating record -->

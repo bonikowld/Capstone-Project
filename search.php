@@ -83,9 +83,12 @@
 <center>
  <h1>SEARCH BLOOD</h1>
 
+
+<form action="" method="get">
  <div class="btn-group">
-     <select name="bloodtype" id="bloodtype" class="form-control" required>
+     <select name="bloodtype" class="form-control" required>
               <option value="">Select Blood</option>
+              <option value="O">O</option>
               <option value="O-">O-</option>
               <option value="O+">O+</option>
               <option value="A-">A-</option>
@@ -98,54 +101,94 @@
   </div>
 
   <div class="btn-group btn-group-primary">
-       <select name="bloodtype" id="bloodtype" class="form-control" required>
+       <select name="city" class="form-control" required>
               <option value="">Select City</option>
-              <option value="Ozamiz-">Ozamiz City</option>
-              <option value="Oroquieta">Oroquieta City</option>
-              <option value="Tangub">Tangub City</option>
+              <option value="Ozamiz City">Ozamiz City</option>
+              <option value="Oroquieta City">Oroquieta City</option>
+              <option value="Tangub City">Tangub City</option>
              </select>
   </div>
-  <button class="btn btn-primary hidden-print"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
+  <button class="btn btn-primary hidden-print"  name="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
+</form>
 </center>
+
 
 
 <div class="container">
     <table class="table table-rounded custab table-hover">
     <thead>
         <tr>
-          <th class="text-center">Serial Number</th>
-            <th class="text-center">Location</th>
-            <th class="text-center">Blood Type</th>
+        <th class="text-center">Serial Number</th>
+        <th class="text-center">Blood Type</th>
+          <th class="text-center">City</th>
             <th class="text-center">Reserve</th>
         </tr>
     </thead>
+<<<<<<< HEAD:about.html
             <tr>
               <td class="text-center"> 1234-112231</td>
                 <td class="text-center">Ozamiz City</td>
                 <td class="text-center">A+</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="contact.html"><span class="glyphicon glyphicon-ok"></span> Yes</a></td>
+                <td class="text-center"><a class='btn btn-info btn-xs' href="Reserve.html"><span class="glyphicon glyphicon-ok"></span> Yes</a></td>
             </tr>
             <tr>
               <td class="text-center"> 2234-112231</td>
                 <td class="text-center">Oroquieta City</td>
                 <td class="text-center">B</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="contact.html"><span class="glyphicon glyphicon-ok"></span> Yes</a></td>
+                <td class="text-center"><a class='btn btn-info btn-xs' href="Reserve.html"><span class="glyphicon glyphicon-ok"></span> Yes</a></td>
             </tr>
             <tr>
                <td class="text-center"> 3334-112231</td>
                 <td class="text-center">Tangub City</td>
                 <td class="text-center">O+</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="contact.html"><span class="glyphicon glyphicon-ok"></span> Yes</a></td>
+                <td class="text-center"><a class='btn btn-info btn-xs' href="Reserve.html"><span class="glyphicon glyphicon-ok"></span> Yes</a></td>
             </tr>
+=======
+    <tbody>
+            <?php
+              $servername = "localhost";
+              $username = "root";
+              $password = "";
+              $dbname = "blood_bank";
+
+              // Create connection
+              $conn = mysqli_connect($servername, $username, $password, $dbname);
+              // Check connection
+              if (!$conn) {
+                  die("Connection failed: " . mysqli_connect_error());
+              }
+
+              if(isset($_GET['search'])){
+              $city = $_GET['city'];
+              $bloodtype = $_GET['bloodtype'];
+
+              $result = mysqli_query($conn,"SELECT * FROM blood WHERE bloodtype = '$bloodtype' AND city = '$city' ;");
+
+              while($row = mysqli_fetch_array($result))
+              {
+                echo "<tr>";
+                echo "<td class='text-center'>".$row['serialnumber']."</td>";
+                echo "<td class='text-center'>".$row['bloodtype']."</td>";
+                echo "<td class='text-center'>".$row['city']."</td>";
+                echo "<td class='text-center'><a class='btn btn-info btn-xs' href='contact.html'><span class='glyphicon glyphicon-ok'></span> Yes</a></td>";
+                echo "</tr>";
+                }
+              }
+             
+              mysqli_close($conn); 
+           ?>
+           
+  </tbody>
+>>>>>>> 0bab64d3daef5ae8892de4d3a6723d329a2e97ac:search.php
     </table>
     </div>
 </div>
 
-<div id="myModal" class="modal fade " role="dialog">
-  <div class="modal-dialog modal-lg">
+<!-- <div id="myModal" class="modal fade " role="dialog">
+  <div class="modal-dialog modal-lg"> -->
 
     <!-- Modal content-->
-    <div class="modal-content">
+    <!-- <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"></h4>
@@ -173,7 +216,7 @@
       </div>
     </div>
   </div>
-   
+    -->
 
     <!--  Scripts
     ================================================== -->
