@@ -86,54 +86,130 @@
     </header> <!-- /. main-header -->
 
 
-        <center>
+   
  <h1>REQUEST BLOOD</h1>
 
-        <div class="container">
 
-    <form class="form-horizontal" action=" "  id="contact_form">
 
 <!-- Form Name -->
 
 <!-- Text input-->
+<center>
+<label>Complete Name</label>
 
-<div class="form-group">
-  <label class="col-md-4 control-label">Last Name</label>  
-  <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input  name="lastname" id="lastname" placeholder="Last Name" class="form-control"  type="text" required>
-  <span class="error_form" id="lastname_error_message"></span>
-    </div>
-  </div>
-</div>
+<form class="form-inline" action="/examples/actions/confirmation.php" method="post">
+        <div class="form-group">
+          <div class="col-4">
+            <input type="text" class="form-control" id="lastname" placeholder="Last Name" required>
+        </div>
+      </div>
+        <div class="form-group">
+          <div class="col-4">
+            <input type="text" class="form-control" id="firstname" placeholder="First Name" required>
+        </div>
+      </div>
+           <div class="form-group">
+            <div class="col-4">
+            <input type="text" class="form-control" id="middlename" placeholder="Middle Name" required>
+        </div>
+      </div>
+    </form>
+
+</center>
+<br>
+<center>
 
 
 
-<div class="form-group">
-  <label class="col-md-4 control-label" >First Name</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></span>
-  <input name="firstname" id="firstname" placeholder="First Name" class="form-control"  type="text" required>
-  <span class="error_form" id="firstname_error_message"></span>
-    </div>
-  </div>
-</div>
 
 
-<!-- Text input-->
 
-<div class="form-group">
-  <label class="col-md-4 control-label" >Middle Name</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="middlename" id="middlename" placeholder="Middle Name" class="form-control"  type="text" required>
-  <span class="error_form" id="middlename_error_message"></span>
-    </div>
-  </div>
-</div>
+</center>
+ <center>
+
+
+<form class="form-inline" action="/examples/actions/confirmation.php" method="post">
+        <div class="form-group">
+
+<label>Age</label>
+          <div class="col-4">
+            
+           <select name="age" id="age" class="form-control" required>
+              <option>Age</option>
+              <option>18</option>
+              <option>19</option>
+              <option>20</option>
+              <option>21</option>
+              <option>22</option>
+              <option>23</option>
+              <option>24</option>
+              <option>25</option>
+              <option>26</option>
+              <option>27</option>
+              <option>28</option>
+              <option>29</option>
+              <option>30</option> 
+              <option>31</option>
+              <option>32</option>
+              <option>33</option>
+              <option>34</option>
+              <option>35</option>
+              <option>36</option>
+              <option>37</option>
+              <option>38</option>
+              <option>39</option>
+              <option>40</option> 
+              <option>41</option>
+              <option>42</option>
+              <option>43</option>
+              <option>44</option>
+              <option>45</option>
+              <option>46</option>
+              <option>47</option>
+              <option>48</option>
+              <option>49</option>
+              <option>50</option> 
+
+
+  </select>
+        </div>
+
+      </div>
+      </div>
+        <div class="form-group">
+          <label>Birh Date</label>
+           
+          <div class="col-4">
+            
+            <input type="date" class="form-control" id="bdate" placeholder="First Name" required>
+        </div>
+      </div>
+           <div class="form-group">
+            <label>Sex</label>
+            <div class="col-4">
+            <select name="sex" id="sex" id="sex" class="form-control" required>
+              <option>Sex</option>
+              <option>M</option>
+              <option>F</option>
+  </select>
+        </div>
+      </div>
+    </form>
+
+</center>
+
+
+
+
+  
+    
+      
+
+
+    
+
+<!--
+
 
 <div class="form-group">
   <label class="col-md-4 control-label" >Age</label> 
@@ -232,8 +308,7 @@
 
 
 <div class="form-group">
-<<<<<<< HEAD:request.html
-<<<<<<< HEAD:contact.html
+
   <label class="col-md-4 control-label" >Attending Physician</label> 
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
@@ -251,22 +326,7 @@
   <span class="input-group-addon"></i></span>
   <input name="last_name" placeholder="Clinical Diagnosis" class="form-control"  type="Text">
 
-=======
-  <label class="col-md-4 control-label" >Cel No</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="reqcelno" id="reqcelno" placeholder="Cel No" class="form-control"  type="Text" required>
-  <span class="error_form" id="reqcelno_error_message"></span>
->>>>>>> 0bab64d3daef5ae8892de4d3a6723d329a2e97ac:request.html
-=======
-  <label class="col-md-4 control-label" >Cel No</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="reqcelno" id="reqcelno" placeholder="Cel No" class="form-control"  type="Text" required>
-  <span class="error_form" id="reqcelno_error_message"></span>
->>>>>>> 0bab64d3daef5ae8892de4d3a6723d329a2e97ac:request.html
+
     </div>
   </div>
 </div>
@@ -275,20 +335,20 @@
     
 </div>
 
-
+<center>
 <div class="form-group">
   <label class="col-md-4 control-label"></label>
   <div class="col-md-4">
     <button type="submit" class="btn btn-primary" >Request</button>
   </div>
 </div>
-
+</center>
 </form>
 </div>
     </div><!-- /.container -->
 
 
-
+<!-->
 
 
 

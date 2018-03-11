@@ -61,7 +61,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="index.html">HOME</a></li>
                         <li><a class="is-active" href="about.html">SEARCH</a></li>
-                        <li class="has-child"><a href="contact.html">REQUEST</a>
+                        <li class="has-child"><a href="request.html">REQUEST</a>
                         </li>
                         <li><a href="gallery.html">DONATE</a></li>
                         <li><a href="admin/admin_login.php">ADMIN</a></li>
@@ -124,8 +124,7 @@
             <th class="text-center">Reserve</th>
         </tr>
     </thead>
-<<<<<<< HEAD:search.php
-<<<<<<< HEAD:about.html
+
             <tr>
               <td class="text-center"> 1234-112231</td>
                 <td class="text-center">Ozamiz City</td>
@@ -144,9 +143,6 @@
                 <td class="text-center">O+</td>
                 <td class="text-center"><a class='btn btn-info btn-xs' href="Reserve.html"><span class="glyphicon glyphicon-ok"></span> Yes</a></td>
             </tr>
-=======
-=======
->>>>>>> 0bab64d3daef5ae8892de4d3a6723d329a2e97ac:search.php
     <tbody>
             <?php
               $servername = "localhost";
@@ -182,10 +178,6 @@
            ?>
            
   </tbody>
-<<<<<<< HEAD:search.php
->>>>>>> 0bab64d3daef5ae8892de4d3a6723d329a2e97ac:search.php
-=======
->>>>>>> 0bab64d3daef5ae8892de4d3a6723d329a2e97ac:search.php
     </table>
     </div>
 </div>
