@@ -127,6 +127,7 @@
                   <th>Quantity</th>
                   <th>Extraction Date</th>
                   <th>Expiration Date</th>
+                  <th>City</th>
 
                 </tr>
               </thead>
@@ -139,6 +140,7 @@
                   <th>Quantity</th>
                   <th>Extraction Date</th>
                   <th>Expiration Date</th>
+                  <th>City</th>
                 </tr>
               </tfoot>
               
@@ -168,6 +170,7 @@
                 echo "<td class='quantity'>".$row['quantity']."</td>";
                 echo "<td class='extractiondate'>".$row['extractiondate']."</td>";
                 echo "<td class='expirationdate'>".$row['expirationdate']."</td>";
+                echo "<td class='expirationdate'>".$row['city']."</td>";
                 echo "</tr>";
                 };
                 

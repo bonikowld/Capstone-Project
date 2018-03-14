@@ -11,10 +11,9 @@ if (!$conn) {
     die("Connection failed: " .mysqli_connect_error());
 }
 
-if(isset($_POST['add'])){
-  
-            $sql = "INSERT INTO blood (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate)
-            VALUES ('".$_POST["serialnumber"]."','".$_POST["donor"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["quantity"]."','".$_POST["extractiondate"]."','".$_POST["expirationdate"]."')";
+if(!empty($_POST)){
+            $sql = "INSERT INTO blood (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, city)
+            VALUES ('".$_POST["serialnumber"]."','".$_POST["donor"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["quantity"]."','".$_POST["extractiondate"]."','".$_POST["expirationdate"]."','".$_POST["city"]."')";
 
           
 
@@ -186,12 +185,12 @@ if(isset($_POST['add'])){
            <td>
 
            <label>Donor</label>
-             <input type="name" class="form-control" name="donor" id="donor" required/>
+             <input type="text" class="form-control" name="donor" id="donor" required/>
              <span class="error_form" id="dname_error_message"></span>
             </td>
            <td>
            <label>Bloodtype</label>
-             <select name="bloodtype" id="bloodtype" class="form-control" required>
+             <select type="text" name="bloodtype" id="bloodtype" class="form-control" required>
               <option value="">-</option>
               <option value="O-">O-</option>
               <option value="O+">O+</option>
@@ -206,7 +205,7 @@ if(isset($_POST['add'])){
           </td>
            <td>
            <label>Component</label>
-             <select name="component" id="component" class="form-control" required>
+             <select type="text" name="component" id="component" class="form-control" required>
               <option value="">-</option>
               <option value="Whole Blood">Whole Blood</option>
               <option value="Red Cells">Red Cells</option>
@@ -231,18 +230,23 @@ if(isset($_POST['add'])){
              <input class="form-control" name="expirationdate" id="expirationdate" type="date" required/>
              <span class="error_form" id="expdate_error_message"></span>
             </td> 
+            <td>
+           <label>City</label>
+             <input class="form-control" name="city" id="city" required/>
+             <span class="error_form" id="expdate_error_message"></span>
+            </td>
         </tr>
     </tbody>
 </table>
 
-<button class="btn btn-success" name="add" id="add">Add default</button>
+<button class="btn btn-success" type="submit" name="add" id="add">Add default</button>
 
 </form>
 
 <br><br>
 <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table">  Records</i></div>
+          <i class="fa fa-table">Records</i></div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -254,6 +258,7 @@ if(isset($_POST['add'])){
                   <th>Component</th>
                   <th>Quantity</th>
                   <th>Extraction Date</th>
+                  <th>City</th>
                 </tr>
               </thead>
 
@@ -281,8 +286,9 @@ if(isset($_POST['add'])){
                 echo "<td>".$row['component']."</td>";
                 echo "<td>".$row['quantity']."</td>";
                 echo "<td>".$row['extractiondate']."</td>";
+                echo "<td>".$row['city']."</td>";
                 echo "</tr>";
-                };
+                }
                 ?>
                 
               </tbody>
