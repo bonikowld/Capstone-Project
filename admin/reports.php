@@ -104,7 +104,7 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-      <a class="navbar-brand" href="#"><input type="button" class="btn-danger" onClick="window.print()" value="Print The Report"/></a>
+      <a class="navbar-brand" href="#"><input type="button" class="btn-danger print_button" id="buttonPrint" onClick="window.print()" value="Print The Report"/></a>
          <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
