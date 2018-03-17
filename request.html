@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html class="no-js">
-    <head>
+<html lang="en" >
+
+ <head>
         <meta charset="utf-8">
         <title>Request - Project Blood Seeker</title>
         <meta name="description" content="">
@@ -10,7 +11,6 @@
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
 
         <!-- Bootsrap -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
         <!-- Font awesome -->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="assets/css/owl.carousel.css">
 
         <!-- Template main Css -->
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/stylerequest.css">
         
         <!-- Modernizr -->
         <script src="assets/js/modernizr-2.6.2.min.js"></script>
@@ -32,455 +32,112 @@
 
     </head>
 
-    <body>
-
-
-    <header class="main-header">
-        
-    
-        <nav class="navbar navbar-static-top">
-
-            
-
-            <div class="navbar-main">
-                
-              
-              <div class="container">
-
-                <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-
-                  </button>
-                  
-                  <!-- <a class="navbar-brand" href="index.html"><img src="assets/images/sadaka-logo.png" alt=""></a> -->
-                  
-                </div>
-            
-                <div id="navbar" class="navbar-collapse collapse pull-right">
-
-                  
-                    <ul class="nav navbar-nav">
-                        <li><a href="index.html">HOME</a></li>
-                        <li><a href="search.php">SEARCH</a></li>
-                        <li><a class="is-active" href="request.html">REQUEST</a></li>
-                        <li><a href="donate.html">DONATE</a></li>
-                        <li><a href="admin/admin_login.php">ADMIN</a></li>
-                        <li><a href="admin/admin_login.html" class="login">LOG-IN</a></li>
-                    </ul>
-                  
-
-                </div> <!-- /#navbar -->
-
-              </div> <!-- /.container -->
-              
-            </div> <!-- /.navbar-main -->
-
-
-        </nav> 
-
-    </header> <!-- /. main-header -->
-
-
-   
- <h1>REQUEST BLOOD</h1>
+<body>
 
 
 
-<!-- Form Name -->
-
-<!-- Text input-->
-<center>
-<LABEL>Patient Information</LABEL>
-<br>
-<br>
-
-<form class="form-inline" action="/examples/actions/confirmation.php" method="post">
-        <div class="form-group">
-          <label>Last Name</label>
-          <div class="col-4">
-            <input type="text" class="form-control" id="lastname" placeholder="Last Name" required>
+<div class="container">
+  <form>
+   <center><h1>Patient Information</h1></center> 
+    <div class="row">
+      <div class="input-group input-group-icon">
+        <input type="text" placeholder="Last Name"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
+        </div>
+        <div class="input-group input-group-icon">
+        <input type="text" placeholder="First Name"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="text" placeholder="Middle Name"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-half">
+        <h4>Date of Birth</h4>
+        <div class="input-group">
+          <div class="col-third">
+            <input type="text" placeholder="DD"/>
+          </div>
+          <div class="col-third">
+            <input type="text" placeholder="MM"/>
+          </div>
+          <div class="col-third">
+            <input type="text" placeholder="YYYY"/>
+          </div>
         </div>
       </div>
-        <div class="form-group">
-          <label>First Name</label>
-          <div class="col-4">
-            <input type="text" class="form-control" id="firstname" placeholder="First Name" required>
+      <div class="col-half">
+        <h4>Gender</h4>
+        <div class="input-group">
+          <input type="radio" name="gender" value="male" id="gender-male"/>
+          <label for="gender-male">Male</label>
+          <input type="radio" name="gender" value="female" id="gender-female"/>
+          <label for="gender-female">Female</label>
         </div>
       </div>
-           <div class="form-group">
-            <label>Middle Name</label>
-            <div class="col-4">
-            <input type="text" class="form-control" id="middlename" placeholder="Middle Name" required>
+    </div>
+
+    <div class="row">
+      <div class="col-half">
+        <h4>Age</h4>
+        <div class="input-group">
+            <input type="Number" placeholder="Age"/>
         </div>
       </div>
-    </form>
-
-</center>
-<br>
-<center>
-
-
-
-
-
-
-</center>
- <center>
-
-
-<form class="form-inline" action="/examples/actions/confirmation.php" method="post">
-        <div class="form-group">
-
-<label>Age</label>
-          <div class="col-4">
-            
-           <select name="age" id="age" class="form-control" required>
-              <option>Age</option>
-              <option>18</option>
-              <option>19</option>
-              <option>20</option>
-              <option>21</option>
-              <option>22</option>
-              <option>23</option>
-              <option>24</option>
-              <option>25</option>
-              <option>26</option>
-              <option>27</option>
-              <option>28</option>
-              <option>29</option>
-              <option>30</option> 
-              <option>31</option>
-              <option>32</option>
-              <option>33</option>
-              <option>34</option>
-              <option>35</option>
-              <option>36</option>
-              <option>37</option>
-              <option>38</option>
-              <option>39</option>
-              <option>40</option> 
-              <option>41</option>
-              <option>42</option>
-              <option>43</option>
-              <option>44</option>
-              <option>45</option>
-              <option>46</option>
-              <option>47</option>
-              <option>48</option>
-              <option>49</option>
-              <option>50</option> 
-              <option>51</option>
-              <option>52</option>
-              <option>53</option>
-              <option>54</option>
-              <option>55</option>
-              <option>56</option>
-              <option>57</option>
-              <option>58</option>
-              <option>59</option>
-              <option>60</option> 
-              <option>61</option>
-              <option>62</option>
-              <option>63</option>
-              <option>64</option>
-              <option>65</option>
-              <option>66</option>
-              <option>67</option>
-              <option>68</option>
-              <option>69</option>
-              <option>70</option>
-              <option>71</option>
-              <option>72</option>
-              <option>73</option>
-              <option>74</option>
-              <option>75</option>
-              <option>76</option>
-              <option>77</option>
-              <option>78</option>
-              <option>79</option>
-              <option>80</option>
-              <option>81</option>
-              <option>82</option>
-              <option>83</option>
-              <option>84</option>
-              <option>85</option>
-              <option>86</option>
-              <option>87</option>
-              <option>88</option>
-              <option>89</option>
-              <option>90</option>
-             
-             
-
- 
-
-
-  </select>
-        </div>
-
-      </div>
-      </div>
-        <div class="form-group">
-          <label>Birh Date</label>
-           
-          <div class="col-4">
-            
-            <input type="date" class="form-control" id="bdate" placeholder="First Name" required>
+      <div class="col-half">
+        <h4>Hospital</h4>
+        <div class="input-group">
+           <input type="text" placeholder="Hospital"/>
         </div>
       </div>
-           
-      <div class="form-group">
-          <label>Hostipal</label>
-          <div class="col-4">
-            <input type="text" class="form-control" id="hospital" placeholder="Hostipal" required>
+    </div>
+
+
+     <div class="row">
+      <div class="col-half">
+        <h4>Tel No</h4>
+        <div class="input-group">
+            <input type="Text" placeholder="Tel No."/>
         </div>
       </div>
-   
-     <div class="form-group">
-            <label>Sex</label>
-            <div class="col-4">
-            <select name="sex" id="sex" id="sex" class="form-control" required>
-              <option>Sex</option>
-              <option>M</option>
-              <option>F</option>
-  </select>
+      <div class="col-half">
+        <h4>Room No</h4>
+        <div class="input-group">
+           <input type="text" placeholder="Room No."/>
         </div>
       </div>
- </form>
-<br>
-<form class="form-inline" action="/examples/actions/confirmation.php" method="post">
-        
-        <div class="form-group">
-          <label>Tel. No</label>
-          <div class="col-4">
-            <input type="text" class="form-control" id="telno" placeholder="Tel No" required>
+    </div>
+
+
+<div class="row">
+  <h4>Attending Physician</h4>
+      <div class="input-group input-group-icon">
+        <input type="text" placeholder="Attending Physician"/>
+        <div class="input-icon"><i class="fa fa-stethoscope"></i></i></div>
         </div>
-      </div>
-           <div class="form-group">
-          <label>Room No.</label>
-            <div class="col-4">
-            <input type="text" class="form-control" id="roono" placeholder="Room No" required>
+    </div>
+    <div class="row">
+  <h4>Clinical Diagnosis</h4>
+      <div class="input-group input-group-icon">
+        <input type="message" placeholder="Clinical Diagnosis"/>
+        <div class="input-icon"><i class="fa fa-stethoscope"></i></i></div>
         </div>
-      </div>
-      <div class="form-group">
-          <label>Attending Physician</label>
-            <div class="col-4">
-            <input type="text" class="form-control" id="physician" placeholder="      Attending Physician" required>
-        </div>
-      </div>
+    </div>
 
-
-    </form>
-    <br>
-<form class="form-inline" action="/examples/actions/confirmation.php" method="post">
-        
-        <div class="form-group">
-          <label>Clinical Diagnosis</label>
-          <div class="col-4">
-            <textarea type="messege" class="form-control" id="Physician" placeholder="      Clinical Diagnosis" required></textarea>
-        </div>
-      </div>
-    </form>
-
-
-
-<div class="form-group">
-  <label class="col-4 control-label"></label>
-  <div class="col-4">
-    <button type="submit" class="btn btn-primary" >Request</button>
-  </div>
-</div>
-
-</form>
-</div>
-</center>
-
-
-
+<button class="button"> REQUEST</button>
+    </div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
   
-    
-      
 
-
-    
-
-<!--
-
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Age</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="reqage" id="reqage" placeholder="Age" class="form-control"  type="text" required>
-  <span class="error_form" id="reqage_error_message"></span>
-    </div>
-  </div>
-</div>
-<div>
-    <div class="form-group">
-  <label class="col-md-4 control-label" >Birth Date</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="reqbdate" id="reqbdate" placeholder="Birth Date" class="form-control"  type="date" required>
-  <span class="error_form" id="reqbdate_error_message"></span>
-    </div>
-  </div>
-</div>
-<div class="form-group">
-  <label class="col-md-4 control-label" >Sex</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <select name="reqsex" id="reqsex" id="bloodtype" class="form-control" required>
-              <option value="">Sex</option>
-              <option value="Ozamiz-">Male</option>
-              <option value="Oroquieta">Female</option>
-  </select>
-  <span class="error_form" id="reqsex_error_message"></span>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Hospital</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="hospital" id="hospital" placeholder="Hospital" class="form-control"  type="text" required>
-  <span class="error_form" id="hospital_error_message"></span>
-    </div>
-  </div>
-</div>
-
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Room No</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="roomno" id="roomno" placeholder="Room No" class="form-control"  type="text" required>
-  <span class="error_form" id="roomno_error_message"></span>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Tel No</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="reqtelno" id="reqtelno" placeholder="Tel No" class="form-control"  type="Text" required>
-  <span class="error_form" id="reqtelno_error_message"></span>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Blood type</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
- <select name="bloodtype" id="bloodtype" class="form-control" required>
-              <option value="">Blood Type</option>
-              <option value="O-">O-</option>
-              <option value="O+">O+</option>
-              <option value="O">O</option>
-              <option value="A-">A-</option>
-              <option value="A+">A+</option>
-              <option value="A">A</option>
-              <option value="B-">B-</option>
-              <option value="B+">B+</option>
-              <option value="O">O</option>
-              <option value="AB-">AB-</option>
-              <option value="AB+">AB+</option>
-              <option value="AB">AB</option>
- </select>
- <span class="error_form" id="bloodtype_error_message"></span>
-    </div>
-  </div>
-</div>
-
-
-<div class="form-group">
-
-  <label class="col-md-4 control-label" >Attending Physician</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="last_name" placeholder="Atteding Physician" class="form-control"  type="Text">
-
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Clinical Diagnosis</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="last_name" placeholder="Clinical Diagnosis" class="form-control"  type="Text">
-
-
-    </div>
-  </div>
-</div>
-
-<div>
-    
-</div>
-
-<center>
-<div class="form-group">
-  <label class="col-md-4 control-label"></label>
-  <div class="col-md-4">
-    <button type="submit" class="btn btn-primary" >Request</button>
-  </div>
-</div>
-</center>
-</form>
-</div>
-    </div><!-- /.container -->
-
-
-<!-->
+    <script  src="js/index.js"></script>
 
 
 
-    <!--  Scripts
-    ================================================== -->
 
-    <!-- jQuery -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="assets/js/jquery-1.11.1.min.js"><\/script>')</script>
 
-    <!-- Bootsrap javascript file -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    
-    <!-- owl carouseljavascript file -->
-    <script src="assets/js/owl.carousel.min.js"></script>
+</body>
 
-    <!-- Template main javascript -->
-    <script src="assets/js/main.js"></script>
-    
-    <script src="assets/js/formvalidation.js"></script>
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-        e.src='//www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-        ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
-
-    </body>
 </html>
