@@ -15,7 +15,6 @@ if(!empty($_POST)){
             $sql = "INSERT INTO blood (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, city)
             VALUES ('".$_POST["serialnumber"]."','".$_POST["donor"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["quantity"]."','".$_POST["extractiondate"]."','".$_POST["expirationdate"]."','".$_POST["city"]."')";
 
-          
 
             if ($conn->query($sql) == TRUE) {
               echo "<script type='text/javascript'>alert('New record created successfully');</script>";
@@ -83,7 +82,7 @@ if(!empty($_POST)){
 
             </li>
             <li>
-              <a href="tables.php">Requested Bloods</a>
+              <a href="requestTable.php">Requested Bloods</a>
 
             </li>
             <li>

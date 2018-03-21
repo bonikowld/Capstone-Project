@@ -61,7 +61,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="index.html">HOME</a></li>
                         <li><a class="is-active" href="about.html">SEARCH</a></li>
-                        <li class="has-child"><a href="request.html">REQUEST</a>
+                        <li class="has-child"><a href="request.php">REQUEST</a>
                         </li>
                         <li><a href="gallery.html">DONATE</a></li>
                         <li><a href="admin/admin_login.php">ADMIN</a></li>
