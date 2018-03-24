@@ -77,6 +77,9 @@ if(!empty($_POST)){
              <li>
               <a href="tables.php">Blood Records</a>
             </li>
+            <li>
+              <a href="donations.php">Blood Donation</a>
+            </li>
              <li>
               <a href="addrecord.php">Add Records</a>
 
