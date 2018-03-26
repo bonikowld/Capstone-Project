@@ -2,7 +2,7 @@
 <html class="no-js">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Donate - Project Blood Seeker</title>
+        <title>Sign-in - Project Blood Seeker</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="application/x-javascript">
@@ -77,7 +77,7 @@
                         <!-- class="is-active" -->
                         <li><a href="donate.html">DONATE</a></li>
                         <li><a href="admin/admin_login.php">ADMIN</a></li>
-                        <li><a href="login.php" class="is-active">LOG-IN AS DONOR</a></li>
+                        <li><a href="login.php" class="is-active">LOG-IN</a></li>
                     </ul>
                   
 

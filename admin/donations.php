@@ -123,32 +123,43 @@
             <table class="table table-bordered table-hover " id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Serial Number</th>
-                  <th>Donor</th>
-                  <th>Blood Type</th>
-                  <th>Component</th>
-                  <th>Quantity</th>
-                  <th>Extraction Date</th>
-                  <th>Expiration Date</th>
-                  <th>City</th>
+                  <th>Last Name</th>
+                  <th>First Name</th>
+                  <th>Middle Name</th>
+                  <th>Age</th>
+                  <th>Birthdate</th>
+                  <th>Sex</th>
+                  <th>Religion</th>
+                  <th>Nationality</th>
+                  <th>Education</th>
+                  <th>Occupation</th>
+                  <th>Cellphone Number</th>
+                  <th>Email Address</th>
+                  <th>Identification No.</th>
+
 
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                  <th>Serial Number</th>
-                  <th>Donor</th>
-                  <th>Blood Type</th>
-                  <th>Component</th>
-                  <th>Quantity</th>
-                  <th>Extraction Date</th>
-                  <th>Expiration Date</th>
-                  <th>City</th>
+                <th>Last Name</th>
+                  <th>First Name</th>
+                  <th>Middle Name</th>
+                  <th>Age</th>
+                  <th>Birthdate</th>
+                  <th>Sex</th>
+                  <th>Religion</th>
+                  <th>Nationality</th>
+                  <th>Education</th>
+                  <th>Occupation</th>
+                  <th>Cellphone Number</th>
+                  <th>Email Address</th>
+                  <th>Identification No.</th>
                 </tr>
               </tfoot>
               
               <tbody>
-                <?php 
+              <?php 
                 $servername = "localhost";
                 $username = "root";
                 $password = "";
@@ -160,20 +171,25 @@
                 if (!$conn) {
                     die("Connection failed: " . mysqli_connect_error());
                 }
-                $result = mysqli_query($conn,"SELECT * FROM blood");
+                $result = mysqli_query($conn,"SELECT * FROM donate_blood");
 
                       
                 while($row = mysqli_fetch_array($result))  
                 {
-                echo "<tr class='clickable-row row-data' data-href='url://'>";
-                echo "<td class='serialnumber'>".$row['serialnumber']."</td>";
-                echo "<td class='donor'>".$row['donor']."</td>";
-                echo "<td class='bloodtype'>".$row['bloodtype']."</td>";
-                echo "<td class='component'>".$row['component']."</td>";
-                echo "<td class='quantity'>".$row['quantity']."</td>";
-                echo "<td class='extractiondate'>".$row['extractiondate']."</td>";
-                echo "<td class='expirationdate'>".$row['expirationdate']."</td>";
-                echo "<td class='expirationdate'>".$row['city']."</td>";
+                // echo "<tr class='clickable-row row-data' data-href='url://'>";
+                echo "<td class='lastname'>".$row['lastname']."</td>";
+                echo "<td class='firstname'>".$row['firstname']."</td>";
+                echo "<td class='middlename'>".$row['middlename']."</td>";
+                echo "<td class='age'>".$row['age']."</td>";
+                echo "<td class='birthdate'>".$row['birthdate']."</td>";
+                echo "<td class='sex'>".$row['sex']."</td>";
+                echo "<td class='religion'>".$row['religion']."</td>";
+                echo "<td class='nationality'>".$row['nationality']."</td>";
+                echo "<td class='education'>".$row['education']."</td>";
+                echo "<td class='occupation'>".$row['occupation']."</td>";
+                echo "<td class='cellphonenum'>".$row['cellphonenum']."</td>";
+                echo "<td class='email'>".$row['email']."</td>";
+                echo "<td class='identificationno'>".$row['identificationno']."</td>"; 
                 echo "</tr>";
                 };
                 

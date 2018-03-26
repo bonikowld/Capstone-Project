@@ -157,3 +157,6 @@ h1{
   display: table;
   margin: auto;
 }
+.jumbotron{
+  height:400px;
+}

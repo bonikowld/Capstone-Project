@@ -173,9 +173,9 @@ if(!empty($_POST)){
     </div>
 
 
-    <!-- Add record input fields -->
+    <!-- Add record input fields -->  
 
-<table class="table table-bordered table-condensed">
+<table class="table table-bordered table-responsive" id="dataTable" width="100%" cellspacing="0">
 <form action="" method="POST">
     <tbody>
         <tr>
@@ -224,12 +224,12 @@ if(!empty($_POST)){
             </td>
             <td>
            <label>Extraction Date</label>
-             <input class="form-control" name="extractiondate" id="extractiondate" type="date" required/>
+             <input class="form-control" name="extractiondate" id="extractiondate" type="text" placeholder="mm/dd/yyyy" required/>
              <span class="error_form" id="extdate_error_message"></span>
             </td>
             <td>
            <label>Expiration Date</label>
-             <input class="form-control" name="expirationdate" id="expirationdate" type="date" required/>
+             <input class="form-control" name="expirationdate" id="expirationdate" type="text" placeholder="mm/dd/yyyy" required/>
              <span class="error_form" id="expdate_error_message"></span>
             </td> 
             <td>

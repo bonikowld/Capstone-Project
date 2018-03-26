@@ -494,14 +494,18 @@ footer.sticky-footer {
   position: fixed;
   left: 275px;
 }
-@media (min-width: 768px) {
-  .modal-xl {
-    width: 100%;
-   max-width:98%;
-  }
+.modal-dialog{
+  overflow-y: initial !important
+}
+.modal-bodyUpdate{
+  height: 350px;
+  overflow-y: auto;
 }
 #deleteModal{
   top:35%;
   right:-7%;
   outline: none;
+}
+.table{ 
+    overflow-x: scroll;
 }

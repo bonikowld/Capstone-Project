@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html class="no-js">
     <head>
-        <meta charset="utf-8">
-        <title>Search - Project Blood Seeker</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Search Blood - Project Blood Seeker</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="application/x-javascript">
+            addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+        </script>
         <!-- Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
-
+        <link href="//fonts.googleapis.com/css?family=Cabin:400,500,600,700" rel="stylesheet">
         <!-- Bootsrap -->
-       <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
         <!-- Font awesome -->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
@@ -19,10 +23,18 @@
 
         <!-- Template main Css -->
         <link rel="stylesheet" href="assets/css/style.css">
+
+        <!-- Template main Css -->
+        <link rel="stylesheet" href="assets/css/registration.css">
         
         <!-- Modernizr -->
-        <script src="assets/js/modernizr-2.6.2.min.js"></script>
-
+		<script src="assets/js/modernizr-2.6.2.min.js"></script>
+		
+		<style>
+          .error{
+           color:red
+		  }
+		</style>
 
     </head>
 
@@ -60,12 +72,11 @@
                   
                     <ul class="nav navbar-nav">
                         <li><a href="index.html">HOME</a></li>
-                        <li><a class="is-active" href="about.html">SEARCH</a></li>
-                        <li class="has-child"><a href="request.php">REQUEST</a>
-                        </li>
-                        <li><a href="gallery.html">DONATE</a></li>
-                        <li><a href="admin/admin_login.php">ADMIN</a></li>
-                        <li><a href="admin/admin_login.html" class="login">LOG-IN</a></li>
+                        <li><a href="search.php">SEARCH</a></li>
+                        <li><a href="request.php">REQUEST</a></li>
+                        <!-- class="is-active" -->
+                        <li><a href="donate.php">DONATE</a></li>
+                        <li><a href="admin/admin_login.php">LOG-IN</a></li>
                     </ul>
                   
 
@@ -125,7 +136,7 @@
         </tr>
     </thead>
 
-            <tr>
+            <!-- <tr>
               <td class="text-center"> 1234-112231</td>
                 <td class="text-center">Ozamiz City</td>
                 <td class="text-center">A+</td>
@@ -142,7 +153,7 @@
                 <td class="text-center">Tangub City</td>
                 <td class="text-center">O+</td>
                 <td class="text-center"><a class='btn btn-info btn-xs' href="Reserve.html"><span class="glyphicon glyphicon-ok"></span> Yes</a></td>
-            </tr>
+            </tr> -->
     <tbody>
             <?php
               $servername = "localhost";

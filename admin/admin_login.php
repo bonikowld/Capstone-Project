@@ -37,9 +37,6 @@
 <!DOCTYPE html> 
 <head>
     <link rel="stylesheet" href="../assets/css/admin_login.css" type='text/css'>
-
-
-
 </head>
 <body>
 

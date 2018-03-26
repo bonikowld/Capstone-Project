@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html class="no-js">
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Home - Project Blood Seeker</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="application/x-javascript">
+            addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+        </script>
         <!-- Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
-
+        <link href="//fonts.googleapis.com/css?family=Cabin:400,500,600,700" rel="stylesheet">
         <!-- Bootsrap -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
@@ -20,10 +23,18 @@
 
         <!-- Template main Css -->
         <link rel="stylesheet" href="assets/css/style.css">
+
+        <!-- Template main Css -->
+        <link rel="stylesheet" href="assets/css/registration.css">
         
         <!-- Modernizr -->
-        <script src="assets/js/modernizr-2.6.2.min.js"></script>
-
+		<script src="assets/js/modernizr-2.6.2.min.js"></script>
+		
+		<style>
+          .error{
+           color:red
+		  }
+		</style>
 
     </head>
 
@@ -60,13 +71,12 @@
 
                   
                     <ul class="nav navbar-nav">
-                        <li><a class="is-active" href="index.html">HOME</a></li>
-                        <li><a class="search" href="search.php">SEARCH</a></li>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="search.php">SEARCH</a></li>
                         <li><a href="request.php">REQUEST</a></li>
-                        </li>
-                        <li><a href="donate.html">DONATE</a></li>
-                        <li><a href="admin/admin_login.php">ADMIN</a></li>
-                        <li><a href="admin/admin_login.html" class="login">LOG-IN</a></li>
+                        <!-- class="is-active" -->
+                        <li><a href="donate.php">DONATE</a></li>
+                        <li><a href="admin/admin_login.php">LOG-IN</a></li>
                     </ul>
                   
 
@@ -83,12 +93,18 @@
 
 
 
-
     <!-- Carousel
     ================================================== -->
-    <div id="homeCarousel" class="carousel slide carousel-home" data-ride="carousel">
+    <div class="container">
+        <div class="jumbotron">
+          <h1>Project Blood Seeker</h1> 
+            <center><p>Web-based Blood Banking System</p></center>
+            <center><a href="login.php" type="button" class="btn btn-danger btn-lg" role="button" data-dismiss="modal" >Donate now</a></center>
+        </div>
+      </div>
+    <!-- <div id="homeCarousel" class="carousel slide carousel-home" data-ride="carousel">
 
-          <!-- Indicators -->
+          
           <ol class="carousel-indicators">
             <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#homeCarousel" data-slide-to="1"></li>
@@ -109,12 +125,11 @@
                   <h4 class="carousel-subtitle bounceInUp animated slow ">Do not let them down</h4>
                   <a href="#" class="btn btn-lg btn-secondary hidden-xs bounceInUp animated slow" data-toggle="modal" data-target="#donateModal">DONATE NOW</a>
 
-                </div> <!-- /.carousel-caption -->
+                </div> 
 
               </div>
 
-            </div> <!-- /.item -->
-
+            </div> 
 
             <div class="item ">
 
@@ -128,11 +143,11 @@
                   <h4 class="carousel-subtitle bounceInUp animated slow"> So let's do it !</h4>
                   <a href="#" class="btn btn-lg btn-secondary hidden-xs bounceInUp animated" data-toggle="modal" data-target="#donateModal">DONATE NOW</a>
 
-                </div> <!-- /.carousel-caption -->
+                </div> 
 
               </div>
 
-            </div> <!-- /.item -->
+            </div> 
 
 
 
@@ -149,12 +164,11 @@
                   <h4 class="carousel-subtitle bounceInUp animated slow">You can make the diffrence !</h4>
                   <a href="#" class="btn btn-lg btn-secondary hidden-xs bounceInUp animated slow" data-toggle="modal" data-target="#donateModal">DONATE NOW</a>
 
-                </div> <!-- /.carousel-caption -->
+                </div>
 
               </div>
 
-            </div> <!-- /.item -->
-
+            </div> 
           </div>
 
           <a class="left carousel-control" href="#homeCarousel" role="button" data-slide="prev">
@@ -167,7 +181,7 @@
             <span class="sr-only">Next</span>
           </a>
 
-    </div><!-- /.carousel -->
+    </div> -->
 
     <div class="section-home about-us fadeIn animated">
 
@@ -182,13 +196,13 @@
                         <div class="col-icon-wrapper">
                           <img src="assets/images/icons/our-mission-icon.png" alt="">
                         </div>
-                        <h3 class="col-title">our mission</h3>
+                        <h3 class="col-title">Our Mission</h3>
                         <div class="col-details">
 
-                          <p>Lorem ipsum dolor sit amet consect adipisscin elit proin vel lectus ut eta esami vera dolor sit amet consect</p>
+                          <p>To serve the people of Misamis Occidental by providing safest and reliable blood banking system that will help people to find blood for their patients </p>
                           
                         </div>
-                        <a href="#" class="btn btn-primary"> Read more </a>
+
                     
                   </div>
                   
@@ -208,7 +222,6 @@
                           <p>Lorem ipsum dolor sit amet consect adipisscin elit proin vel lectus ut eta esami vera dolor sit amet consect</p>
                           
                         </div>
-                        <a href="#" class="btn btn-primary"> Read more </a>
                     
                   </div>
                   
@@ -228,7 +241,6 @@
                           <p>Lorem ipsum dolor sit amet consect adipisscin elit proin vel lectus ut eta esami vera dolor sit amet consect</p>
                           
                         </div>
-                        <a href="#" class="btn btn-primary"> Read more </a>
                     
                   </div>
                   
@@ -248,7 +260,6 @@
                           <p>Lorem ipsum dolor sit amet consect adipisscin elit proin vel lectus ut eta esami vera dolor sit amet consect</p>
                           
                         </div>
-                        <a href="#" class="btn btn-primary"> Read more </a>
                     
                   </div>
                   
@@ -335,7 +346,7 @@
 
     </div> <!-- /.home-reasons -->
 
-    <div class="section-home our-causes animate-onscroll fadeIn">
+    <!-- <div class="section-home our-causes animate-onscroll fadeIn">
 
         <div class="container">
 
@@ -364,15 +375,15 @@
 
                           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#donateModal"> DONATE NOW</a>
                           
-                        </div>
+                        </div> -->
 
                         
 
-                    </div> <!-- /.cause -->
+                    <!-- </div> /.cause -->
                     
-                </div> 
+                <!-- </div>  -->
 
-                <div class="col-md-3 col-sm-6">
+                <!-- <div class="col-md-3 col-sm-6">
 
                     <div class="cause">
 
@@ -393,16 +404,16 @@
 
                           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#donateModal"> DONATE NOW</a>
                           
-                        </div>
+                        </div> -->
 
                         
 
-                    </div> <!-- /.cause -->
-                    
-                </div>
+                    <!-- </div> /.cause -->
+<!--                     
+                </div> -->
 
 
-                <div class="col-md-3 col-sm-6">
+                <!-- <div class="col-md-3 col-sm-6">
 
                     <div class="cause">
 
@@ -425,13 +436,13 @@
                           
                         </div>
 
-                        
+                         -->
 
-                    </div> <!-- /.cause -->
-                    
-                </div>
+                    <!-- </div> /.cause -->
+<!--                     
+                </div> -->
 
-                <div class="col-md-3 col-sm-6">
+                <!-- <div class="col-md-3 col-sm-6">
 
                     <div class="cause">
 
@@ -452,19 +463,19 @@
 
                           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#donateModal"> DONATE NOW</a>
                           
-                        </div>
+                        </div> -->
 
                         
 
-                    </div> <!-- /.cause -->
+                    <!-- </div> /.cause -->
                     
-                </div>
+                <!-- </div>
 
             </div>
 
-        </div>
+        </div> -->
         
-    </div> <!-- /.our-causes -->
+    <!-- </div> /.our-causes -->
 
     
 

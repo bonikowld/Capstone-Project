@@ -1,3 +1,31 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "blood_bank";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " .mysqli_connect_error());
+}
+
+if(!empty($_POST)){
+        session_start();
+        $_SESSION["reload"] = "1";
+
+        $sql = "INSERT INTO donate_blood (identificationno, lastname, firstname, middlename, age, birthdate, sex, religion, nationality, education, occupation, cellphonenum, email, bloodbank)
+                VALUES ('".$_POST["identificationno"]."','".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["religion"]."','".$_POST["nationality"]."','".$_POST["education"]."','".$_POST["occupation"]."','".$_POST["cellphonenum"]."','".$_POST["email"]."','".$_POST["bloodbank"]."')";
+
+        if ($conn->query($sql) == TRUE) {
+          echo "<script type='text/javascript'>alert('Donate Successfull ');</script>";
+          } else {
+          echo "<script type='text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
+          }
+          
+          $conn->close();
+}
+?>
 <!DOCTYPE html>
 <html class="no-js">
     <head>
@@ -67,10 +95,10 @@
                     <ul class="nav navbar-nav">
                         <li><a href="index.html">HOME</a></li>
                         <li><a href="search.php">SEARCH</a></li>
-                        <li><a class="is-active" href="request.html">REQUEST</a></li>
-                        <li><a href="donate.html">DONATE</a></li>
-                        <li><a href="admin/admin_login.php">ADMIN</a></li>
-                        <li><a href="admin/admin_login.html" class="login">LOG-IN</a></li>
+                        <li><a class="is-active" href="request.php">REQUEST</a></li>
+                        <li><a href="donate.php">DONATE</a></li>
+                        <li><a href="admin/admin_login.php">LOG-IN</a></li>
+
                     </ul>
                   
 
@@ -91,18 +119,29 @@
 
         <div class="w3-container w3-teal">
 
-    <form class="form-horizontal" action=" "  id="contact_form">
+<form class="form-horizontal" action=" "  method="post" id="contact_form">
 
 <!-- Form Name -->
 
 <!-- Text input-->
+
+ <div class="form-group">
+    <label class="col-md-4 control-label" >Identification No.</label> 
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+    <span class="input-group-addon"></i></span>
+    <input name="identificationno" id="idNo" placeholder="Identification No." class="form-control"  type="text">
+    <span class="error_form" id="idNo_error_message"></span>
+      </div>
+    </div>
+  </div>
 
 <div class="form-group">
   <label class="col-md-4 control-label">Last Name</label>  
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"></i></span>
-  <input  name="last_name" id="last_name" placeholder="Last Name" class="form-control"  type="text" required>
+  <input  name="lastname" id="last_name" placeholder="Last Name" class="form-control"  type="text" required>
   <span class="error_form" id="lname_error_message"></span>
     </div>
   </div>
@@ -115,7 +154,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"></span>
-  <input name="first_name" id="first_name" placeholder="First Name" class="form-control"  type="text" required>
+  <input name="firstname" id="first_name" placeholder="First Name" class="form-control"  type="text" required>
   <span class="error_form" id="fname_error_message"></span>
     </div>
   </div>
@@ -126,7 +165,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"></i></span>
-  <input name="middle_name" id="middle_name" placeholder="Middle Name" class="form-control"  type="text" required>
+  <input name="middlename" id="middle_name" placeholder="Middle Name" class="form-control"  type="text" required>
   <span class="error_form" id="mname_error_message"></span>
     </div>
   </div>
@@ -149,7 +188,7 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"></i></span>
-  <input name="bdate" id="bdate" placeholder="Birth Date" class="form-control"  type="date" required>
+  <input name="birthdate" id="bdate" placeholder="Birth Date" class="form-control"  type="date" required>
   <span class="error_form" id="bdate_error_message"></span>
     </div>
   </div>
@@ -215,7 +254,7 @@
     </div>
   </div>
 
-<div class="form-group">
+<!-- <div class="form-group">
   <label class="col-md-4 control-label" >Telephone No</label> 
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
@@ -224,14 +263,14 @@
   <span class="error_form" id="telno_error_message"></span>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="form-group">
     <label class="col-md-4 control-label" >Cellphone No</label> 
       <div class="col-md-4 inputGroupContainer">
       <div class="input-group">
     <span class="input-group-addon"></i></span>
-    <input name="cel_no" id="cel_no" placeholder="Cellphone No." class="form-control"  type="text" required>
+    <input name="cellphonenum" id="cel_no" placeholder="Cellphone No." class="form-control"  type="text" required>
     <span class="error_form" id="celno_error_message"></span>
       </div>
     </div>
@@ -242,20 +281,20 @@
       <div class="col-md-4 inputGroupContainer">
       <div class="input-group">
     <span class="input-group-addon"></i></span>
-    <input name="email_add" id="email_add" placeholder="Email Address" class="form-control"  type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+    <input name="email" id="email_add" placeholder="Email Address" class="form-control"  type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
     <span class="error_form" id="email_error_message"></span>
       </div>
     </div>
   </div>
 
-
+  
   <div class="form-group">
-    <label class="col-md-4 control-label" >Identification No.</label> 
+    <label class="col-md-4 control-label" >Blood Bank</label> 
       <div class="col-md-4 inputGroupContainer">
       <div class="input-group">
     <span class="input-group-addon"></i></span>
-    <input name="idNo" id="idNo" placeholder="Identification No." class="form-control"  type="text">
-    <span class="error_form" id="idNo_error_message"></span>
+    <input name="bloodbank" id="bloodbank" placeholder="Blood Bank" class="form-control"  type="email" required>
+    <span class="error_form"  id="mname_error_message"></span>
       </div>
     </div>
   </div>
@@ -263,7 +302,7 @@
 <div class="form-group">
   <label class="col-md- control-label"></label>
   <div class="col-md-4">
-    <button type="submit" class="btn btn-primary" >Submit</button>
+    <button type="submit" class="btn btn-primary" name="donate" >Submit</button>
   </div>
 </div>
 

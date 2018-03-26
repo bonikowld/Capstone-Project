@@ -63,8 +63,6 @@ if(!empty($_POST)){
 
 <body>
 
-
-
 <div class="container">
 <form action="" method="POST">
    <center><h1>Patient Information</h1></center> 
