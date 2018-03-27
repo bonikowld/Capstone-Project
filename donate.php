@@ -52,66 +52,41 @@ if(!empty($_POST)){
         <!-- Modernizr -->
         <script src="assets/js/modernizr-2.6.2.min.js"></script>
         
-        <style>
+        <!-- <style>
           .error{
            color:red
           }
-        </style>
+        </style> -->
 
     </head>
 
     <body>
 
+      <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                      <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>                        
+                        </button>
+                        <a class="navbar-brand" href="index.html">Project Blood Seeker</a>
+                      </div>
+                      <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                          <li><a href="#">Home</a></li>
+                          <li><a href="search.php">Search</a></li>
+                          <li><a href="request.php">Request</a></li>
+                          <li class="active"><a href="donate.php">Donate</a></li>
 
-    <header class="main-header">
-        
-    
-        <nav class="navbar navbar-static-top">
-
-            
-
-            <div class="navbar-main">
-                
-              
-              <div class="container">
-
-                <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-
-                  </button>
-                  
-                  <!-- <a class="navbar-brand" href="index.html"><img src="assets/images/sadaka-logo.png" alt=""></a> -->
-                  
-                </div>
-            
-                <div id="navbar" class="navbar-collapse collapse pull-right">
-
-                  
-                    <ul class="nav navbar-nav">
-                        <li><a href="index.html">HOME</a></li>
-                        <li><a href="search.php">SEARCH</a></li>
-                        <li><a class="is-active" href="request.php">REQUEST</a></li>
-                        <li><a href="donate.php">DONATE</a></li>
-                        <li><a href="admin/admin_login.php">LOG-IN</a></li>
-
-                    </ul>
-                  
-
-                </div> <!-- /#navbar -->
-
-              </div> <!-- /.container -->
-              
-            </div> <!-- /.navbar-main -->
-
-
-        </nav> 
-
-    </header> <!-- /. main-header -->
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                          <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                          <li><a href="admin/admin_login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </nav>
 
 
         <center>
@@ -120,6 +95,7 @@ if(!empty($_POST)){
         <div class="w3-container w3-teal">
 
 <form class="form-horizontal" action=" "  method="post" id="contact_form">
+
 
 <!-- Form Name -->
 

@@ -40,7 +40,7 @@ if(!empty($_POST)){
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
 
         <!-- Bootsrap -->
-
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <!-- Font awesome -->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
@@ -62,6 +62,31 @@ if(!empty($_POST)){
     </head>
 
 <body>
+<nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                      <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>                        
+                        </button>
+                        <a class="navbar-brand" href="index.html">Project Blood Seeker</a>
+                      </div>
+                      <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="search.php">Search</a></li>
+                          <li class="active"><a href="request.php">Request</a></li>
+                          <li><a href="donate.php">Donate</a></li>
+
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                          <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                          <li><a href="admin/admin_login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </nav>
 
 <div class="container">
 <form action="" method="POST">
