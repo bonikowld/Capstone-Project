@@ -64,7 +64,7 @@ h1,h2,h3,h4,h5,h6{
 	padding:0;
     font-family: 'Cabin', sans-serif;
     letter-spacing:1px;
-    color: black;
+    color: #fff;
 }
 
 label.registration{
@@ -97,12 +97,13 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     min-height: 100vh;
+    background:#e3e3e3;
 }
 .Registration-main-w3ls {
     width: 33%;
     margin: 0em auto;
     padding: 53px 46px 60px;
-	background:rgba(0, 0, 0, 0.6) ;
+	background: #101010;
 }
 h1.header-w3ls {
     text-align: center;
@@ -469,8 +470,8 @@ span.form-required {
 }
 
 .content-divider > span, .content-divider > a {
-    background-color: #000;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     display: inline-block;
     padding: 2px 12px;
     border-radius: 3px;
