@@ -70,11 +70,11 @@ if(!empty($_POST)){
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>                        
                         </button>
-                        <a class="navbar-brand" href="index.html">Project Blood Seeker</a>
+                        <a class="navbar-brand" href="index.php">Project Blood Seeker</a>
                       </div>
                       <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
-                          <li><a href="#">Home</a></li>
+                          <li><a href="index.php">Home</a></li>
                           <li><a href="search.php">Search</a></li>
                           <li><a href="request.php">Request</a></li>
                           <li class="active"><a href="donate.php">Donate</a></li>

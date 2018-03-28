@@ -70,11 +70,11 @@ if(!empty($_POST)){
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>                        
                         </button>
-                        <a class="navbar-brand" href="index.html">Project Blood Seeker</a>
+                        <a class="navbar-brand" href="index.php">Project Blood Seeker</a>
                       </div>
                       <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
-                          <li><a href="index.html">Home</a></li>
+                          <li><a href="index.php">Home</a></li>
                           <li><a href="search.php">Search</a></li>
                           <li class="active"><a href="request.php">Request</a></li>
                           <li><a href="donate.php">Donate</a></li>
@@ -190,8 +190,8 @@ if(!empty($_POST)){
 
 
 
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <script  src="js/index.js"></script>
+  <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script  src="js/index.js"></script> -->
 
 
 

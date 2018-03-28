@@ -1,3 +1,45 @@
+<?php
+        session_start();
+        
+
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "blood_bank";
+        
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        // Check connection
+        if (!$conn) {
+            die("Connection failed: " .mysqli_connect_error());
+        }
+
+        if(isset($_POST['signin_btn'])){
+
+          $username = $_POST['username'];
+          $password = $_POST['password'];
+
+          $sql = "SELECT * FROM admin WHERE username = '$username' AND password = '$password'";
+          $result = mysqli_query($conn, $sql);
+
+          $_SESSION['username']= $_POST['username'];
+
+          if(mysqli_num_rows($result)){
+              while($row = mysqli_fetch_assoc($result))
+              echo "Log in Successfull";
+
+              header("location: admin/index.php");
+          }
+          else{
+                $prompt = "Log in Failed Invalid Username or Password";
+                echo "<script type='text/javascript'>alert('$prompt');</script>";
+            }
+
+          mysqli_close($conn);
+
+        }
+
+?>
+
 <!DOCTYPE html>
 <html class="no-js">
     <head>
@@ -47,34 +89,29 @@
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>                        
                         </button>
-                        <a class="navbar-brand" href="#">Project Blood Seeker</a>
+                        <a class="navbar-brand" href="index.php">Project Blood Seeker</a>
                       </div>
                       <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
-                          <li class="active"><a href="index.html">Home</a></li>
+                          <li class="active"><a href="index.php">Home</a></li>
                           <li><a href="search.php">Search</a></li>
                           <li><a href="request.php">Request</a></li>
                           <li><a href="donate.php">Donate</a></li>
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                          <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                          <li><a href="admin/admin_login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                          <!-- <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
+                          <li><a data-toggle='modal' data-target='#loginModal'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                         </ul>
                       </div>
                     </div>
                   </nav>
 
-
-
-
     <!-- Carousel
     ================================================== -->
    
         <div class="jumbotron">
-          <h1>Project Blood Seeker</h1> 
-            <center><p>Web-based Blood Banking System</p></center>
-            <center><a href="login.php" type="button" class="btn btn-danger btn-lg" role="button" data-dismiss="modal" >Donate now</a></center>
+                 
         </div>
 
     <!-- <div id="homeCarousel" class="carousel slide carousel-home" data-ride="carousel">
@@ -157,6 +194,35 @@
           </a>
 
     </div> -->
+
+   
+    
+    <div id="loginModal" class="modal fade " role="dialog">
+            <div class="modal-dialog modal-sm">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Log-in</h4>
+                </div>
+                <div class='modal-body'>
+                    <form method="post" action="">  
+                        <label>Username</label> 
+                        <input type="text"  name="username"  class="form-control">
+                        <label>Password</label>
+                        <input type="password"  name="password" class="form-control"><br>
+                        <button class='btn btn-success' name="signin_btn">Log-in</button>
+                        <button class='btn btn-warning' href="register.html">Sign-Up</button>
+                    </form>
+                </div>
+             
+                <!-- <div class="modal-footer">
+               </div> -->
+                </div>
+              </div>
+            </div>    
+
+
 
     <div class="section-home about-us fadeIn animated">
 

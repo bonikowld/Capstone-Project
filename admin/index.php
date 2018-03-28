@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -232,8 +236,17 @@
               </span>
             </div>
           </form>
-        </li> -->
-        <a class="navbar-brand" href="#">Welcome<?php ?></a>
+        </li> --> 
+        <a class="navbar-brand" href="#">Welcome Admin
+        <?php 
+            if(isset($_SESSION['username'])){
+              echo $_SESSION['username'];
+            }
+            else{ echo 'Session not set';
+            }
+          ?>
+   
+        </a>
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
@@ -250,6 +263,11 @@
         </li>
         <li class="breadcrumb-item active">My Dashboard</li>
       </ol>
+
+        <div class="jumbotron">
+  
+        </div>
+
  <!--    sticky footer start here -->
     <footer class="sticky-footer">
       <div class="container">
@@ -275,7 +293,7 @@
           <div class="modal-body"></div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="../index.html">Logout</a>
+            <a class="btn btn-primary" href="../index.php">Logout</a>
           </div>
         </div>
       </div>
