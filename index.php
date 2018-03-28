@@ -18,22 +18,35 @@
           $username = $_POST['username'];
           $password = $_POST['password'];
 
-          $sql = "SELECT * FROM admin WHERE username = '$username' AND password = '$password'";
+          $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
           $result = mysqli_query($conn, $sql);
+          $row = mysqli_fetch_array($result);
 
-          $_SESSION['username']= $_POST['username'];
+          $_SESSION['username']= $row['bloodbank'];
+          
+          $count=mysqli_num_rows($result);
 
-          if(mysqli_num_rows($result)){
-              while($row = mysqli_fetch_assoc($result))
-              echo "Log in Successfull";
+          if($count==1){
+            if ($row['role']=="admin")
+            {
+                header ("location: admin/index.php"); 
+                $prompt = "Log in as Administrator";
+                echo "<script type='text/javascript'>alert('$prompt');</script>";
+                
+            }  
+            else if ($row['role']=="")
+            {
+                $_SESSION['role']=$row['role'];
+                header ("location: donate.php"); 
+            }
+            
 
-              header("location: admin/index.php");
           }
           else{
-                $prompt = "Log in Failed Invalid Username or Password";
-                echo "<script type='text/javascript'>alert('$prompt');</script>";
-            }
-
+            $prompt = "Log in Failed Invalid Username or Password";
+            echo "<script type='text/javascript'>alert('$prompt');</script>";
+          }
+         
           mysqli_close($conn);
 
         }
@@ -67,7 +80,7 @@
         <link rel="stylesheet" href="assets/css/style.css">
 
         <!-- Template main Css -->
-        <link rel="stylesheet" href="assets/css/registration.css">
+        <!-- <link rel="stylesheet" href="assets/css/registration.css"> -->
         
         <!-- Modernizr -->
 		<script src="assets/js/modernizr-2.6.2.min.js"></script>
@@ -96,7 +109,7 @@
                           <li class="active"><a href="index.php">Home</a></li>
                           <li><a href="search.php">Search</a></li>
                           <li><a href="request.php">Request</a></li>
-                          <li><a href="donate.php">Donate</a></li>
+                          <li><a data-toggle='modal' data-target='#loginModal'>Donate</a></li>
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
@@ -212,7 +225,7 @@
                         <label>Password</label>
                         <input type="password"  name="password" class="form-control"><br>
                         <button class='btn btn-success' name="signin_btn">Log-in</button>
-                        <button class='btn btn-warning' href="register.html">Sign-Up</button>
+                        <a href="register.html" class='btn btn-warning'>Sign-Up</a>
                     </form>
                 </div>
              
