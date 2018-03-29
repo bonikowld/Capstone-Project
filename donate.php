@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -81,8 +83,16 @@ if(!empty($_POST)){
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                          <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                          <li><a href="admin/admin_login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                          <b class="navbar-text"><span class="glyphicon glyphicon-user"></span> WELCOME
+                           <?php 
+                                if(isset($_SESSION['username'])){
+                                  echo $_SESSION['username'];
+                                }
+                                else{ echo 'Session not set';
+                                }
+                              ?>
+                              </b>
+                              <li><a href="admin/logout.php"><span class="glyphicon glyphicon-log-out"></span> Log-out</a></li>                       
                         </ul>
                       </div>
                     </div>

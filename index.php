@@ -22,7 +22,7 @@
           $result = mysqli_query($conn, $sql);
           $row = mysqli_fetch_array($result);
 
-          $_SESSION['username']= $row['bloodbank'];
+          $_SESSION['city']= $row['bloodbank'];
           
           $count=mysqli_num_rows($result);
 
@@ -30,14 +30,14 @@
             if ($row['role']=="admin")
             {
                 header ("location: admin/index.php"); 
-                $prompt = "Log in as Administrator";
-                echo "<script type='text/javascript'>alert('$prompt');</script>";
+                
                 
             }  
             else if ($row['role']=="")
             {
                 $_SESSION['role']=$row['role'];
-                header ("location: donate.php"); 
+                header ("location: donate.php");
+                $_SESSION['username']= $row['firstname']; 
             }
             
 

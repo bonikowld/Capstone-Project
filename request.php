@@ -62,7 +62,7 @@ if(!empty($_POST)){
     </head>
 
 <body>
-<nav class="navbar navbar-inverse">
+                <nav class="navbar navbar-inverse">
                     <div class="container-fluid">
                       <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -77,16 +77,42 @@ if(!empty($_POST)){
                           <li><a href="index.php">Home</a></li>
                           <li><a href="search.php">Search</a></li>
                           <li class="active"><a href="request.php">Request</a></li>
-                          <li><a href="donate.php">Donate</a></li>
+                          <li><a data-toggle='modal' data-target='#loginModal'>Donate</a></li>
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                          <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                          <li><a href="admin/admin_login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                         <li><a data-toggle='modal' data-target='#loginModal'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                         </ul>
                       </div>
                     </div>
                   </nav>
+
+
+        <div id="loginModal" class="modal fade " role="dialog">
+            <div class="modal-dialog modal-sm">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Log-in</h4>
+                </div>
+                <div class='modal-body'>
+                    <form method="post" action="">  
+                        <label>Username</label> 
+                        <input type="text"  name="username"  class="form-control">
+                        <label>Password</label>
+                        <input type="password"  name="password" class="form-control"><br>
+                        <button class='btn btn-success' name="signin_btn">Log-in</button>
+                        <a href="register.html" class='btn btn-warning'>Sign-Up</a>
+                    </form>
+                </div>
+             
+                <!-- <div class="modal-footer">
+               </div> -->
+                </div>
+              </div>
+            </div>  
+
 
 <div class="container">
 <form action="" method="POST">

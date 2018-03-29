@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -162,7 +166,7 @@
                     die("Connection failed: " . mysqli_connect_error());
                 }
 
-                $result = mysqli_query($conn,"SELECT * FROM blood");
+                $result = mysqli_query($conn,"SELECT * FROM blood WHERE city = '" . $_SESSION['city'] . "' ");
 
                       
                 while($row = mysqli_fetch_array($result))  

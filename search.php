@@ -1,3 +1,58 @@
+<?php
+        session_start();
+        
+
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "blood_bank";
+        
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        // Check connection
+        if (!$conn) {
+            die("Connection failed: " .mysqli_connect_error());
+        }
+
+        if(isset($_POST['signin_btn'])){
+
+          $username = $_POST['username'];
+          $password = $_POST['password'];
+
+          $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+          $result = mysqli_query($conn, $sql);
+          $row = mysqli_fetch_array($result);
+
+          $_SESSION['username']= $row['bloodbank'];
+          
+          $count=mysqli_num_rows($result);
+
+          if($count==1){
+            if ($row['role']=="admin")
+            {
+                header ("location: admin/index.php"); 
+                
+                
+            }  
+            else if ($row['role']=="")
+            {
+                $_SESSION['role']=$row['role'];
+                header ("location: donate.php");
+                $_SESSION['username']= $row['firstname']; 
+            }
+            
+
+          }
+          else{
+            $prompt = "Log in Failed Invalid Username or Password";
+            echo "<script type='text/javascript'>alert('$prompt');</script>";
+          }
+         
+          mysqli_close($conn);
+
+        }
+
+?>
+
 <!DOCTYPE html>
 <html class="no-js">
     <head>
@@ -55,17 +110,46 @@
                           <li><a href="index.php">Home</a></li>
                           <li class="active"><a href="search.php">Search</a></li>
                           <li><a href="request.php">Request</a></li>
-                          <li><a href="donate.php">Donate</a></li>
+                          <li><a data-toggle='modal' data-target='#loginModal'>Donate</a></li>
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                          <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                          <li><a href="admin/admin_login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                           <li><a data-toggle='modal' data-target='#loginModal'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                         </ul>
                       </div>
                     </div>
                   </nav>
+
+          <div id="loginModal" class="modal fade " role="dialog">
+            <div class="modal-dialog modal-sm">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Log-in</h4>
+                </div>
+                <div class='modal-body'>
+                    <form method="post" action="">  
+                        <label>Username</label> 
+                        <input type="text"  name="username"  class="form-control">
+                        <label>Password</label>
+                        <input type="password"  name="password" class="form-control"><br>
+                        <button class='btn btn-success' name="signin_btn">Log-in</button>
+                        <a href="register.html" class='btn btn-warning'>Sign-Up</a>
+                    </form>
+                </div>
+             
+                <!-- <div class="modal-footer">
+               </div> -->
+                </div>
+              </div>
+            </div>  
 <center>
+
+
+  
+
+
  <h1>SEARCH BLOOD</h1>
  
 
