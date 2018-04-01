@@ -49,7 +49,7 @@ if(!empty($_POST)){
         <link rel="stylesheet" href="assets/css/owl.carousel.css">
 
         <!-- Template main Css -->
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/stylerequest.css">
         
         <!-- Modernizr -->
         <script src="assets/js/modernizr-2.6.2.min.js"></script>
@@ -99,201 +99,137 @@ if(!empty($_POST)){
                   </nav>
 
 
-        <center>
- <h1>DONATE BLOOD</h1>
+        <div class="container">
+<form action="" method="POST">
+   <center><h1>Donate Blood</h1></center>
 
-        <div class="w3-container w3-teal">
+   <div class="row">
+      
+      <h4>Identification Number</h4>
+      <div class="input-group-icon">
+        <input name="identificationno" id="idNo" placeholder="Identification No." type="text">
+      <div class="input-icon fa fa-user"></i></div>
+      </div>
 
-<form class="form-horizontal" action=" "  method="post" id="contact_form">
+   </div>
+   <br>
+   <div class="row">
+
+      <h4>Name</h4>
+      <div class="input-group-icon">
+        <input  name="lastname" id="last_name" placeholder="Last Name" type="text" required>
+        <div class="input-icon fa fa-user"></i></div>
+      </div>
+
+      <div class="input-group-icon">
+        <input name="firstname" id="first_name" placeholder="First Name" type="text" required>
+        <div class="input-icon fa fa-user"></div>
+      </div>
+
+      <div class="input-group-icon">
+        <input name="middlename" id="middle_name" placeholder="Middle Name" type="text" required>
+        <div class="input-icon fa fa-user"></div>
+      </div>
+
+   </div>
+
+    <div class="row">
+
+      <div class="col-half">
+        <h4>Age</h4>
+        <div class="input-group">
+            <input name="age" id="age" placeholder="Age" type="type" required>
+        </div>
+      </div>
+
+      <div class="col-half">
+        <h4>Date of Birth</h4>
+        <div class="input-group">
+            <input name="birthdate" id="bdate" placeholder="Birth Date"  type="date" required>
+        </div>
+      </div>
+
+    </div>
 
 
-<!-- Form Name -->
+    <div class="row">
 
-<!-- Text input-->
+      <div class="col-half">
+        <h4>Gender</h4>
+        <div class="input-group">
+          <input type="radio" name="sex" value="Male" id="gender-male"/>
+          <label for="gender-male">M</label>
+          <input type="radio" name="sex" value="Female" id="gender-female"/>
+          <label for="gender-female">F</label>
+        </div>
+      </div>
 
- <div class="form-group">
-    <label class="col-md-4 control-label" >Identification No.</label> 
-      <div class="col-md-4 inputGroupContainer">
-      <div class="input-group">
-    <span class="input-group-addon"></i></span>
-    <input name="identificationno" id="idNo" placeholder="Identification No." class="form-control"  type="text">
-    <span class="error_form" id="idNo_error_message"></span>
+      <div class="col-half">
+        <h4>Religion</h4>
+        <div class="input-group">
+           <input name="religion" id="religion" placeholder="Religion" type="text">
+        </div>
       </div>
     </div>
-  </div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label">Last Name</label>  
-  <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input  name="lastname" id="last_name" placeholder="Last Name" class="form-control"  type="text" required>
-  <span class="error_form" id="lname_error_message"></span>
-    </div>
-  </div>
-</div>
 
 
+     <div class="row">
 
-<div class="form-group">
-  <label class="col-md-4 control-label" >First Name</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></span>
-  <input name="firstname" id="first_name" placeholder="First Name" class="form-control"  type="text" required>
-  <span class="error_form" id="fname_error_message"></span>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Middle Name</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="middlename" id="middle_name" placeholder="Middle Name" class="form-control"  type="text" required>
-  <span class="error_form" id="mname_error_message"></span>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Age</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="age" id="age" placeholder="Age" class="form-control"  type="type" required>
-  <span class="error_form" id="age_error_message"></span>
-    </div>
-  </div>
-</div>
-<div>
-  
-<div class="form-group">
-  <label class="col-md-4 control-label" >Birth Date</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="birthdate" id="bdate" placeholder="Birth Date" class="form-control"  type="date" required>
-  <span class="error_form" id="bdate_error_message"></span>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Sex</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <select name="sex" id="sex" id="sex" class="form-control" required>
-              <option value="">Sex</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-  </select>
-  <span class="error_form" id="sex_error_message"></span>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label">Religion</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="religion" id="religion" placeholder="Religion" class="form-control"  type="text">
-  <span class="error_form" id="religion_error_message"></span>
-    </div>
-  </div>
-</div>
-
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Nationality</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="nationality" id="nationality" placeholder="Nationality" class="form-control"  type="text">
-  <span class="error_form" id="nationality_error_message"></span>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-    <label class="col-md-4 control-label" >Education</label> 
-      <div class="col-md-4 inputGroupContainer">
-      <div class="input-group">
-    <span class="input-group-addon"></i></span>
-    <input name="education" id="education" placeholder="Education" class="form-control"  type="text">
-    <span class="error_form" id="education_error_message"></span>
+      <div class="col-half">
+        <h4>Nationality</h4>
+        <div class="input-group">
+            <input name="nationality" id="nationality" placeholder="Nationality" type="text">
+        </div>
       </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-4 control-label" >Occupation</label> 
-      <div class="col-md-4 inputGroupContainer">
-      <div class="input-group">
-    <span class="input-group-addon"></i></span>
-    <input name="occupation" id="occupation" placeholder="Occupation" class="form-control"  type="text">
-    <span class="error_form" id="occupation_error_message"></span>
+      
+      <div class="col-half">
+        <h4>Education</h4>
+        <div class="input-group">
+           <input name="education" id="education" placeholder="Education" type="text">
+        </div>
       </div>
-    </div>
-  </div>
 
-<!-- <div class="form-group">
-  <label class="col-md-4 control-label" >Telephone No</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"></i></span>
-  <input name="tel_no" id="tel_no" placeholder="Telephone No." class="form-control"  type="text" required>
-  <span class="error_form" id="telno_error_message"></span>
     </div>
-  </div>
-</div> -->
 
-<div class="form-group">
-    <label class="col-md-4 control-label" >Cellphone No</label> 
-      <div class="col-md-4 inputGroupContainer">
-      <div class="input-group">
-    <span class="input-group-addon"></i></span>
-    <input name="cellphonenum" id="cel_no" placeholder="Cellphone No." class="form-control"  type="text" required>
-    <span class="error_form" id="celno_error_message"></span>
+    <div class="row">
+
+      <div class="col-half">
+        <h4>Occupation</h4>
+        <div class="input-group">
+            <input name="occupation" id="occupation" placeholder="Occupation" type="text">
+        </div>
       </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-4 control-label" >Email Address</label> 
-      <div class="col-md-4 inputGroupContainer">
-      <div class="input-group">
-    <span class="input-group-addon"></i></span>
-    <input name="email" id="email_add" placeholder="Email Address" class="form-control"  type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
-    <span class="error_form" id="email_error_message"></span>
+      
+      <div class="col-half">
+        <h4>Cellphone No.</h4>
+        <div class="input-group">
+           <input name="cellphonenum" id="cel_no" placeholder="Cellphone No." type="text" required>
+        </div>
       </div>
-    </div>
-  </div>
 
-  
-  <div class="form-group">
-    <label class="col-md-4 control-label" >Blood Bank</label> 
-      <div class="col-md-4 inputGroupContainer">
-      <div class="input-group">
-    <span class="input-group-addon"></i></span>
-    <input name="bloodbank" id="bloodbank" placeholder="Blood Bank" class="form-control"  type="email" required>
-    <span class="error_form"  id="mname_error_message"></span>
+    </div>
+
+    <div class="row">
+
+      <div class="col-half">
+        <h4>Email Address</h4>
+        <div class="input-group">
+            <input name="email" id="email_add" placeholder="Email Address" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+        </div>
       </div>
+      
+      <div class="col-half">
+        <h4>Blood Bank</h4>
+        <div class="input-group">
+           <input name="bloodbank" id="bloodbank" placeholder="Blood Bank" type="email" required>
+        </div>
+      </div>
+
     </div>
-  </div>
 
-<div class="form-group">
-  <label class="col-md- control-label"></label>
-  <div class="col-md-4">
-    <button type="submit" class="btn btn-primary" name="donate" >Submit</button>
-  </div>
-</div>
-
+        <button class="button" type="submit" name="donate">SUBMIT</button>
+    </div>
 </form>
-</div>
     </div><!-- /.container -->
 
 

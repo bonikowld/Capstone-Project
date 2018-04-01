@@ -237,13 +237,13 @@
       }
     
     function check_day() {
+      var pattern = /^[0-9]+$/;
       var day = $("#day").val();
 
-       if (day && day !== '') {
+       if (pattern.test(day) && day !== '') {
          $("#day_error_message").hide();
          $("#day").css("border-bottom","3px solid #34F458");
        } else {
-         $("#day_error_message").html("Should select an item in the list");
          $("#day_error_message").show();
          $("#day").css("border-bottom","2px solid #F90A0A");
          error_day = true;
@@ -251,13 +251,13 @@
      }
     
     function check_month() {
+      var pattern = /^[0-9]+$/;
       var month = $("#month").val();
 
-       if (month && month !== '') {
+       if (pattern.test(month) && month !== '') {
          $("#month_error_message").hide();
          $("#month").css("border-bottom","3px solid #34F458");
        } else {
-         $("#month_error_message").html("Should select an item in the list");
          $("#month_error_message").show();
          $("#month").css("border-bottom","2px solid #F90A0A");
          error_month = true;
@@ -265,13 +265,13 @@
      }
 
     function check_year() {
+      var pattern = /^[0-9]+$/;
       var year = $("#year").val();
 
-       if (year && year !== '') {
+       if (pattern.test(year) && year !== '') {
          $("#year_error_message").hide();
          $("#year").css("border-bottom","3px solid #34F458");
        } else {
-         $("#year_error_message").html("Should select an item in the list");
          $("#year_error_message").show();
          $("#year").css("border-bottom","2px solid #F90A0A");
          error_year = true;
