@@ -112,7 +112,7 @@
                           <li>
                             <?php
                                     if(isset($_SESSION['username'])){
-                                        echo "<li class='active'><a href='donate.php'>Donate</a></li>";
+                                        echo "<li><a href='donate.php'>Donate</a></li>";
                                     
                                     }
                                     else{
@@ -122,23 +122,26 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                           <!-- <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
-                      
+                        <b class='navbar-text'>
                           <?php 
-                                if(isset($_SESSION['username'])){
-                                  echo "<b class='navbar-text'><span class='glyphicon glyphicon-user'></span> WELCOME";
+                                if(isset($_SESSION['username'])){                             
                                   echo $_SESSION['username'];
-                                  echo "<li><a href='admin/logout.php'><span class='glyphicon glyphicon-log-out'></span> Log-out</a></li>";
+                                  
                                 }
-                                else{;
-                                  echo "<li><a data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>";
+                                else{ 
+                                  
                                 }
                               ?>
                               </b>
-                          
-                          
-                          
-                          
-                        </ul>
+                            <?php
+                            if(isset($_SESSION['username'])){   
+                             echo "<li><a href='admin/logout.php'><span class='glyphicon glyphicon-log-out'></span> Log-out</a></li>";
+                            }
+                            else{
+                             echo "<li><a data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Log-in</a></li>";
+                            }
+                            ?>
+                             </ul>
                       </div>
                     </div>
                   </nav>
