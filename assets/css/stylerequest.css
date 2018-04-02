@@ -233,6 +233,7 @@ select option {
   -o-transition: 0.35s ease-in-out;
   transition: 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
+  margin-top: 15px;
 }
 
 .navbar-static-top {
