@@ -2421,7 +2421,8 @@ input[type="search"] {
   }
 }
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 3px;
+  width: 195%;
 }
 .radio,
 .checkbox {
@@ -2813,8 +2814,8 @@ fieldset[disabled] .btn {
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
-  color: #333;
-  background-color: #e6e6e6;
+  color: #ffffff;
+  background-color: #800000;
   border-color: #adadad;
 }
 .btn-default:active,

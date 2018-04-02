@@ -38,9 +38,10 @@ if(!empty($_POST)){
         <!-- Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Viga" rel="stylesheet">
 
         <!-- Bootsrap -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.css">
 
         <!-- Font awesome -->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -103,139 +104,141 @@ if(!empty($_POST)){
                   </nav>
 
 
-        <div class="container">
-<form action="" method="POST">
-   <center><h1>Donate Blood</h1></center>
-
-   <div class="row">
-      
-      <h4>Identification Number</h4>
-      <div class="input-group-icon">
-        <input name="identificationno" id="idNo" placeholder="Identification No." type="text">
-      <div class="input-icon fa fa-user"></i></div>
-      </div>
-
-   </div>
-   <br>
-   <div class="row">
-
-      <h4>Name</h4>
-      <div class="input-group-icon">
-        <input  name="lastname" id="last_name" placeholder="Last Name" type="text" required>
-        <div class="input-icon fa fa-user"></i></div>
-      </div>
-
-      <div class="input-group-icon">
-        <input name="firstname" id="first_name" placeholder="First Name" type="text" required>
-        <div class="input-icon fa fa-user"></div>
-      </div>
-
-      <div class="input-group-icon">
-        <input name="middlename" id="middle_name" placeholder="Middle Name" type="text" required>
-        <div class="input-icon fa fa-user"></div>
-      </div>
-
-   </div>
-
+ <div class="container">
+  <form>
+   <strong><center><H2>PATIENT INFORMATION</H2></center> </strong>
     <div class="row">
-
-      <div class="col-half">
-        <h4>Age</h4>
-        <div class="input-group">
-            <input name="age" id="age" placeholder="Age" type="type" required>
+      <div class="input-group input-group-icon">
+        <input class="form-group" type="text" placeholder="Last Name"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
         </div>
+        <div class="input-group input-group-icon">
+        <input class="form-group"  type="text" placeholder="First Name"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
-
+      <div class="input-group input-group-icon">
+        <input class="form-group" type="text" placeholder="Middle Name"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-half">
         <h4>Date of Birth</h4>
         <div class="input-group">
-            <input name="birthdate" id="bdate" placeholder="Birth Date"  type="date" required>
+          <div class="col-third">
+            <input type="text" placeholder="DD"/>
+          </div>
+          <div class="col-third">
+            <input type="text" placeholder="MM"/>
+          </div>
+          <div class="col-third">
+            <input type="text" placeholder="YYYY"/>
+          </div>
         </div>
       </div>
-
-    </div>
-
-
-    <div class="row">
-
       <div class="col-half">
         <h4>Gender</h4>
-        <div class="input-group">
-          <input type="radio" name="sex" value="Male" id="gender-male"/>
-          <label for="gender-male">M</label>
-          <input type="radio" name="sex" value="Female" id="gender-female"/>
-          <label for="gender-female">F</label>
-        </div>
+        <div class="btn-group">
+    <button  type="button" class="btn btn-default" style="
+    width: 125px;
+    height: 54px;">Male</button>
+    <button type="button" class="btn btn-default" style="
+    width: 125px;
+    height: 54px;">Female</button>
+  </div>
       </div>
-
+    </div>
+<div class="row">
+     <div class="col-half">
+        <h4>Civil Status</h4>
+        <div class="btn-group">
+    <button  type="button" class="btn btn-default" style="
+    width: 123px;
+    height: 54px;">Single</button>
+    <button type="button" class="btn btn-default" style="
+    width: 123px;
+    height: 54px;">Married</button>
+  </div>
+      </div>
       <div class="col-half">
-        <h4>Religion</h4>
-        <div class="input-group">
-           <input name="religion" id="religion" placeholder="Religion" type="text">
+        <h4>Age</h4>
+        <div class="form-group-2">
+        <input type="Text" placeholder="Age"/>
         </div>
       </div>
     </div>
 
 
      <div class="row">
-
-      <div class="col-half">
-        <h4>Nationality</h4>
-        <div class="input-group">
-            <input name="nationality" id="nationality" placeholder="Nationality" type="text">
+     <h4>Address</h4>
+       <div class="form-group-2">
+        <input type="text" placeholder="Address"/>
         </div>
-      </div>
-      
-      <div class="col-half">
-        <h4>Education</h4>
-        <div class="input-group">
-           <input name="education" id="education" placeholder="Education" type="text">
-        </div>
-      </div>
-
-    </div>
-
-    <div class="row">
-
-      <div class="col-half">
-        <h4>Occupation</h4>
-        <div class="input-group">
-            <input name="occupation" id="occupation" placeholder="Occupation" type="text">
-        </div>
-      </div>
-      
-      <div class="col-half">
-        <h4>Cellphone No.</h4>
-        <div class="input-group">
-           <input name="cellphonenum" id="cel_no" placeholder="Cellphone No." type="text" required>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="row">
-
       <div class="col-half">
         <h4>Email Address</h4>
-        <div class="input-group">
-            <input name="email" id="email_add" placeholder="Email Address" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+        <div class="form-group-2">
+           <input type="text" placeholder="Email Address."/>
         </div>
       </div>
-      
+       <div class="col-half">
+        <h4>Nationality</h4>
+        <div class="form-group-2">
+        <input type="Text" placeholder="Nationality"/>
+        </div>
+      </div>
+    </div>
+   <div class="row">
       <div class="col-half">
-        <h4>Blood Bank</h4>
-        <div class="input-group">
-           <input name="bloodbank" id="bloodbank" placeholder="Blood Bank" type="text" required>
+        <h4>Education</h4>
+        <div class="form-group-2">
+           <input type="text" placeholder="Room No."/>
         </div>
       </div>
-
+       <div class="col-half">
+        <h4>Work</h4>
+        <div class="form-group-2">
+        <input type="Text" placeholder="Work"/>
+        </div>
+      </div>
     </div>
 
-        <button class="button" type="submit" name="donate">SUBMIT</button>
+      <div class="row">
+      <div class="col-half">
+        <h4>Telephone No.</h4>
+        <div class="form-group-2">
+           <input type="text" placeholder="Telephone No."/>
+        </div>
+      </div>
+       <div class="col-half">
+        <h4>Cellphone No.</h4>
+        <div class="form-group-2">
+        <input type="Text" placeholder="Cellphone No."/>
+        </div>
+      </div>
     </div>
-</form>
-    </div><!-- /.container -->
 
+  <div class="row">
+     <h4>Identification No.</h4>
+       <div class="form-group-2">
+        <input type="text" placeholder="Id No."/>
+        </div>
+</div>
+   
+
+<button class="button"> REQUEST</button>
+    </div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
 
 
 

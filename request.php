@@ -40,9 +40,9 @@ if(!empty($_POST)){
         <!-- Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
-
+        <link href="https://fonts.googleapis.com/css?family=Viga" rel="stylesheet">
         <!-- Bootsrap -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.css">
         <!-- Font awesome -->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
@@ -54,6 +54,7 @@ if(!empty($_POST)){
         
         <!-- Modernizr -->
         <script src="assets/js/modernizr-2.6.2.min.js"></script>
+
         
         <style>
           .error{
@@ -143,64 +144,91 @@ if(!empty($_POST)){
               </div>
             </div>  
 
-
 <div class="container">
-<form action="" method="POST">
-   <center><h1>Patient Information</h1></center> 
-    <div class="row">
+  <form>
+   <strong><center><H2>PATIENT INFORMATION</H2></center> </strong>
+    <div class="form-group row">
+
       <div class="input-group input-group-icon">
-        <input type="text" name="lastname" placeholder="Last Name"/>
-        <div class="input-icon fa fa-user"></i></div>
-      </div>
+        <input class = "form-group" type="text" placeholder="Last Name"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
+        </div>
+
+
         <div class="input-group input-group-icon">
-        <input type="text" name="firstname" placeholder="First Name"/>
-        <div class="input-icon fa fa-user"></div>
+        <input class="form-group" type="text" placeholder="First Name"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
+
+
       <div class="input-group input-group-icon">
-        <input type="text" name="middlename" placeholder="Middle Name"/>
-        <div class="input-icon fa fa-user"></div>
+        <input class="form-group" type="text" placeholder="Middle Name"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
+
     </div>
+
 
     <div class="row">
       <div class="col-half">
         <h4>Date of Birth</h4>
         <div class="input-group">
           <div class="col-third">
-            <input type="text" name="birthdate" placeholder="DD"/>
+            <input type="text" placeholder="DD"/>
           </div>
           <div class="col-third">
-            <input type="text" name="birthdate" placeholder="MM"/>
+            <input type="text" placeholder="MM"/>
           </div>
           <div class="col-third">
-            <input type="text" name="birthdate" placeholder="YYYY"/>
+            <input type="text" placeholder="YYYY"/>
           </div>
         </div>
       </div>
-
       <div class="col-half">
         <h4>Gender</h4>
+        <div class="btn-group">
+    <button  type="button" class="btn btn-default" style="
+    width: 125px;
+    height: 54px;">Male</button>
+    <button type="button" class="btn btn-default" style="
+    width: 125px;
+    height: 54px;">Female</button>
+  </div>
+      </div>
+    </div>
+<div class="row">
+      <div class="col-half">
+        <h4>Date of Request</h4>
         <div class="input-group">
-          <input type="radio" name="sex" value="M" id="gender-male"/>
-          <label for="gender-male">M</label>
-          <input type="radio" name="sex" value="F" id="gender-female"/>
-          <label for="gender-female">F</label>
+          <div class="col-third">
+            <input type="text" placeholder="DD"/>
+          </div>
+          <div class="col-third">
+            <input type="text" placeholder="MM"/>
+          </div>
+          <div class="col-third">
+            <input type="text" placeholder="YYYY"/>
+          </div>
         </div>
       </div>
-
-
-    <div class="row">
       <div class="col-half">
-        <h4>Age</h4>
+        <h4>Blood Type</h4>
         <div class="input-group">
-            <input type="text" name="age" placeholder="Age"/>
-        </div>
-      </div>
-
-      <div class="col-half">
-        <h4>Hospital</h4>
-        <div class="input-group">
-           <input type="text" name="hospital" placeholder="Hospital"/>
+          <div class="col-twothirds">
+          <select name="bloodtype" id="bloodtype" id="bloodtype" class="form-control" style="    width: 246px;
+    height: 54px;">
+             <option value="">Select Blood</option>
+              <option value="O">O</option>
+              <option value="O-">O-</option>
+              <option value="O+">O+</option>
+              <option value="A-">A-</option>
+              <option value="A+">A+</option>
+              <option value="B-">B-</option>
+              <option value="B+">B+</option>
+              <option value="AB-">AB-</option>
+              <option value="AB+">AB+</option>
+  </select>
+</div>
         </div>
       </div>
     </div>
@@ -208,47 +236,63 @@ if(!empty($_POST)){
 
      <div class="row">
       <div class="col-half">
-        <h4>Tel No</h4>
-        <div class="input-group">
-            <input type="Text" name="cellphonenum" placeholder="Tel No."/>
+        <h4>Hospital</h4>
+        <div class="form-group-2">
+            <input type="Text" placeholder="Hospital"/>
         </div>
       </div>
-      
       <div class="col-half">
         <h4>Room No</h4>
-        <div class="input-group">
-           <input type="text" name="roomnum" placeholder="Room No."/>
+        <div class="form-group-2">
+           <input type="text" placeholder="Room No."/>
         </div>
       </div>
     </div>
 
 
-    <div class="row">
-      <h4>Attending Physician</h4>
-          <div class="input-group input-group-icon">
-            <input type="text" name="physician" placeholder="Attending Physician"/>
-            <div class="input-icon fa fa-stethoscope"></div>
-            </div>
-        </div>
 
     <div class="row">
-      <h4>Clinical Diagnosis</h4>
+      <div class="col-half">
+        <h4>Age</h4>
+        <div class="form-group-2">
+            <input type="Text" placeholder="Age"/>
+        </div>
+      </div>
+      <div class="col-half">
+        <h4>Telephone No.</h4>
+        <div class="form-group-2">
+           <input type="text" placeholder="Tel No."/>
+        </div>
+      </div>
+    </div>
+
+
+
+
+<div class="row">
+  <h4>Attending Physician</h4>
       <div class="input-group input-group-icon">
-        <input type="message" name="diagnosis" placeholder="Clinical Diagnosis"/>
-        <div class="input-icon fa fa-stethoscope"></div>
+        <input class = "form-group" type="text" placeholder="Attending Physician"/>
+        <div class="input-icon"><i class="fa fa-stethoscope"></i></i></div>
+        </div>
+    </div>
+    <div class="row">
+  <h4>Clinical Diagnosis</h4>
+      <div class="input-group input-group-icon">
+        <input class = "form-group"  type="message" placeholder="Clinical Diagnosis"/>
+        <div class="input-icon"><i class="fa fa-stethoscope"></i></div>
         </div>
     </div>
 
-        <button class="button" type="submit" name="request"> REQUEST</button>
+<button class="button"> REQUEST</button>
     </div>
-</form>
-
-
-
-
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script  src="js/index.js"></script> -->
 
+  
+
+    <script  src="js/index.js"></script>
 
 
 

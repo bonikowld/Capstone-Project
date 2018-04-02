@@ -10,10 +10,16 @@ body {
   background-color: #e3e3e3;
   /* background-image: url("http://www.feedagreed.com/wp-content/uploads/2017/06/desktopwallpaper-2-800x450.png"); */
   background-size: 100% 100%;
-  color: #115c9b;
+  color: #800000;
   }
 h4 {
-  color: #7ed321;
+  color: #800000;
+}
+
+h2{
+
+  color: #800000;
+  font-family: 'Viga', sans-serif;
 }
 input,
 input[type="radio"] + label,
@@ -34,13 +40,13 @@ select {
 }
 input:focus {
   outline: 0;
-  border-color: #64ac15;
+  border-color: #800000;
 }
 input:focus + .input-icon i {
-  color: #7ed321;
+  color: #800000;
 }
 input:focus + .input-icon:after {
-  border-right-color: #7ed321;
+  border-right-color: #800000;
 }
 input[type="radio"] {
   display: none;
@@ -68,7 +74,7 @@ input[type="radio"]:checked + label,
 input:checked + label:before,
 select:focus,
 select:active {
-  background-color: #7ed321;
+  background-color: #800000;
   color: #fff;
   border-color: #64ac15;
 }
@@ -120,9 +126,10 @@ select:active {
   outline: 0;
 }
 select option {
-  background-color: #7ed321;
+  background-color: #800000;
   color: #fff;
 }
+
 .input-group {
   margin-bottom: 1em;
   zoom: 1;
@@ -218,7 +225,7 @@ select option {
   width: 100%;
   padding: 1em;
   line-height: 1.4;
-  background-color: #7ed321;
+  background-color: #800000;
   border: 1px solid #e5e5e5;
   border-radius: 3px;
   -webkit-transition: 0.35s ease-in-out;
@@ -226,6 +233,7 @@ select option {
   -o-transition: 0.35s ease-in-out;
   transition: 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
+  margin-top: 15px;
 }
 
 .navbar-static-top {
