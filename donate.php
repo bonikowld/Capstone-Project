@@ -83,16 +83,18 @@ if(!empty($_POST)){
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                          <b class="navbar-text"><span class="glyphicon glyphicon-user"></span> WELCOME
-                           <?php 
+                      
+                        <?php 
                                 if(isset($_SESSION['username'])){
+                                  echo "<b class='navbar-text'><span class='glyphicon glyphicon-user'></span> WELCOME";
                                   echo $_SESSION['username'];
+                                  echo "<li><a href='admin/logout.php'><span class='glyphicon glyphicon-log-out'></span> Log-out</a></li>";
                                 }
-                                else{ echo 'Session not set';
+                                else{;
+                                  echo "<li><a data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>";
                                 }
                               ?>
-                              </b>
-                              <li><a href="admin/logout.php"><span class="glyphicon glyphicon-log-out"></span> Log-out</a></li>                       
+                              </b>                
                         </ul>
                       </div>
                     </div>
@@ -221,7 +223,7 @@ if(!empty($_POST)){
       <div class="col-half">
         <h4>Blood Bank</h4>
         <div class="input-group">
-           <input name="bloodbank" id="bloodbank" placeholder="Blood Bank" type="email" required>
+           <input name="bloodbank" id="bloodbank" placeholder="Blood Bank" type="text" required>
         </div>
       </div>
 

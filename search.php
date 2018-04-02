@@ -114,7 +114,19 @@
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                           <li><a data-toggle='modal' data-target='#loginModal'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    
+                        <?php 
+                                if(isset($_SESSION['username'])){
+                                  echo "<b class='navbar-text'><span class='glyphicon glyphicon-user'></span> WELCOME";
+                                  echo $_SESSION['username'];
+                                  echo "<li><a href='admin/logout.php'><span class='glyphicon glyphicon-log-out'></span> Log-out</a></li>";
+                                }
+                                else{;
+                                  echo "<li><a data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>";
+                                }
+                              ?>
+                              </b>
+                             
                         </ul>
                       </div>
                     </div>

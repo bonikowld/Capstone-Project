@@ -109,12 +109,35 @@
                           <li class="active"><a href="index.php">Home</a></li>
                           <li><a href="search.php">Search</a></li>
                           <li><a href="request.php">Request</a></li>
-                          <li><a data-toggle='modal' data-target='#loginModal'>Donate</a></li>
-
+                          <li>
+                            <?php
+                                    if(isset($_SESSION['username'])){
+                                        echo "<li class='active'><a href='donate.php'>Donate</a></li>";
+                                    
+                                    }
+                                    else{
+                                        echo "<a data-toggle='modal' data-target='#loginModal'>Donate</a></li>";
+                                    }
+                            ?>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                           <!-- <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
-                          <li><a data-toggle='modal' data-target='#loginModal'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                      
+                          <?php 
+                                if(isset($_SESSION['username'])){
+                                  echo "<b class='navbar-text'><span class='glyphicon glyphicon-user'></span> WELCOME";
+                                  echo $_SESSION['username'];
+                                  echo "<li><a href='admin/logout.php'><span class='glyphicon glyphicon-log-out'></span> Log-out</a></li>";
+                                }
+                                else{;
+                                  echo "<li><a data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>";
+                                }
+                              ?>
+                              </b>
+                          
+                          
+                          
+                          
                         </ul>
                       </div>
                     </div>
