@@ -223,7 +223,7 @@ if(!empty($_POST)){
 </div>
    
 
-<button class="button"> REQUEST</button>
+<button class="button"> DONATE</button>
     </div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
