@@ -1,3 +1,24 @@
+<?php
+session_start();
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "blood_bank";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " .mysqli_connect_error());
+}
+
+
+// TODO - ADD DONOR ACCOUNT QUERY
+
+
+
+
+?>
 <!DOCTYPE html>
 <html class="no-js">
     <head>
@@ -74,7 +95,7 @@
 					</h1>
 			</div>
 			<br>
-		<form action="login.php" method="post">
+		<form action="" method="post">
 			<p class="content-divider center mt-4"><span>personal information</span></p><br>
 			
 			<h4 class="reg">Name</h4><br>
@@ -114,7 +135,7 @@
 				
 				<h4 class="reg">Contact Number</h4><br>
 				<div class="form-center-to-w3ls ">
-						<input type="text" name="contactno" id="contactno" placeholder="Phone No./Tel. No." required="">
+						<input type="text" name="contactnum" id="contactno" placeholder="Phone No./Tel. No." required="">
 						<span class="form-required" id="contactno_error_message"></span>
 				</div>
 			
@@ -130,7 +151,7 @@
             <div class="main">
 				<div class="form-left-to-w3l">
 					<h4 class="reg">Username</h4><br>
-					<input type="text" name="username" required="" placeholder="Username" required="">
+					<input type="text" name="username" placeholder="Username" required="">
 				</div>
 				<div class="form-right-to-w3ls ">
 					<h4 class="reg">Email Address</h4><br>
@@ -150,7 +171,7 @@
 			</div>
 			
 			<div class="btnn">
-				<button type="submit" class="btn btn-danger btn-block">Register</button><br>
+				<button type="submit" class="btn btn-danger btn-block" name="register">Register</button><br>
 			</div>
 
 		</form>

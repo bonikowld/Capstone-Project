@@ -12,12 +12,70 @@ if (!$conn) {
     die("Connection failed: " .mysqli_connect_error());
 }
 
+
+function logIn() {
+  if(isset($_POST['signin_btn'])){
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
+
+    $_SESSION['city']= $row['bloodbank'];
+    
+    $count=mysqli_num_rows($result);
+
+    if($count==1){
+      if ($row['role']=="admin")
+      {
+          header ("location: admin/index.php"); 
+          
+          
+      }  
+      else if ($row['role']=="")
+      {
+          $_SESSION['role']=$row['role'];
+          header ("location: donate.php");
+          $_SESSION['username']= $row['firstname']; 
+      }
+      
+
+    }
+    else{
+      $prompt = "Log in Failed Invalid Username or Password";
+      echo "<script type='text/javascript'>alert('$prompt');</script>";
+    }
+
+  }
+}
+
+
+
+
+
+
+
+
 if(!empty($_POST)){
-        session_start();
         $_SESSION["reload"] = "1";
 
-        $sql = "INSERT INTO request_blood (lastname, firstname, middlename, age, birthdate, sex, hospital, roomnum, physician, cellphonenum, diagnosis)
-                VALUES ('".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["hospital"]."','".$_POST["roomnum"]."','".$_POST["physician"]."','".$_POST["cellphonenum"]."','".$_POST["diagnosis"]."')";
+        $birthday = $_POST['birthday'];
+        $birthmonth = $_POST['birthmonth'];
+        $birthyear = $_POST['birthyear'];
+
+        $_POST["birthdate"] = $birthday."-".$birthmonth."-".$birthyear;
+
+        $requestday = $_POST['requestday'];
+        $requestmonth = $_POST['requestmonth'];
+        $requestyear = $_POST['requestyear'];
+
+        $_POST["requestdate"] = $requestday."-".$requestmonth."-".$requestyear;
+
+
+        $sql = "INSERT INTO request_blood (lastname, firstname, middlename, age, birthdate, sex, hospital, roomnum, physician, cellphonenum, diagnosis, dateofrequest, bloodtype)
+                VALUES ('".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["hospital"]."','".$_POST["roomnum"]."','".$_POST["physician"]."','".$_POST["cellphonenum"]."','".$_POST["diagnosis"]."','".$_POST["requestdate"]."','".$_POST["bloodtype"]."')";
 
         if ($conn->query($sql) == TRUE) {
           echo "<script type='text/javascript'>alert('Request Successfull');</script>";
@@ -42,6 +100,7 @@ if(!empty($_POST)){
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
         <link href="https://fonts.googleapis.com/css?family=Viga" rel="stylesheet">
         <!-- Bootsrap -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/bootstrap.css">
         <!-- Font awesome -->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -80,14 +139,17 @@ if(!empty($_POST)){
                           <li><a href="index.php">Home</a></li>
                           <li><a href="search.php">Search</a></li>
                           <li class="active"><a href="request.php">Request</a></li>
-                          <li> 
+                          <!-- <li><a href='donate.php'>Donate</a></li> -->
+                          <li>
                           <?php
+                          
                                     if(isset($_SESSION['username'])){
                                         echo "<li><a href='donate.php'>Donate</a></li>";
                                     
                                     }
                                     else{
-                                        echo "<a data-toggle='modal' data-target='#loginModal'>Donate</a></li>";
+                                      logIn(); // call the function
+                                      echo "<a data-toggle='modal' data-target='#loginModal'>Donate</a></li>";                                     
                                     }
                             ?>
 
@@ -119,7 +181,7 @@ if(!empty($_POST)){
                   </nav>
 
 
-        <div id="loginModal" class="modal fade " role="dialog">
+            <div id="loginModal" class="modal fade " role="dialog">
             <div class="modal-dialog modal-sm">
               <!-- Modal content-->
               <div class="modal-content">
@@ -134,7 +196,7 @@ if(!empty($_POST)){
                         <label>Password</label>
                         <input type="password"  name="password" class="form-control"><br>
                         <button class='btn btn-success' name="signin_btn">Log-in</button>
-                        <a href="register.html" class='btn btn-warning'>Sign-Up</a>
+                        <a href="register.php" class='btn btn-warning'>Sign-Up</a>
                     </form>
                 </div>
              
@@ -142,27 +204,30 @@ if(!empty($_POST)){
                </div> -->
                 </div>
               </div>
-            </div>  
+            </div>    
+
+
+
 
 <div class="container">
-  <form>
+  <form method="post" action="" >
    <strong><center><H2>PATIENT INFORMATION</H2></center> </strong>
     <div class="form-group row">
 
       <div class="input-group input-group-icon">
-        <input class = "form-group" type="text" placeholder="Last Name"/>
+        <input class = "form-group" type="text" name="lastname" placeholder="Last Name"/>
         <div class="input-icon"><i class="fa fa-user"></i></div>
         </div>
 
 
         <div class="input-group input-group-icon">
-        <input class="form-group" type="text" placeholder="First Name"/>
+        <input class="form-group" type="text" name="firstname" placeholder="First Name"/>
         <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
 
 
       <div class="input-group input-group-icon">
-        <input class="form-group" type="text" placeholder="Middle Name"/>
+        <input class="form-group" type="text" name="middlename" placeholder="Middle Name"/>
         <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
 
@@ -174,40 +239,43 @@ if(!empty($_POST)){
         <h4>Date of Birth</h4>
         <div class="input-group">
           <div class="col-third">
-            <input type="text" placeholder="DD"/>
+            <input type="text" name="birthday" placeholder="DD"/>
           </div>
           <div class="col-third">
-            <input type="text" placeholder="MM"/>
+            <input type="text" name="birthmonth" placeholder="MM"/>
           </div>
           <div class="col-third">
-            <input type="text" placeholder="YYYY"/>
+            <input type="text" name="birthyear" placeholder="YYYY"/>
           </div>
         </div>
       </div>
+
       <div class="col-half">
         <h4>Gender</h4>
-        <div class="btn-group">
-    <button  type="button" class="btn btn-default" style="
-    width: 125px;
-    height: 54px;">Male</button>
-    <button type="button" class="btn btn-default" style="
-    width: 125px;
-    height: 54px;">Female</button>
-  </div>
+        <div class="input-group">
+          <div class="col-twothirds">
+          <select name="sex" class="form-control" style="width: 246px; height: 54px;">
+             <option value="">Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+  </select>
+
+        </div>
       </div>
     </div>
+
 <div class="row">
       <div class="col-half">
         <h4>Date of Request</h4>
         <div class="input-group">
           <div class="col-third">
-            <input type="text" placeholder="DD"/>
+            <input type="text" name="requestday" placeholder="DD"/>
           </div>
           <div class="col-third">
-            <input type="text" placeholder="MM"/>
+            <input type="text" name="requestmonth" placeholder="MM"/>
           </div>
           <div class="col-third">
-            <input type="text" placeholder="YYYY"/>
+            <input type="text" name="requestyear" placeholder="YYYY"/>
           </div>
         </div>
       </div>
@@ -215,8 +283,7 @@ if(!empty($_POST)){
         <h4>Blood Type</h4>
         <div class="input-group">
           <div class="col-twothirds">
-          <select name="bloodtype" id="bloodtype" id="bloodtype" class="form-control" style="    width: 246px;
-    height: 54px;">
+          <select name="bloodtype" class="form-control" style="width: 246px; height: 54px;">
              <option value="">Select Blood</option>
               <option value="O">O</option>
               <option value="O-">O-</option>
@@ -238,13 +305,13 @@ if(!empty($_POST)){
       <div class="col-half">
         <h4>Hospital</h4>
         <div class="form-group-2">
-            <input type="Text" placeholder="Hospital"/>
+            <input type="Text" name="hospital" placeholder="Hospital"/>
         </div>
       </div>
       <div class="col-half">
         <h4>Room No</h4>
         <div class="form-group-2">
-           <input type="text" placeholder="Room No."/>
+           <input type="text" name="roomnum" placeholder="Room No."/>
         </div>
       </div>
     </div>
@@ -255,44 +322,46 @@ if(!empty($_POST)){
       <div class="col-half">
         <h4>Age</h4>
         <div class="form-group-2">
-            <input type="Text" placeholder="Age"/>
+            <input type="Text" name="age" placeholder="Age"/>
         </div>
       </div>
       <div class="col-half">
         <h4>Telephone No.</h4>
         <div class="form-group-2">
-           <input type="text" placeholder="Tel No."/>
+           <input type="text" name="cellphonenum" placeholder="Tel No."/>
         </div>
       </div>
     </div>
 
-
-
-
 <div class="row">
   <h4>Attending Physician</h4>
       <div class="input-group input-group-icon">
-        <input class = "form-group" type="text" placeholder="Attending Physician"/>
+        <input class = "form-group" type="text" name="physician" placeholder="Attending Physician"/>
         <div class="input-icon"><i class="fa fa-stethoscope"></i></i></div>
         </div>
     </div>
     <div class="row">
   <h4>Clinical Diagnosis</h4>
       <div class="input-group input-group-icon">
-        <input class = "form-group"  type="message" placeholder="Clinical Diagnosis"/>
+        <input class = "form-group"  type="message" name="diagnosis" placeholder="Clinical Diagnosis"/>
         <div class="input-icon"><i class="fa fa-stethoscope"></i></div>
         </div>
     </div>
 
-<button class="button"> REQUEST</button>
+<button class="button" name="request"> REQUEST</button>
     </div>
+
+</form>
+
+
+
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script  src="js/index.js"></script> -->
 
   
 
-    <script  src="js/index.js"></script>
+    <!-- <script  src="js/index.js"></script> -->
 
 
 

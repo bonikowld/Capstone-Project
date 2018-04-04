@@ -109,15 +109,15 @@ if(!empty($_POST)){
    <strong><center><H2>PATIENT INFORMATION</H2></center> </strong>
     <div class="row">
       <div class="input-group input-group-icon">
-        <input class="form-group" type="text" placeholder="Last Name"/>
+        <input class="form-group" type="text" name="lastname" placeholder="Last Name"/>
         <div class="input-icon"><i class="fa fa-user"></i></div>
         </div>
         <div class="input-group input-group-icon">
-        <input class="form-group"  type="text" placeholder="First Name"/>
+        <input class="form-group"  type="text" name="firstname" placeholder="First Name"/>
         <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
       <div class="input-group input-group-icon">
-        <input class="form-group" type="text" placeholder="Middle Name"/>
+        <input class="form-group" type="text" name="middlename"  placeholder="Middle Name"/>
         <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
     </div>
@@ -136,30 +136,35 @@ if(!empty($_POST)){
           </div>
         </div>
       </div>
+
       <div class="col-half">
         <h4>Gender</h4>
-        <div class="btn-group">
-    <button  type="button" class="btn btn-default" style="
-    width: 125px;
-    height: 54px;">Male</button>
-    <button type="button" class="btn btn-default" style="
-    width: 125px;
-    height: 54px;">Female</button>
-  </div>
+        <div class="input-group">
+          <div class="col-twothirds">
+          <select name="sex" class="form-control" style="width: 246px; height: 54px;">
+             <option value="">Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+  </select>
+
+        </div>
       </div>
     </div>
-<div class="row">
-     <div class="col-half">
+
+<div class="col-half">
         <h4>Civil Status</h4>
-        <div class="btn-group">
-    <button  type="button" class="btn btn-default" style="
-    width: 123px;
-    height: 54px;">Single</button>
-    <button type="button" class="btn btn-default" style="
-    width: 123px;
-    height: 54px;">Married</button>
-  </div>
+        <div class="input-group">
+          <div class="col-twothirds">
+          <select name="sex" class="form-control" style="width: 246px; height: 54px;">
+             <option value="">Status</option>
+              <option value="Single">Single</option>
+              <option value="Married">Married</option>
+  </select>
+
+        </div>
       </div>
+    </div>
+
       <div class="col-half">
         <h4>Age</h4>
         <div class="form-group-2">
@@ -216,14 +221,29 @@ if(!empty($_POST)){
         </div>
       </div>
     </div>
-
   <div class="row">
      <h4>Identification No.</h4>
        <div class="form-group-2">
         <input type="text" placeholder="Id No."/>
         </div>
 </div>
+
+<div class="row">
+        <h4>Blood Bank</h4>
+        <div class="input-group">
+          <div class="col-twothirds">
+          <select name="sex" class="form-control" style="width: 246px; height: 54px;">
+             <option value="">Blood Bank</option>
+              <option value="Oroquieta City">Oroquieta City</option>
+              <option value="Ozamiz City">Ozamiz City</option>
+              <option value="Tangub City">Tangub City</option>
+  </select>
+
+        </div>
+      </div>
+    </div>
    
+
 
 <button class="button"> DONATE</button>
     </div>

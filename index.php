@@ -251,7 +251,7 @@
                         <label>Password</label>
                         <input type="password"  name="password" class="form-control"><br>
                         <button class='btn btn-success' name="signin_btn">Log-in</button>
-                        <a href="register.html" class='btn btn-warning'>Sign-Up</a>
+                        <a href="register.php" class='btn btn-warning'>Sign-Up</a>
                     </form>
                 </div>
              
