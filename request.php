@@ -53,11 +53,6 @@ function logIn() {
 
 
 
-
-
-
-
-
 if(!empty($_POST)){
         $_SESSION["reload"] = "1";
 

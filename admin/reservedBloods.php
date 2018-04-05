@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,6 +49,9 @@
              <li>
               <a href="tables.php">Blood Records</a>
             </li>
+            <li>
+              <a href="donations.php">Blood Donation</a>
+            </li>
              <li>
               <a href="addrecord.php">Add Records</a>
 
@@ -54,7 +61,7 @@
 
             </li>
             <li>
-              <a href="reservedBloods.php">Reserved Bloods</a>
+              <a href="tables.php">Reserved Bloods</a>
             </li>
             
           </ul>
@@ -114,40 +121,38 @@
 
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Request Records </div>
+          <i class="fa fa-table"></i> Blood Records </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered table-hover " id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
+                  <th>Serial Number</th>
+                  <th>Blood Type</th>
+                  <th>City</th>
                   <th>Last Name</th>
                   <th>First Name</th>
                   <th>Middle Name</th>
-                  <th>Age</th>
-                  <th>Birthdate</th>
-                  <th>Sex</th>
-                  <th>Hospital</th>
-                  <th>Room Number</th>
-                  <th>Physician</th>
-                  <th>Cellphone Number</th>
-                  <th>Diagnosis</th>
-
-
+                  <th>Address</th>
+                  <th>Contact Number</th>
+                  <th>Purpose</th>                 
+                  
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                <th>Last Name</th>
+                <th>Serial Number</th>
+                  <th>Blood Type</th>
+                  <th>City</th>
+                  <th>Last Name</th>
                   <th>First Name</th>
                   <th>Middle Name</th>
-                  <th>Age</th>
-                  <th>Birthdate</th>
-                  <th>Sex</th>
-                  <th>Hospital</th>
-                  <th>Room Number</th>
-                  <th>Physician</th>
-                  <th>Cellphone Number</th>
-                  <th>Diagnosis</th>
+                  <th>Address</th>
+                  <th>Contact Number</th>
+                  <th>Purpose</th> 
+        
+                 
+       
                 </tr>
               </tfoot>
               
@@ -164,23 +169,22 @@
                 if (!$conn) {
                     die("Connection failed: " . mysqli_connect_error());
                 }
-                $result = mysqli_query($conn,"SELECT * FROM request_blood");
+
+                $result = mysqli_query($conn,"SELECT * FROM reserve_blood WHERE city = '" . $_SESSION['city'] . "' ");
 
                       
                 while($row = mysqli_fetch_array($result))  
                 {
                 echo "<tr class='clickable-row row-data' data-href='url://'>";
+                echo "<td class='serialnumber'>".$row['serialnumber']."</td>";
+                echo "<td class='bloodtype'>".$row['bloodtype']."</td>";
+                echo "<td class='city'>".$row['city']."</td>";
                 echo "<td class='lastname'>".$row['lastname']."</td>";
                 echo "<td class='firstname'>".$row['firstname']."</td>";
                 echo "<td class='middlename'>".$row['middlename']."</td>";
-                echo "<td class='age'>".$row['age']."</td>";
-                echo "<td class='birthdate'>".$row['birthdate']."</td>";
-                echo "<td class='sex'>".$row['sex']."</td>";
-                echo "<td class='hospital'>".$row['hospital']."</td>";
-                echo "<td class='roomnum'>".$row['roomnum']."</td>";
-                echo "<td class='physician'>".$row['physician']."</td>";
-                echo "<td class='cellphonenum'>".$row['cellphonenum']."</td>";
-                echo "<td class='diagnosis'>".$row['diagnosis']."</td>";
+                echo "<td class='homeaddress'>".$row['homeaddress']."</td>";
+                echo "<td class='contactnum'>".$row['contactnum']."</td>";
+                echo "<td class='purpose'>".$row['purpose']."</td>";
 
                 echo "</tr>";
                 };
@@ -252,8 +256,8 @@
 
    
       <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle='modal' data-target='#deleteModal'>Delete</button>
         <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle='modal' data-target='#updateModal'>Update</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle='modal' data-target="#deleteModal" >Delete</button> 
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>  
      </div>
       </div>
@@ -265,14 +269,12 @@
 <!-- modal for deleting -->
 <div id="deleteModal" class="modal fade " role="dialog">
   <div class="modal-dialog modal-sm">
-
     <!-- Modal content-->
     <div class="modal-content">
       <!-- <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"></h4>
       </div> -->
-  
       <div class='modal-body' >
       <h6>Are you Sure?</h6>
       <button type='button' class='btn btn-success' name="delete_btn">Confirm</button>
@@ -317,15 +319,16 @@
 
 <!-- Modal for updating record -->
 <div id="updateModal" class="modal fade " role="dialog">
-  <div class="modal-dialog modal-xl">
+  <div class="modal-dialog modal-md">
 
     <!-- Modal content-->
     <div class="modal-content ">
       <div class="modal-header ">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" modal-lg></h4>
-        
+        <h4 class="modal-title"></h4>
       </div>
+      
+      <div class="modal-bodyUpdate">
       <table class="table table-bordered table-condensed">
       <tbody>
         <tr>
@@ -333,52 +336,74 @@
           <label>Serial Number</label>
           <input type="text" name="serialnumber" class="form-control" >
           </td>
+        </tr>
+
+        <tr>
           <td>
           <label>Donor</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Blood Type</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Component</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Quantity</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Expiration Date</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Borrowed By</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>OR number</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Contact</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Amount</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Remarks</label>
-          <input type="text" class="form-control" >
+          <input type="text" name="serialnumber" class="form-control" >
           </td>
         </tr>
+     
+        <tr>
+          <td>
+          <label>Blood Type</label>
+          <input type="text" name="serialnumber" class="form-control" >
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <label>Component</label>
+          <input type="text" name="serialnumber" class="form-control" >
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <label>Quality</label>
+          <input type="text" name="serialnumber" class="form-control" >
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <label>Extraction Date</label>
+          <input type="text" name="serialnumber" class="form-control" >
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <label>Expiration Date</label>
+          <input type="text" name="serialnumber" class="form-control" >
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <label>City</label>
+          <input type="text" name="serialnumber" class="form-control" >
+          </td>
+        </tr>
+
+         <tr>
+          <td>
+          <label>Borrowed By</label>
+          <input type="text" name="serialnumber" class="form-control" >
+          </td>
+        </tr>
+
+         <tr>
+          <td>
+          <label>Borrowers Address</label>
+          <input type="text" name="serialnumber" class="form-control" >
+          </td>
+        </tr>
+
+
+        
       </tbody>
       
       </table>
+              </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" >Done</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" >Send to Report</button>
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
       </div>
     </div>

@@ -67,7 +67,7 @@
 
             </li>
             <li>
-              <a href="tables.php">Reserved Bloods</a>
+              <a href="reservedBloods.php">Reserved Bloods</a>
             </li>
             
           </ul>

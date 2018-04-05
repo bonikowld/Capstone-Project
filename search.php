@@ -46,6 +46,7 @@
             $prompt = "Log in Failed Invalid Username or Password";
             echo "<script type='text/javascript'>alert('$prompt');</script>";
           }
+
          
           mysqli_close($conn);
 
@@ -252,6 +253,7 @@
               $bloodtype = $_GET['bloodtype'];
 
               $result = mysqli_query($conn,"SELECT * FROM blood WHERE bloodtype = '$bloodtype' AND city = '$city' ;");
+              
 
               while($row = mysqli_fetch_array($result))
               {
@@ -259,11 +261,30 @@
                 echo "<td class='text-center'>".$row['serialnumber']."</td>";
                 echo "<td class='text-center'>".$row['bloodtype']."</td>";
                 echo "<td class='text-center'>".$row['city']."</td>";
-                echo "<td class='text-center'><a class='btn btn-info btn-xs' href='contact.html'><span class='glyphicon glyphicon-ok'></span> Yes</a></td>";
-                echo "</tr>";
+                echo "<td class='text-center'><a class='btn btn-info btn-xs' data-toggle='modal' data-target='#reserveModal'><span class='glyphicon glyphicon-ok'></span> Yes</a></td>";
+                echo "</tr>";               
                 }
               }
              
+              if(isset($_POST['reserve'])){
+
+                $row['serialnumber'] = $serialnumber;
+                $row['bloodtype'] = $bloodtype;
+                $row['city'] = $city;
+          
+          
+                $sql = "INSERT INTO reserve_blood (serialnumber, bloodtype, city, lastname, firstname, middlename, homeaddress, contactnum, purpose)
+                        VALUES  ('".$row["serialnumber"]."','".$row["bloodtype"]."','".$row["city"]."','".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["address"]."','".$_POST["contactnum"]."','".$_POST["purpose"]."')";
+          
+          
+                  if ($conn->query($sql) == TRUE) {
+                    echo "<script type='text/javascript'>alert('Reservation Successfull');</script>";
+                    } else {
+                    echo "<script type='text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
+                    } 
+                    
+                  }
+
               mysqli_close($conn); 
            ?>
            
@@ -273,6 +294,70 @@
 </div>
 
 
+  <div id="reserveModal" class="modal fade " role="dialog">
+            <div class="modal-dialog modal-md">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Reservation Form</h4>
+                </div>
+                <div class='modal-body'>
+                    <form method="post" action=""> 
+                      
+                      <div class="form-group">
+                        <label class="col-md-4 control-label">Last Name</label>  
+                        <div class="input-group">
+                        <span class="input-group-addon"></i></span>
+                        <input  name="lastname" placeholder="Last Name" class="form-control"  type="text">
+                          </div>  </br>                    
+                      
+                        <label class="col-md-4 control-label">First Name</label> 
+                          <div class="input-group">
+                        <span class="input-group-addon"></span>
+                        <input name="firstname" placeholder="First Name" class="form-control"  type="text">
+                          </div>  </br>                        
+                  
+                        <label class="col-md-4 control-label">Middle Name</label>  
+                        <div class="input-group">
+                        <span class="input-group-addon"></i></span>
+                        <input  name="middlename" placeholder="Middle Name" class="form-control"  type="text">
+                          </div></br>
+
+                        <label class="col-md-4 control-label" >Address</label> 
+                          <div class="input-group">
+                        <span class="input-group-addon"></i></span>
+                        <input name="address" placeholder="Address" class="form-control"  type="Text"> 
+                          </div></br>
+
+                          <label class="col-md-4 control-label" >Contact Number</label> 
+                          <div class="input-group">
+                        <span class="input-group-addon"></i></span>
+                        <input name="contactnum" placeholder="Contact Number" class="form-control"  type="Text"> 
+                          </div></br>
+
+                          <label class="col-md-4 control-label" >Purpose</label>                 
+                            <div class="input-group">
+                          <span class="input-group-addon"></i></span>
+                          <textarea name="purpose" class="form-control" placeholder="Purpose" required></textarea>
+                            </div></br>
+
+                  
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4">
+                              <button type="submit" name="reserve" class="btn btn-primary">Reserve</button>
+                            </div></br>
+                        </form>
+
+            </div>                                               
+                    
+                </div>
+             
+                <!-- <div class="modal-footer">
+               </div> -->
+                </div>
+              </div>
+            </div>  
 
 
 <!-- <div id="myModal" class="modal fade " role="dialog">
@@ -313,9 +398,11 @@
     ================================================== -->
 
     <!-- jQuery -->
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="assets/js/jquery-1.11.1.min.js"><\/script>')</script>
 
+    <script src="assets/js/jquery-1.11.1.min.js"></script>
     <!-- Bootsrap javascript file -->
     <script src="assets/js/bootstrap.min.js"></script>
     
