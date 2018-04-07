@@ -16,9 +16,9 @@
         if(isset($_POST['signin_btn'])){
 
           $username = $_POST['username'];
-          $password = $_POST['password'];
+          $pass = $_POST['pass'];
 
-          $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+          $sql = "SELECT * FROM users WHERE username = '$username' AND pass = '$pass'";
           $result = mysqli_query($conn, $sql);
           $row = mysqli_fetch_array($result);
 
@@ -249,7 +249,7 @@
                         <label>Username</label> 
                         <input type="text"  name="username"  class="form-control">
                         <label>Password</label>
-                        <input type="password"  name="password" class="form-control"><br>
+                        <input type="password"  name="pass" class="form-control"><br>
                         <button class='btn btn-success' name="signin_btn">Log-in</button>
                         <a href="register.php" class='btn btn-warning'>Sign-Up</a>
                     </form>

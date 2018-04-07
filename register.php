@@ -11,13 +11,26 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " .mysqli_connect_error());
 }
+if(isset($_POST['register'])){
+		
+		$birthday = $_POST['day'];
+        $birthmonth = $_POST['month'];
+        $birthyear = $_POST['year'];
 
+        $_POST["birthdate"] = $birthday."-".$birthmonth."-".$birthyear;
 
+$sql = "INSERT INTO users (lastname, firstname, middlename, dateofbirth, contactnum, homeaddress, username, pass, email)
+                VALUES ('".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["birthdate"]."','".$_POST["cellphonenum"]."','".$_POST["homeaddress"]."','".$_POST["username"]."','".$_POST["pass"]."','".$_POST["email"]."')";
+
+if ($conn->query($sql) == TRUE) {
+	echo "<script type='text/javascript'>alert('Sign-Up Successfull');</script>";
+	} else {
+	echo "<script type='text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
+	}
+	
+	$conn->close();
 // TODO - ADD DONOR ACCOUNT QUERY
-
-
-
-
+}
 ?>
 <!DOCTYPE html>
 <html class="no-js">
@@ -101,17 +114,17 @@ if (!$conn) {
 			<h4 class="reg">Name</h4><br>
 			<div class="main">
 				<div class="form-left-to-w3l">
-					<input type="text" name="lname" id="lname" placeholder="Last Name" required="">
+					<input type="text" name="lastname" id="lname" placeholder="Last Name" required="">
 					<span class="form-required" id="lname_error_message"></span>
 					<div class="clear"></div>
 				</div>
 				<div class="form-center-to-w3ls">
-					<input type="text" name="fname" id="fname" placeholder="First Name" required="">
+					<input type="text" name="firstname" id="fname" placeholder="First Name" required="">
 					<span class="form-required" id="fname_error_message"></span>
 					<div class="clear"></div>
 				</div>
 				<div class="form-right-to-w3ls">
-					<input type="text" name="mname" id="mname" placeholder="Middle Name" required="">
+					<input type="text" name="middlename" id="mname" placeholder="Middle Name" required="">
 					<span class="form-required" id="mname_error_message"></span>
 					<div class="clear"></div>
 				</div> 
@@ -135,13 +148,13 @@ if (!$conn) {
 				
 				<h4 class="reg">Contact Number</h4><br>
 				<div class="form-center-to-w3ls ">
-						<input type="text" name="contactnum" id="contactno" placeholder="Phone No./Tel. No." required="">
+						<input type="text" name="cellphonenum" id="contactno" placeholder="Phone No./Tel. No." required="">
 						<span class="form-required" id="contactno_error_message"></span>
 				</div>
 			
 				<h4 class="reg">Address</h4><br>
 				<div class="form-add-to-w3ls add">
-						<input type="text" name="address" id="address" placeholder="Complete Address" required="">
+						<input type="text" name="homeaddress" id="address" placeholder="Complete Address" required="">
 						<span class="form-required" id="address_error_message"></span>
 						<div class="clear"></div>
 				</div>
@@ -162,38 +175,32 @@ if (!$conn) {
 			<div class="main">
 					<div class="form-left-to-w3l">
 						<h4 class="reg">Password</h4><br>
-						<input type="password" name="password" required="" placeholder="Password" required="">
+						<input type="password" name="pass" required="" placeholder="Password" required="">
 					</div>
-					<div class="form-right-to-w3ls ">
+					<!-- <div class="form-right-to-w3ls ">
 						<h4 class="reg">Confirm password</h4><br>
 						<input type="password" name="cpassword" placeholder="Confirm Password" required="">
-					</div>
+					</div> -->
 			</div>
 			
-			<div class="btnn">
+			<div class="btn">
 				<button type="submit" class="btn btn-danger btn-block" name="register">Register</button><br>
 			</div>
 
 		</form>
 		<br>
 		<h4 class="text-center">
-				Already have an account? <a class="link" href="login.php">Login Now</a>
+				Already have an account? <a class="link" href="index.php">Login Now</a>
 		</h4>
 
 
 		<div class="clear"></div>
-
-
-
 	</div>
+
 	
 	<div class="footer">
 		<p>&copy;Donor Registration</p>
 	</div>
-
-
-
-
 
 
     <!--  Scripts

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -13,7 +15,7 @@ if (!$conn) {
 
 if(!empty($_POST)){
             $sql = "INSERT INTO blood (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, city)
-            VALUES ('".$_POST["serialnumber"]."','".$_POST["donor"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["quantity"]."','".$_POST["extractiondate"]."','".$_POST["expirationdate"]."','".$_POST["city"]."')";
+            VALUES ('".$_POST["serialnumber"]."','".$_POST["donor"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["quantity"]."','".$_POST["extractiondate"]."','".$_POST["expirationdate"]."','".$_SESSION['city']."')";
 
 
             if ($conn->query($sql) == TRUE) {
@@ -194,6 +196,7 @@ if(!empty($_POST)){
            <label>Bloodtype</label>
              <select type="text" name="bloodtype" id="bloodtype" class="form-control" required>
               <option value="">-</option>
+              <option value="O">O</option>
               <option value="O-">O-</option>
               <option value="O+">O+</option>
               <option value="A-">A-</option>
@@ -224,19 +227,16 @@ if(!empty($_POST)){
             </td>
             <td>
            <label>Extraction Date</label>
-             <input class="form-control" name="extractiondate" id="extractiondate" type="text" placeholder="mm/dd/yyyy" required/>
+             <input class="form-control" name="extractiondate" id="extractiondate" type="date" placeholder="mm/dd/yyyy" required/>
              <span class="error_form" id="extdate_error_message"></span>
             </td>
             <td>
            <label>Expiration Date</label>
-             <input class="form-control" name="expirationdate" id="expirationdate" type="text" placeholder="mm/dd/yyyy" required/>
+             <input class="form-control" name="expirationdate" id="expirationdate" type="date" placeholder="mm/dd/yyyy" required/>
              <span class="error_form" id="expdate_error_message"></span>
             </td> 
-            <td>
-           <label>City</label>
-             <input class="form-control" name="city" id="city" required/>
-             <span class="error_form" id="expdate_error_message"></span>
-            </td>
+          
+       
         </tr>
     </tbody>
 </table>

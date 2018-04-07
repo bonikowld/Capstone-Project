@@ -249,6 +249,7 @@
               }
 
               if(isset($_GET['search'])){
+  
               $city = $_GET['city'];
               $bloodtype = $_GET['bloodtype'];
 
