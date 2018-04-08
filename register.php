@@ -13,7 +13,7 @@ if (!$conn) {
 }
 if(isset($_POST['register'])){
 		
-		$birthday = $_POST['day'];
+		    $birthday = $_POST['day'];
         $birthmonth = $_POST['month'];
         $birthyear = $_POST['year'];
 
@@ -29,7 +29,7 @@ if ($conn->query($sql) == TRUE) {
 	}
 	
 	$conn->close();
-// TODO - ADD DONOR ACCOUNT QUERY
+
 }
 ?>
 <!DOCTYPE html>
@@ -241,13 +241,13 @@ if ($conn->query($sql) == TRUE) {
         <h4>Date of Birth</h4>
         <div class="input-group">
           <div class="col-third">
-            <input type="text" name="birthday" id="day" placeholder="DD"/>
+            <input type="text" name="day" id="day" placeholder="DD"/>
           </div>
           <div class="col-third">
-            <input type="text" name="birthmonth" id="month" placeholder="MM"/>
+            <input type="text" name="month" id="month" placeholder="MM"/>
           </div>
           <div class="col-third">
-            <input type="text" name="birthyear" id="year" placeholder="YYYY"/>
+            <input type="text" name="year" id="year" placeholder="YYYY"/>
           </div>
         </div>
       </div>
@@ -255,7 +255,7 @@ if ($conn->query($sql) == TRUE) {
       <div class="col-half">
         <h4>Contact No</h4>
        <div class="form-group-2">
-            <input type="Text" name="Contact No" id="contactno" placeholder="Contact No"/>
+            <input type="Text" name="cellphonenum" id="contactno" placeholder="Contact No"/>
         </div>
     </div>
 </div>
@@ -283,14 +283,14 @@ if ($conn->query($sql) == TRUE) {
 
 
       <div class="input-group input-group-icon">
-        <input class="form-group" type="password" name="password" id="pass" placeholder="Password"/>
+        <input class="form-group" type="password" name="pass" id="pass" placeholder="Password"/>
         <div class="input-icon"><i class="fa fa-lock"></i></div>
       </div>
 
     </div>
  
 
-<button type="submit" class="button" name="request"> REGISTER NOW</button>
+<button type="submit" class="button" name="register"> REGISTER NOW</button>
 <h4 class="text-center">
 				Already have an account? <a class="link" href="index.php">Login Now</a>
 		</h4>

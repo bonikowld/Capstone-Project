@@ -12,47 +12,6 @@ if (!$conn) {
     die("Connection failed: " .mysqli_connect_error());
 }
 
-
-function logIn() {
-  if(isset($_POST['signin_btn'])){
-
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($result);
-
-    $_SESSION['city']= $row['bloodbank'];
-    
-    $count=mysqli_num_rows($result);
-
-    if($count==1){
-      if ($row['role']=="admin")
-      {
-          header ("location: admin/index.php"); 
-          
-          
-      }  
-      else if ($row['role']=="")
-      {
-          $_SESSION['role']=$row['role'];
-          header ("location: donate.php");
-          $_SESSION['username']= $row['firstname']; 
-      }
-      
-
-    }
-    else{
-      $prompt = "Log in Failed Invalid Username or Password";
-      echo "<script type='text/javascript'>alert('$prompt');</script>";
-    }
-
-  }
-}
-
-
-
 if(!empty($_POST)){
         $_SESSION["reload"] = "1";
 
@@ -77,9 +36,52 @@ if(!empty($_POST)){
           } else {
           echo "<script type='text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
           }
-          
+
           $conn->close();
-}
+        
+        }
+        
+        
+
+
+        // if(isset($_POST['signin_btn'])){
+
+        //   $username = $_POST['username'];
+        //   $password = $_POST['password'];
+      
+        //   $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+        //   $result = mysqli_query($conn, $sql);
+        //   $row = mysqli_fetch_array($result);
+      
+        //   $_SESSION['city']= $row['bloodbank'];
+          
+        //   $count=mysqli_num_rows($result);
+      
+        //   if($count==1){
+        //     if ($row['role']=="admin")
+        //     {
+        //         header ("location: admin/index.php"); 
+                
+                
+        //     }  
+        //     else if ($row['role']=="")
+        //     {
+        //         $_SESSION['role']=$row['role'];
+        //         header ("location: donate.php");
+        //         $_SESSION['username']= $row['firstname']; 
+        //     }
+            
+      
+        //   }
+        //   else{
+        //     $prompt = "Log in Failed Invalid Username or Password";
+        //     echo "<script type='text/javascript'>alert('$prompt');</script>";
+        //   }
+      
+        // }
+    
+         
+
 ?>
 
 <!DOCTYPE html>
@@ -110,11 +112,11 @@ if(!empty($_POST)){
         <script src="assets/js/modernizr-2.6.2.min.js"></script>
 
         
-        <style>
+        <!-- <style>
           .error{
            color:red
           }
-        </style>
+        </style> -->
 
     </head>
 
@@ -142,8 +144,7 @@ if(!empty($_POST)){
                                         echo "<li><a href='donate.php'>Donate</a></li>";
                                     
                                     }
-                                    else{
-                                      logIn(); // call the function
+                                    else{                       
                                       echo "<a data-toggle='modal' data-target='#loginModal'>Donate</a></li>";                                     
                                     }
                             ?>
@@ -166,7 +167,7 @@ if(!empty($_POST)){
                              echo "<li><a href='admin/logout.php'><span class='glyphicon glyphicon-log-out'></span> Log-out</a></li>";
                             }
                             else{
-                             echo "<li><a data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Log-in</a></li>";
+                              echo "<li><a data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Log-in</a></li>";
                             }
                             ?>
                               
@@ -176,7 +177,7 @@ if(!empty($_POST)){
                   </nav>
 
 
-            <div id="loginModal" class="modal fade " role="dialog">
+            <div id="loginModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
               <!-- Modal content-->
               <div class="modal-content">
@@ -200,8 +201,6 @@ if(!empty($_POST)){
                 </div>
               </div>
             </div>    
-
-
 
 
 <div class="container">
