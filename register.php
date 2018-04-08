@@ -47,7 +47,7 @@ if ($conn->query($sql) == TRUE) {
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
         <link href="//fonts.googleapis.com/css?family=Cabin:400,500,600,700" rel="stylesheet">
         <!-- Bootsrap -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.css">
 
         <!-- Font awesome -->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -59,7 +59,7 @@ if ($conn->query($sql) == TRUE) {
         <link rel="stylesheet" href="assets/css/style.css">
 
         <!-- Template main Css -->
-        <link rel="stylesheet" href="assets/css/registration.css">
+        <link rel="stylesheet" href="assets/css/stylerequest.css">
         
         <!-- Modernizr -->
 		<script src="assets/js/modernizr-2.6.2.min.js"></script>
@@ -100,111 +100,114 @@ if ($conn->query($sql) == TRUE) {
                     </div>
                   </nav>
 
-	<br>
-    <div class="Registration-main-w3ls">
-			<div class="mt-2 text-center">
-					<h1 class="header-w3ls">
-						Sign Up to get started
-					</h1>
-			</div>
-			<br>
-		<form action="" method="post">
-			<p class="content-divider center mt-4"><span>personal information</span></p><br>
-			
-			<h4 class="reg">Name</h4><br>
-			<div class="main">
-				<div class="form-left-to-w3l">
-					<input type="text" name="lastname" id="lname" placeholder="Last Name" required="">
-					<span class="form-required" id="lname_error_message"></span>
-					<div class="clear"></div>
-				</div>
-				<div class="form-center-to-w3ls">
-					<input type="text" name="firstname" id="fname" placeholder="First Name" required="">
-					<span class="form-required" id="fname_error_message"></span>
-					<div class="clear"></div>
-				</div>
-				<div class="form-right-to-w3ls">
-					<input type="text" name="middlename" id="mname" placeholder="Middle Name" required="">
-					<span class="form-required" id="mname_error_message"></span>
-					<div class="clear"></div>
-				</div> 
-			</div>
-			
-			<h4 class="reg">Date of Birth</h4><br>
-			<div class="main">
-				<div class="form-left-to-w3l">
-					        <input type="text" name="day" id="day" placeholder="DD" required="">
-							<span class="form-required" id="day_error_message"></span>
-				</div>
-				<div class="form-center-to-w3ls">
-					        <input type="text" name="month" id="month" placeholder="MM" required="">
-							<span class="form-required" id="month_error_message"></span>
-				</div>
-				<div class="form-right-to-w3ls">
-					        <input type="text" name="year" id="year" placeholder="YYYY" required="">
-							<span class="form-required" id="year_error_message"></span>	
-				</div>
-			</div>
-				
-				<h4 class="reg">Contact Number</h4><br>
-				<div class="form-center-to-w3ls ">
-						<input type="text" name="cellphonenum" id="contactno" placeholder="Phone No./Tel. No." required="">
-						<span class="form-required" id="contactno_error_message"></span>
-				</div>
-			
-				<h4 class="reg">Address</h4><br>
-				<div class="form-add-to-w3ls add">
-						<input type="text" name="homeaddress" id="address" placeholder="Complete Address" required="">
-						<span class="form-required" id="address_error_message"></span>
-						<div class="clear"></div>
-				</div>
-
-
-            <p class="content-divider center mt-4"><span>login information</span></p><br>
-            <div class="main">
-				<div class="form-left-to-w3l">
-					<h4 class="reg">Username</h4><br>
-					<input type="text" name="username" placeholder="Username" required="">
-				</div>
-				<div class="form-right-to-w3ls ">
-					<h4 class="reg">Email Address</h4><br>
-					<input type="email" name="email" placeholder="Email" required="">
-				</div>
-			</div>
-
-			<div class="main">
-					<div class="form-left-to-w3l">
-						<h4 class="reg">Password</h4><br>
-						<input type="password" name="pass" required="" placeholder="Password" required="">
-					</div>
-					<!-- <div class="form-right-to-w3ls ">
-						<h4 class="reg">Confirm password</h4><br>
-						<input type="password" name="cpassword" placeholder="Confirm Password" required="">
-					</div> -->
-			</div>
-			
-			<div class="btn">
-				<button type="submit" class="btn btn-danger btn-block" name="register">Register</button><br>
-			</div>
-
-		</form>
-		<br>
-		<h4 class="text-center">
-				Already have an account? <a class="link" href="index.php">Login Now</a>
-		</h4>
-
-
-		<div class="clear"></div>
-	</div>
 
 	
-	<div class="footer">
-		<p>&copy;Donor Registration</p>
-	</div>
 
 
     <!--  Scripts
     ================================================== -->
+
+
+    <div class="container">
+  <form method="post" action="" >
+   <strong><center><H2>REGISTRATION FORM</H2></center> </strong>
+
+ <strong><center><H3>PERSONAL INFORMATION</H3></center> </strong>
+    <div class="form-group row">
+
+      <div class="input-group input-group-icon">
+        <input class = "form-group" type="text" name="lastname"  id="lname" placeholder="Last Name"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
+
+        </div>
+
+
+        <div class="input-group input-group-icon">
+        <input class="form-group" type="text" name="firstname" id="fname" placeholder="First Name"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
+      </div>
+
+
+      <div class="input-group input-group-icon">
+        <input class="form-group" type="text" name="middlename" id="mname" placeholder="Middle Name"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="col-half">
+        <h4>Date of Birth</h4>
+        <div class="input-group">
+          <div class="col-third">
+            <input type="text" name="birthday" id="day" placeholder="DD"/>
+          </div>
+          <div class="col-third">
+            <input type="text" name="birthmonth" id="month" placeholder="MM"/>
+          </div>
+          <div class="col-third">
+            <input type="text" name="birthyear" id="year" placeholder="YYYY"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-half">
+        <h4>Contact No</h4>
+       <div class="form-group-2">
+            <input type="Text" name="Contact No" id="contactno" placeholder="Contact No"/>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+  <h4>Complete Address</h4>
+        <input class = "form-group-2" type="text" name="homeaddress"  id="address" placeholder="Complete Address"/>
+    </div>
+
+ <strong><center><H3>LOG-IN INFORMATION</H3></center> </strong>
+ <div class="form-group row">
+
+      <div class="input-group input-group-icon">
+        <input class = "form-group" type="text" name="username"  id="username" placeholder="Username"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
+
+        </div>
+
+
+        <div class="input-group input-group-icon">
+        <input class="form-group" type="text" name="email" id="emailadd" placeholder="Email Address"/>
+        <div class="input-icon"><i class="fa fa-envelope"></i></div>
+      </div>
+
+
+      <div class="input-group input-group-icon">
+        <input class="form-group" type="password" name="password" id="pass" placeholder="Password"/>
+        <div class="input-icon"><i class="fa fa-lock"></i></div>
+      </div>
+
+    </div>
+
+
+<button class="button" name="request"> REGISTER NOW</button>
+    </div>
+</form>
+
+
+	<div class="footer">
+		<center><p>&copy;Donor Registration</p></center>
+	</div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+
+
+
+</body>
+
+</html>
+
 
     <!-- jQuery -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
