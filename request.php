@@ -209,19 +209,19 @@ if(!empty($_POST)){
     <div class="form-group row">
 
       <div class="input-group input-group-icon">
-        <input class = "form-group" type="text" name="lastname" placeholder="Last Name"/>
+        <input class = "form-group" type="text" name="lastname" placeholder="Last Name"/ style="width: 195%">
         <div class="input-icon"><i class="fa fa-user"></i></div>
         </div>
 
 
         <div class="input-group input-group-icon">
-        <input class="form-group" type="text" name="firstname" placeholder="First Name"/>
+        <input class="form-group" type="text" name="firstname" placeholder="First Name" style="width: 195%"/>
         <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
 
 
       <div class="input-group input-group-icon">
-        <input class="form-group" type="text" name="middlename" placeholder="Middle Name"/>
+        <input class="form-group" type="text" name="middlename" placeholder="Middle Name" style="width: 195%"/>
         <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
 
@@ -259,7 +259,11 @@ if(!empty($_POST)){
     </div>
 
 <div class="row">
-      <div class="col-half">
+      <div class="col-half" style="
+    margin-left: 15px;
+    width: 255px;
+">
+
         <h4>Date of Request</h4>
         <div class="input-group">
           <div class="col-third">
@@ -296,13 +300,14 @@ if(!empty($_POST)){
 
 
      <div class="row">
-      <div class="col-half">
+      <div class="col-half" style="margin-left: 15px;
+    width: 255px;">
         <h4>Hospital</h4>
         <div class="form-group-2">
             <input type="Text" name="hospital" placeholder="Hospital"/>
         </div>
       </div>
-      <div class="col-half">
+      <div class="col-half" style="width: 245px">
         <h4>Room No</h4>
         <div class="form-group-2">
            <input type="text" name="roomnum" placeholder="Room No."/>
@@ -313,13 +318,14 @@ if(!empty($_POST)){
 
 
     <div class="row">
-      <div class="col-half">
+      <div class="col-half" style="margin-left: 15px;
+    width: 255px;">
         <h4>Age</h4>
-        <div class="form-group-2">
+        <div class="form-group-2" >
             <input type="Text" name="age" placeholder="Age"/>
         </div>
       </div>
-      <div class="col-half">
+      <div class="col-half" style="width: 245px">
         <h4>Telephone No.</h4>
         <div class="form-group-2">
            <input type="text" name="cellphonenum" placeholder="Tel No."/>

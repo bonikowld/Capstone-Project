@@ -230,8 +230,8 @@ if(!empty($_POST)){
 
 <div class="row">
         <h4>Blood Bank</h4>
-        <div class="input-group">
-          <div class="col-twothirds">
+        <div class="form-group-2">
+          <div class="form-group-twothirds">
           <select name="sex" class="form-control" style="width: 246px; height: 54px;">
              <option value="">Blood Bank</option>
               <option value="Oroquieta City">Oroquieta City</option>
