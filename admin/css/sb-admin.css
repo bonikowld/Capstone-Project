@@ -508,4 +508,12 @@ footer.sticky-footer {
 }
 .table{ 
     overflow-x: scroll;
+    
 }
+.reportsTable{
+      display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+

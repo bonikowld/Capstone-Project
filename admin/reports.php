@@ -24,7 +24,9 @@
 
 <style media="print">
   noPrint{ display: none; }
-  yesPrint{ display: block !important; }
+  yesPrint{ display: block !important; 
+  
+  }
 </style>
 
 </head>
@@ -162,42 +164,66 @@
     </tbody>
 </table>  
 
-<div class="title">
+<!-- <div class="title">
 <h5>Philippine Red Cross</h5>
 <h6>Ozamiz City Branch</h6>
 <h6>Philippines, 7200</h6>
-</div>
+</div> -->
 
 <div class="yesPrint">
-<table class="table table-bordered">
-  <thead>
-      <tr>
-          <th>Serial Number</th>
-          <th>Donor Name</th> 
-          <th>Blood Type</th>
-          <th>Component</th>  
-          <th>Quantity</th>
-          <th>Borrower</th> 
-          <th>Borrowed Date</th>
-          <th>OR number</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
-
-
-  </tbody>
-
-</table>
+<div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Blood Records </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover " id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Serial Number</th>
+                  <th>Donor</th>
+                  <th>Blood Type</th>
+                  <th>Component</th>
+                  <th>Quantity</th>
+                  <th>Extraction Date</th>
+                  <th>Expiration Date</th>
+                  <th>Blood Bank</th>
+                  <th>Borrowers Name</th>
+                  <th>Borrowers Address</th>
+                  <th>Borrowers Contact Number</th>
+                  <th>OR Number</th>
+                  
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                <th>Serial Number</th>
+                  <th>Donor</th>
+                  <th>Blood Type</th>
+                  <th>Component</th>
+                  <th>Quantity</th>
+                  <th>Extraction Date</th>
+                  <th>Expiration Date</th>
+                  <th>Blood Bank</th>
+                  <th>Borrowers Name</th>
+                  <th>Borrowers Address</th>
+                  <th>Borrowers Contact Number</th>
+                  <th>OR Number</th>
+        
+                 
+       
+                </tr>
+              </tfoot>
+              
+              <tbody>
+              
+              
+              </tbody>
+              
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 
    
@@ -205,7 +231,7 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © Your Website 2018</small>
+          <small>Copyright © Project Blood Seeker 2018</small>
         </div>
       </div>
     </footer>

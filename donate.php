@@ -53,8 +53,8 @@ if(!empty($_POST)){
         <link rel="stylesheet" href="assets/css/stylerequest.css">
         
         <!-- Modernizr -->
-        <script src="assets/js/modernizr-2.6.2.min.js"></script>
-        
+        <!-- <script src="assets/js/modernizr-2.6.2.min.js"></script>
+         -->
         <!-- <style>
           .error{
            color:red
@@ -106,7 +106,7 @@ if(!empty($_POST)){
 
  <div class="container">
   <form>
-   <strong><center><H2>PATIENT INFORMATION</H2></center> </strong>
+   <strong><center><h2>DONOR'S INFORMATION</h2></center> </strong>
     <div class="row">
       <div class="input-group input-group-icon">
         <input class="form-group" type="text" name="lastname" placeholder="Last Name"/>
@@ -251,7 +251,7 @@ if(!empty($_POST)){
 
   
 
-    <script  src="js/index.js"></script>
+    <!-- <script  src="js/index.js"></script> -->
 
 
 
@@ -283,14 +283,14 @@ if(!empty($_POST)){
     <script src="assets/js/formvalidation.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
+    <!-- <script>
         (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
         function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
         e=o.createElement(i);r=o.getElementsByTagName(i)[0];
         e.src='//www.google-analytics.com/analytics.js';
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
         ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
+    </script> -->
 
     </body>
 </html>
