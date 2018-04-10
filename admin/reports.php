@@ -16,16 +16,7 @@
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
-
-  <style media="screen">
-  noPrint{ display: block; }
-  yesPrint{ display: block !important; }
-</style>
-
-<style media="print">
-  noPrint{ display: none; }
-  yesPrint{ display: block !important; }
-</style>
+  <link href="css/print.css" rel="stylesheet">
 
 </head>
 
@@ -118,9 +109,9 @@
   <div class="content-wrapper">
     <div class="container-fluid">
      
-
+<div class="no-print">
     <table class="table table-bordered table-condensed">
-<form >
+<form>
     <tbody>
         <tr>
             <td>
@@ -160,7 +151,8 @@
             </td>
         </tr>
     </tbody>
-</table>  
+</table>
+</div>  
 
 <div class="title">
 <h5>Philippine Red Cross</h5>
@@ -200,7 +192,7 @@
 </table>
 </div>
 
-   
+    <div class="no-print">
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">
       <div class="container">
@@ -209,6 +201,7 @@
         </div>
       </div>
     </footer>
+    </div>
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
@@ -351,6 +344,7 @@
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
+    <!-- <script src="js/orientation.js"></script> -->
 
 <script>
 //(function($){
