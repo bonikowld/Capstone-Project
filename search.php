@@ -16,37 +16,36 @@
         if(isset($_POST['signin_btn'])){
 
           $username = $_POST['username'];
-          $password = $_POST['password'];
+          $pass = $_POST['pass'];
 
-          $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+          $sql = "SELECT * FROM users WHERE username = '$username' AND pass = '$pass'";
           $result = mysqli_query($conn, $sql);
           $row = mysqli_fetch_array($result);
 
-          $_SESSION['username']= $row['bloodbank'];
+          $_SESSION['city']= $row['bloodbank'];
           
           $count=mysqli_num_rows($result);
 
           if($count==1){
             if ($row['role']=="admin")
-            {
+              {
                 header ("location: admin/index.php"); 
-                
-                
-            }  
+                    
+                    
+              }  
             else if ($row['role']=="")
-            {
+              {
                 $_SESSION['role']=$row['role'];
                 header ("location: donate.php");
                 $_SESSION['username']= $row['firstname']; 
+              }
             }
-            
 
-          }
           else{
             $prompt = "Log in Failed Invalid Username or Password";
             echo "<script type='text/javascript'>alert('$prompt');</script>";
           }
-
+        
          
           mysqli_close($conn);
 
@@ -111,7 +110,16 @@
                           <li><a href="index.php">Home</a></li>
                           <li class="active"><a href="search.php">Search</a></li>
                           <li><a href="request.php">Request</a></li>
-                          <li><a data-toggle='modal' data-target='#loginModal'>Donate</a></li>
+                          <li>
+                              <?php
+                                        if(isset($_SESSION['username'])){
+                                            echo "<li><a href='donate.php'>Donate</a></li>";
+                                        
+                                        }
+                                        else{
+                                            echo "<a data-toggle='modal' data-target='#loginModal'>Donate</a></li>";
+                                        }
+                                ?>
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
@@ -154,7 +162,7 @@
                         <label>Username</label> 
                         <input type="text"  name="username"  class="form-control">
                         <label>Password</label>
-                        <input type="password"  name="password" class="form-control"><br>
+                        <input type="password"  name="pass" class="form-control"><br>
                         <button class='btn btn-success' name="signin_btn">Log-in</button>
                         <a href="register.php" class='btn btn-warning'>Sign-Up</a>
                     </form>

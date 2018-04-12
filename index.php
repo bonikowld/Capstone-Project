@@ -247,9 +247,9 @@
                 <div class='modal-body'>
                     <form method="post" action="">  
                         <label>Username</label> 
-                        <input type="text"  name="username"  class="form-control">
+                        <input type="text"  name="username"  class="form-control" required>
                         <label>Password</label>
-                        <input type="password"  name="pass" class="form-control"><br>
+                        <input type="password"  name="pass" class="form-control" required><br>
                         <button class='btn btn-success' name="signin_btn">Log-in</button>
                         <a href="register.php" class='btn btn-warning'>Sign-Up</a>
                     </form>

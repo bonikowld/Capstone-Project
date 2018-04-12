@@ -216,20 +216,20 @@ if ($conn->query($sql) == TRUE) {
     <div class="form-group row">
 
       <div class="input-group input-group-icon">
-        <input class = "form-group" type="text" name="lastname"  id="lname" placeholder="Last Name"/>
+        <input class = "form-group" type="text" name="lastname"  id="lname" placeholder="Last Name" required>
         <div class="input-icon"><i class="fa fa-user"></i></div>
 
         </div>
 
 
         <div class="input-group input-group-icon">
-        <input class="form-group" type="text" name="firstname" id="fname" placeholder="First Name"/>
+        <input class="form-group" type="text" name="firstname" id="fname" placeholder="First Name" required>
         <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
 
 
       <div class="input-group input-group-icon">
-        <input class="form-group" type="text" name="middlename" id="mname" placeholder="Middle Name"/>
+        <input class="form-group" type="text" name="middlename" id="mname" placeholder="Middle Name" required>
         <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
 
@@ -241,13 +241,13 @@ if ($conn->query($sql) == TRUE) {
         <h4>Date of Birth</h4>
         <div class="input-group">
           <div class="col-third">
-            <input type="text" name="day" id="day" placeholder="DD"/>
+            <input type="text" name="day" id="day" placeholder="DD" required>
           </div>
           <div class="col-third">
-            <input type="text" name="month" id="month" placeholder="MM"/>
+            <input type="text" name="month" id="month" placeholder="MM" required>
           </div>
           <div class="col-third">
-            <input type="text" name="year" id="year" placeholder="YYYY"/>
+            <input type="text" name="year" id="year" placeholder="YYYY" required>
           </div>
         </div>
       </div>
@@ -255,7 +255,7 @@ if ($conn->query($sql) == TRUE) {
       <div class="col-half">
         <h4>Contact No</h4>
        <div class="form-group-2">
-            <input type="Text" name="cellphonenum" id="contactno" placeholder="Contact No"/>
+            <input type="Text" name="cellphonenum" id="contactno" placeholder="Contact No" required>
         </div>
     </div>
 </div>
@@ -263,27 +263,27 @@ if ($conn->query($sql) == TRUE) {
 
 <div class="row">
   <h4>Complete Address</h4>
-        <input class = "form-group-2" type="text" name="homeaddress"  id="address" placeholder="Complete Address"/>
+        <input class = "form-group-2" type="text" name="homeaddress"  id="address" placeholder="Complete Address" required>
     </div>
 
  <strong><center><H3>LOG-IN INFORMATION</H3></center> </strong>
  <div class="form-group row">
 
       <div class="input-group input-group-icon">
-        <input class = "form-group" type="text" name="username"  id="username" placeholder="Username"/>
+        <input class = "form-group" type="text" name="username"  id="username" placeholder="Username" required>
         <div class="input-icon"><i class="fa fa-user"></i></div>
 
         </div>
 
 
         <div class="input-group input-group-icon">
-        <input class="form-group" type="text" name="email" id="emailadd" placeholder="Email Address"/>
+        <input class="form-group" type="text" name="email" id="emailadd" placeholder="Email Address" required>
         <div class="input-icon"><i class="fa fa-envelope"></i></div>
       </div>
 
 
       <div class="input-group input-group-icon">
-        <input class="form-group" type="password" name="pass" id="pass" placeholder="Password"/>
+        <input class="form-group" type="password" name="pass" id="pass" placeholder="Password" required>
         <div class="input-icon"><i class="fa fa-lock"></i></div>
       </div>
 
