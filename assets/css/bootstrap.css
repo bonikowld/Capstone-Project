@@ -2804,8 +2804,8 @@ fieldset[disabled] .btn {
   opacity: .65;
 }
 .btn-default {
-  color: #333;
-  background-color: #fff;
+  color: #fff;
+  background-color: #800000;
   border-color: #ccc;
 }
 .btn-default:hover,
@@ -2846,11 +2846,11 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-default .badge {
   color: #fff;
-  background-color: #333;
+  background-color: #800000;
 }
 .btn-primary {
   color: #fff;
-  background-color: #337ab7;
+  background-color: #800000;
   border-color: #2e6da4;
 }
 .btn-primary:hover,

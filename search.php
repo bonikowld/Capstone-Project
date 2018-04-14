@@ -68,7 +68,7 @@
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css'>
         <link href="//fonts.googleapis.com/css?family=Cabin:400,500,600,700" rel="stylesheet">
         <!-- Bootsrap -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.css">
 
         <!-- Font awesome -->
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -207,7 +207,7 @@
               <option value="Tangub City">Tangub City</option>
              </select>
   </div>
-  <button class="btn btn-primary hidden-print"  name="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
+  <button class="btn btn-default hidden-print"  name="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
 </form>
 </center>
 
