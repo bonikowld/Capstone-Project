@@ -314,40 +314,34 @@
                 <div class='modal-body'>
                     <form method="post" action=""> 
                       
-                      <div class="form-group">
+                      <div class="form-group2">
                         <label class="col-md-4 control-label">Last Name</label>  
-                        <div class="input-group">
-                        <span class="input-group-addon"></i></span>
-                        <input  name="lastname" placeholder="Last Name" class="form-control"  type="text">
+                        <div class="form-group2" style="width: 376px;">
+                       <input  name="lastname" placeholder="Last Name" class="form-control"  type="text">
                           </div>  </br>                    
                       
                         <label class="col-md-4 control-label">First Name</label> 
-                          <div class="input-group">
-                        <span class="input-group-addon"></span>
+                          <div class="form-group2" style="width: 376px;">
                         <input name="firstname" placeholder="First Name" class="form-control"  type="text">
                           </div>  </br>                        
                   
                         <label class="col-md-4 control-label">Middle Name</label>  
-                        <div class="input-group">
-                        <span class="input-group-addon"></i></span>
+                        <div class="input-group2" style="width: 376px;">
                         <input  name="middlename" placeholder="Middle Name" class="form-control"  type="text">
                           </div></br>
 
                         <label class="col-md-4 control-label" >Address</label> 
-                          <div class="input-group">
-                        <span class="input-group-addon"></i></span>
+                          <div class="form-group2" style="width: 376px;">
                         <input name="address" placeholder="Address" class="form-control"  type="Text"> 
                           </div></br>
 
                           <label class="col-md-4 control-label" >Contact Number</label> 
-                          <div class="input-group">
-                        <span class="input-group-addon"></i></span>
+                          <div class="form-group2" style="width: 376px;">
                         <input name="contactnum" placeholder="Contact Number" class="form-control"  type="Text"> 
                           </div></br>
 
                           <label class="col-md-4 control-label" >Purpose</label>                 
-                            <div class="input-group">
-                          <span class="input-group-addon"></i></span>
+                             <div class="form-group2" style="width: 376px;">
                           <textarea name="purpose" class="form-control" placeholder="Purpose" required></textarea>
                             </div></br>
 
