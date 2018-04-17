@@ -129,13 +129,14 @@
                   <th>Age</th>
                   <th>Birthdate</th>
                   <th>Sex</th>
-                  <th>Religion</th>
                   <th>Nationality</th>
+                  <th>Civil Status</th>          
                   <th>Education</th>
                   <th>Occupation</th>
                   <th>Cellphone Number</th>
                   <th>Email Address</th>
                   <th>Identification No.</th>
+                  <th>Donor Address</th>
 
 
                 </tr>
@@ -148,13 +149,14 @@
                   <th>Age</th>
                   <th>Birthdate</th>
                   <th>Sex</th>
-                  <th>Religion</th>
                   <th>Nationality</th>
+                  <th>Civil Status</th>          
                   <th>Education</th>
                   <th>Occupation</th>
                   <th>Cellphone Number</th>
                   <th>Email Address</th>
                   <th>Identification No.</th>
+                  <th>Donor Address</th>
                 </tr>
               </tfoot>
               
@@ -183,13 +185,14 @@
                 echo "<td class='age'>".$row['age']."</td>";
                 echo "<td class='birthdate'>".$row['birthdate']."</td>";
                 echo "<td class='sex'>".$row['sex']."</td>";
-                echo "<td class='religion'>".$row['religion']."</td>";
                 echo "<td class='nationality'>".$row['nationality']."</td>";
+                echo "<td class='civilstatus'>".$row['civilstatus']."</td>";
                 echo "<td class='education'>".$row['education']."</td>";
                 echo "<td class='occupation'>".$row['occupation']."</td>";
                 echo "<td class='cellphonenum'>".$row['cellphonenum']."</td>";
                 echo "<td class='email'>".$row['email']."</td>";
                 echo "<td class='identificationno'>".$row['identificationno']."</td>"; 
+                echo "<td class='homeaddress'>".$row['homeaddress']."</td>"; 
                 echo "</tr>";
                 };
                 

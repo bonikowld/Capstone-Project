@@ -180,8 +180,8 @@ session_start();
                 echo "<td class='extractiondate'>".$row['extractiondate']."</td>";
                 echo "<td class='expirationdate'>".$row['expirationdate']."</td>";
                 echo "</tr>";
-                };
-                
+                };                    
+
                 mysqli_close($conn); 
                ?>
               
@@ -225,6 +225,7 @@ session_start();
     </div>
 
 <!-- Modal for editing and deleting data-->
+<form method="get" action="">
 <div id="myModal" class="modal fade " role="dialog">
   <div class="modal-dialog modal-lg">
 
@@ -247,57 +248,24 @@ session_start();
       <p id="bloodpic"><img class="bloodimg" src="../admin/img/img.jpg" alt="Blood" height="218px" width="207px" ></p>
       </div>
 
-   
-      <div class="modal-footer">
-      <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle='modal' data-target='#deleteModal'>Delete</button>
-        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle='modal' data-target='#updateModal'>Update</button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>  
-     </div>
-      </div>
-    </div>
-  </div>
-<!-- end of modal -->
-
-<form action="" method="get">
-<!-- modal for deleting -->
-<div id="deleteModal" class="modal fade " role="dialog">
-  <div class="modal-dialog modal-sm">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <!-- <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
-      </div> -->
-      <div class='modal-body' >
-      <h6>Are you Sure?</h6>
-      <button type='button' class='btn btn-success' name="delete_btn">Confirm</button>
-      <button type='button' class='btn btn-warning' data-dismiss='modal'>Cancel</button> 
-      </div>
-   
-      <!-- <div class="modal-footer">
-     </div> -->
-      </div>
-    </div>
-  </div>
-<!-- end of modal -->
-</form>
-
-
-    <?php 
+       <?php 
                 $servername = "localhost";
                 $username = "root";
                 $password = "";
                 $dbname = "blood_bank";
 
-                // Create connection
+           
                 $conn = mysqli_connect($servername, $username, $password, $dbname);
-                // Check connection
+             
                 if (!$conn) {
                     die("Connection failed: " . mysqli_connect_error());
-                }
+                }                       
 
-                if(isset($_GET['delete_btn'])){
-                  $sql = "DELETE FROM blood WHERE serialnumber = '".$serialnumber."' ";
+                
+                if(isset($_GET['delete_btn'])){ 
+                  $serialnumber = $row['serialnumber'];     
+
+                  $sql = "DELETE FROM blood WHERE serialnumber = '$serialnumber' ";
                   
                   if ($conn->query($sql) === TRUE) {
                    echo "<script type= 'text/javascript'>alert('Deleted successfully');</script>";
@@ -306,8 +274,21 @@ session_start();
                   }
                 }
 
+              
+
                 mysqli_close($conn); 
     ?>
+   
+      <div class="modal-footer">
+      <button type="submit" class="btn btn-danger" name="delete_btn" value="delete">Delete</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle='modal' data-target='#updateModal'>Update</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>  
+     </div>
+      </div>
+    </div>
+  </div>
+  </form>
+<!-- end of modal -->
 
 
 <!-- Modal for updating record -->
