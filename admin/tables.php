@@ -124,7 +124,7 @@ session_start();
           <i class="fa fa-table"></i> Blood Records </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered table-hover " id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
                   <th>Serial Number</th>
@@ -134,6 +134,7 @@ session_start();
                   <th>Quantity</th>
                   <th>Extraction Date</th>
                   <th>Expiration Date</th>
+                  <th>Action</th>
                   
                 </tr>
               </thead>
@@ -146,6 +147,7 @@ session_start();
                   <th>Quantity</th>
                   <th>Extraction Date</th>
                   <th>Expiration Date</th>
+                  <th>Action</th>
         
                  
        
@@ -153,38 +155,47 @@ session_start();
               </tfoot>
               
               <tbody>
+                <?php include 'php/connection.php';?>
+                
                 <?php 
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "blood_bank";
-
-                // Create connection
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-
                 $result = mysqli_query($conn,"SELECT * FROM blood WHERE city = '" . $_SESSION['city'] . "' ");
-
+                ?>
                       
-                while($row = mysqli_fetch_array($result))  
-                {
-                echo "<tr class='clickable-row row-data' data-href='url://'>";
-                echo "<td class='serialnumber'>".$row['serialnumber']."</td>";
-                echo "<td class='donor'>".$row['donor']."</td>";
-                echo "<td class='bloodtype'>".$row['bloodtype']."</td>";
-                echo "<td class='component'>".$row['component']."</td>";
-                echo "<td class='quantity'>".$row['quantity']."</td>";
-                echo "<td class='extractiondate'>".$row['extractiondate']."</td>";
-                echo "<td class='expirationdate'>".$row['expirationdate']."</td>";
-                echo "</tr>";
-                };                    
+                <?php while($row = mysqli_fetch_array($result))  
+                { ?>
+               
+                <td class='serialnumber'> <?php echo $row['serialnumber']; ?> </td>
+                <td class='donor'> <?php echo $row['donor']; ?> </td>
+                <td class='bloodtype'> <?php echo $row['bloodtype']; ?> </td>
+                <td class='component'> <?php echo $row['component']; ?> </td>
+                <td class='quantity'> <?php echo $row['quantity'];?> </td>
+                <td class='extractiondate'> <?php echo $row['extractiondate']; ?> </td>
+                <td class='expirationdate'> <?php echo $row['expirationdate']; ?> </td>
+                <form method='get' action=''>
+                  <td> <a onclick="return confirm ('Are You Sure?')" href="?serial=<?php echo $row['serialnumber']?>" class="btn btn-danger btn-sm">Delete</a>
+                       <button type='button' class='btn btn-success btn-sm' data-toggle='modal' data-target='#updateModal'>Update </button></td>
+            
+              </form>       
+              </tr>
+                <?php }; ?>                    
 
-                mysqli_close($conn); 
-               ?>
-              
+              <?php
+                if(isset($_GET['serial'])){ 
+                  $serial = $_GET['serial'];
+                    
+
+                  $sql = "DELETE FROM blood WHERE serialnumber = '$serial' ";
+                  
+                  if ($conn->query($sql) === TRUE) {
+                   echo "<script type= 'text/javascript'>alert('Deleted successfully');</script>";
+                  } else {
+                      echo "Error deleting record: " . $conn->error;
+                  }
+                } 
+                ?>
+
+                <?php mysqli_close($conn); ?>
+
               </tbody>
               
             </table>
@@ -224,73 +235,6 @@ session_start();
       </div>
     </div>
 
-<!-- Modal for editing and deleting data-->
-<form method="get" action="">
-<div id="myModal" class="modal fade " role="dialog">
-  <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
-      </div>
-      <div class="modal-body" >
-      <div class="bloodData" >
-      <b>Serial Number:</b> <span class="serialnumber"></span><br>
-      <b>Donor:</b> <span class="donor"></span><br> 
-      <b>Blood Type: </b> <span class="bloodtype"></span><br>
-      <b>Component:</b> <span class="component"></span><br>
-      <b>Quantity: </b> <span class="quantity"></span><br>
-      <b>Extraction Date:</b> <span class="extractiondate"></span><br>
-      <b>Expiration Date:</b> <span class="expirationdate"></span>
-      </div>
-      <p id="bloodpic"><img class="bloodimg" src="../admin/img/img.jpg" alt="Blood" height="218px" width="207px" ></p>
-      </div>
-
-       <?php 
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "blood_bank";
-
-           
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-             
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }                       
-
-                
-                if(isset($_GET['delete_btn'])){ 
-                  $serialnumber = $row['serialnumber'];     
-
-                  $sql = "DELETE FROM blood WHERE serialnumber = '$serialnumber' ";
-                  
-                  if ($conn->query($sql) === TRUE) {
-                   echo "<script type= 'text/javascript'>alert('Deleted successfully');</script>";
-                  } else {
-                      echo "Error deleting record: " . $conn->error;
-                  }
-                }
-
-              
-
-                mysqli_close($conn); 
-    ?>
-   
-      <div class="modal-footer">
-      <button type="submit" class="btn btn-danger" name="delete_btn" value="delete">Delete</button>
-        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle='modal' data-target='#updateModal'>Update</button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>  
-     </div>
-      </div>
-    </div>
-  </div>
-  </form>
-<!-- end of modal -->
-
-
 <!-- Modal for updating record -->
 <div id="updateModal" class="modal fade " role="dialog">
   <div class="modal-dialog modal-md">
@@ -308,14 +252,14 @@ session_start();
         <tr>
           <td>
           <label>Serial Number</label>
-          <input type="text" name="serialnumber" class="form-control" >
+          <input type="text" class="form-control"  name="serialnumber" value="<?php echo $row['serialnumber'] ?>" readonly>
           </td>
         </tr>
 
         <tr>
           <td>
           <label>Donor</label>
-          <input type="text" name="serialnumber" class="form-control" >
+          <input type="text" name="donor" class="form-control" placeholder="<?php echo $row['donor'] ?>" >
           </td>
         </tr>
      

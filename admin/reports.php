@@ -156,12 +156,6 @@
 </table>
 </div>  
 
-<!-- <div class="title">
-<h5>Philippine Red Cross</h5>
-<h6>Ozamiz City Branch</h6>
-<h6>Philippines, 7200</h6>
-</div> -->
-
 <div class="yesPrint">
 <div class="card mb-3">
         <div class="card-header">

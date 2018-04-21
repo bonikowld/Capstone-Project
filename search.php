@@ -186,7 +186,7 @@
 <form action="" method="get">
  <div class="btn-group">
      <select name="bloodtype" class="form-control form-control-lg" required>
-              <option value="">Select Blood</option>
+              <option value="" selected="selected" disabled="disabled">-- Select Blood --</option>
               <option value="O">O</option>
               <option value="O-">O-</option>
               <option value="O+">O+</option>
@@ -201,7 +201,7 @@
 
   <div class="btn-group btn-group-primary">
        <select name="city" class="form-control" required>
-              <option value="">Select City</option>
+              <option value="" selected="selected" disabled="disabled">-- Select City --</option>   
               <option value="Ozamiz City">Ozamiz City</option>
               <option value="Oroquieta City">Oroquieta City</option>
               <option value="Tangub City">Tangub City</option>

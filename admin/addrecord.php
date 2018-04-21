@@ -1,18 +1,9 @@
+<?php 
+    session_start(); 
+    include 'php/connection.php';
+?>
+
 <?php
-session_start();
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "blood_bank";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " .mysqli_connect_error());
-}
-
 if(!empty($_POST)){
             $sql = "INSERT INTO blood (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, city)
             VALUES ('".$_POST["serialnumber"]."','".$_POST["donor"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["quantity"]."','".$_POST["extractiondate"]."','".$_POST["expirationdate"]."','".$_SESSION['city']."')";
@@ -265,18 +256,9 @@ if(!empty($_POST)){
               </thead>
 
               <tbody>
+              <?php include 'php/connection.php';?>
+              
               <?php 
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "blood_bank";
-
-                // Create connection
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
                 $result = mysqli_query($conn,"SELECT * FROM blood");
                       
                     while($row = mysqli_fetch_array($result))  

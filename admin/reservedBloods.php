@@ -157,19 +157,9 @@ session_start();
               </tfoot>
               
               <tbody>
+              <?php include 'php/connection.php';?>
+              
                 <?php 
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "blood_bank";
-
-                // Create connection
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-
                 $result = mysqli_query($conn,"SELECT * FROM reserve_blood WHERE city = '" . $_SESSION['city'] . "' ");
 
                       
@@ -289,19 +279,9 @@ session_start();
 <!-- end of modal -->
 </form>
 
-
+     <?php include 'php/connection.php';?>
     <?php 
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "blood_bank";
-
-                // Create connection
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
+          
 
                 if(isset($_GET['delete_btn'])){
                   $sql = "DELETE FROM blood WHERE serialnumber = '".$serialnumber."' ";
