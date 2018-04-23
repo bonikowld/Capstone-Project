@@ -364,12 +364,13 @@ if(!empty($_POST)){
     </div>
 
 <button class="button" name="request"> REQUEST</button>
+
 </div>
 
 
 </form>
 
-
+<div class="footer"><span class="copyright">Copyright &copy; Project Blood Seeker</span></div>
 
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>

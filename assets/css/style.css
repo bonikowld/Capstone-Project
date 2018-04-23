@@ -167,3 +167,13 @@ h1{
   color: white;
   text-shadow: black 0.3em 0.3em 0.3em;  
 }
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #800000;
+  text-align: center;
+  color: white;
+}
