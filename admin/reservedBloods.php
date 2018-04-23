@@ -165,7 +165,6 @@ session_start();
                       
                 while($row = mysqli_fetch_array($result))  
                 {
-                echo "<tr class='clickable-row row-data' data-href='url://'>";
                 echo "<td class='serialnumber'>".$row['serialnumber']."</td>";
                 echo "<td class='bloodtype'>".$row['bloodtype']."</td>";
                 echo "<td class='city'>".$row['city']."</td>";

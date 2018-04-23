@@ -21,9 +21,10 @@ session_start();
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 
+
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top" onload="startTime()">
 <!-- Navigation-->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
@@ -116,13 +117,14 @@ session_start();
       <ol class="breadcrumb">
         <li class="breadcrumb-item active">Blood Records</li>
       </ol>-->
-
+       
       <!-- Example DataTables Card-->
 
       <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-table"></i> Blood Records </div>
-        <div class="card-body">
+        <div class="card-header" >
+          <div style="float:right;" id="txt"></div>
+          <i class="fa fa-table" ></i> Blood Records </div>
+        <div class="card-body" >
           <div class="table-responsive">
             <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
               <thead>
@@ -163,7 +165,16 @@ session_start();
                       
                 <?php while($row = mysqli_fetch_array($result))  
                 { ?>
-               
+                <?php 
+                $serialnumber = $row['serialnumber'];
+                $donor = $row['donor'];
+                $bloodtype = $row['bloodtype'];
+                $component = $row['component'];
+                $quantity = $row['quantity'];
+                $extractiondate = $row['extractiondate'];
+                $expirationdate = $row['expirationdate'];
+                ?>
+
                 <td class='serialnumber'> <?php echo $row['serialnumber']; ?> </td>
                 <td class='donor'> <?php echo $row['donor']; ?> </td>
                 <td class='bloodtype'> <?php echo $row['bloodtype']; ?> </td>
@@ -173,7 +184,7 @@ session_start();
                 <td class='expirationdate'> <?php echo $row['expirationdate']; ?> </td>
                 <form method='get' action=''>
                   <td> <a onclick="return confirm ('Are You Sure?')" href="?serial=<?php echo $row['serialnumber']?>" class="btn btn-danger btn-sm">Delete</a>
-                       <button type='button' class='btn btn-success btn-sm' data-toggle='modal' data-target='#updateModal'>Update </button></td>
+                       <button type='button' class='btn btn-success btn-sm' data-toggle='modal' data-target='#updateModal'>Checkout </button></td>
             
               </form>       
               </tr>
@@ -194,6 +205,40 @@ session_start();
                 } 
                 ?>
 
+                <?php
+                  if(isset($_POST['update'])){
+                    $serialnumber = $_POST['serialnumber'];
+                    $donor = $_POST['donor'];
+                    $bloodtype = $_POST['bloodtype'];
+                    $component = $_POST['component'];
+                    $quantity = $_POST['quantity'];
+                    $extractiondate = $_POST['extractiondate'];
+                    $expirationdate = $_POST['expirationdate'];
+                    $bloodbank = $_POST['city'];
+                    $borrowersname = $_POST['borrowedby'];
+                    $borrowersaddress = $_POST['borrowersaddress'];
+                    $borrowerscontactnum = $_POST['contactnumber'];
+                    $ornum = $_POST['ornumber'];
+
+                    $sql = "INSERT INTO report (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, bloodbank, borrowersname, borrowersaddress, borrowerscontactnum, ornum)
+                            VALUES ('".$_POST["serialnumber"]."', '".$_POST["donor"]."','".$_POST["bloodtype"]."', '".$_POST["component"]."', '".$_POST["quantity"]."', '".$_POST["extractiondate"]."', '".$_POST["expirationdate"]."', '".$_POST["city"]."', '".$_POST["borrowedby"]."', '".$_POST["borrowersaddress"]."', '".$_POST["contactnumber"]."', '".$_POST["ornumber"]."')";
+
+                    if($conn->query($sql) == TRUE){
+                ?>
+                    <script type= 'text/javascript'>alert('Checkout Successfull');</script>
+
+                    <?php 
+                    }else{
+                      ?>
+                      <script type= 'text/javascript'>alert('Checkout Failed');</script>
+ 
+                  <?php
+                    }
+                  }
+                
+                    ?>
+        
+
                 <?php mysqli_close($conn); ?>
 
               </tbody>
@@ -205,6 +250,120 @@ session_start();
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
+
+
+<!-- Modal for updating record -->
+
+<div id="updateModal" class="modal fade " role="dialog">
+  <div class="modal-dialog modal-md">
+
+    <!-- Modal content-->
+    <div class="modal-content ">
+      <div class="modal-header ">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+
+      
+    <div class="modal-bodyUpdate">
+    <form method='post' action=''>
+      <table class="table table-bordered table-condensed">
+      <tbody>
+        <tr>
+          <td>
+          <label for="serialnumber">Serial Number</label>
+          <input type="text" class="form-control"  name="serialnumber" value="<?php echo $serialnumber; ?>" readonly >
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+          <b>Donor</b>
+          <input type="text" name="donor" class="form-control" value="<?php echo $donor; ?>" readonly>
+          </td>
+        </tr>
+     
+        <tr>
+          <td>
+          <b>Blood Type</b>
+          <input type="text" name="bloodtype" class="form-control" value="<?php echo $bloodtype; ?>" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Component</b>
+          <input type="text" name="component" class="form-control" value="<?php echo $component; ?>" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Quantity</b>
+          <input type="text" name="quantity" class="form-control" value="<?php echo $quantity; ?>" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Extraction Date</b>
+          <input type="text" name="extractiondate" class="form-control" value="<?php echo $extractiondate; ?>" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Expiration Date</b>
+          <input type="text" name="expirationdate" class="form-control" value="<?php echo $expirationdate; ?>" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>City</b>
+          <input type="text" name="city" class="form-control" required >
+          </td>
+        </tr>
+
+         <tr>
+          <td>
+          <b>Borrowed By</b>
+          <input type="text" name="borrowedby" class="form-control" required>
+          </td>
+        </tr>
+
+         <tr>
+          <td>
+          <b>Borrowers Address</b>
+          <input type="text" name="borrowersaddress" class="form-control" required>
+          </td>
+        </tr>
+
+           <tr>
+          <td>
+          <b>Contact Number</b>
+          <input type="text" name="contactnumber" class="form-control" required>
+          </td>
+        </tr>
+
+           <tr>
+          <td>
+          <b>OR Number</b>
+          <input type="text" name="ornumber" class="form-control" required>
+          </td>
+        </tr>
+     
+      </tbody>
+      
+      </table>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success" name="update">Done</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+      </div>    
+      
+    </div>
+  </div>
+</div>
+
+
+
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
@@ -235,98 +394,6 @@ session_start();
       </div>
     </div>
 
-<!-- Modal for updating record -->
-<div id="updateModal" class="modal fade " role="dialog">
-  <div class="modal-dialog modal-md">
-
-    <!-- Modal content-->
-    <div class="modal-content ">
-      <div class="modal-header ">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
-      </div>
-      
-      <div class="modal-bodyUpdate">
-      <table class="table table-bordered table-condensed">
-      <tbody>
-        <tr>
-          <td>
-          <label>Serial Number</label>
-          <input type="text" class="form-control"  name="serialnumber" value="<?php echo $row['serialnumber'] ?>" readonly>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-          <label>Donor</label>
-          <input type="text" name="donor" class="form-control" placeholder="<?php echo $row['donor'] ?>" >
-          </td>
-        </tr>
-     
-        <tr>
-          <td>
-          <label>Blood Type</label>
-          <input type="text" name="serialnumber" class="form-control" >
-          </td>
-        </tr>
-        <tr>
-          <td>
-          <label>Component</label>
-          <input type="text" name="serialnumber" class="form-control" >
-          </td>
-        </tr>
-        <tr>
-          <td>
-          <label>Quality</label>
-          <input type="text" name="serialnumber" class="form-control" >
-          </td>
-        </tr>
-        <tr>
-          <td>
-          <label>Extraction Date</label>
-          <input type="text" name="serialnumber" class="form-control" >
-          </td>
-        </tr>
-        <tr>
-          <td>
-          <label>Expiration Date</label>
-          <input type="text" name="serialnumber" class="form-control" >
-          </td>
-        </tr>
-        <tr>
-          <td>
-          <label>City</label>
-          <input type="text" name="serialnumber" class="form-control" >
-          </td>
-        </tr>
-
-         <tr>
-          <td>
-          <label>Borrowed By</label>
-          <input type="text" name="serialnumber" class="form-control" >
-          </td>
-        </tr>
-
-         <tr>
-          <td>
-          <label>Borrowers Address</label>
-          <input type="text" name="serialnumber" class="form-control" >
-          </td>
-        </tr>
-
-
-        
-      </tbody>
-      
-      </table>
-              </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" >Send to Report</button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
     <!-- Bootstrap core JavaScript-->
@@ -361,6 +428,43 @@ session_start();
 //})(jQuery);
 </script>
 
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+<script>
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+
+if(dd<10) {
+    dd = '0'+dd
+} 
+
+if(mm<10) {
+    mm = '0'+mm
+} 
+
+today = mm + '/' + dd + '/' + yyyy;
+document.write(today);
+
+
+
+</script>
 
     
   </div>

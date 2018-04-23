@@ -201,8 +201,31 @@
               </tfoot>
               
               <tbody>
-              
-              
+                    <?php include 'php/connection.php';?>
+
+                 <?php 
+                $result = mysqli_query($conn,"SELECT * FROM report ");
+                ?>
+                      
+                <?php while($row = mysqli_fetch_array($result))  
+                { ?>
+               
+                <td class='serialnumber'> <?php echo $row['serialnumber']; ?> </td>
+                <td class='donor'> <?php echo $row['donor']; ?> </td>
+                <td class='bloodtype'> <?php echo $row['bloodtype']; ?> </td>
+                <td class='component'> <?php echo $row['component']; ?> </td>
+                <td class='quantity'> <?php echo $row['quantity'];?> </td>
+                <td class='extractiondate'> <?php echo $row['extractiondate']; ?> </td>
+                <td class='expirationdate'> <?php echo $row['expirationdate']; ?> </td>
+                <td class='bloodbank'> <?php echo $row['bloodbank']; ?> </td>
+                <td class='borrowersname'> <?php echo $row['borrowersname'];?> </td>
+                <td class='borrowersaddress'> <?php echo $row['borrowersaddress']; ?> </td>
+                <td class='borrowerscontactnum'> <?php echo $row['borrowerscontactnum']; ?> </td>
+                <td class='ornum'> <?php echo $row['ornum']; ?> </td>
+                
+              </tr>
+                <?php }; ?>
+             
               </tbody>
               
             </table>
