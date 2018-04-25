@@ -180,14 +180,14 @@
 </div>
 <div class="row">
   <div class="column2">
-   <button class="btn btn-default hidden-print"  name="readmore"> Read More</button>
+   <button class="btn btn-default hidden-print"  name="readmore"  data-toggle="modal" href="#readmore1"> Read More</button>
   </div>
   <div class="column2">
-     <button class="btn btn-default hidden-print"  name="readmore"> Read More</button>
+     <button class="btn btn-default hidden-print"  name="readmore" data-toggle="modal" href="#readmore2"> Read More</button>
   </div>
   <div class="column2">
     
-    <button class="btn btn-default hidden-print"  name="readmore"> Read More</button>
+    <button class="btn btn-default hidden-print"  name="readmore" data-toggle="modal" href="#readmore3"> Read More</button>
   </div>
 </div>
 
@@ -216,7 +216,7 @@
 </div>
 
 
-    
+  <!-- Modal login-->
     <div id="loginModal" class="modal fade " role="dialog">
             <div class="modal-dialog modal-sm">
               <!-- Modal content-->
@@ -240,7 +240,54 @@
                </div> -->
                 </div>
               </div>
-            </div>    
+            </div>   
+
+<!-- Modal readmore1-->
+
+<div class="modal fade" id="readmore1"  role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <strong><h2 class="header">RED CROSS MISSION</h2></strong>
+              <p>The Philippine National Red Cross brings timely, effective and compassionate</p> <p>humanitarian assistance for the most vulnerable without consideration of</p><p> nationality, race, creed, gender,socialstatus or political belief.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Modal readmore2-->
+    <div class="modal fade" id="readmore2" role="dialog" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <strong><h2 class="header">RED CROSS VISION</h2></strong>
+              <p>The Philippine Red Cross will be the foremost humanitarian organization in</p><p>thePhilippines, in services provided and number of people served.</p> 
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="readmore3" role="dialog" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <strong><h2 class="header">RED CROSS YOHTH</h2></strong>
+              <p>The Philippine Red Cross will be the foremost humanitarian organization in</p><p>thePhilippines, in services provided and number of people served.</p> 
+        </div>
+      </div>
+    </div>
 
 
 
