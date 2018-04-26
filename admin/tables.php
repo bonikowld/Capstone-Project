@@ -165,16 +165,8 @@ session_start();
                       
                 <?php while($row = mysqli_fetch_array($result))  
                 { ?>
-                <?php 
-                $serialnumber = $row['serialnumber'];
-                $donor = $row['donor'];
-                $bloodtype = $row['bloodtype'];
-                $component = $row['component'];
-                $quantity = $row['quantity'];
-                $extractiondate = $row['extractiondate'];
-                $expirationdate = $row['expirationdate'];
-                ?>
-
+          
+                <tr class='clickable-row row-data' data-href='url://'>
                 <td class='serialnumber'> <?php echo $row['serialnumber']; ?> </td>
                 <td class='donor'> <?php echo $row['donor']; ?> </td>
                 <td class='bloodtype'> <?php echo $row['bloodtype']; ?> </td>
@@ -184,7 +176,7 @@ session_start();
                 <td class='expirationdate'> <?php echo $row['expirationdate']; ?> </td>
                 <form method='get' action=''>
                   <td> <a onclick="return confirm ('Are You Sure?')" href="?serial=<?php echo $row['serialnumber']?>" class="btn btn-danger btn-sm">Delete</a>
-                       <button type='button' class='btn btn-success btn-sm' data-toggle='modal' data-target='#updateModal'>Checkout </button></td>
+                       <button type='button' class='btn btn-success btn-sm row-data' data-href='url://'>Checkout </button></td>
             
               </form>       
               </tr>
@@ -254,7 +246,7 @@ session_start();
 
 <!-- Modal for updating record -->
 
-<div id="updateModal" class="modal fade " role="dialog">
+<div id="updateModal" class="modal fade " role="dialog" >
   <div class="modal-dialog modal-md">
 
     <!-- Modal content-->
@@ -271,46 +263,46 @@ session_start();
       <tbody>
         <tr>
           <td>
-          <label for="serialnumber">Serial Number</label>
-          <input type="text" class="form-control"  name="serialnumber" value="<?php echo $serialnumber; ?>" readonly >
+          <b>Serial Number</b>
+          <p><input type="text" class="form-control serialnumber" id="serialnumber" name="serialnumber" readonly></p></input>
           </td>
         </tr>
 
         <tr>
           <td>
           <b>Donor</b>
-          <input type="text" name="donor" class="form-control" value="<?php echo $donor; ?>" readonly>
+          <input type="text" id="donor" name="donor" class="form-control donor" value="" readonly>
           </td>
         </tr>
      
         <tr>
           <td>
           <b>Blood Type</b>
-          <input type="text" name="bloodtype" class="form-control" value="<?php echo $bloodtype; ?>" readonly>
+          <input type="text" id="bloodtype" name="bloodtype" class="form-control bloodtype" readonly>
           </td>
         </tr>
         <tr>
           <td>
           <b>Component</b>
-          <input type="text" name="component" class="form-control" value="<?php echo $component; ?>" readonly>
+          <input type="text" id="component" name="component" class="form-control component" readonly>
           </td>
         </tr>
         <tr>
           <td>
           <b>Quantity</b>
-          <input type="text" name="quantity" class="form-control" value="<?php echo $quantity; ?>" readonly>
+          <input type="text" id="quantity" name="quantity" class="form-control quantity" readonly>
           </td>
         </tr>
         <tr>
           <td>
           <b>Extraction Date</b>
-          <input type="text" name="extractiondate" class="form-control" value="<?php echo $extractiondate; ?>" readonly>
+          <input type="text" id="extractiondate"  name="extractiondate" class="form-control extractiondate" readonly>
           </td>
         </tr>
         <tr>
           <td>
           <b>Expiration Date</b>
-          <input type="text" name="expirationdate" class="form-control" value="<?php echo $expirationdate; ?>" readonly>
+          <input type="text"  id="expirationdate"  name="expirationdate" class="form-control expirationdate" readonly>
           </td>
         </tr>
         <tr>
@@ -408,64 +400,7 @@ session_start();
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
-
-<script>
-//(function($){
-
-  //data-toggle='modal' data-target='#myModal'
-  $('.row-data').click(function(){
-    $('#myModal .serialnumber').text( $('.serialnumber', this).text() );
-    $('#myModal .donor').text( $('.donor', this).text() );
-    $('#myModal .bloodtype').text( $('.bloodtype', this).text() );
-    $('#myModal .component').text( $('.component', this).text() );
-    $('#myModal .quantity').text( $('.quantity', this).text() );
-    $('#myModal .extractiondate').text( $('.extractiondate', this).text() );
-    $('#myModal .expirationdate').text( $('.expirationdate', this).text() );
-
-    $('#myModal').modal();
-  });
-
-//})(jQuery);
-</script>
-
-<script>
-function startTime() {
-    var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
-    var s = today.getSeconds();
-    m = checkTime(m);
-    s = checkTime(s);
-    document.getElementById('txt').innerHTML =
-    h + ":" + m + ":" + s;
-    var t = setTimeout(startTime, 500);
-}
-function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;
-}
-</script>
-<script>
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
-var yyyy = today.getFullYear();
-
-if(dd<10) {
-    dd = '0'+dd
-} 
-
-if(mm<10) {
-    mm = '0'+mm
-} 
-
-today = mm + '/' + dd + '/' + yyyy;
-document.write(today);
-
-
-
-</script>
-
+    <script type="text/javascript" src="../admin/js/update.js"></script>
     
   </div>
 </body>
