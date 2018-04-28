@@ -26,90 +26,8 @@ session_start();
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.php">Project Blood Seeker</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.php">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Dashboard</span>
-          </a>
-        </li>
+      <?php include 'php/sidenav.php';?>
 
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Records</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
-             <li>
-              <a href="tables.php">Blood Records</a>
-            </li>
-            <li>
-              <a href="donations.php">Blood Donation</a>
-            </li>
-             <li>
-              <a href="addrecord.php">Add Records</a>
-
-            </li>
-            <li>
-              <a href="requestTable.php">Requested Bloods</a>
-
-            </li>
-            <li>
-              <a href="tables.php">Reserved Bloods</a>
-            </li>
-            
-          </ul>
-        </li>
-        
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-          <a class="nav-link"  href="reports.php">
-            <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">Reports</span>
-          </a>
-          <!-- <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-          <li>
-              <a href="login.html">Login Page</a>
-            </li>
-            <li>
-              <a href="login.html">Login Page</a>
-            </li>
-            <li>
-              <a href="register.html">Registration Page</a>
-            </li>
-            <li>
-              <a href="forgot-password.html">Forgot Password Page</a>
-            </li>
-            <li>
-              <a href="blank.html">Blank Page</a>
-            </li>
-          </ul> -->
-        </li>
-      </ul>
-      <!-- End of side navbar -->
-
-
-
-      <ul class="navbar-nav sidenav-toggler">
-        <li class="nav-item">
-          <a class="nav-link text-center" id="sidenavToggler">
-            <i class="fa fa-fw fa-angle-left"></i>
-          </a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs
@@ -121,7 +39,7 @@ session_start();
 
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Blood Records </div>
+          <i class="fa fa-table"></i> Reserve Records </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered table-hover " id="dataTable" width="100%" cellspacing="0">
@@ -190,69 +108,8 @@ session_start();
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
-    <footer class="sticky-footer">
-      <div class="container">
-        <div class="text-center">
-          <small>Copyright © Your Website 2018</small>
-        </div>
-      </div>
-    </footer>
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fa fa-angle-up"></i>
-    </a>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="../index.php">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php include 'php/logoutfooter.php';?>
 
-<!-- Modal for editing and deleting data-->
-<div id="myModal" class="modal fade " role="dialog">
-  <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
-      </div>
-      <div class="modal-body" >
-      <div class="bloodData" >
-      <b>Serial Number:</b> <span class="serialnumber"></span><br>
-      <b>Donor:</b> <span class="donor"></span><br> 
-      <b>Blood Type: </b> <span class="bloodtype"></span><br>
-      <b>Component:</b> <span class="component"></span><br>
-      <b>Quantity: </b> <span class="quantity"></span><br>
-      <b>Extraction Date:</b> <span class="extractiondate"></span><br>
-      <b>Expiration Date:</b> <span class="expirationdate"></span>
-      </div>
-      <p id="bloodpic"><img class="bloodimg" src="../admin/img/img.jpg" alt="Blood" height="218px" width="207px" ></p>
-      </div>
-
-   
-      <div class="modal-footer">
-      <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle='modal' data-target='#deleteModal'>Delete</button>
-        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle='modal' data-target='#updateModal'>Update</button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>  
-     </div>
-      </div>
-    </div>
-  </div>
-<!-- end of modal -->
 
 <form action="" method="get">
 <!-- modal for deleting -->
@@ -402,25 +259,6 @@ session_start();
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
-
-<script>
-//(function($){
-
-  //data-toggle='modal' data-target='#myModal'
-  $('.row-data').click(function(){
-    $('#myModal .serialnumber').text( $('.serialnumber', this).text() );
-    $('#myModal .donor').text( $('.donor', this).text() );
-    $('#myModal .bloodtype').text( $('.bloodtype', this).text() );
-    $('#myModal .component').text( $('.component', this).text() );
-    $('#myModal .quantity').text( $('.quantity', this).text() );
-    $('#myModal .extractiondate').text( $('.extractiondate', this).text() );
-    $('#myModal .expirationdate').text( $('.expirationdate', this).text() );
-
-    $('#myModal').modal();
-  });
-
-//})(jQuery);
-</script>
 
 
     

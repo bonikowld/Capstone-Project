@@ -1,56 +1,6 @@
 <?php
         session_start();
-        
-
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "blood_bank";
-        
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
-        // Check connection
-        if (!$conn) {
-            die("Connection failed: " .mysqli_connect_error());
-        }
-
-        if(isset($_POST['signin_btn'])){
-
-          $username = $_POST['username'];
-          $pass = $_POST['pass'];
-
-          $sql = "SELECT * FROM users WHERE username = '$username' AND pass = '$pass'";
-          $result = mysqli_query($conn, $sql);
-          $row = mysqli_fetch_array($result);
-
-          $_SESSION['city']= $row['bloodbank'];
-          
-          $count=mysqli_num_rows($result);
-
-          if($count==1){
-            if ($row['role']=="admin")
-              {
-                header ("location: admin/index.php"); 
-                    
-                    
-              }  
-            else if ($row['role']=="")
-              {
-                $_SESSION['role']=$row['role'];
-                header ("location: donate.php");
-                $_SESSION['username']= $row['firstname']; 
-              }
-            }
-
-          else{
-            $prompt = "Log in Failed Invalid Username or Password";
-            echo "<script type='text/javascript'>alert('$prompt');</script>";
-          }
-        
-         
-          mysqli_close($conn);
-
-        }
-
+        include 'assets/lib/login.php';
 ?>
 
 <!DOCTYPE html>
@@ -175,17 +125,11 @@
             </div>  
 <center>
 
-
-  
-
-
  <h1>SEARCH BLOOD</h1>
- 
-
 
 <form action="" method="get">
  <div class="btn-group">
-     <select name="bloodtype" class="form-control form-control-lg" required>
+     <select name="bloodtype" id="bloodType" class="form-control form-control-lg" required>
               <option value="" selected="selected" disabled="disabled">-- Select Blood --</option>
               <option value="O">O</option>
               <option value="O-">O-</option>
@@ -214,7 +158,7 @@
 
 
 <div class="container">
-    <table class="table table-rounded custab table-hover">
+    <table class="table table-rounded custab">
     <thead>
         <tr>
         <th class="text-center">Serial Number</th>
@@ -223,25 +167,6 @@
             <th class="text-center">Reserve</th>
         </tr>
     </thead>
-
-            <!-- <tr>
-              <td class="text-center"> 1234-112231</td>
-                <td class="text-center">Ozamiz City</td>
-                <td class="text-center">A+</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="Reserve.html"><span class="glyphicon glyphicon-ok"></span> Yes</a></td>
-            </tr>
-            <tr>
-              <td class="text-center"> 2234-112231</td>
-                <td class="text-center">Oroquieta City</td>
-                <td class="text-center">B</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="Reserve.html"><span class="glyphicon glyphicon-ok"></span> Yes</a></td>
-            </tr>
-            <tr>
-               <td class="text-center"> 3334-112231</td>
-                <td class="text-center">Tangub City</td>
-                <td class="text-center">O+</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="Reserve.html"><span class="glyphicon glyphicon-ok"></span> Yes</a></td>
-            </tr> -->
     <tbody>
             <?php
               $servername = "localhost";
@@ -262,28 +187,30 @@
               $bloodtype = $_GET['bloodtype'];
 
               $result = mysqli_query($conn,"SELECT * FROM blood WHERE bloodtype = '$bloodtype' AND city = '$city' ;");
-              
-
+             
               while($row = mysqli_fetch_array($result))
               {
-                echo "<tr>";
-                echo "<td class='text-center'>".$row['serialnumber']."</td>";
+                echo "<tr class='row-data' data-href='url://'>";
+                echo "<td class='text-center serialnumber'>".$row['serialnumber']."</td>";
                 echo "<td class='text-center'>".$row['bloodtype']."</td>";
                 echo "<td class='text-center'>".$row['city']."</td>";
-                echo "<td class='text-center'><a class='btn btn-info btn-xs' data-toggle='modal' data-target='#reserveModal'><span class='glyphicon glyphicon-ok'></span> Yes</a></td>";
+                echo "<td class='text-center'><a class='btn btn-info btn-xs row-data' data-href='url://'><span class='glyphicon glyphicon-ok'></span> Yes</a></td>";
+        
                 echo "</tr>";               
                 }
+                
+        
+                
               }
              
               if(isset($_POST['reserve'])){
 
-                $row['serialnumber'] = $serialnumber;
                 $row['bloodtype'] = $bloodtype;
                 $row['city'] = $city;
           
           
                 $sql = "INSERT INTO reserve_blood (serialnumber, bloodtype, city, lastname, firstname, middlename, homeaddress, contactnum, purpose)
-                        VALUES  ('".$row["serialnumber"]."','".$row["bloodtype"]."','".$row["city"]."','".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["address"]."','".$_POST["contactnum"]."','".$_POST["purpose"]."')";
+                        VALUES  ('".$_POST["serialnumber"]."','".$row["bloodtype"]."','".$row["city"]."','".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["address"]."','".$_POST["contactnum"]."','".$_POST["purpose"]."')";
           
           
                   if ($conn->query($sql) == TRUE) {
@@ -315,6 +242,11 @@
                     <form method="post" action=""> 
                       
                       <div class="form-group2">
+                        
+                        <div class="form-group2" style="width: 376px;">
+                       <input name="serialnumber" id="serialnumber" class="form-control hidden"  type="text" value="">
+                          </div>
+
                         <label class="col-md-4 control-label">Last Name</label>  
                         <div class="form-group2" style="width: 376px;">
                        <input  name="lastname" placeholder="Last Name" class="form-control"  type="text">
@@ -400,43 +332,6 @@
       </div>
 </div>
 
-<!-- <div id="myModal" class="modal fade " role="dialog">
-  <div class="modal-dialog modal-lg"> -->
-
-    <!-- Modal content-->
-    <!-- <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
-      </div>
-      <div class="modal-body" >
-      <div class="bloodData" >
-      <b>Serial Number:</b> <span class="serialnumber"></span><br>
-      <b>Donor:</b> <span class="donor"></span><br> 
-      <b>Blood Type: </b> <span class="bloodtype"></span><br>
-      <b>Component:</b> <span class="component"></span><br>
-      <b>Quantity: </b> <span class="quantity"></span><br>
-      <b>Extraction Date:</b> <span class="extractiondate"></span><br>
-      <b>Expiration Date:</b> <span class="expirationdate"></span>
-      </div>
-      <p id="bloodpic"><img class="bloodimg" src="../admin/img/img.jpg" alt="Blood" height="218px" width="207px" ></p>
-      </div>
-
-    <form method="post" action="">
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle='modal' data-target='#updateModal'>Update</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle='modal' data-target="#deleteModal" >Delete</button> 
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>  
-     </div>
-    </form> 
-      </div>
-    </div>
-  </div>
-    -->
-
-    <!--  Scripts
-    ================================================== -->
-
     <!-- jQuery -->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -452,15 +347,15 @@
     <!-- Template main javascript -->
     <script src="assets/js/main.js"></script>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <!-- <script>
-        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-        e.src='//www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-        ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script> -->
+<script>
+    $('.row-data').click(function(){
+    $('#updateModal .serialnumber').text( $('.serialnumber', this).text() );
+
+    document.getElementById("serialnumber").value = $('.serialnumber', this).text();
+
+    $('#reserveModal').modal();
+  });
+</script>
 
     </body>
 </html>

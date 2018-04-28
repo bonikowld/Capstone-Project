@@ -1,37 +1,6 @@
 <?php
 session_start();
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "blood_bank";
-
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " .mysqli_connect_error());
-}
-
-if(!empty($_POST)){       
-        $_SESSION["reload"] = "1";
-        
-        $birthday = $_POST['birthday'];
-        $birthmonth = $_POST['birthmonth'];
-        $birthyear = $_POST['birthyear'];
-
-        $_POST["birthdate"] = $birthday."-".$birthmonth."-".$birthyear;
-
-        $sql = "INSERT INTO donate_blood (lastname, firstname, middlename, age, birthdate, sex, nationality, civilstatus, education, occupation, cellphonenum, email, identificationno, bloodbank, homeaddress)
-                VALUES ('".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["nationality"]."','".$_POST["civilstatus"]."','".$_POST["education"]."','".$_POST["occupation"]."','".$_POST["contactnum"]."','".$_POST["email"]."','".$_POST["bloodbank"]."','".$_POST["identificationno"]."','".$_POST["address"]."')";
-
-        if ($conn->query($sql) == TRUE) {
-          echo "<script type='text/javascript'>alert('Donate Successfull ');</script>";
-          } else {
-          echo "<script type='text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
-          }
-          
-          $conn->close();
-}
+include 'assets/lib/login.php';
 ?>
 <!DOCTYPE html>
 <html class="no-js">
