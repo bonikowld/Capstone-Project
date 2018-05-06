@@ -100,7 +100,7 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-      <a class="navbar-brand" href="#"><input type="button" class="btn-danger print_button" id="buttonPrint" onClick="window.print()" value="Print The Report"/></a>
+      <a class="navbar-brand" href="#"><input type="button" class="btn-danger print_button" id="buttonPrint" onclick="printDiv('printableArea')" value="Print The Report"/></a>
          <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
@@ -156,7 +156,64 @@
 </table>
 </div>  
 
-<div class="yesPrint">
+<!-- Printable Area -->
+<div class="hidden" id="printableArea">
+<center>
+  <img src="assets/images/Philippine_Red_Cross_logo.jpg" alt="logo" style="width:200px">
+  <h5>Republic of the Philippines</h5>
+  <h5>Region X - Northern Mindanao</h5>
+  <h5>Philippine National Red Cross (City) Chapter</h5>
+  <h5>City of (Something)</h5>
+</center>
+<table>
+  <thead>
+  <tr>
+      <th>Serial Number</th>
+      <th>Donor</th>
+      <th>Blood Type</th>
+      <th>Component</th>
+      <th>Quantity</th>
+      <th>Extraction Date</th>
+      <th>Expiration Date</th>
+      <th>Blood Bank</th>
+      <th>Borrowers Name</th>
+      <th>Borrowers Address</th>
+      <th>Borrowers Contact Number</th>
+      <th>OR Number</th>
+  </tr>
+  </thead>
+  <tbody>
+  <?php include 'php/connection.php';?>
+
+  <?php 
+  $result = mysqli_query($conn,"SELECT * FROM report ");
+  ?>
+      
+  <?php while($row = mysqli_fetch_array($result))  
+  { ?>
+
+  <td class='serialnumber'> <?php echo $row['serialnumber']; ?> </td>
+  <td class='donor'> <?php echo $row['donor']; ?> </td>
+  <td class='bloodtype'> <?php echo $row['bloodtype']; ?> </td>
+  <td class='component'> <?php echo $row['component']; ?> </td>
+  <td class='quantity'> <?php echo $row['quantity'];?> </td>
+  <td class='extractiondate'> <?php echo $row['extractiondate']; ?> </td>
+  <td class='expirationdate'> <?php echo $row['expirationdate']; ?> </td>
+  <td class='bloodbank'> <?php echo $row['bloodbank']; ?> </td>
+  <td class='borrowersname'> <?php echo $row['borrowersname'];?> </td>
+  <td class='borrowersaddress'> <?php echo $row['borrowersaddress']; ?> </td>
+  <td class='borrowerscontactnum'> <?php echo $row['borrowerscontactnum']; ?> </td>
+  <td class='ornum'> <?php echo $row['ornum']; ?> </td>
+
+  </tr>
+  <?php }; ?>
+  </tbody>
+</table>
+</div>
+<!-- End of Printable Area -->
+
+
+<div class="no-print">
 <div class="card mb-3">
         <div class="card-header">
           <i class="fa fa-table"></i> Blood Records </div>
@@ -406,6 +463,20 @@
 
 //})(jQuery);
 </script>
+
+<script>
+  function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
+
     
   </div>
 </body>
