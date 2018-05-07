@@ -100,7 +100,7 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-      <a class="navbar-brand" href="#"><input type="button" class="btn-danger print_button" id="buttonPrint" onclick="printDiv('printableArea')" value="Print The Report"/></a>
+      <a class="navbar-brand" href="#"><input type="button" class="btn-primary print_button" id="buttonPrint" onclick="printDiv('printableArea')" value="Print Report"/></a>
          <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
@@ -160,26 +160,41 @@
 <div class="hidden" id="printableArea">
 <center>
   <img src="assets/images/Philippine_Red_Cross_logo.jpg" alt="logo" style="width:200px">
-  <h5>Republic of the Philippines</h5>
-  <h5>Region X - Northern Mindanao</h5>
-  <h5>Philippine National Red Cross (City) Chapter</h5>
-  <h5>City of (Something)</h5>
+  <h6 class="style">Republic of the Philippines</h6>
+  <h6 class="style">Region X - Northern Mindanao</h6>
+  <h6 class="style">Philippine National Red Cross <?php 
+            if(isset($_SESSION['city'])){
+              echo $_SESSION['city'];
+            }
+            else{ echo 'Session not set';
+            }
+          ?> Chapter</h6>
+  <h6 class="style">City of <?php 
+            if(isset($_SESSION['city'])){
+              echo $_SESSION['city'];
+            }
+            else{ echo 'Session not set';
+            }
+          ?></h6>
+  <br>
+  <h6 class="style1">Monthly Reports</h6>
+  <hr>
 </center>
 <table>
   <thead>
   <tr>
-      <th>Serial Number</th>
-      <th>Donor</th>
-      <th>Blood Type</th>
-      <th>Component</th>
-      <th>Quantity</th>
-      <th>Extraction Date</th>
-      <th>Expiration Date</th>
-      <th>Blood Bank</th>
-      <th>Borrowers Name</th>
-      <th>Borrowers Address</th>
-      <th>Borrowers Contact Number</th>
-      <th>OR Number</th>
+      <th class="style">Serial Number</th>
+      <th class="style">Donor</th>
+      <th class="style">Blood Type</th>
+      <th class="style">Component</th>
+      <th class="style">Quantity</th>
+      <th class="style">Extraction Date</th>
+      <th class="style">Expiration Date</th>
+      <th class="style">Blood Bank</th>
+      <th class="style">Borrowers Name</th>
+      <th class="style">Borrowers Address</th>
+      <th class="style">Borrowers Contact Number</th>
+      <th class="style">OR Number</th>
   </tr>
   </thead>
   <tbody>
@@ -192,18 +207,18 @@
   <?php while($row = mysqli_fetch_array($result))  
   { ?>
 
-  <td class='serialnumber'> <?php echo $row['serialnumber']; ?> </td>
-  <td class='donor'> <?php echo $row['donor']; ?> </td>
-  <td class='bloodtype'> <?php echo $row['bloodtype']; ?> </td>
-  <td class='component'> <?php echo $row['component']; ?> </td>
-  <td class='quantity'> <?php echo $row['quantity'];?> </td>
-  <td class='extractiondate'> <?php echo $row['extractiondate']; ?> </td>
-  <td class='expirationdate'> <?php echo $row['expirationdate']; ?> </td>
-  <td class='bloodbank'> <?php echo $row['bloodbank']; ?> </td>
-  <td class='borrowersname'> <?php echo $row['borrowersname'];?> </td>
-  <td class='borrowersaddress'> <?php echo $row['borrowersaddress']; ?> </td>
-  <td class='borrowerscontactnum'> <?php echo $row['borrowerscontactnum']; ?> </td>
-  <td class='ornum'> <?php echo $row['ornum']; ?> </td>
+  <td class='serialnumber' id="style2"> <?php echo $row['serialnumber']; ?> </td>
+  <td class='donor' id="style2"> <?php echo $row['donor']; ?> </td>
+  <td class='bloodtype' id="style2"> <?php echo $row['bloodtype']; ?> </td>
+  <td class='component' id="style2"> <?php echo $row['component']; ?> </td>
+  <td class='quantity' id="style2"> <?php echo $row['quantity'];?> </td>
+  <td class='extractiondate' id="style2"> <?php echo $row['extractiondate']; ?> </td>
+  <td class='expirationdate' id="style2"> <?php echo $row['expirationdate']; ?> </td>
+  <td class='bloodbank' id="style2"> <?php echo $row['bloodbank']; ?> </td>
+  <td class='borrowersname' id="style2"> <?php echo $row['borrowersname'];?> </td>
+  <td class='borrowersaddress' id="style2"> <?php echo $row['borrowersaddress']; ?> </td>
+  <td class='borrowerscontactnum' id="style2"> <?php echo $row['borrowerscontactnum']; ?> </td>
+  <td class='ornum' id="style2"> <?php echo $row['ornum']; ?> </td>
 
   </tr>
   <?php }; ?>
