@@ -25,6 +25,8 @@ include 'assets/lib/login.php';
 
         <!-- Template main Css -->
         <link rel="stylesheet" href="assets/css/stylerequest.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
         
         <!-- Modernizr -->
         <!-- <script src="assets/js/modernizr-2.6.2.min.js"></script>
@@ -76,25 +78,47 @@ include 'assets/lib/login.php';
                       </div>
                     </div>
                   </nav>
+<?php
+if(!empty($_POST)){       
+        $_SESSION["reload"] = "1";
+        
+        $birthday = $_POST['birthday'];
+        $birthmonth = $_POST['birthmonth'];
+        $birthyear = $_POST['birthyear'];
 
+        $_POST["birthdate"] = $birthday."-".$birthmonth."-".$birthyear;
 
+        $sql = "INSERT INTO donate_blood (lastname, firstname, middlename, age, birthdate, sex, nationality, civilstatus, education, occupation, cellphonenum, email, identificationno, bloodbank, homeaddress)
+                VALUES ('".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["nationality"]."','".$_POST["civilstatus"]."','".$_POST["education"]."','".$_POST["occupation"]."','".$_POST["contactnum"]."','".$_POST["email"]."','".$_POST["bloodbank"]."','".$_POST["identificationno"]."','".$_POST["address"]."')";
+
+        if ($conn->query($sql) == TRUE) {
+          echo "<script type='text/javascript'>alert('Donate Successfull ');</script>";
+          } else {
+          echo "<script type='text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
+          }
+          
+          $conn->close();
+}
+
+?>
  <div class="container">
   <form method="post" action="">
    <strong><center><h2>DONOR'S INFORMATION</h2></center> </strong>
     <div class="row">
       <div class="input-group input-group-icon">
-        <input class="form-group" type="text" name="lastname" placeholder="Last Name" required>
+        <input type="text" class="form-group"  name="lastname" placeholder="Last Name" required>
         <div class="input-icon"><i class="fa fa-user"></i></div>
         </div>
         <div class="input-group input-group-icon">
-        <input class="form-group"  type="text" name="firstname" placeholder="First Name" required>
+        <input type="text" class="form-group"   name="firstname" placeholder="First Name" required>
         <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
       <div class="input-group input-group-icon">
-        <input class="form-group" type="text" name="middlename"  placeholder="Middle Name" required>
+        <input type="text" class="form-group"  name="middlename"  placeholder="Middle Name" required>
         <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
     </div>
+    
     <div class="row">
       <div class="col-half">
         <h4>Date of Birth</h4>
@@ -230,7 +254,7 @@ include 'assets/lib/login.php';
     </form>
 </div>
 
-<div class="footer"> 
+<!-- <div class="footer"> 
         <div class="row">
           <div class="col-md-4">
             <span class="copyright">Copyright &copy; Project Blood Seeker 2018</span>
@@ -265,7 +289,7 @@ include 'assets/lib/login.php';
             </ul>
           </div>
         </div>
-</div>
+</div> -->
 
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 

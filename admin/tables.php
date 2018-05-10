@@ -3,10 +3,10 @@ session_start();
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -53,7 +53,8 @@ session_start();
                   <th>Quantity</th>
                   <th>Extraction Date</th>
                   <th>Expiration Date</th>
-                  <th>Action</th>
+                  <th>Delete</th>
+                  <th>Checkout</th>
                   
                 </tr>
               </thead>
@@ -66,7 +67,8 @@ session_start();
                   <th>Quantity</th>
                   <th>Extraction Date</th>
                   <th>Expiration Date</th>
-                  <th>Action</th>
+                  <th>Delete</th>
+                  <th>Checkout</th>
         
                  
        
@@ -83,7 +85,7 @@ session_start();
                 <?php while($row = mysqli_fetch_array($result))  
                 { ?>
           
-                <tr class='clickable-row row-data' data-href='url://'>
+                <tr class='row-data' data-href='url://'>
                 <td class='serialnumber'> <?php echo $row['serialnumber']; ?> </td>
                 <td class='donor'> <?php echo $row['donor']; ?> </td>
                 <td class='bloodtype'> <?php echo $row['bloodtype']; ?> </td>
@@ -92,9 +94,8 @@ session_start();
                 <td class='extractiondate'> <?php echo $row['extractiondate']; ?> </td>
                 <td class='expirationdate'> <?php echo $row['expirationdate']; ?> </td>
                 <form method='get' action=''>
-                  <td> <a onclick="return confirm ('Are You Sure?')" href="?serial=<?php echo $row['serialnumber']?>" class="btn btn-danger btn-sm">Delete</a>
-                       <button type='button' class='btn btn-success btn-sm row-data' data-href='url://'>Checkout </button></td>
-            
+                <td> <a onclick="return confirm ('Are You Sure?')" href="?serial=<?php echo $row['serialnumber']?>" class="btn btn-danger btn-sm">Delete</a></td>
+                <td><button type='button' class='btn btn-success btn-sm' >Checkout</button></td>
               </form>       
               </tr>
                 <?php }; ?>                    
@@ -108,6 +109,7 @@ session_start();
                   
                   if ($conn->query($sql) === TRUE) {
                    echo "<script type= 'text/javascript'>alert('Deleted successfully');</script>";
+                  
                   } else {
                       echo "Error deleting record: " . $conn->error;
                   }
@@ -129,8 +131,8 @@ session_start();
                     $borrowerscontactnum = $_POST['contactnumber'];
                     $ornum = $_POST['ornumber'];
 
-                    $sql = "INSERT INTO report (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, bloodbank, borrowersname, borrowersaddress, borrowerscontactnum, ornum)
-                            VALUES ('".$_POST["serialnumber"]."', '".$_POST["donor"]."','".$_POST["bloodtype"]."', '".$_POST["component"]."', '".$_POST["quantity"]."', '".$_POST["extractiondate"]."', '".$_POST["expirationdate"]."', '".$_POST["city"]."', '".$_POST["borrowedby"]."', '".$_POST["borrowersaddress"]."', '".$_POST["contactnumber"]."', '".$_POST["ornumber"]."')";
+                    $sql = "INSERT INTO report (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, bloodbank, borrowersname, borrowersaddress, borrowerscontactnum, ornum, checkoutmonth, checkoutyear)
+                            VALUES ('".$_POST["serialnumber"]."', '".$_POST["donor"]."','".$_POST["bloodtype"]."', '".$_POST["component"]."', '".$_POST["quantity"]."', '".$_POST["extractiondate"]."', '".$_POST["expirationdate"]."', '".$_POST["city"]."', '".$_POST["borrowedby"]."', '".$_POST["borrowersaddress"]."', '".$_POST["contactnumber"]."', '".$_POST["ornumber"]."', '".$_POST["checkoutmonth"]."', '".$_POST["checkoutyear"]."')";
 
                     if($conn->query($sql) == TRUE){
                 ?>
@@ -254,9 +256,12 @@ session_start();
           <td>
           <b>OR Number</b>
           <input type="text" name="ornumber" class="form-control" required>
+          <input type="hidden" name="checkoutmonth" id="checkoutmonth" value="<?php echo date("F")?>" class="form-control" required>
+          <input type="hidden" name="checkoutyear" id="checkoutyear" value="<?php echo date("Y")?>" class="form-control" required>
+         
           </td>
         </tr>
-     
+
       </tbody>
       
       </table>
@@ -270,6 +275,7 @@ session_start();
     </div>
   </div>
 </div>
+
 
 <?php include 'php/logoutfooter.php';?>
 

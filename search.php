@@ -130,7 +130,7 @@
 <form action="" method="get">
  <div class="btn-group">
      <select name="bloodtype" id="bloodType" class="form-control form-control-lg" required>
-              <option value="" selected="selected" disabled="disabled">-- Select Blood --</option>
+              <option value="" selected="selected" disabled="disabled">-- Select Blood Type --</option>
               <option value="O">O</option>
               <option value="O-">O-</option>
               <option value="O+">O+</option>
@@ -143,14 +143,14 @@
              </select>
   </div>
 
-  <div class="btn-group btn-group-primary">
+  <!-- <div class="btn-group btn-group-primary">
        <select name="city" class="form-control" required>
               <option value="" selected="selected" disabled="disabled">-- Select City --</option>   
               <option value="Ozamiz City">Ozamiz City</option>
               <option value="Oroquieta City">Oroquieta City</option>
               <option value="Tangub City">Tangub City</option>
              </select>
-  </div>
+  </div> -->
   <button class="btn btn-default hidden-print"  name="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
 </form>
 </center>
@@ -167,6 +167,7 @@
             <th class="text-center">Reserve</th>
         </tr>
     </thead>
+    
     <tbody>
             <?php
               $servername = "localhost";
@@ -183,10 +184,10 @@
 
               if(isset($_GET['search'])){
   
-              $city = $_GET['city'];
+              // $city = $_GET['city'];
               $bloodtype = $_GET['bloodtype'];
 
-              $result = mysqli_query($conn,"SELECT * FROM blood WHERE bloodtype = '$bloodtype' AND city = '$city' ;");
+              $result = mysqli_query($conn,"SELECT * FROM blood WHERE bloodtype = '$bloodtype' ;");
              
               while($row = mysqli_fetch_array($result))
               {

@@ -1,3 +1,6 @@
+<?php
+        session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -112,13 +115,14 @@
     <div class="container-fluid">
      
 <div class="no-print">
+<form action="" method="get" >
     <table class="table table-bordered table-condensed">
-<form>
+
     <tbody>
         <tr>
             <td>
            <label>Month</label>
-             <select name="bloodtype" id="bloodtype" class="form-control" required>
+             <select name="month" id="month" class="form-control" required>
               <option value="">select</option>
               <option value="January">January</option>
               <option value="February">February</option>
@@ -136,7 +140,7 @@
           </td>
            <td>
            <label>Year</label>
-             <select name="component" id="component" class="form-control" required>
+             <select name="year" id="year" class="form-control" required>
               <option value="">select</option>
               <option value="2010">2010</option>
               <option value="2011">2011</option>
@@ -148,12 +152,15 @@
               <option value="2017">2017</option>
               <option value="2018">2018</option>
               <option value="2019">2019</option>
-              \<option value="2020">2020</option>
+              <option value="2020">2020</option>
              </select>
+             <br>
+             <button type='submit' name="report" class='btn btn-success btn-sm' >View Reports</button>
             </td>
         </tr>
     </tbody>
 </table>
+</form>
 </div>  
 
 <!-- Printable Area -->
@@ -169,7 +176,7 @@
             else{ echo 'Session not set';
             }
           ?> Chapter</h6>
-  <h6 class="style">City of <?php 
+  <h6 class="style"><?php 
             if(isset($_SESSION['city'])){
               echo $_SESSION['city'];
             }
@@ -201,7 +208,11 @@
   <?php include 'php/connection.php';?>
 
   <?php 
-  $result = mysqli_query($conn,"SELECT * FROM report ");
+ if(isset($_GET['report'])){
+
+  $result = mysqli_query($conn,"SELECT * FROM report WHERE checkoutmonth = '$checkoutmonth' AND checkoutyear = '$checkoutyear'; ");
+  
+ }
   ?>
       
   <?php while($row = mysqli_fetch_array($result))  
@@ -234,7 +245,7 @@
           <i class="fa fa-table"></i> Blood Records </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered table-hover " id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
                   <th>Serial Number</th>
@@ -276,7 +287,15 @@
                     <?php include 'php/connection.php';?>
 
                  <?php 
-                $result = mysqli_query($conn,"SELECT * FROM report ");
+                 if(isset($_GET['report'])){
+
+                  $checkoutmonth = $_GET['month'];
+                  $checkoutyear = $_GET['year'];
+
+                  $result = mysqli_query($conn,"SELECT * FROM report WHERE checkoutmonth = '$checkoutmonth' AND checkoutyear = '$checkoutyear'; ");
+                  
+                 }
+               
                 ?>
                       
                 <?php while($row = mysqli_fetch_array($result))  
@@ -334,7 +353,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="../index.html">Logout</a>
+            <a class="btn btn-primary" href="../index.php">Logout</a>
           </div>
         </div>
       </div>

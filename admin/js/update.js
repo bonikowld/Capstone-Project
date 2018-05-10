@@ -8,6 +8,7 @@ $('.row-data').click(function(){
     $('#updateModal .extractiondate').text( $('.extractiondate', this).text() );
     $('#updateModal .expirationdate').text( $('.expirationdate', this).text() );
 
+    
     document.getElementById("serialnumber").value = $('.serialnumber', this).text();
     document.getElementById("donor").value = $('.donor', this).text();
     document.getElementById("bloodtype").value = $('.bloodtype', this).text();
@@ -15,6 +16,7 @@ $('.row-data').click(function(){
     document.getElementById("quantity").value = $('.quantity', this).text();
     document.getElementById("extractiondate").value = $('.extractiondate', this).text();
     document.getElementById("expirationdate").value = $('.expirationdate', this).text();
+
 
     $('#updateModal').modal();
   });
@@ -35,19 +37,5 @@ function checkTime(i) {
     return i;
 }
 
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
-var yyyy = today.getFullYear();
 
-if(dd<10) {
-    dd = '0'+dd
-} 
-
-if(mm<10) {
-    mm = '0'+mm
-} 
-
-today = mm + '/' + dd + '/' + yyyy;
-document.write(today);
 

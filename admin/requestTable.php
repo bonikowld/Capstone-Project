@@ -53,7 +53,7 @@
                   <th>Physician</th>
                   <th>Cellphone Number</th>
                   <th>Diagnosis</th>
-
+                  <th>Action</th>
 
                 </tr>
               </thead>
@@ -70,6 +70,7 @@
                   <th>Physician</th>
                   <th>Cellphone Number</th>
                   <th>Diagnosis</th>
+                  <th>Action</th>
                 </tr>
               </tfoot>
               
@@ -77,26 +78,48 @@
               <?php include 'php/connection.php';?>
                 <?php 
                 $result = mysqli_query($conn,"SELECT * FROM request_blood");
+                ?>
 
-                      
+                <?php 
                 while($row = mysqli_fetch_array($result))  
-                {
-                echo "<tr class='clickable-row row-data' data-href='url://'>";
-                echo "<td class='lastname'>".$row['lastname']."</td>";
-                echo "<td class='firstname'>".$row['firstname']."</td>";
-                echo "<td class='middlename'>".$row['middlename']."</td>";
-                echo "<td class='age'>".$row['age']."</td>";
-                echo "<td class='birthdate'>".$row['birthdate']."</td>";
-                echo "<td class='sex'>".$row['sex']."</td>";
-                echo "<td class='hospital'>".$row['hospital']."</td>";
-                echo "<td class='roomnum'>".$row['roomnum']."</td>";
-                echo "<td class='physician'>".$row['physician']."</td>";
-                echo "<td class='cellphonenum'>".$row['cellphonenum']."</td>";
-                echo "<td class='diagnosis'>".$row['diagnosis']."</td>";
+                { ?>
+                <!-- <tr class='clickable-row row-data' data-href='url://'> -->
+                <td class='lastname'><?php echo $row['lastname']; ?></td>
+                <td class='firstname'><?php echo $row['firstname']; ?></td>
+                <td class='middlename'><?php echo $row['middlename']; ?></td>
+                <td class='age'><?php echo $row['age']; ?></td>
+                <td class='birthdate'><?php echo $row['birthdate']; ?></td>
+                <td class='sex'><?php echo $row['sex']; ?></td>
+                <td class='hospital'><?php echo $row['hospital']; ?></td>
+                <td class='roomnum'><?php echo $row['roomnum']; ?></td>
+                <td class='physician'><?php echo $row['physician']; ?></td>
+                <td class='cellphonenum'><?php echo $row['cellphonenum']; ?></td>
+                <td class='diagnosis'><?php echo $row['diagnosis']; ?></td> 
+                <form method='get' action=''>
+                  <td> <a onclick="return confirm ('Are You Sure?')" href="?id=<?php echo $row['idrequestBlood']?>" class="btn btn-danger btn-sm">Delete</a>
+            
+              </form>  
+              <?php
+                if(isset($_GET['id'])){ 
+                  $id = $_GET['id'];
+                    
 
-                echo "</tr>";
-                };
-                
+                  $sql = "DELETE FROM request_blood WHERE idrequestBlood = '$id' ";
+                  
+                  if ($conn->query($sql) === TRUE) {
+                   echo "<script type= 'text/javascript'>alert('Deleted successfully');</script>";    
+                 
+                     
+                  } else {
+                      echo "Error deleting record: " . $conn->error;
+                  }
+                } 
+                ?>
+
+
+                </tr>
+               <?php };?>
+              <?php
                 mysqli_close($conn); 
                ?>
               

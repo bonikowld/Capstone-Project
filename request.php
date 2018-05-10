@@ -26,6 +26,7 @@
 
         <!-- Template main Css -->
         <link rel="stylesheet" href="assets/css/stylerequest.css">
+        <link rel="stylesheet" href="assets/css/style.css">
         
         <!-- Modernizr -->
         <script src="assets/js/modernizr-2.6.2.min.js"></script>
@@ -316,7 +317,7 @@ if(!empty($_POST)){
 
 </form>
 
-<div class="footer"> 
+<!-- <div class="footer"> 
         <div class="row">
           <div class="col-md-4">
             <span class="copyright">Copyright &copy; Project Blood Seeker 2018</span>
@@ -351,7 +352,7 @@ if(!empty($_POST)){
             </ul>
           </div>
         </div>
-</div>
+</div> -->
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script  src="js/index.js"></script> -->

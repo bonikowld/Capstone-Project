@@ -8,7 +8,6 @@ if(!empty($_POST)){
             $sql = "INSERT INTO blood (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, city)
             VALUES ('".$_POST["serialnumber"]."','".$_POST["donor"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["quantity"]."','".$_POST["extractiondate"]."','".$_POST["expirationdate"]."','".$_SESSION['city']."')";
 
-
             if ($conn->query($sql) == TRUE) {
               echo "<script type='text/javascript'>alert('New record created successfully');</script>";
               } else {
@@ -71,18 +70,18 @@ if(!empty($_POST)){
            <td>
            <label>Serial Number</label>
            <input type="text" class="form-control" name="serialnumber" id="serialnumber" placeholder="1234-567890-1"required/>
-           <span class="error_form" id="snum_error_message"></span>
+           <!-- <span class="error_form" id="snum_error_message"></span> -->
            </td>
            <td>
 
            <label>Donor</label>
              <input type="text" class="form-control" name="donor" id="donor" required/>
-             <span class="error_form" id="dname_error_message"></span>
+             <!-- <span class="error_form" id="dname_error_message"></span> -->
             </td>
            <td>
            <label>Bloodtype</label>
              <select type="text" name="bloodtype" id="bloodtype" class="form-control" required>
-              <option value="">-</option>
+             <option value="" selected="selected" disabled="disabled">-- select one --</option>
               <option value="O">O</option>
               <option value="O-">O-</option>
               <option value="O+">O+</option>
@@ -93,34 +92,34 @@ if(!empty($_POST)){
               <option value="AB-">AB-</option>
               <option value="AB+">AB+</option>
              </select>
-             <span class="error_form" id="btype_error_message"></span>
+             <!-- <span class="error_form" id="btype_error_message"></span> -->
           </td>
            <td>
            <label>Component</label>
              <select type="text" name="component" id="component" class="form-control" required>
-              <option value="">-</option>
+             <option value="" selected="selected" disabled="disabled">-- select one --</option>
               <option value="Whole Blood">Whole Blood</option>
               <option value="Red Cells">Red Cells</option>
               <option value="Platelets">Platelets</option>
               <option value="Plasma">Plasma</option>
               <option value="Cryoprecipitated AHF">Cryoprecipitated AHF</option>
              </select>
-             <span class="error_form" id="component_error_message"></span>
+             <!-- <span class="error_form" id="component_error_message"></span> -->
             </td>
             <td>
            <label>Quantity</label>
              <input type="number" class="form-control" name="quantity" id="quantity" required/>
-             <span class="error_form" id="quantity_error_message"></span>
+             <!-- <span class="error_form" id="quantity_error_message"></span> -->
             </td>
             <td>
            <label>Extraction Date</label>
              <input class="form-control" name="extractiondate" id="extractiondate" type="date" placeholder="mm/dd/yyyy" required/>
-             <span class="error_form" id="extdate_error_message"></span>
+             <!-- <span class="error_form" id="extdate_error_message"></span> -->
             </td>
             <td>
            <label>Expiration Date</label>
              <input class="form-control" name="expirationdate" id="expirationdate" type="date" placeholder="mm/dd/yyyy" required/>
-             <span class="error_form" id="expdate_error_message"></span>
+             <!-- <span class="error_form" id="expdate_error_message"></span> -->
             </td> 
           
        
@@ -208,6 +207,7 @@ if(!empty($_POST)){
   <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
     <script src="js/sb-admin-charts.min.js"></script>
+    <script type="text/javascript" src="../admin/js/update.js"></script>
   </div>
 </body>
 
