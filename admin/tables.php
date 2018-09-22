@@ -81,7 +81,7 @@ session_start();
                 <?php 
                 $result = mysqli_query($conn,"SELECT * FROM blood WHERE city = '" . $_SESSION['city'] . "' ");
                 ?>
-                      
+
                 <?php while($row = mysqli_fetch_array($result))  
                 { ?>
           
@@ -94,13 +94,19 @@ session_start();
                 <td class='extractiondate'> <?php echo $row['extractiondate']; ?> </td>
                 <td class='expirationdate'> <?php echo $row['expirationdate']; ?> </td>
                 <form method='get' action=''>
-                <td> <a onclick="return confirm ('Are You Sure?')" href="?serial=<?php echo $row['serialnumber']?>" class="btn btn-danger btn-sm">Delete</a></td>
-                <td><button type='button' class='btn btn-success btn-sm' >Checkout</button></td>
+                <td> <a onclick="return confirm ('Are You Sure?'); " href="?serial=<?php echo $row['serialnumber']?>" class="btn btn-danger btn-sm">Delete</a></td>
+                <td><button type='button' class='btn btn-success btn-sm' data-toggle="modal" data-target="#updateModal" >Checkout</button> </td>
               </form>       
               </tr>
                 <?php }; ?>                    
 
+                <?php mysqli_close($conn); ?>  
+
+
+
               <?php
+                  include 'php/connection.php';
+
                 if(isset($_GET['serial'])){ 
                   $serial = $_GET['serial'];
                     
@@ -108,15 +114,17 @@ session_start();
                   $sql = "DELETE FROM blood WHERE serialnumber = '$serial' ";
                   
                   if ($conn->query($sql) === TRUE) {
-                   echo "<script type= 'text/javascript'>alert('Deleted successfully');</script>";
-                  
+                   echo "<script type= 'text/javascript'>alert('Deleted successfully'); </script>";                              
                   } else {
                       echo "Error deleting record: " . $conn->error;
                   }
                 } 
                 ?>
+                <?php mysqli_close($conn); ?>  
 
                 <?php
+                   include 'php/connection.php';
+
                   if(isset($_POST['update'])){
                     $serialnumber = $_POST['serialnumber'];
                     $donor = $_POST['donor'];
@@ -183,7 +191,7 @@ session_start();
         <tr>
           <td>
           <b>Serial Number</b>
-          <p><input type="text" class="form-control serialnumber" id="serialnumber" name="serialnumber" readonly></p></input>
+          <p><input type="text" class="form-control serialnumber" id="serialnumber" name="serialnumber" readonly></p>
           </td>
         </tr>
 
@@ -263,9 +271,9 @@ session_start();
         </tr>
 
       </tbody>
-      
+           
       </table>
-      <div class="modal-footer">
+      <div class="modal-footer" method="get">
         <button type="submit" class="btn btn-success" name="update">Done</button>
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
       </div>

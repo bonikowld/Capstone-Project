@@ -216,7 +216,7 @@ if ($conn->query($sql) == TRUE) {
     <div class="form-group row">
 
       <div class="input-group input-group-icon">
-        <input class = "form-group" type="text" name="lastname"  id="lname" placeholder="Last Name" required>
+        <input class = "form-group" type="text" name="lastname" id="lname" placeholder="Last Name" required> 
         <div class="input-icon"><i class="fa fa-user"></i></div>
 
         </div>

@@ -1,6 +1,7 @@
 <?php
         session_start();
         include 'assets/lib/login.php';
+        
 ?>
 
 <!DOCTYPE html>
@@ -143,14 +144,14 @@
              </select>
   </div>
 
-  <!-- <div class="btn-group btn-group-primary">
+  <div class="btn-group btn-group-primary">
        <select name="city" class="form-control" required>
               <option value="" selected="selected" disabled="disabled">-- Select City --</option>   
               <option value="Ozamiz City">Ozamiz City</option>
               <option value="Oroquieta City">Oroquieta City</option>
               <option value="Tangub City">Tangub City</option>
              </select>
-  </div> -->
+  </div>
   <button class="btn btn-default hidden-print"  name="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
 </form>
 </center>
@@ -164,7 +165,7 @@
         <th class="text-center">Serial Number</th>
         <th class="text-center">Blood Type</th>
           <th class="text-center">City</th>
-            <th class="text-center">Reserve</th>
+            <th class="text-center">Status</th>
         </tr>
     </thead>
     
@@ -184,45 +185,67 @@
 
               if(isset($_GET['search'])){
   
-              // $city = $_GET['city'];
+              $city = $_GET['city'];
               $bloodtype = $_GET['bloodtype'];
 
-              $result = mysqli_query($conn,"SELECT * FROM blood WHERE bloodtype = '$bloodtype' ;");
-             
+              
+              $result = mysqli_query($conn,"SELECT * FROM blood WHERE bloodtype = '$bloodtype' AND city = '$city' AND status = '';");
+            
               while($row = mysqli_fetch_array($result))
               {
-                echo "<tr class='row-data' data-href='url://'>";
+                echo "<tr class='row-data' >";
                 echo "<td class='text-center serialnumber'>".$row['serialnumber']."</td>";
                 echo "<td class='text-center'>".$row['bloodtype']."</td>";
                 echo "<td class='text-center'>".$row['city']."</td>";
-                echo "<td class='text-center'><a class='btn btn-info btn-xs row-data' data-href='url://'><span class='glyphicon glyphicon-ok'></span> Yes</a></td>";
-        
+                echo "<td class='text-center'><a class='btn btn-info btn-xs row-data'><span class='glyphicon glyphicon-ok' data-toggle='modal' data-target='#reserveModal'></span> Available</a></td>";
                 echo "</tr>";               
-                }
+                }   
+                     
+            }
                 
-        
-                
-              }
-             
               if(isset($_POST['reserve'])){
 
                 $row['bloodtype'] = $bloodtype;
                 $row['city'] = $city;
           
-          
-                $sql = "INSERT INTO reserve_blood (serialnumber, bloodtype, city, lastname, firstname, middlename, homeaddress, contactnum, purpose)
-                        VALUES  ('".$_POST["serialnumber"]."','".$row["bloodtype"]."','".$row["city"]."','".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["address"]."','".$_POST["contactnum"]."','".$_POST["purpose"]."')";
-          
-          
-                  if ($conn->query($sql) == TRUE) {
-                    echo "<script type='text/javascript'>alert('Reservation Successfull');</script>";
-                    } else {
-                    echo "<script type='text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
-                    } 
-                    
-                  }
+                
+                $sql = "UPDATE blood SET status = '1' WHERE serialnumber = '".$_POST["serialnumber"]."' ;";
 
-              mysqli_close($conn); 
+                $sql .= "INSERT INTO reserve_blood (serialnumber, bloodtype, lastname, firstname, middlename, homeaddress, contactnum, purpose, city)
+                        VALUES  ('".$_POST["serialnumber"]."','".$row["bloodtype"]."','".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["address"]."','".$_POST["contactnum"]."','".$_POST["purpose"]."','".$row["city"]."') ";
+          
+          // NOT DONE ON THIS PART, NEED TO BE DONE AS SOON AS POSSIBLE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            // if (mysqli_multi_query($conn, $sql)) {
+            //   do {
+                
+            //       if ($result = mysqli_store_result($conn)) {
+            //           while ($row = mysqli_fetch_array($result))             
+          
+            //   mysqli_free_result($result);
+            //   }   
+            //   } 
+            //   while (($conn));
+            //   }
+          // NOT DONE ON THIS PART, NEED TO BE DONE AS SOON AS POSSIBLE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+          
+
+          if (mysqli_multi_query($conn, $sql)) {        
+            echo "<script type='text/javascript'>alert('Reservation Successfull');</script>";
+          }                  
+          else {
+            echo "<script type='text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
+            }     
+          }    
+            // }
+            // if (mysqli_multi_query($conn, $sql)) {
+            
+            //   echo "<script type='text/javascript'>alert('Reservation Successfull');</script>";  
+            // }                  
+            // else {
+            //   echo "<script type='text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
+            //   } 
+
+             mysqli_close($conn); 
            ?>
            
   </tbody>
@@ -246,8 +269,8 @@
                         
                         <div class="form-group2" style="width: 376px;">
                        <input name="serialnumber" id="serialnumber" class="form-control hidden"  type="text" value="">
-                          </div>
-
+                          </div>                 
+                          
                         <label class="col-md-4 control-label">Last Name</label>  
                         <div class="form-group2" style="width: 376px;">
                        <input  name="lastname" placeholder="Last Name" class="form-control"  type="text">
@@ -323,9 +346,6 @@
             <ul class="list-inline quicklinks">
               <li class="list-inline-item">
                 <a href="#">About the Website</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Terms and Conditions</a>
               </li>
             </ul>
           </div>

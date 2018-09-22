@@ -53,7 +53,8 @@ session_start();
                   <th>Middle Name</th>
                   <th>Address</th>
                   <th>Contact Number</th>
-                  <th>Purpose</th>                 
+                  <th>Purpose</th>    
+                  <th>Delete</th>              
                   
                 </tr>
               </thead>
@@ -68,6 +69,7 @@ session_start();
                   <th>Address</th>
                   <th>Contact Number</th>
                   <th>Purpose</th> 
+                  <th>Delete</th> 
         
                  
        
@@ -79,25 +81,49 @@ session_start();
               
                 <?php 
                 $result = mysqli_query($conn,"SELECT * FROM reserve_blood WHERE city = '" . $_SESSION['city'] . "' ");
+                ?>
 
-                      
+                <?php     
                 while($row = mysqli_fetch_array($result))  
-                {
-                echo "<td class='serialnumber'>".$row['serialnumber']."</td>";
-                echo "<td class='bloodtype'>".$row['bloodtype']."</td>";
-                echo "<td class='city'>".$row['city']."</td>";
-                echo "<td class='lastname'>".$row['lastname']."</td>";
-                echo "<td class='firstname'>".$row['firstname']."</td>";
-                echo "<td class='middlename'>".$row['middlename']."</td>";
-                echo "<td class='homeaddress'>".$row['homeaddress']."</td>";
-                echo "<td class='contactnum'>".$row['contactnum']."</td>";
-                echo "<td class='purpose'>".$row['purpose']."</td>";
+                { ?>
+                  <tr>
+                  <td class='serialnumber'><?php echo $row['serialnumber']; ?></td>
+                  <td class='bloodtype'> <?php echo $row['bloodtype']; ?> </td>
+                  <td class='city'> <?php echo $row['city']; ?> </td>
+                  <td class='lastname'><?php echo $row['lastname']; ?> </td>
+                  <td class='firstname'><?php echo $row['firstname']; ?></td>
+                  <td class='middlename'><?php echo $row['middlename']; ?> </td>
+                  <td class='homeaddress'><?php echo $row['homeaddress']; ?></td>
+                  <td class='contactnum'><?php echo $row['contactnum']; ?> </td>
+                  <td class='purpose'><?php echo $row['purpose']; ?> </td>
+                  <form method='get' action=''>               
+                  <td> <a onclick="return confirm ('Are You Sure?')" href="?serial=<?php echo $row['serialnumber']?>" class="btn btn-danger btn-sm">Delete</a></td>
+                </tr>
+              </form>  
 
-                echo "</tr>";
-                };
-                
-                mysqli_close($conn); 
-               ?>
+
+                <?php }; ?>        
+                <?php mysqli_close($conn);
+                 ?> 
+               
+                <?php include 'php/connection.php';?>
+                <?php 
+                      
+
+                      if(isset($_GET['serial'])){ 
+                        $serial = $_GET['serial'];
+                        
+                        $sql = "DELETE FROM reserve_blood WHERE serialnumber = '$serial' ";
+                        
+                        if ($conn->query($sql) === TRUE) {
+                        echo "<script type= 'text/javascript'>alert('Deleted successfully');</script>";    
+                                               
+                        } else {
+                            echo "Error deleting record: " . $conn->error;
+                        }
+                      } 
+                            mysqli_close($conn); 
+                ?>
               
               </tbody>
               
@@ -134,23 +160,6 @@ session_start();
   </div>
 <!-- end of modal -->
 </form>
-
-     <?php include 'php/connection.php';?>
-    <?php 
-          
-
-                if(isset($_GET['delete_btn'])){
-                  $sql = "DELETE FROM blood WHERE serialnumber = '".$serialnumber."' ";
-                  
-                  if ($conn->query($sql) === TRUE) {
-                   echo "<script type= 'text/javascript'>alert('Deleted successfully');</script>";
-                  } else {
-                      echo "Error deleting record: " . $conn->error;
-                  }
-                }
-
-                mysqli_close($conn); 
-    ?>
 
 
 <!-- Modal for updating record -->

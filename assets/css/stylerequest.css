@@ -35,6 +35,7 @@ select {
   -o-transition: 0.35s ease-in-out;
   transition: 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
+  color:black;
 }
 input:focus {
   outline: 0;
@@ -145,6 +146,7 @@ select option {
 }
 .input-group-icon input {
   padding-left: 4.4em;
+  color:black;
 }
 .input-group-icon .input-icon {
   position: absolute;

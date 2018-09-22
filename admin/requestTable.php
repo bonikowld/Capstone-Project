@@ -97,8 +97,14 @@
                 <td class='diagnosis'><?php echo $row['diagnosis']; ?></td> 
                 <form method='get' action=''>
                   <td> <a onclick="return confirm ('Are You Sure?')" href="?id=<?php echo $row['idrequestBlood']?>" class="btn btn-danger btn-sm">Delete</a>
-            
+                </tr>
               </form>  
+              <?php };?>
+              <?php
+                mysqli_close($conn); 
+               ?>
+
+              <?php include 'php/connection.php';?>
               <?php
                 if(isset($_GET['id'])){ 
                   $id = $_GET['id'];
@@ -118,10 +124,7 @@
 
 
                 </tr>
-               <?php };?>
-              <?php
-                mysqli_close($conn); 
-               ?>
+            
               
               </tbody>
               
@@ -136,10 +139,9 @@
     <?php include 'php/logoutfooter.php';?>
 
 <!-- Modal for editing and deleting data-->
-<div id="myModal" class="modal fade " role="dialog">
+<!-- <div id="myModal" class="modal fade " role="dialog">
   <div class="modal-dialog modal-lg">
 
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -160,57 +162,14 @@
 
    
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle='modal' data-target='#updateModal'>Update</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle='modal' data-target="#deleteModal" >Delete</button> 
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>  
      </div>
       </div>
     </div>
-  </div>
+  </div> -->
 <!-- end of modal -->
-
-<form action="" method="get">
-<!-- modal for deleting -->
-<div id="deleteModal" class="modal fade " role="dialog">
-  <div class="modal-dialog modal-sm">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <!-- <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
-      </div> -->
-  
-      <div class='modal-body' >
-      <h6>Are you Sure?</h6>
-      <button type='button' class='btn btn-success' name="delete_btn">Confirm</button>
-      <button type='button' class='btn btn-warning' data-dismiss='modal'>Cancel</button> 
-      </div>
-   
-      <!-- <div class="modal-footer">
-     </div> -->
-      </div>
-    </div>
-  </div>
-<!-- end of modal -->
-</form>
-    <?php include 'php/connection.php';?>
-
-    <?php 
-
-                if(isset($_GET['delete_btn'])){
-                  $sql = "DELETE FROM blood WHERE serialnumber = '".$serialnumber."' ";
-                  
-                  if ($conn->query($sql) === TRUE) {
-                   echo "<script type= 'text/javascript'>alert('Deleted successfully');</script>";
-                  } else {
-                      echo "Error deleting record: " . $conn->error;
-                  }
-                }
-
-                mysqli_close($conn); 
-    ?>
-
+    
 
 <!-- Modal for updating record -->
 <div id="updateModal" class="modal fade " role="dialog">
