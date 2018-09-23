@@ -104,7 +104,7 @@
         <div class="intro-text">
           <div class="intro-lead-in">Welcome to Blood Seeker</div>
           <div class="intro-heading text-uppercase">Want to Donate Blood?</div>
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" data-toggle='modal' data-target='#loginModal'>Donate Now</a>
+          <!-- <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" data-toggle='modal' data-target='#loginModal'>Donate Now</a> -->
         </div>
       </div>
     </header>

@@ -303,7 +303,31 @@ header.masthead .intro-text .intro-heading {
      clear: both;
 
 }
-
 img {
   border-radius: 50%;
+}
+.about{
+  border: 1px solid black;
+  outline-style: solid;
+  outline-color: red;
+  margin-top: 4%;
+  margin-right: 10%;
+  margin-left: 10%;
+
+}
+.abouttext{
+  font-size: 20px;
+}
+.hokageimg{
+  width:128px;
+  height:128px;
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-left:175px;
+}
+.imgprogrammer{
+  margin-bottom: 80px;
+}
+.imgdes{
+  
 }

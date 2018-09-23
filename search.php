@@ -189,8 +189,13 @@
               $bloodtype = $_GET['bloodtype'];
 
               
-              $result = mysqli_query($conn,"SELECT * FROM blood WHERE bloodtype = '$bloodtype' AND city = '$city' AND status = '';");
-            
+              $result = mysqli_query($conn,"SELECT * FROM blood WHERE bloodtype = '$bloodtype' AND city = '$city' AND status = '';");                    
+              
+             
+            if(mysqli_num_rows($result) <= 0){
+              echo "<script type='text/javascript'>alert('No Blood Available');</script>";
+            }
+            else{
               while($row = mysqli_fetch_array($result))
               {
                 echo "<tr class='row-data' >";
@@ -198,9 +203,9 @@
                 echo "<td class='text-center'>".$row['bloodtype']."</td>";
                 echo "<td class='text-center'>".$row['city']."</td>";
                 echo "<td class='text-center'><a class='btn btn-info btn-xs row-data'><span class='glyphicon glyphicon-ok' data-toggle='modal' data-target='#reserveModal'></span> Available</a></td>";
-                echo "</tr>";               
-                }   
-                     
+                echo "</tr>";                                        
+              } 
+            }      
             }
                 
               if(isset($_POST['reserve'])){
@@ -345,7 +350,7 @@
           <div class="col-md-4">
             <ul class="list-inline quicklinks">
               <li class="list-inline-item">
-                <a href="#">About the Website</a>
+                <a href="about.html">About the Website</a>
               </li>
             </ul>
           </div>
