@@ -97,7 +97,7 @@ session_start();
                   <td class='contactnum'><?php echo $row['contactnum']; ?> </td>
                   <td class='purpose'><?php echo $row['purpose']; ?> </td>
                   <form method='get' action=''>               
-                  <td> <a onclick="return confirm ('Are You Sure?')" href="?serial=<?php echo $row['serialnumber']?>" class="btn btn-danger btn-sm">Delete</a></td>
+                  <td> <a href="?serial=<?php echo $row['serialnumber']?>" onclick="return confirm ('Are You Sure?')" class="btn btn-danger btn-sm">Delete</a></td>
                 </tr>
               </form>  
 
@@ -113,7 +113,7 @@ session_start();
                       if(isset($_GET['serial'])){ 
                         $serial = $_GET['serial'];
                         
-                        $sql = "DELETE FROM reserve_blood WHERE serialnumber = '$serial' ";
+                        $sql = "DELETE FROM reserve_blood WHERE serialnumber = '$serial'" ;
                         
                         if ($conn->query($sql) === TRUE) {
                         echo "<script type= 'text/javascript'>alert('Deleted successfully');</script>";    

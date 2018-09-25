@@ -210,6 +210,9 @@
   <?php 
  if(isset($_GET['report'])){
 
+  $checkoutmonth = $_GET['month'];
+  $checkoutyear = $_GET['year'];
+
   $result = mysqli_query($conn,"SELECT * FROM report WHERE checkoutmonth = '$checkoutmonth' AND checkoutyear = '$checkoutyear'; ");
   
  }
@@ -291,6 +294,7 @@
 
                   $checkoutmonth = $_GET['month'];
                   $checkoutyear = $_GET['year'];
+                  // $city = $_SESSION['bloodbank'];
 
                   $result = mysqli_query($conn,"SELECT * FROM report WHERE checkoutmonth = '$checkoutmonth' AND checkoutyear = '$checkoutyear'; ");
                   

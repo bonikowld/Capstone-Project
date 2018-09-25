@@ -1,5 +1,5 @@
-//data-toggle='modal' data-target='#myModal'
-$('.row-data').click(function(){
+// data-toggle='modal' data-target='#myModal'
+    $('.row-data').click(function(){
     $('#updateModal .serialnumber').text( $('.serialnumber', this).text() );
     $('#updateModal .donor').text( $('.donor', this).text() );
     $('#updateModal .bloodtype').text( $('.bloodtype', this).text() );
@@ -7,7 +7,7 @@ $('.row-data').click(function(){
     $('#updateModal .quantity').text( $('.quantity', this).text() );
     $('#updateModal .extractiondate').text( $('.extractiondate', this).text() );
     $('#updateModal .expirationdate').text( $('.expirationdate', this).text() );
-
+   
     
     document.getElementById("serialnumber").value = $('.serialnumber', this).text();
     document.getElementById("donor").value = $('.donor', this).text();
@@ -20,6 +20,7 @@ $('.row-data').click(function(){
 
     $('#updateModal').modal();
   });
+
 
   function startTime() {
     var today = new Date();

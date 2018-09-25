@@ -94,8 +94,8 @@ session_start();
                 <td class='extractiondate'> <?php echo $row['extractiondate']; ?> </td>
                 <td class='expirationdate'> <?php echo $row['expirationdate']; ?> </td>
                 <form method='get' action=''>
-                <td> <a onclick="return confirm ('Are You Sure?'); " href="?serial=<?php echo $row['serialnumber']?>" class="btn btn-danger btn-sm">Delete</a></td>
-                <td><button type='button' class='btn btn-success btn-sm' data-toggle="modal" data-target="#updateModal" >Checkout</button> </td>
+                <td> <a href="?serial=<?php echo $row['serialnumber']?>" onclick="return confirm ('Are You Sure?');" class="btn btn-danger btn-sm">Delete</a></td>
+                <td><button type='button' onclick="updateBtn()"class='btn btn-success btn-sm' data-toggle="modal" data-target="#updateModal" >Checkout</button> </td>
               </form>       
               </tr>
                 <?php }; ?>                    
@@ -141,10 +141,13 @@ session_start();
 
                     $sql = "INSERT INTO report (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, bloodbank, borrowersname, borrowersaddress, borrowerscontactnum, ornum, checkoutmonth, checkoutyear)
                             VALUES ('".$_POST["serialnumber"]."', '".$_POST["donor"]."','".$_POST["bloodtype"]."', '".$_POST["component"]."', '".$_POST["quantity"]."', '".$_POST["extractiondate"]."', '".$_POST["expirationdate"]."', '".$_POST["city"]."', '".$_POST["borrowedby"]."', '".$_POST["borrowersaddress"]."', '".$_POST["contactnumber"]."', '".$_POST["ornumber"]."', '".$_POST["checkoutmonth"]."', '".$_POST["checkoutyear"]."')";
+                   
+                    
 
                     if($conn->query($sql) == TRUE){
                 ?>
                     <script type= 'text/javascript'>alert('Checkout Successfull');</script>
+                    
 
                     <?php 
                     }else{
@@ -235,7 +238,8 @@ session_start();
         <tr>
           <td>
           <b>City</b>
-          <input type="text" name="city" class="form-control" required >
+         
+          <input type="text" name="city" class="form-control" required>
           </td>
         </tr>
 
