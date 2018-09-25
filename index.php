@@ -33,7 +33,7 @@
         <!-- <link rel="stylesheet" href="assets/css/registration.css"> -->
         
         <!-- Modernizr -->
-		<script src="assets/js/modernizr-2.6.2.min.js"></script>
+		    <script src="assets/js/modernizr-2.6.2.min.js"></script>
 		
 		<style>
           .error{
@@ -99,19 +99,36 @@
     <!-- Carousel
     ================================================== -->
    
-         <header class="masthead">
+    <header class="masthead">
       <div class="container">
         <div class="intro-text">
-          <div class="intro-lead-in">Welcome to Blood Seeker</div>
-          <div class="intro-heading text-uppercase">Want to Donate Blood?</div>
-          <!-- <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" data-toggle='modal' data-target='#loginModal'>Donate Now</a> -->
+          <div id="textSlider" class="row">
+              <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4 iamCol">
+                <center><p>Project Blood Seeker</p></center>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 slideCol">
+                <div class="scroller">
+                  <div class="inner">
+                    <p>Want to Donate Blood?</p>
+                    <p>You can make a difference</p>
+                    <p>Give Blood, Save Lives.</p>
+                    <p>Donate Blood Now!</p>
+                  </div>
+                </div>
+              </div>
+				   </div>
+          </div>
         </div>
       </div>
     </header>
 
+    <!--<div class="intro-lead-in">Welcome to Blood Seeker</div>
+    <div class="intro-heading text-uppercase">Want to Donate Blood?</div>
+    <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" data-toggle='modal' data-target='#loginModal'>Donate Now</a> -->
 
-   
 
+
+<div class="home">
 <div class="row">
   <div class="column">
     <h2>Mission</h2>
@@ -140,6 +157,8 @@
     <button class="btn btn-default hidden-print"  name="readmore" data-toggle="modal" href="#readmore3"> Read More</button>
   </div>
 </div>
+</div>
+<br>
 
 <div class="row">
   <div class="column3">
@@ -164,6 +183,7 @@
 
   </div>
 </div>
+
 
 
   <!-- Modal login-->

@@ -44,7 +44,7 @@
 
     </head>
 
-    <body>
+    <body class="search">
 
           <nav class="navbar navbar-inverse">
                     <div class="container-fluid">
