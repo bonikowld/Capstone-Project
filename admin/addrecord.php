@@ -154,7 +154,9 @@ if(!empty($_POST)){
               <?php include 'php/connection.php';?>
               
               <?php 
-                $result = mysqli_query($conn,"SELECT * FROM blood");
+                $city = $_SESSION['city'];
+
+                $result = mysqli_query($conn,"SELECT * FROM blood WHERE city = '$city'; ");
                       
                     while($row = mysqli_fetch_array($result))  
                 {

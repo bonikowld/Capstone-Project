@@ -55,7 +55,7 @@
                   <th>Email Address</th>
                   <th>Identification No.</th>
                   <th>Donor Address</th>
-
+                  <th>Delete</th>
 
                 </tr>
               </thead>
@@ -75,6 +75,7 @@
                   <th>Email Address</th>
                   <th>Identification No.</th>
                   <th>Donor Address</th>
+                  <th>Delete</th>
                 </tr>
               </tfoot>
               
@@ -84,30 +85,34 @@
               <?php 
             
                 $result = mysqli_query($conn,"SELECT * FROM donate_blood");
+                ?>
 
-                      
+                <?php     
                 while($row = mysqli_fetch_array($result))  
-                {
-                // echo "<tr class='clickable-row row-data' data-href='url://'>";
-                echo "<td class='lastname'>".$row['lastname']."</td>";
-                echo "<td class='firstname'>".$row['firstname']."</td>";
-                echo "<td class='middlename'>".$row['middlename']."</td>";
-                echo "<td class='age'>".$row['age']."</td>";
-                echo "<td class='birthdate'>".$row['birthdate']."</td>";
-                echo "<td class='sex'>".$row['sex']."</td>";
-                echo "<td class='nationality'>".$row['nationality']."</td>";
-                echo "<td class='civilstatus'>".$row['civilstatus']."</td>";
-                echo "<td class='education'>".$row['education']."</td>";
-                echo "<td class='occupation'>".$row['occupation']."</td>";
-                echo "<td class='cellphonenum'>".$row['cellphonenum']."</td>";
-                echo "<td class='email'>".$row['email']."</td>";
-                echo "<td class='identificationno'>".$row['identificationno']."</td>"; 
-                echo "<td class='homeaddress'>".$row['homeaddress']."</td>"; 
-                echo "</tr>";
-                };
+                {?>
+                <tr class='row-data' data-href='url://'>
+                <td class='lastname'> <?php echo $row['lastname']; ?></td>
+                <td class='firstname'> <?php echo $row['firstname']; ?></td>
+                <td class='middlename'> <?php echo $row['middlename']; ?></td>
+                <td class='age'> <?php echo $row['age'] ?></td>
+                <td class='birthdate'> <?php echo $row['birthdate']; ?></td>
+                <td class='sex'> <?php echo $row['sex']; ?></td>
+                <td class='nationality'> <?php echo $row['nationality']; ?></td>
+                <td class='civilstatus'> <?php echo $row['civilstatus']; ?></td>
+                <td class='education'> <?php echo $row['education']; ?></td>
+                <td class='occupation'> <?php echo $row['occupation']; ?></td>
+                <td class='cellphonenum'> <?php echo $row['cellphonenum']; ?></td>
+                <td class='email'> <?php echo $row['email']; ?></td>
+                <td class='identificationno'> <?php echo $row['identificationno']; ?></td> 
+                <td class='homeaddress'> <?php echo $row['homeaddress']; ?></td>
+                <form method='get' action=''>
+                <td> <a onclick="return confirm ('Are You Sure?');" class="btn btn-danger btn-sm">Delete</a></td>
+                </form>  
+                </tr>
+
+                <?php }; ?>
                 
-                mysqli_close($conn); 
-               ?>
+                <?php mysqli_close($conn); ?> 
               
               </tbody>
               
@@ -121,11 +126,11 @@
     <?php include 'php/logoutfooter.php';?>
 
 <!-- Modal for editing and deleting data-->
-<div id="myModal" class="modal fade " role="dialog">
-  <div class="modal-dialog modal-lg">
+<!-- <div id="myModal" class="modal fade " role="dialog">
+  <div class="modal-dialog modal-lg"> -->
 
     <!-- Modal content-->
-    <div class="modal-content">
+    <!-- <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"></h4>
@@ -141,9 +146,9 @@
       <b>Expiration Date:</b> <span class="expirationdate"></span>
       </div>
       <p id="bloodpic"><img class="bloodimg" src="../admin/img/img.jpg" alt="Blood" height="218px" width="207px" ></p>
-      </div>
+      </div> -->
 
-   
+<!--    
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle='modal' data-target='#updateModal'>Update</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle='modal' data-target="#deleteModal" >Delete</button> 
@@ -151,7 +156,7 @@
      </div>
       </div>
     </div>
-  </div>
+  </div> -->
 <!-- end of modal -->
 
 <form action="" method="get">

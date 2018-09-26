@@ -166,7 +166,7 @@
 <!-- Printable Area -->
 <div class="hidden" id="printableArea">
 <center>
-  <img src="assets/images/Philippine_Red_Cross_logo.jpg" alt="logo" style="width:200px">
+  <img src="../assets/images/Philippine_Red_Cross_logo.jpg" alt="logo" style="width:50px">
   <h6 class="style">Republic of the Philippines</h6>
   <h6 class="style">Region X - Northern Mindanao</h6>
   <h6 class="style">Philippine National Red Cross <?php 
@@ -184,7 +184,10 @@
             }
           ?></h6>
   <br>
-  <h6 class="style1">Monthly Reports</h6>
+  <h6 class="style1"><?php 
+  $checkoutmonth = $_GET['month'];
+  echo $checkoutmonth;
+  ?>&nbspMonthly Report</h6>
   <hr>
 </center>
 <table>
@@ -212,8 +215,10 @@
 
   $checkoutmonth = $_GET['month'];
   $checkoutyear = $_GET['year'];
+  $city = $_SESSION['city'];
+  
 
-  $result = mysqli_query($conn,"SELECT * FROM report WHERE checkoutmonth = '$checkoutmonth' AND checkoutyear = '$checkoutyear'; ");
+  $result = mysqli_query($conn,"SELECT * FROM report WHERE checkoutmonth = '$checkoutmonth' AND bloodbank = '$city' AND checkoutyear = '$checkoutyear'; ");
   
  }
   ?>
@@ -294,9 +299,9 @@
 
                   $checkoutmonth = $_GET['month'];
                   $checkoutyear = $_GET['year'];
-                  // $city = $_SESSION['bloodbank'];
+                  $city = $_SESSION['city'];
 
-                  $result = mysqli_query($conn,"SELECT * FROM report WHERE checkoutmonth = '$checkoutmonth' AND checkoutyear = '$checkoutyear'; ");
+                  $result = mysqli_query($conn,"SELECT * FROM report WHERE checkoutmonth = '$checkoutmonth' AND bloodbank = '$city' AND checkoutyear = '$checkoutyear'; ");
                   
                  }
                
@@ -354,7 +359,7 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-body">Select "Logout" below if you are done</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
             <a class="btn btn-primary" href="../index.php">Logout</a>

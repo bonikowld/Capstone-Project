@@ -40,7 +40,7 @@
 
     </head>
 
-<body>
+<body class="search">
                 <nav class="navbar navbar-inverse">
                     <div class="container-fluid">
                       <div class="navbar-header">
@@ -317,7 +317,7 @@ if(!empty($_POST)){
 
 </form>
 
-<!-- <div class="footer"> 
+<div class="footer"> 
         <div class="row">
           <div class="col-md-4">
             <span class="copyright">Copyright &copy; Project Blood Seeker 2018</span>
@@ -344,15 +344,13 @@ if(!empty($_POST)){
           <div class="col-md-4">
             <ul class="list-inline quicklinks">
               <li class="list-inline-item">
-                <a href="#">About the Website</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Terms and Conditions</a>
+                <a href="about.html">About the Website</a>
               </li>
             </ul>
           </div>
         </div>
-</div> -->
+</div>
+
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script  src="js/index.js"></script> -->

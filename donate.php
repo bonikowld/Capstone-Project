@@ -39,7 +39,8 @@ include 'assets/lib/login.php';
 
     </head>
 
-    <body>
+
+    <body class="search">
 
       <nav class="navbar navbar-inverse">
                     <div class="container-fluid">
@@ -101,6 +102,7 @@ if(!empty($_POST)){
 }
 
 ?>
+
  <div class="container">
   <form method="post" action="">
    <strong><center><h2>DONOR'S INFORMATION</h2></center> </strong>
@@ -177,11 +179,19 @@ if(!empty($_POST)){
        <div class="form-group-2">
         <input type="text" name="address" placeholder="Address" required>
         </div>
+
+        <div class="form-group-2">
+        <h4>Any Valid ID No.</h4>
+        <div class="form-group-2">
+           <input type="text" name="identificationno" placeholder="ID No." required>
+        </div>
+
       <div class="col-half">
         <h4>Email Address</h4>
         <div class="form-group-2">
            <input type="text" name="email" placeholder="Email Address." required>
         </div>
+
       </div>
        <div class="col-half">
         <h4>Nationality</h4>
@@ -229,6 +239,13 @@ if(!empty($_POST)){
         </div>
       </div>
     </div> -->
+     <!-- <div class="col-half">
+     <h4>Valid ID no.</h4>
+       <div class="form-group-2">
+        <input type="text" name="identificationno" placeholder="ID no." required>
+        </div>
+  </div> -->
+
     <div class="row">
         <h4>Blood Bank</h4>
         <div class="form-group-2">
@@ -242,19 +259,11 @@ if(!empty($_POST)){
         </div>
       </div>
     </div>
-
-  <div class="col-half">
-     <h4>Valid ID no.</h4>
-       <div class="form-group-2">
-        <input type="text" name="identificationno" placeholder="ID no." required>
-        </div>
-  </div>
-
       <button class="button"> DONATE</button>
     </form>
 </div>
 
-<!-- <div class="footer"> 
+<div class="footer"> 
         <div class="row">
           <div class="col-md-4">
             <span class="copyright">Copyright &copy; Project Blood Seeker 2018</span>
@@ -281,15 +290,14 @@ if(!empty($_POST)){
           <div class="col-md-4">
             <ul class="list-inline quicklinks">
               <li class="list-inline-item">
-                <a href="#">About the Website</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Terms and Conditions</a>
+                <a href="about.html">About the Website</a>
               </li>
             </ul>
           </div>
         </div>
-</div> -->
+</div>
+
+
 
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
