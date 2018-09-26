@@ -126,7 +126,7 @@
             </div>  
 <center>
 
- <h1>SEARCH BLOOD</h1>
+ <h1><b>SEARCH BLOOD</b></h1>
 
 <form action="" method="get">
  <div class="btn-group">
@@ -162,10 +162,10 @@
     <table class="table table-rounded custab">
     <thead>
         <tr>
-        <th class="text-center">Serial Number</th>
-        <th class="text-center">Blood Type</th>
-          <th class="text-center">City</th>
-            <th class="text-center">Status</th>
+        <th class="text-center"><h4><b>Serial Number</b></h4></th>
+        <th class="text-center"><h4><b>Blood Type</b></h4></th>
+          <th class="text-center"><h4><b>City</b></h4></th>
+            <th class="text-center"><h4><b>Status</b></h4></th>
         </tr>
     </thead>
     

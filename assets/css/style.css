@@ -505,3 +505,9 @@ img {
   margin-right: 6%;
   margin-left: 66%;
 }
+
+.addressPRC {
+  border-radius: 0%;
+  width: 1350px ; 
+  height: 330px ;
+}

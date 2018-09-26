@@ -34,12 +34,10 @@
         
         <!-- Modernizr -->
 		    <script src="assets/js/modernizr-2.6.2.min.js"></script>
-		
-		<style>
-          .error{
-           color:red
-		  }
-		</style>
+		    <!-- Carousel Slider -->
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     </head>
 
@@ -160,29 +158,63 @@
 </div>
 <br>
 
-<div class="row">
+<!-- <div class="row">
   <div class="column3">
-  <img src="assets/avatar/img_avatar.png" alt="Avatar" style="width:200px">
-  <h2>OROQUIETA CITY OFFICE</h2>
-   <p><span class="glyphicon glyphicon-map-marker"></span> Philippine Red Cross Capitol Compound Oroquieta City Misamis Occidental Philippines</p>
-     <p><span class="glyphicon glyphicon-earphone">  (088) 531-1068 </p>
+     <img src="assets/avatar/img_avatar.png" alt="Avatar" style="width:200px">
+      <h2>OROQUIETA CITY OFFICE</h2>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Philippine Red Cross Capitol Compound Oroquieta City Misamis Occidental Philippines</p>
+      <p><span class="glyphicon glyphicon-earphone">  (088) 531-1068 </p>
   </div>
   <div class="column3">
-       <img src="assets/avatar/img_avatar.png" alt="Avatar" style="width:200px">
+     <img src="assets/avatar/img_avatar.png" alt="Avatar" style="width:200px">
        <h2>OZAMIZ CITY OFFICE</h2>
-    <p><span class="glyphicon glyphicon-map-marker"></span> S.M. Lao Hospital Compound, Manabay, Ozamis City, 7200, Misamis Occidental</p>
-     <p><span class="glyphicon glyphicon-earphone"> (088) 521 3837 </p>
+       <p><span class="glyphicon glyphicon-map-marker"></span> S.M. Lao Hospital Compound, Manabay, Ozamis City, 7200, Misamis Occidental</p>
+       <p><span class="glyphicon glyphicon-earphone"> (088) 521 3837 </p>
   </div>
   <div class="column3">
-    
-      <img src="assets/avatar/img_avatar.png" alt="Avatar" style="width:200px">
+     <img src="assets/avatar/img_avatar.png" alt="Avatar" style="width:200px">
       <h2>TANGUB CITY OFFICE</h2>
-   <p><span class="glyphicon glyphicon-map-marker"></span> Philippine Red Cross, City Hall Drive, Tangub City, Misamis Occidental </p>
-    <p><span class="glyphicon glyphicon-earphone"> (088) 395 3162 </p>
-
-
+      <p><span class="glyphicon glyphicon-map-marker"></span> Philippine Red Cross, City Hall Drive, Tangub City, Misamis Occidental </p>
+      <p><span class="glyphicon glyphicon-earphone"> (088) 395 3162 </p>
   </div>
-</div>
+</div> -->
+
+
+  
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <center><img  class="addressPRC" src="assets/images/Oroquieta.jpg" alt="PRC Oroquieta City"></center>
+      </div>
+
+      <div class="item">
+        <center><img  class="addressPRC" src="assets/images/Ozamiz.jpg" alt="PRC Ozamiz City"></center>
+      </div>
+    
+      <div class="item">
+        <center><img class="addressPRC" src="assets/images/Tangub.jpg" alt="PRC Tangub City"></center>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
 
 
 
