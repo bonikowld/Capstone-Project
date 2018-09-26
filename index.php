@@ -102,7 +102,7 @@
         <div class="intro-text">
           <div id="textSlider" class="row">
               <div class="col-xs-12 col-sm-12 col-md-3 col-lg-4 iamCol">
-                <center><p>Project Blood Seeker</p></center>
+                <center><p><b>Project Blood Seeker</b></p></center>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 slideCol">
                 <div class="scroller">

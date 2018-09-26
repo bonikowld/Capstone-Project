@@ -19,9 +19,9 @@ h2,
 h3,{
   font-family: "Dosis", sans-serif;
 }
-h4 {
+/* h4 {
   
-}
+} */
 
 a {
   color: inherit;
@@ -344,9 +344,9 @@ img {
 .imgprogrammer{
   margin-bottom: 80px;
 }
-.imgdes{
+/* .imgdes{
   
-}
+} */
 
 @import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css);
 /* Slider */
