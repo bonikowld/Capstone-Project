@@ -141,9 +141,7 @@ session_start();
 
                     $sql = "INSERT INTO report (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, bloodbank, borrowersname, borrowersaddress, borrowerscontactnum, ornum, checkoutmonth, checkoutyear)
                             VALUES ('".$_POST["serialnumber"]."', '".$_POST["donor"]."','".$_POST["bloodtype"]."', '".$_POST["component"]."', '".$_POST["quantity"]."', '".$_POST["extractiondate"]."', '".$_POST["expirationdate"]."', '".$_POST["city"]."', '".$_POST["borrowedby"]."', '".$_POST["borrowersaddress"]."', '".$_POST["contactnumber"]."', '".$_POST["ornumber"]."', '".$_POST["checkoutmonth"]."', '".$_POST["checkoutyear"]."')";
-                   
-                    
-
+                                               
                     if($conn->query($sql) == TRUE){
                 ?>
                     <script type= 'text/javascript'>alert('Checkout Successfull');</script>
@@ -287,7 +285,6 @@ session_start();
     </div>
   </div>
 </div>
-
 
 <?php include 'php/logoutfooter.php';?>
 

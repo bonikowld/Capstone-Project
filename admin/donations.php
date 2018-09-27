@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,6 +58,7 @@
                   <th>Occupation</th>
                   <th>Cellphone Number</th>
                   <th>Email Address</th>
+                  <th>Blood Bank</th>
                   <th>Identification No.</th>
                   <th>Donor Address</th>
                   <th>Delete</th>
@@ -73,6 +79,7 @@
                   <th>Occupation</th>
                   <th>Cellphone Number</th>
                   <th>Email Address</th>
+                  <th>Blood Bank</th>
                   <th>Identification No.</th>
                   <th>Donor Address</th>
                   <th>Delete</th>
@@ -82,15 +89,16 @@
               <tbody>
               <?php include 'php/connection.php';?>
               
-              <?php 
-            
-                $result = mysqli_query($conn,"SELECT * FROM donate_blood");
+              <?php         
+
+                $result = mysqli_query($conn,"SELECT * FROM donate_blood WHERE identificationno = '" . $_SESSION['city'] . "' ");
                 ?>
 
                 <?php     
                 while($row = mysqli_fetch_array($result))  
                 {?>
                 <tr class='row-data' data-href='url://'>
+               
                 <td class='lastname'> <?php echo $row['lastname']; ?></td>
                 <td class='firstname'> <?php echo $row['firstname']; ?></td>
                 <td class='middlename'> <?php echo $row['middlename']; ?></td>
@@ -104,9 +112,10 @@
                 <td class='cellphonenum'> <?php echo $row['cellphonenum']; ?></td>
                 <td class='email'> <?php echo $row['email']; ?></td>
                 <td class='identificationno'> <?php echo $row['identificationno']; ?></td> 
+                <td class='bloodbank'> <?php echo $row['bloodbank']; ?></td> 
                 <td class='homeaddress'> <?php echo $row['homeaddress']; ?></td>
                 <form method='get' action=''>
-                <td> <a onclick="return confirm ('Are You Sure?');" class="btn btn-danger btn-sm">Delete</a></td>
+                <td> <a href="?iddonate=<?php echo $row['iddonate_blood']?>" onclick="return confirm ('Are You Sure?');" class="btn btn-danger btn-sm">Delete</a></td>
                 </form>  
                 </tr>
 
@@ -124,40 +133,6 @@
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     <?php include 'php/logoutfooter.php';?>
-
-<!-- Modal for editing and deleting data-->
-<!-- <div id="myModal" class="modal fade " role="dialog">
-  <div class="modal-dialog modal-lg"> -->
-
-    <!-- Modal content-->
-    <!-- <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
-      </div>
-      <div class="modal-body" >
-      <div class="bloodData" >
-      <b>Serial Number:</b> <span class="serialnumber"></span><br>
-      <b>Donor:</b> <span class="donor"></span><br> 
-      <b>Blood Type: </b> <span class="bloodtype"></span><br>
-      <b>Component:</b> <span class="component"></span><br>
-      <b>Quantity: </b> <span class="quantity"></span><br>
-      <b>Extraction Date:</b> <span class="extractiondate"></span><br>
-      <b>Expiration Date:</b> <span class="expirationdate"></span>
-      </div>
-      <p id="bloodpic"><img class="bloodimg" src="../admin/img/img.jpg" alt="Blood" height="218px" width="207px" ></p>
-      </div> -->
-
-<!--    
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle='modal' data-target='#updateModal'>Update</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle='modal' data-target="#deleteModal" >Delete</button> 
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>  
-     </div>
-      </div>
-    </div>
-  </div> -->
-<!-- end of modal -->
 
 <form action="" method="get">
 <!-- modal for deleting -->
@@ -194,16 +169,17 @@
 
                 // Create connection
                 $conn = mysqli_connect($servername, $username, $password, $dbname);
-                // Check connection
+                // Check connection 
                 if (!$conn) {
                     die("Connection failed: " . mysqli_connect_error());
                 }
 
-                if(isset($_GET['delete_btn'])){
-                  $sql = "DELETE FROM blood WHERE serialnumber = '".$serialnumber."' ";
+                if(isset($_GET['iddonate'])){
+                  $iddonate = $_GET['iddonate'];
+
+                  $sql = "DELETE FROM donate_blood WHERE iddonate_blood = '".$iddonate."' ";
                   
                   if ($conn->query($sql) === TRUE) {
-                   echo "<script type= 'text/javascript'>alert('Deleted successfully');</script>";
                   } else {
                       echo "Error deleting record: " . $conn->error;
                   }
@@ -276,8 +252,10 @@
       
       </table>
       <div class="modal-footer">
+      <form action="" method="get">
         <button type="button" class="btn btn-success" data-dismiss="modal" >Done</button>
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </form>
       </div>
     </div>
   </div>

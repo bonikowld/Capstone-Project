@@ -72,7 +72,7 @@ if ($conn->query($sql) == TRUE) {
 
     </head>
 
-    <body>
+    <body class="search">
 
 		
 			<nav class="navbar navbar-inverse">
@@ -99,114 +99,6 @@ if ($conn->query($sql) == TRUE) {
                       </div>
                     </div>
                   </nav>
-
-
-     <!-- Bootsrap 	<br>
-    <div class="Registration-main-w3ls">
-			<div class="mt-2 text-center">
-					<h1 class="header-w3ls">
-						Sign Up to get started
-					</h1>
-			</div>
-			<br>
-		<form action="" method="post">
-			<p class="content-divider center mt-4"><span>personal information</span></p><br>
-			
-			<h4 class="reg">Name</h4><br>
-			<div class="main">
-				<div class="form-left-to-w3l">
-					<input type="text" name="lastname" id="lname" placeholder="Last Name" required="">
-					<span class="form-required" id="lname_error_message"></span>
-					<div class="clear"></div>
-				</div>
-				<div class="form-center-to-w3ls">
-					<input type="text" name="firstname" id="fname" placeholder="First Name" required="">
-					<span class="form-required" id="fname_error_message"></span>
-					<div class="clear"></div>
-				</div>
-				<div class="form-right-to-w3ls">
-					<input type="text" name="middlename" id="mname" placeholder="Middle Name" required="">
-					<span class="form-required" id="mname_error_message"></span>
-					<div class="clear"></div>
-				</div> 
-			</div>
-			
-			<h4 class="reg">Date of Birth</h4><br>
-			<div class="main">
-				<div class="form-left-to-w3l">
-					        <input type="text" name="day" id="day" placeholder="DD" required="">
-							<span class="form-required" id="day_error_message"></span>
-				</div>
-				<div class="form-center-to-w3ls">
-					        <input type="text" name="month" id="month" placeholder="MM" required="">
-							<span class="form-required" id="month_error_message"></span>
-				</div>
-				<div class="form-right-to-w3ls">
-					        <input type="text" name="year" id="year" placeholder="YYYY" required="">
-							<span class="form-required" id="year_error_message"></span>	
-				</div>
-			</div>
-				
-				<h4 class="reg">Contact Number</h4><br>
-				<div class="form-center-to-w3ls ">
-						<input type="text" name="cellphonenum" id="contactno" placeholder="Phone No./Tel. No." required="">
-						<span class="form-required" id="contactno_error_message"></span>
-				</div>
-			
-				<h4 class="reg">Address</h4><br>
-				<div class="form-add-to-w3ls add">
-						<input type="text" name="homeaddress" id="address" placeholder="Complete Address" required="">
-						<span class="form-required" id="address_error_message"></span>
-						<div class="clear"></div>
-				</div>
-
-
-            <p class="content-divider center mt-4"><span>login information</span></p><br>
-            <div class="main">
-				<div class="form-left-to-w3l">
-					<h4 class="reg">Username</h4><br>
-					<input type="text" name="username" placeholder="Username" required="">
-				</div>
-				<div class="form-right-to-w3ls ">
-					<h4 class="reg">Email Address</h4><br>
-					<input type="email" name="email" placeholder="Email" required="">
-				</div>
-			</div>
-
-			<div class="main">
-					<div class="form-left-to-w3l">
-						<h4 class="reg">Password</h4><br>
-						<input type="password" name="pass" required="" placeholder="Password" required="">
-					</div>
-					<!-- <div class="form-right-to-w3ls ">
-						<h4 class="reg">Confirm password</h4><br>
-						<input type="password" name="cpassword" placeholder="Confirm Password" required="">
-					</div> 
-			</div>
-			
-			<div class="btn">
-				<button type="submit" class="btn btn-danger btn-block" name="register">Register</button><br>
-			</div>
-
-		</form>
-		<br>
-		<h4 class="text-center">
-				Already have an account? <a class="link" href="index.php">Login Now</a>
-		</h4>
-
-
-		<div class="clear"></div>
-	</div>
-
-	
-	<div class="footer">
-		<p>&copy;Donor Registration</p>
-	</div>
-
-
-    <!--  Scripts
-    ================================================== -->
-
 
     <div class="container">
   <form method="post" action="" >
