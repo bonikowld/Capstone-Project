@@ -103,7 +103,10 @@ if(!empty($_POST)){
 
 ?>
 
- <div class="container">
+ <div class="container" style="
+    margin-top: 2%;
+    margin-bottom: 5%;
+">
   <form method="post" action="">
    <strong><center><h2>DONOR'S INFORMATION</h2></center> </strong>
     <div class="row">
@@ -202,9 +205,9 @@ if(!empty($_POST)){
     </div>
    <div class="row">
       <div class="col-half">
-        <h4>Education</h4>
+        <h4 style="margin-left: 6%;">Education</h4>
         <div class="form-group-2">
-        <select name="education" class="form-control" style="width: 246px; height: 54px;" required>
+        <select name="education" class="form-control" style="width: 246px;height: 54px;margin-left: 6%;" required >
         <option value="" selected="selected" disabled="disabled">-- select one --</option>
         <option value="No formal education">No formal education</option>
         <option value="Primary education">Primary education</option>
@@ -220,16 +223,21 @@ if(!empty($_POST)){
        <div class="col-half">
         <h4>Work</h4>
         <div class="form-group-2">
-        <input type="text" name="occupation" placeholder="Work" required>
+        <input type="text" name="occupation" placeholder="Work" required style="
+    width: 257px;
+">
         </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-half">
-        <h4>Contact No.</h4>
+        <h4 style="margin-left: 6%">Contact No.</h4>
         <div class="form-group-2">
-           <input type="text" name="contactnum" placeholder="Telephone No." required>
+           <input type="text" name="contactnum" placeholder="Telephone No." style="
+    margin-left: 6% ;
+    width: 95%;
+" required>
         </div>
       </div>
        <!-- <div class="col-half">
@@ -250,7 +258,7 @@ if(!empty($_POST)){
         <h4>Blood Bank</h4>
         <div class="form-group-2">
           <div class="form-group-twothirds"> 
-          <select name="bloodbank" class="form-control" style="width: 246px; height: 54px;" required>
+          <select name="bloodbank" class="form-control" style="width: 255px; height: 54px;" required>
               <option value="" selected="selected" disabled="disabled">-- select one --</option>
               <option value="Oroquieta City">Oroquieta City</option>
               <option value="Ozamiz City">Ozamiz City</option>
