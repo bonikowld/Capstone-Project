@@ -167,7 +167,10 @@ if(!empty($_POST)){
 
 
 
-<div class="container">
+<div class="container" style="
+    margin-top: 2%;
+    margin-bottom: 5%;
+">
   <form method="post" action="" >
    <strong><center><H2>PATIENT INFORMATION</H2></center> </strong>
     <div class="form-group row">
@@ -295,11 +298,15 @@ if(!empty($_POST)){
     </div>
 
 <div class="row">
-  <h4>Attending Physician</h4>
-      <div class="input-group input-group-icon">
-        <input class = "form-group" type="text" name="physician" placeholder="Attending Physician" required>
-        <div class="input-icon"><i class="fa fa-stethoscope"></i></i></div>
-        </div>
+  <h4 style="margin-left: 2%;">Attending Physician</h4>
+    
+        <input class = "form-group" type="text" name="physician" placeholder="Attending Physician" required style="
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 94%;
+">
+      
+        
     </div>
     </div>
     <div class="row">
