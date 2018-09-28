@@ -100,7 +100,11 @@ if ($conn->query($sql) == TRUE) {
                     </div>
                   </nav>
 
-    <div class="container">
+    <div class="container" style="
+    margin-top: 2%;
+    margin-bottom: 5%;
+    color:#801800;
+">
   <form method="post" action="" >
    <strong><center><H2>REGISTRATION FORM</H2></center> </strong>
 
@@ -190,7 +194,39 @@ if ($conn->query($sql) == TRUE) {
 
 
 </form>
-
+<div class="footer"> 
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; Project Blood Seeker 2018</span>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                <a href="about.html">About the Website</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+</div>
 
 
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
