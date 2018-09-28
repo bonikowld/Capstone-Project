@@ -162,14 +162,14 @@
     <table class="table table-rounded custab">
     <thead>
         <tr>
-        <th class="text-center"><h4><b>Serial Number</b></h4></th>
+        <th class="text-center"><h4><b>Component</b></h4></th>
         <th class="text-center"><h4><b>Blood Type</b></h4></th>
           <th class="text-center"><h4><b>City</b></h4></th>
             <th class="text-center"><h4><b>Status</b></h4></th>
         </tr>
     </thead>
     
-    <tbody>
+    <tbody style="color:white;">
             <?php
               $servername = "localhost";
               $username = "root";
@@ -199,7 +199,7 @@
               while($row = mysqli_fetch_array($result))
               {
                 echo "<tr class='row-data' >";
-                echo "<td class='text-center serialnumber'>".$row['serialnumber']."</td>";
+                echo "<td class='text-center component'>".$row['component']."</td>";
                 echo "<td class='text-center'>".$row['bloodtype']."</td>";
                 echo "<td class='text-center'>".$row['city']."</td>";
                 echo "<td class='text-center'><a class='btn btn-info btn-xs row-data'><span class='glyphicon glyphicon-ok' data-toggle='modal' data-target='#reserveModal'></span> Available</a></td>";
