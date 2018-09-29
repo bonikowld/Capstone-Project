@@ -8,6 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Home - Project Blood Seeker</title>
+        <link rel="shortcut icon" type="image/x-icon" href="assets/images/icon.png">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="application/x-javascript">

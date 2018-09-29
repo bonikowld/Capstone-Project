@@ -7,6 +7,7 @@ include 'assets/lib/login.php';
     <head>
         <meta charset="utf-8">
         <title>Donate - Project Blood Seeker</title>
+        <link rel="shortcut icon" type="image/x-icon" href="assets/images/icon.png">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Fonts -->

@@ -11,6 +11,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Project Blood Seeker - Administrator</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../assets/images/icon.png">
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
