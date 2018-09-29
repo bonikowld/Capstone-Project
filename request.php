@@ -176,19 +176,19 @@ if(!empty($_POST)){
     <div class="form-group row">
 
       <div class="input-group input-group-icon">
-        <input class = "form-group" type="text" name="lastname" placeholder="Last Name"/ style="width: 195%" required>
+        <input class = "form-group" type="text" name="lastname" id="lastname" placeholder="Last Name"/ style="width: 195%" required>
         <div class="input-icon"><i class="fa fa-user" ></i></div>
         </div>
 
 
         <div class="input-group input-group-icon">
-        <input class="form-group" type="text" name="firstname" placeholder="First Name" style="width: 195%" required>
+        <input class="form-group" type="text" name="firstname" id="firstname" placeholder="First Name" style="width: 195%" required>
         <div class="input-icon"><i class="fa fa-user" ></i></div>
       </div>
 
 
       <div class="input-group input-group-icon">
-        <input class="form-group" type="text" name="middlename" placeholder="Middle Name" style="width: 195%" required>
+        <input class="form-group" type="text" name="middlename" id="middlename" placeholder="Middle Name" style="width: 195%" required>
         <div class="input-icon"><i class="fa fa-user" ></i></div>
       </div>
 
@@ -200,13 +200,13 @@ if(!empty($_POST)){
         <h4>Date of Birth</h4>
         <div class="input-group">
           <div class="col-third">
-            <input type="text" name="birthday" placeholder="DD" required>
+            <input type="text" name="birthmonth" id="birthmonth" placeholder="MM" required>  
           </div>
           <div class="col-third">
-            <input type="text" name="birthmonth" placeholder="MM" required>
+            <input type="text" name="birthday" id="birthday" placeholder="DD" required>
           </div>
           <div class="col-third">
-            <input type="text" name="birthyear" placeholder="YYYY"required>
+            <input type="text" name="birthyear" id="birthyear" placeholder="YYYY"required>
           </div>
         </div>
       </div>
@@ -215,7 +215,7 @@ if(!empty($_POST)){
         <h4>Gender</h4>
         <div class="input-group">
           <div class="col-twothirds">
-          <select name="sex" class="form-control" style="width: 246px; height: 54px;" required>
+          <select name="sex" id="sex" class="form-control" style="width: 246px; height: 54px;" required>
               <option value="" selected="selected" disabled="disabled">-- select one --</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -231,13 +231,13 @@ if(!empty($_POST)){
         <h4>Date of Request</h4>
         <div class="input-group">
           <div class="col-third">
-            <input type="text" name="requestday" placeholder="DD" required>
+            <input type="text" name="requestmonth" id="requestmonth" placeholder="MM" required>
           </div>
           <div class="col-third">
-            <input type="text" name="requestmonth" placeholder="MM" required>
+            <input type="text" name="requestday" id="requestday" placeholder="DD" required>
           </div>
           <div class="col-third">
-            <input type="text" name="requestyear" placeholder="YYYY" required>
+            <input type="text" name="requestyear" id="requestyear" placeholder="YYYY" required>
           </div>
         </div>
       </div>
@@ -245,7 +245,7 @@ if(!empty($_POST)){
         <h4>Blood Type</h4>
         <div class="input-group">
           <div class="col-twothirds">
-          <select name="bloodtype" class="form-control" style="width: 246px; height: 54px;" required>
+          <select name="bloodtype" id="bloodtype" class="form-control" style="width: 246px; height: 54px;" required>
               <option value="" selected="selected" disabled="disabled">-- select one --</option>
               <option value="O">O</option>
               <option value="O-">O-</option>
@@ -268,13 +268,13 @@ if(!empty($_POST)){
     width: 255px;">
         <h4>Hospital</h4>
         <div class="form-group-2">
-            <input type="Text" name="hospital" placeholder="Hospital" required>
+            <input type="Text" name="hospital"id="hospital" placeholder="Hospital" required>
         </div>
       </div>
       <div class="col-half" style="width: 245px">
         <h4>Room No</h4>
         <div class="form-group-2">
-           <input type="text" name="roomnum" placeholder="Room No." required>
+           <input type="text" name="roomnum" id="roomnum" placeholder="Room No." required>
         </div>
       </div>
     </div>
@@ -286,13 +286,13 @@ if(!empty($_POST)){
     width: 255px;">
         <h4>Age</h4>
         <div class="form-group-2" >
-            <input type="Text" name="age" placeholder="Age" required>
+            <input type="Text" name="age" id="age" placeholder="Age" required>
         </div>
       </div>
       <div class="col-half" style="width: 245px">
         <h4>Telephone No.</h4>
         <div class="form-group-2">
-           <input type="text" name="cellphonenum" placeholder="Tel No." required>
+           <input type="text" name="cellphonenum" id="cellphonenum" placeholder="Tel No." required>
         </div>
       </div>
     </div>
@@ -300,7 +300,7 @@ if(!empty($_POST)){
 <div class="row">
   <h4 style="margin-left: 2%;">Attending Physician</h4>
     
-        <input class = "form-group" type="text" name="physician" placeholder="Attending Physician" required style="
+        <input class = "form-group" type="text" name="physician" id="physician" placeholder="Attending Physician" required style="
     margin-left: 2%;
     margin-right: 2%;
     width: 94%;
@@ -312,7 +312,7 @@ if(!empty($_POST)){
     <div class="row">
   <h4>Clinical Diagnosis</h4>
       <div class="input-group input-group-icon">
-        <input class = "form-group"  type="message" name="diagnosis" placeholder="Clinical Diagnosis" required>
+        <input class = "form-group"  type="message" name="diagnosis" id="diagnosis" placeholder="Clinical Diagnosis" required>
         <div class="input-icon"><i class="fa fa-stethoscope"></i></div>
         </div>
     </div>
@@ -357,18 +357,16 @@ if(!empty($_POST)){
           </div>
         </div>
 </div>
+  
 
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script  src="js/index.js"></script> -->
-
-  
-
     <!-- <script  src="js/index.js"></script> -->
-
-
-
-
 </body>
 
 </html>
+
+ <script src="assets/js/formvalidation.js"></script>
+
+  

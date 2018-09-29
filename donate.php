@@ -111,15 +111,15 @@ if(!empty($_POST)){
    <strong><center><h2>DONOR'S INFORMATION</h2></center> </strong>
     <div class="row">
       <div class="input-group input-group-icon">
-        <input type="text" class="form-group"  name="lastname" placeholder="Last Name" required>
+        <input type="text" class="form-group"  name="lastname" id="last_name" placeholder="Last Name" required>
         <div class="input-icon"><i class="fa fa-user"></i></div>
         </div>
         <div class="input-group input-group-icon">
-        <input type="text" class="form-group"   name="firstname" placeholder="First Name" required>
+        <input type="text" class="form-group"   name="firstname" id="first_name" placeholder="First Name" required>
         <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
       <div class="input-group input-group-icon">
-        <input type="text" class="form-group"  name="middlename"  placeholder="Middle Name" required>
+        <input type="text" class="form-group"  name="middlename" id="middle_name"  placeholder="Middle Name" required>
         <div class="input-icon"><i class="fa fa-user"></i></div>
       </div>
     </div>
@@ -129,13 +129,13 @@ if(!empty($_POST)){
         <h4>Date of Birth</h4>
         <div class="input-group">
           <div class="col-third">
-            <input type="text" name="birthday" placeholder="DD" required>
+            <input type="text" name="birthmonth" id="birthmonth" placeholder="MM" required>   
           </div>
           <div class="col-third">
-            <input type="text" name="birthmonth" placeholder="MM" required>
+            <input type="text" name="birthday" id="birthday" placeholder="DD" required>
           </div>
           <div class="col-third">
-            <input type="text"  name="birthyear" placeholder="YYYY" required>
+            <input type="text"  name="birthyear" id="birthyear" placeholder="YYYY" required>
           </div>
         </div>
       </div>
@@ -144,7 +144,7 @@ if(!empty($_POST)){
         <h4>Gender</h4>
         <div class="input-group">
           <div class="col-twothirds">
-          <select name="sex" class="form-control" style="width: 246px; height: 54px;" required>
+          <select name="sex" id="sex" class="form-control" style="width: 246px; height: 54px;" required>
               <option value="" selected="selected" disabled="disabled">-- select one --</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -158,7 +158,7 @@ if(!empty($_POST)){
         <h4>Civil Status</h4>
         <div class="input-group">
           <div class="col-twothirds">
-          <select name="civilstatus" class="form-control" style="width: 246px; height: 54px;" required>
+          <select name="civilstatus" id="civilstatus" class="form-control" style="width: 246px; height: 54px;" required>
               <option value="" selected="selected" disabled="disabled">-- select one --</option>
               <option value="Single">Single</option>
               <option value="Married">Married</option>
@@ -171,7 +171,7 @@ if(!empty($_POST)){
       <div class="col-half">
         <h4>Age</h4>
         <div class="form-group-2">
-        <input type="text" name="age" placeholder="Age" required>
+        <input type="text" name="age" id="age" placeholder="Age" required>
         </div>
       </div>
     </div>
@@ -180,26 +180,26 @@ if(!empty($_POST)){
      <div class="row">
      <h4>Address</h4>
        <div class="form-group-2">
-        <input type="text" name="address" placeholder="Address" required>
+        <input type="text" name="address" id="address" placeholder="Address" required>
         </div>
 
         <div class="form-group-2">
         <h4>Any Valid ID No.</h4>
         <div class="form-group-2">
-           <input type="text" name="identificationno" placeholder="ID No." required>
+           <input type="text" name="identificationno" id="identificationno" placeholder="ID No." required>
         </div>
 
       <div class="col-half">
         <h4>Email Address</h4>
         <div class="form-group-2">
-           <input type="text" name="email" placeholder="Email Address." required>
+           <input type="text" name="email" id="email" placeholder="Email Address." required>
         </div>
 
       </div>
        <div class="col-half">
         <h4>Nationality</h4>
         <div class="form-group-2">
-        <input type="text" name="nationality" placeholder="Nationality" required>
+        <input type="text" name="nationality" id="nationality" placeholder="Nationality" required>
         </div>
       </div>
     </div>
@@ -207,7 +207,7 @@ if(!empty($_POST)){
       <div class="col-half">
         <h4 style="margin-left: 6%;">Education</h4>
         <div class="form-group-2">
-        <select name="education" class="form-control" style="width: 246px;height: 54px;margin-left: 6%;" required >
+        <select name="education" id="education" class="form-control" style="width: 246px;height: 54px;margin-left: 6%;" required >
         <option value="" selected="selected" disabled="disabled">-- select one --</option>
         <option value="No formal education">No formal education</option>
         <option value="Primary education">Primary education</option>
@@ -223,7 +223,7 @@ if(!empty($_POST)){
        <div class="col-half">
         <h4>Work</h4>
         <div class="form-group-2">
-        <input type="text" name="occupation" placeholder="Work" required style="
+        <input type="text" name="occupation" id="occupation" placeholder="Work" required style="
     width: 257px;
 ">
         </div>
@@ -234,7 +234,7 @@ if(!empty($_POST)){
       <div class="col-half">
         <h4 style="margin-left: 6%">Contact No.</h4>
         <div class="form-group-2">
-           <input type="text" name="contactnum" placeholder="Telephone No." style="
+           <input type="text" name="contactnum" id="contactnum" placeholder="Telephone No." style="
     margin-left: 6% ;
     width: 95%;
 " required>
@@ -258,7 +258,7 @@ if(!empty($_POST)){
         <h4>Blood Bank</h4>
         <div class="form-group-2">
           <div class="form-group-twothirds"> 
-          <select name="bloodbank" class="form-control" style="width: 255px; height: 54px;" required>
+          <select name="bloodbank" id="bloodbank" class="form-control" style="width: 255px; height: 54px;" required>
               <option value="" selected="selected" disabled="disabled">-- select one --</option>
               <option value="Oroquieta City">Oroquieta City</option>
               <option value="Ozamiz City">Ozamiz City</option>

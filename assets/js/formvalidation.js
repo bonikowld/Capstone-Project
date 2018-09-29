@@ -4,58 +4,68 @@
     $("#fname_error_message").hide();
     $("#mname_error_message").hide();
     $("#age_error_message").hide();
-    $("#bdate_error_message").hide();
+    $("#birthmonth_error_message").hide();
+    $("#birthday_error_message").hide();
+    $("#birthyear_error_message").hide();
+    $("#cstatus_error_message").hide();
     $("#sex_error_message").hide();
+    $("#address_error_message").hide();
     $("#religion_error_message").hide();
     $("#nationality_error_message").hide();
     $("#education_error_message").hide();
     $("#occupation_error_message").hide();
-    $("#telno_error_message").hide();
-    $("#celno_error_message").hide();
+    $("#contactnum_error_message").hide();
     $("#email_error_message").hide();
     $("#idNo_error_message").hide();
-
+    $("#bloodbank_error_message").hide();
     // for request blood
-    // $("#lastname_error_message").hide();
-    // $("#firstname_error_message").hide();
-    // $("#middlename_error_message").hide();
-    // $("#reqage_error_message").hide();
-    // $("reqbdate_error_message").hide();
-    // $("#reqsex_error_message").hide();
-    // $("#hospital_error_message").hide();
-    // $("#roomno_error_message").hide();
-    // $("#reqtelno_error_message").hide();
-    // $("#bloodtype_error_message").hide();
-    // $("#reqcelno_error_message").hide();
+    $("#lastname_error_message").hide();
+    $("#firstname_error_message").hide();
+    $("#middlename_error_message").hide();
+    $("#reqmonth_error_message").hide();
+    $("#reqday_error_message").hide();
+    $("#reqyear_error_message").hide();
+    $("#btype_error_message").hide();
+    $("#hospital_error_message").hide();
+    $("#roomnum_error_message").hide();
+    $("#cellphonenum_error_message").hide();
+    $("#physician_error_message").hide();
+    $("#diagnosis_error_message").hide();
+    
 
     // for donate blood
     var error_lname = false;
     var error_fname = false;
     var error_mname = false;
     var error_age = false;
-    var error_bdate = false;
+    var error_bmonth = false;
+    var error_bday = false;
+    var error_byear = false;
+    var error_cstatus = false;
     var error_sex = false;
+    var error_address = false;
     var error_religion = false;
     var error_nationality = false;
     var error_education = false;
     var error_occupation = false;
-    var error_telno = false;
-    var error_celno = false;
+    var error_contactnum = false;
     var error_email = false;
     var error_idNo = false;
+    var error_bloodbank = false;
+    // for request blood
+    var error_reqlname = false;
+    var error_reqfname = false;
+    var error_reqmname = false;
+    var error_reqmonth = false;
+    var error_reqday = false;
+    var error_reqyear = false;
+    var error_btype = false;
+    var error_hospital = false;
+    var error_roomnum = false;
+    var error_cellphonenum = false;
+    var error_physician = false;
+    var error_diagnosis = false;
 
-    // // for request blood
-    // var error_reqlname = false;
-    // var error_reqfname = false;
-    // var error_reqmname = false;
-    // var error_reqage = false;
-    // var error_reqbdate = false;
-    // var error_reqsex = false;
-    // var error_hospital = false;
-    // var error_roomno = false;
-    // var error_reqtelno = false;
-    // var error_bloodtype = false;
-    // var error_reqcelno = false;
 
     // for donate blood
     $("#last_name").focusout(function(){
@@ -74,12 +84,28 @@
       check_age();
       });
         
-    $("#bdate").focusout(function(){
-      check_bdate();
+    $("#birthmonth").focusout(function(){
+      check_birthmonth();
+      });
+
+    $("#birthday").focusout(function(){
+      check_birthday();
+      });
+      
+    $("#birthyear").focusout(function(){
+      check_birthyear();
+      });
+    
+    $("#civilstatus").focusout(function(){
+      check_cstatus();
       });
 
     $("#sex").focusout(function(){
       check_sex();
+      });
+
+    $("#address").focusout(function(){
+      check_address();
       });
       
     $("#religion").focusout(function(){
@@ -98,72 +124,83 @@
       check_occupation();
       });
     
-    $("#tel_no").focusout(function(){
-      check_tel_no();
+    $("#contactnum").focusout(function(){
+      check_contactnum();
       });
     
     $("#cel_no").focusout(function(){
       check_cel_no();
       });
             
-    $("#email_add").focusout(function(){
+    $("#email").focusout(function(){
       check_email_add();
       });
           
-    $("#idNo").focusout(function(){
+    $("#identificationno").focusout(function(){
       check_idNo();
       });
+
+    $("#bloodbank").focusout(function(){
+      check_bloodbank();
+      });
     
+    //for request blood
+
+    $("#lastname").focusout(function(){
+      check_lastname();
+      });
+
+    $("#middlename").focusout(function(){
+      check_middlename();
+      });
+    
+    $("#firstname").focusout(function(){
+      check_firstname();
+      });
+
+    $("#requestmonth").focusout(function(){
+      check_reqmonth();
+      });
+    
+    $("#requestday").focusout(function(){
+      check_reqday();
+      });
+
+    $("#requestyear").focusout(function(){
+      check_reqyear();
+      });
+
+    $("#bloodtype").focusout(function(){
+      check_btype();
+      });
+
+    $("#hospital").focusout(function(){
+      check_hospital();
+      });
+
+    $("#roomnum").focusout(function(){
+      check_roomnum();
+      });
+
+    $("#cellphonenum").focusout(function(){
+      check_cellphonenum();
+      });
+
+    $("#physician").focusout(function(){
+      check_physician();
+      });
+
+    $("#diagnosis").focusout(function(){
+      check_diagnosis();
+      });
+
+
     })
     
-    // //for request blood
-    // $("#lastname").focusout(function(){
-    //   check_lastname();
-    //   });
-
-    // $("#middlename").focusout(function(){
-    //   check_middlename();
-    //   });
-    
-    // $("#firstname").focusout(function(){
-    //   check_firstname();
-    //   });
-
-    // $("#reqage").focusout(function(){
-    //   check_reqage();
-    //   });
-    
-    // $("#reqbdate").focusout(function(){
-    //   check_reqbdate();
-    //   });
-
-    // $("#reqsex").focusout(function(){
-    //   check_reqsex();
-    //   });
-
-    // $("#hospital").focusout(function(){
-    //   check_hospital();
-    //   });
-    
-    // $("#roomno").focusout(function(){
-    //   check_roomno();
-    //   });
-
-    // $("#reqtelno").focusout(function(){
-    //   check_reqtelno();
-    //   });
-    
-    // $("#bloodtype").focusout(function(){
-    //   check_bloodtype();
-    //   });
-
-    // $("#reqcelno").focusout(function(){
-    //   check_reqcelno();
-    //   });
     
     //for donate blood
     function check_lname() {
-      var pattern = /^[a-zA-Z-. ]*$/;
+      var pattern = /^[a-zA-Z-., ]*$/;
       var lname = $("#last_name").val();
   
         if (pattern.test(lname) && lname !== '') {
@@ -178,7 +215,7 @@
       }
   
     function check_fname() {
-      var pattern = /^[a-zA-Z-. ]*$/;
+      var pattern = /^[a-zA-Z-., ]*$/;
       var fname = $("#first_name").val();
   
         if (pattern.test(fname) && fname !== '') {
@@ -193,7 +230,7 @@
       }
 
     function check_mname() {
-      var pattern = /^[a-zA-Z-. ]*$/;
+      var pattern = /^[a-zA-Z-., ]*$/;
       var mname = $("#middle_name").val();
   
         if (pattern.test(mname) && mname !== '') {
@@ -222,17 +259,62 @@
         }
       }
 
-    function check_bdate() {
-    var bdate = $("#bdate").val();
+    function check_birthmonth() {
+      var pattern = /^[0-9]+$/;
+      var bmonth = $("#birthmonth").val();
 
-      if (bdate && bdate !== '') {
-        $("#bdate_error_message").hide();
-        $("#bdate").css("border-bottom","3px solid #34F458");
+        if (pattern.test(bmonth) && bmonth !== '') {
+            $("#birthmonth_error_message").hide();
+            $("#birthmonth").css("border-bottom","3px solid #34F458");
+        } else {
+            $("#birthmonth_error_message").html("Required and should contain numbers");
+            $("#birthmonth_error_message").show();
+            $("#birthmonth").css("border-bottom","2px solid #F90A0A");
+            error_bmonth = true;
+        }
+      }
+
+    function check_birthday() {
+      var pattern = /^[0-9]+$/;
+      var bday = $("#birthday").val();
+
+        if (pattern.test(bday) && bday !== '') {
+            $("#birthday_error_message").hide();
+            $("#birthday").css("border-bottom","3px solid #34F458");
+        } else {
+            $("#birthday_error_message").html("Required and should contain numbers");
+            $("#birthday_error_message").show();
+            $("#birthday").css("border-bottom","2px solid #F90A0A");
+            error_bday = true;
+        }
+      }
+
+    function check_birthyear() {
+      var pattern = /^[0-9]+$/;
+      var byear = $("#birthyear").val();
+
+        if (pattern.test(byear) && byear !== '') {
+            $("#birthyear_error_message").hide();
+            $("#birthyear").css("border-bottom","3px solid #34F458");
+        } else {
+            $("#birthyear_error_message").html("Required and should contain numbers");
+            $("#birthyear_error_message").show();
+            $("#birthyear").css("border-bottom","2px solid #F90A0A");
+            error_byear = true;
+        }
+      }
+    
+    function check_cstatus() {
+    var cstatus = $("#civilstatus").val();
+
+      if (cstatus && cstatus !== '') {
+        $("#cstatus_error_message").hide();
+        $("#civilstatus").css("border-bottom","3px solid #34F458");
       } else {
-        $("#bdate_error_message").html("Required");
-        $("#bdate_error_message").show();
-        $("#bdate").css("border-bottom","2px solid #F90A0A");
-        error_bdate = true;
+        $("#cstatus_error_message").html("Should select an item in the list");
+        $("#cstatus_error_message").show();
+        $("#civilstatus").css("border-bottom","2px solid #F90A0A");
+        error_cstatus = true;
       }
     }
 
@@ -249,6 +331,21 @@
         error_sex = true;
       }
     }
+
+    function check_address() {
+      var pattern = /^[a-z0-9-,.#&* ]+$/i;
+      var address = $("#address").val();
+  
+        if (pattern.test(address) && address !== '') {
+          $("#address_error_message").hide();
+          $("#address").css("border-bottom","3px solid #34F458");
+        } else {
+          $("#address_error_message").html("Required and should contain characters");
+          $("#address_error_message").show();
+          $("#address").css("border-bottom","2px solid #F90A0A");
+          error_address = true;
+        }
+      }
 
     function check_religion() {
       var pattern = /^[a-zA-Z-. ]*$/;
@@ -310,198 +407,244 @@
         }
       }
     
-    function check_tel_no() {
+    function check_contactnum() {
       var pattern = /^[0-9]+$/;
-      var reqtelno = $("#tel_no").val();
+      var contactnum = $("#contactnum").val();
 
-        if (pattern.test(reqtelno) && reqtelno !== '') {
-            $("#telno_error_message").hide();
-            $("#tel_no").css("border-bottom","3px solid #34F458");
+        if (pattern.test(contactnum) && contactnum !== '') {
+            $("#contactnum_error_message").hide();
+            $("#contactnum").css("border-bottom","3px solid #34F458");
         } else {
-            $("#telno_error_message").html("Required and should contain numbers");
-            $("#telno_error_message").show();
-            $("#tel_no").css("border-bottom","2px solid #F90A0A");
-            error_telno = true;
+            $("#contactnum_error_message").html("Required and should contain numbers");
+            $("#contactnum_error_message").show();
+            $("#contactnum").css("border-bottom","2px solid #F90A0A");
+            error_contactnum = true;
         }
       }
-    
-    function check_bloodtype() {
-    var btype = $("#bloodtype").val();
-
-      if (btype && btype !== '') {
-        $("#bloodtype_error_message").hide();
-        $("#bloodtype").css("border-bottom","3px solid #34F458");
-      } else {
-        $("#bloodtype_error_message").html("Should select an item in the list");
-        $("#bloodtype_error_message").show();
-        $("#bloodtype").css("border-bottom","2px solid #F90A0A");
-        error_bloodtype = true;
-      }
-    }
-
-    function check_cel_no() {
-      var pattern = /^[0-9]+$/;
-      var reqcelno = $("#cel_no").val();
-
-        if (pattern.test(reqcelno) && reqcelno !== '') {
-            $("#celno_error_message").hide();
-            $("#cel_no").css("border-bottom","3px solid #34F458");
-        } else {
-            $("#celno_error_message").html("Required and should contain numbers");
-            $("#celno_error_message").show();
-            $("#cel_no").css("border-bottom","2px solid #F90A0A");
-            error_celno = true;
-        }
-      }
-
+  
     function check_email_add() {
       var pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
-      var emailadd = $("#email_add").val();
+      var emailadd = $("#email").val();
   
         if (pattern.test(emailadd) && emailadd !== '') {
           $("#email_error_message").hide();
-          $("#email_add").css("border-bottom","3px solid #34F458");
+          $("#email").css("border-bottom","3px solid #34F458");
         } else {
           $("#email_error_message").html("Please match the requested format (sample@sample.com)");
           $("#email_error_message").show();
-          $("#email_add").css("border-bottom","2px solid #F90A0A");
+          $("#email").css("border-bottom","2px solid #F90A0A");
           error_email = true;
         }
       }
     
     function check_idNo() {
-      var pattern = /^[0-9]+$/;
-      var idno = $("#idNo").val();
+      var pattern = /^[0-9--]+$/;
+      var idno = $("#identificationno").val();
 
         if (pattern.test(idno) && idno !== '') {
             $("#idNo_error_message").hide();
-            $("#idNo").css("border-bottom","3px solid #34F458");
+            $("#identificationno").css("border-bottom","3px solid #34F458");
         } else {
             $("#idNo_error_message").html("Required and should contain numbers");
             $("#idNo_error_message").show();
-            $("#idNo").css("border-bottom","2px solid #F90A0A");
+            $("#identificationno").css("border-bottom","2px solid #F90A0A");
             error_idNo = true;
         }
       }
 
-    // //for request blood
-    // function check_lastname() {
-    //   var pattern = /^[a-zA-Z-. ]*$/;
-    //   var lastname = $("#lastname").val();
-  
-    //     if (pattern.test(lastname) && lastname !== '') {
-    //       $("#lastname_error_message").hide();
-    //       $("#lastname").css("border-bottom","3px solid #34F458");
-    //     } else {
-    //       $("#lastname_error_message").html("Required and should contain characters");
-    //       $("#lastname_error_message").show();
-    //       $("#lastname").css("border-bottom","2px solid #F90A0A");
-    //       error_reqlname = true;
-    //     }
-    //   }
-  
-    // function check_firstname() {
-    //   var pattern = /^[a-zA-Z-. ]*$/;
-    //   var firstname = $("#firstname").val();
-  
-    //     if (pattern.test(firstname) && firstname !== '') {
-    //       $("#firstname_error_message").hide();
-    //       $("#firstname").css("border-bottom","3px solid #34F458");
-    //     } else {
-    //       $("#firstname_error_message").html("Required and should contain characters");
-    //       $("#firstname_error_message").show();
-    //       $("#firstname").css("border-bottom","2px solid #F90A0A");
-    //       error_reqfname = true;
-    //     }
-    //   }
+    function check_bloodbank() {
+    var bloodbank = $("#bloodbank").val();
 
-    // function check_middlename() {
-    //   var pattern = /^[a-zA-Z-. ]*$/;
-    //   var middlename = $("#middlename").val();
+      if (bloodbank && bloodbank !== '') {
+        $("#bloodbank_error_message").hide();
+        $("#bloodbank").css("border-bottom","3px solid #34F458");
+      } else {
+        $("#bloodbank_error_message").html("Should select an item in the list");
+        $("#bloodbank_error_message").show();
+        $("#bloodbank").css("border-bottom","2px solid #F90A0A");
+        error_bloodbank = true;
+      }
+    }
+
+    // for request blood
+    function check_lastname() {
+      var pattern = /^[a-zA-Z-., ]*$/;
+      var lastname = $("#lastname").val();
   
-    //     if (pattern.test(middlename) && middlename !== '') {
-    //       $("#middlename_error_message").hide();
-    //       $("#middlename").css("border-bottom","3px solid #34F458");
-    //     } else {
-    //       $("#middlename_error_message").html("Required and should contain characters");
-    //       $("#middlename_error_message").show();
-    //       $("#middlename").css("border-bottom","2px solid #F90A0A");
-    //       error_mname = true;
-    //     }
-    //   }
+        if (pattern.test(lastname) && lastname !== '') {
+          $("#lastname_error_message").hide();
+          $("#lastname").css("border-bottom","3px solid #34F458");
+        } else {
+          $("#lastname_error_message").html("Required and should contain characters");
+          $("#lname_error_message").show();
+          $("#lastname").css("border-bottom","2px solid #F90A0A");
+          error_reqlname = true;
+        }
+      }
+  
+    function check_firstname() {
+       var pattern = /^[a-zA-Z-. ]*$/;
+       var firstname = $("#firstname").val();
+  
+         if (pattern.test(firstname) && firstname !== '') {
+           $("#firstname_error_message").hide();
+           $("#firstname").css("border-bottom","3px solid #34F458");
+         } else {
+           $("#firstname_error_message").html("Required and should contain characters");
+           $("#firstname_error_message").show();
+           $("#firstname").css("border-bottom","2px solid #F90A0A");
+           error_reqfname = true;
+         }
+       }
 
-    // function check_reqage() {
-    //   var pattern = /^[0-9]+$/;
-    //   var reqage = $("#reqage").val();
-
-    //     if (pattern.test(reqage) && reqage !== '') {
-    //         $("#reqage_error_message").hide();
-    //         $("#reqage").css("border-bottom","3px solid #34F458");
-    //     } else {
-    //         $("#reqage_error_message").html("Required and should contain numbers");
-    //         $("#reqage_error_message").show();
-    //         $("#reqage").css("border-bottom","2px solid #F90A0A");
-    //         error_reqage = true;
-    //     }
-    //   }
+    function check_middlename() {
+       var pattern = /^[a-zA-Z-. ]*$/;
+       var middlename = $("#middlename").val();
+  
+         if (pattern.test(middlename) && middlename !== '') {
+           $("#middlename_error_message").hide();
+           $("#middlename").css("border-bottom","3px solid #34F458");
+         } else {
+           $("#middlename_error_message").html("Required and should contain characters");
+           $("#middlename_error_message").show();
+           $("#middlename").css("border-bottom","2px solid #F90A0A");
+           error_reqmname = true;
+         }
+       }
     
-    // function check_reqbdate() {
-    // var reqbdate = $("#reqbdate").val();
+    function check_reqmonth() {
+      var pattern = /^[0-9]+$/;
+      var reqmonth = $("#requestmonth").val();
 
-    //   if (reqbdate && reqbdate !== '') {
-    //     $("#reqbdate_error_message").hide();
-    //     $("#reqbdate").css("border-bottom","3px solid #34F458");
-    //   } else {
-    //     $("#reqbdate_error_message").html("Required");
-    //     $("#reqbdate_error_message").show();
-    //     $("#reqbdate").css("border-bottom","2px solid #F90A0A");
-    //     error_reqbdate = true;
-    //   }
-    // }
+        if (pattern.test(reqmonth) && reqmonth !== '') {
+            $("#reqmonth_error_message").hide();
+            $("#requestmonth").css("border-bottom","3px solid #34F458");
+        } else {
+            $("#reqmonth_error_message").html("Required and should contain numbers");
+            $("#reqmonth_error_message").show();
+            $("#requestmonth").css("border-bottom","2px solid #F90A0A");
+            error_reqmonth = true;
+        }
+      }
 
-    // function check_reqsex() {
-    //   var reqsex = $("#reqsex").val();
+    function check_reqday() {
+      var pattern = /^[0-9]+$/;
+      var reqday = $("#requestday").val();
+
+        if (pattern.test(reqday) && reqday !== '') {
+            $("#reqday_error_message").hide();
+            $("#requestday").css("border-bottom","3px solid #34F458");
+        } else {
+            $("#reqday_error_message").html("Required and should contain numbers");
+            $("#reqday_error_message").show();
+            $("#requestday").css("border-bottom","2px solid #F90A0A");
+            error_reqday = true;
+        }
+      }
+
+    function check_reqyear() {
+      var pattern = /^[0-9]+$/;
+      var reqyear = $("#requestyear").val();
+
+        if (pattern.test(reqyear) && reqyear !== '') {
+            $("#reqyear_error_message").hide();
+            $("#requestyear").css("border-bottom","3px solid #34F458");
+        } else {
+            $("#reqyear_error_message").html("Required and should contain numbers");
+            $("#reqyear_error_message").show();
+            $("#requestyear").css("border-bottom","2px solid #F90A0A");
+            error_reqyear = true;
+        }
+      }
+
+    function check_btype() {
+    var btype = $("#bloodtype").val();
+
+      if (btype && btype !== '') {
+        $("#btype_error_message").hide();
+        $("#bloodtype").css("border-bottom","3px solid #34F458");
+      } else {
+        $("#btype_error_message").html("Should select an item in the list");
+        $("#btype_error_message").show();
+        $("#bloodtype").css("border-bottom","2px solid #F90A0A");
+        error_btype = true;
+      }
+    }
+
+    function check_hospital() {
+      var pattern = /^[a-z0-9-,.#&* ]+$/i;
+      var hospital = $("#hospital").val();
   
-    //     if (reqsex && reqsex !== '') {
-    //       $("#reqsex_error_message").hide();
-    //       $("#reqsex").css("border-bottom","3px solid #34F458");
-    //     } else {
-    //       $("#reqsex_error_message").html("Should select an item in the list");
-    //       $("#reqsex_error_message").show();
-    //       $("#reqsex").css("border-bottom","2px solid #F90A0A");
-    //       error_reqsex = true;
-    //     }
-    //   }
-    
-    // function check_hospital() {
-    //   var pattern = /^[a-zA-Z-. ]*$/;
-    //   var hospital = $("#hospital").val();
+        if (pattern.test(hospital) && hospital !== '') {
+          $("#hospital_error_message").hide();
+          $("#hospital").css("border-bottom","3px solid #34F458");
+        } else {
+          $("#hospital_error_message").html("Required and should contain characters");
+          $("#hospital_error_message").show();
+          $("#hospital").css("border-bottom","2px solid #F90A0A");
+          error_hospital = true;
+        }
+      }
+
+    function check_roomnum() {
+      var pattern = /^[0-9--]+$/;
+      var roomno = $("#roomnum").val();
+
+        if (pattern.test(roomno) && roomno !== '') {
+            $("#roomnum_error_message").hide();
+            $("#roomnum").css("border-bottom","3px solid #34F458");
+        } else {
+            $("#roomnum_error_message").html("Required and should contain numbers");
+            $("#roomnum_error_message").show();
+            $("#roomnum").css("border-bottom","2px solid #F90A0A");
+            error_roomnum = true;
+        }
+      }
+
+    function check_cellphonenum() {
+      var pattern = /^[0-9]+$/;
+      var cellphoneno = $("#cellphonenum").val();
+
+        if (pattern.test(cellphoneno) && cellphoneno !== '') {
+            $("#cellphonenum_error_message").hide();
+            $("#cellphonenum").css("border-bottom","3px solid #34F458");
+        } else {
+            $("#cellphonenum_error_message").html("Required and should contain numbers");
+            $("#cellphonenumm_error_message").show();
+            $("#cellphonenum").css("border-bottom","2px solid #F90A0A");
+            error_cellphonenum = true;
+        }
+      }
+
+    function check_physician() {
+      var pattern = /^[a-zA-Z-., ]*$/;
+      var physician = $("#physician").val();
   
-    //     if (pattern.test(hospital) && hospital !== '') {
-    //       $("#hospital_error_message").hide();
-    //       $("#hospital").css("border-bottom","3px solid #34F458");
-    //     } else {
-    //       $("#hospital_error_message").html("Required and should contain characters");
-    //       $("#hospital_error_message").show();
-    //       $("#hospital").css("border-bottom","2px solid #F90A0A");
-    //       error_hospital = true;
-    //     }
-    //   }
+        if (pattern.test(physician) && physician !== '') {
+          $("#physician_error_message").hide();
+          $("#physician").css("border-bottom","3px solid #34F458");
+        } else {
+          $("#physician_error_message").html("Required and should contain characters");
+          $("#physician_error_message").show();
+          $("#physician").css("border-bottom","2px solid #F90A0A");
+          error_physician = true;
+        }
+      }
 
-    // function check_roomno() {
-    //   var pattern = /^[0-9]+$/;
-    //   var roomno = $("#roomno").val();
-
-    //     if (pattern.test(roomno) && roomno !== '') {
-    //         $("#roomno_error_message").hide();
-    //         $("#roomno").css("border-bottom","3px solid #34F458");
-    //     } else {
-    //         $("#roomno_error_message").html("Required and should contain numbers");
-    //         $("#roomno_error_message").show();
-    //         $("#roomno").css("border-bottom","2px solid #F90A0A");
-    //         error_roomno = true;
-    //     }
-    //   }
+    function check_diagnosis() {
+      var pattern = /^[a-z0-9-,.#&* ]+$/i;
+      var diagnosis = $("#diagnosis").val();
+  
+        if (pattern.test(diagnosis) && diagnosis !== '') {
+          $("#diagnosis_error_message").hide();
+          $("#diagnosis").css("border-bottom","3px solid #34F458");
+        } else {
+          $("#diagnosis_error_message").html("Required and should contain characters");
+          $("#diagnosis_error_message").show();
+          $("#diagnosis").css("border-bottom","2px solid #F90A0A");
+          error_diagnosis = true;
+        }
+      }
     
     
 
