@@ -145,15 +145,18 @@
              </select>
   </div>
 
-  <div class="btn-group btn-group-primary">
+  <!-- <div class="btn-group btn-group-primary">
        <select name="city" class="form-control" required>
               <option value="" selected="selected" disabled="disabled">-- Select City --</option>   
               <option value="Ozamiz City">Ozamiz City</option>
               <option value="Oroquieta City">Oroquieta City</option>
               <option value="Tangub City">Tangub City</option>
              </select>
-  </div>
+  </div> -->
   <button class="btn btn-default hidden-print"  name="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
+</form>
+<form method="get" action="">
+<button class="btn btn-default hidden-print"  name="showall"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Show All</button>
 </form>
 </center>
 
@@ -186,11 +189,9 @@
 
               if(isset($_GET['search'])){
   
-              $city = $_GET['city'];
               $bloodtype = $_GET['bloodtype'];
-
-              
-              $result = mysqli_query($conn,"SELECT * FROM blood WHERE bloodtype = '$bloodtype' AND city = '$city' AND status = '';");                    
+            
+              $result = mysqli_query($conn,"SELECT * FROM blood WHERE bloodtype = '$bloodtype' AND status = '';");                    
               
              
             if(mysqli_num_rows($result) <= 0){
@@ -208,6 +209,46 @@
               } 
             }      
             }
+
+            if(isset($_GET['showall'])){
+         
+              $result = mysqli_query($conn,"SELECT * FROM blood;");                    
+              
+             
+            if(mysqli_num_rows($result) <= 0){
+              echo "<script type='text/javascript'>alert('No Blood Available');</script>";
+            }
+            else{
+              while($row = mysqli_fetch_array($result))
+              {
+                echo "<tr class='row-data' >";
+                echo "<td class='text-center component'>".$row['component']."</td>";
+                echo "<td class='text-center'>".$row['bloodtype']."</td>";
+                echo "<td class='text-center'>".$row['city']."</td>";
+                echo "<td class='text-center'><a class='btn btn-info btn-xs row-data'><span class='glyphicon glyphicon-ok' data-toggle='modal' data-target='#reserveModal'></span> Available</a></td>";
+                echo "</tr>";                                        
+              } 
+            }      
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 
               if(isset($_POST['reserve'])){
 
@@ -258,6 +299,7 @@
     </table>
     </div>
 </div>
+
 
 
   <div id="reserveModal" class="modal fade " role="dialog">
