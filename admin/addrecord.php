@@ -30,6 +30,7 @@ if(!empty($_POST)){
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Project Blood Seeker - Administrator</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../assets/images/icon.png">
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -55,6 +56,7 @@ if(!empty($_POST)){
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item active">Add Record</li>
+     <input type="search">
       </ol>
  <!--    sticky footer start here -->
  

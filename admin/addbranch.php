@@ -116,16 +116,48 @@ session_start();
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
+          <a href="#">Branch</a>
         </li>
-        <li class="breadcrumb-item active">My Dashboard</li>
+        <li class="breadcrumb-item active">Add Branch</li>
       </ol>
+<?php 
+ include 'php/connection.php';
+?>
+<?php 
+if(!empty($_POST)){
+      $sql = "INSERT INTO branch (branchname, branchaddress, adminname, adminaddress, contactnumber, email, username, password)
+      VALUES ('".$_POST["branchname"]."', '".$_POST["branchaddress"]."', '".$_POST["adminname"]."', '".$_POST["adminaddress"]."', '".$_POST["contactnumber"]."', '".$_POST["email"]."', '".$_POST["username"]."', '".$_POST["password"]."')";
 
+      if ($conn->query($sql) == TRUE) {
+        echo "<script type='text/javascript'>alert('Branch Created successfully');</script>";
+        } else {
+        echo "<script type='text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
+        }
+        
+        $conn->close();
+}
+?>
+<form action="" method="POST">
  <div class="jumbotron">
-
-
-  
-</div>
+ <label>Blood Bank Branch</label>
+ <input class="form-control" type="text" name="branchname" placeholder="Branch" required>
+ <label>Blood Bank Address</label>
+ <input class="form-control" type="text" name="branchaddress" placeholder="Blood Bank Address" required>
+ <label>Admin Name</label>
+ <input class="form-control" type="text" name="adminname" placeholder="Admin Name" required>
+ <label>Admin Address</label>
+ <input class="form-control" type="text" name="adminaddress" placeholder="Admin Address" required>
+ <label>Contact Number</label>
+ <input class="form-control" type="text" name="contactnumber" placeholder="Contact Number" required>
+ <label>Email</label>
+ <input class="form-control" type="text" name="email" placeholder="Email" required>
+ <label>Username</label>
+ <input class="form-control" type="text" name="username" placeholder="Username" required>
+ <label>Password</label>
+ <input class="form-control" type="password" name="password" placeholder="Password" required>
+  <br>         
+ <button class="btn btn-success" type="submit" >Add Branch</button>
+</form>
 
  <!--    sticky footer start here -->
     <footer class="sticky-footer">
