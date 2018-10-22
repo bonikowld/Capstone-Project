@@ -11,31 +11,7 @@
     $("#user_error_message").hide();
     $("#emailadd_error_message").hide();
     $("#pass_error_message").hide();
-    // $("#age_error_message").hide();
-    // $("#bdate_error_message").hide();
-    // $("#sex_error_message").hide();
-    // $("#religion_error_message").hide();
-    // $("#nationality_error_message").hide();
-    // $("#education_error_message").hide();
-    // $("#occupation_error_message").hide();
-    // $("#telno_error_message").hide();
-    // $("#celno_error_message").hide();
-    // $("#email_error_message").hide();
-    // $("#idNo_error_message").hide();
-
-    // for request blood
-    // $("#lastname_error_message").hide();
-    // $("#firstname_error_message").hide();
-    // $("#middlename_error_message").hide();
-    // $("#reqage_error_message").hide();
-    // $("reqbdate_error_message").hide();
-    // $("#reqsex_error_message").hide();
-    // $("#hospital_error_message").hide();
-    // $("#roomno_error_message").hide();
-    // $("#reqtelno_error_message").hide();
-    // $("#bloodtype_error_message").hide();
-    // $("#reqcelno_error_message").hide();
-
+ 
     // for donate blood
     var error_lname = false;
     var error_fname = false;
@@ -96,52 +72,7 @@
     
     
     })
-    
-    // //for request blood
-    // $("#lastname").focusout(function(){
-    //   check_lastname();
-    //   });
-
-    // $("#middlename").focusout(function(){
-    //   check_middlename();
-    //   });
-    
-    // $("#firstname").focusout(function(){
-    //   check_firstname();
-    //   });
-
-    // $("#reqage").focusout(function(){
-    //   check_reqage();
-    //   });
-    
-    // $("#reqbdate").focusout(function(){
-    //   check_reqbdate();
-    //   });
-
-    // $("#reqsex").focusout(function(){
-    //   check_reqsex();
-    //   });
-
-    // $("#hospital").focusout(function(){
-    //   check_hospital();
-    //   });
-    
-    // $("#roomno").focusout(function(){
-    //   check_roomno();
-    //   });
-
-    // $("#reqtelno").focusout(function(){
-    //   check_reqtelno();
-    //   });
-    
-    // $("#bloodtype").focusout(function(){
-    //   check_bloodtype();
-    //   });
-
-    // $("#reqcelno").focusout(function(){
-    //   check_reqcelno();
-    //   });
-    
+      
     //for donate blood
     function check_lname() {
       var pattern = /^[a-zA-Z-. ]*$/;

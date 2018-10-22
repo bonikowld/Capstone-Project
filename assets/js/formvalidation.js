@@ -32,7 +32,6 @@
     $("#physician_error_message").hide();
     $("#diagnosis_error_message").hide();
     
-
     // for donate blood
     var error_lname = false;
     var error_fname = false;
@@ -65,7 +64,6 @@
     var error_cellphonenum = false;
     var error_physician = false;
     var error_diagnosis = false;
-
 
     // for donate blood
     $("#last_name").focusout(function(){
@@ -145,7 +143,6 @@
       });
     
     //for request blood
-
     $("#lastname").focusout(function(){
       check_lastname();
       });
@@ -196,7 +193,6 @@
 
 
     })
-    
     
     //for donate blood
     function check_lname() {
