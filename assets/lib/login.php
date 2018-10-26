@@ -23,21 +23,13 @@
           
           $count=mysqli_num_rows($result);
 
-          if($count==1){
-            if ($row['role']=="admin")
-              {
-                header ("location: admin/index.php"); 
-                    
-                    
-              }  
-            else if ($row['role']=="")
-              {
-                $_SESSION['role']=$row['role'];
-                header ("location: donate.php");
-                $_SESSION['username']= $row['firstname']; 
-              }
-            }
-
+          if($count==1)
+                {
+                  $_SESSION['role']=$row['role'];
+                  header ("location: donate.php");
+                  $_SESSION['username']= $row['firstname']; 
+                }
+                                                  
           else{
             $prompt = "Log in Failed Invalid Username or Password";
             echo "<script type='text/javascript'>alert('$prompt');</script>";

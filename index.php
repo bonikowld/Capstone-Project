@@ -68,6 +68,7 @@
                                         echo "<a data-toggle='modal' data-target='#loginModal'>Donate</a></li>";
                                     }
                             ?>
+                             <li><a href="assets/lib/loginadmin.php">Admin</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                           <!-- <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
@@ -90,6 +91,7 @@
                              echo "<li><a data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Log-in</a></li>";
                             }
                             ?>
+                            
                              </ul>
                       </div>
                     </div>
