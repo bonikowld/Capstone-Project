@@ -35,7 +35,11 @@
         <!-- <link rel="stylesheet" href="assets/css/registration.css"> -->
         
         <!-- Modernizr -->
-		<script src="assets/js/modernizr-2.6.2.min.js"></script>
+    <script src="assets/js/modernizr-2.6.2.min.js"></script>
+    <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css">   
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		
 		<style>
           .error{
@@ -163,7 +167,7 @@
 
 
 <div class="container">
-    <table class="table table-rounded custab">
+    <table id="myTable" class="table table-rounded custab" style="border-collapse:collapse; border-style:hidden; background-color: #282929;">
     <thead>
         <tr>
         <th class="text-center"><h4><b>Component</b></h4></th>
@@ -173,7 +177,7 @@
         </tr>
     </thead>
     
-    <tbody style="color:white;">
+    <tbody style="color:black;">
             <?php
               $servername = "localhost";
               $username = "root";
@@ -403,10 +407,10 @@
 
     <!-- jQuery -->
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="assets/js/jquery-1.11.1.min.js"><\/script>')</script>
 
-    <script src="assets/js/jquery-1.11.1.min.js"></script>
+    <script src="assets/js/jquery-1.11.1.min.js"></script> -->
     <!-- Bootsrap javascript file -->
     <script src="assets/js/bootstrap.min.js"></script>
     
@@ -424,6 +428,12 @@
 
     $('#reserveModal').modal();
   });
+</script>
+
+<script>
+      $(document).ready(function(){
+          $('#myTable').dataTable();
+      });
 </script>
 
     </body>
