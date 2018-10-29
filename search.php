@@ -76,8 +76,10 @@
                                             echo "<a data-toggle='modal' data-target='#loginModal'>Donate</a></li>";
                                         }
                                 ?>
+                                 <li><a href="assets/lib/loginadmin.php">Admin</a></li>
 
                         </ul>
+
                         <ul class="nav navbar-nav navbar-right">
           
                         <b class='navbar-text'>

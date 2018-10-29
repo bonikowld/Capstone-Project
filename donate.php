@@ -59,7 +59,7 @@ include 'assets/lib/login.php';
                           <li><a href="search.php">Search</a></li>
                           <li><a href="request.php">Request</a></li>
                           <li class="active"><a href="donate.php">Donate</a></li>
-
+                           <li><a href="assets/lib/loginadmin.php">Admin</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                         <b class='navbar-text'>
