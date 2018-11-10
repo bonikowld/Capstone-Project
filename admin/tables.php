@@ -30,6 +30,7 @@ session_start();
   <?php include 'php/sidenav.php';?>
     
   <div class="content-wrapper">
+ 
     <div class="container-fluid">
       <!-- Breadcrumbs
       <ol class="breadcrumb">
@@ -41,7 +42,16 @@ session_start();
       <div class="card mb-3">
         <div class="card-header" >
           <div style="float:right;" id="txt"></div>
-          <i class="fa fa-table" ></i> Blood Records </div>
+          <i class="fa fa-table" ></i> Blood Records 
+          <select>
+          <option value="All Records">All Records</option>
+          <option value="Successfull">Successfull</option>
+          <option value="Unseccessfull">Unsuccessfull</option>
+          </select>
+          
+          </div>
+
+
         <div class="card-body" >
           <div class="table-responsive">
             <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
@@ -51,9 +61,9 @@ session_start();
                   <th>Donor</th>
                   <th>Blood Type</th>
                   <th>Component</th>
-                  <th>Quantity</th>
                   <th>Extraction Date</th>
                   <th>Expiration Date</th>
+                  <th>Remarks</th>
                   <th>Delete</th>
                   <th>Checkout</th>
                   
@@ -65,9 +75,9 @@ session_start();
                   <th>Donor</th>
                   <th>Blood Type</th>
                   <th>Component</th>
-                  <th>Quantity</th>
                   <th>Extraction Date</th>
                   <th>Expiration Date</th>
+                  <th>Remarks</th>
                   <th>Delete</th>
                   <th>Checkout</th>
         
@@ -91,9 +101,9 @@ session_start();
                 <td class='donor'> <?php echo $row['donor']; ?> </td>
                 <td class='bloodtype'> <?php echo $row['bloodtype']; ?> </td>
                 <td class='component'> <?php echo $row['component']; ?> </td>
-                <td class='quantity'> <?php echo $row['quantity'];?> </td>
                 <td class='extractiondate'> <?php echo $row['extractiondate']; ?> </td>
                 <td class='expirationdate'> <?php echo $row['expirationdate']; ?> </td>
+                <td class='remarks'> <?php echo $row['remarks']; ?> </td>
                 <form method='get' action=''>
                 <td> <a href="?serial=<?php echo $row['serialnumber']?>" onclick="return confirm ('Are You Sure?');" class="btn btn-danger btn-sm">Delete</a></td>
                 <td><button type='button' onclick="updateBtn()"class='btn btn-success btn-sm' data-toggle="modal" data-target="#updateModal" >Checkout</button> </td>

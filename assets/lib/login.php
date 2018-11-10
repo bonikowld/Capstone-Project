@@ -15,7 +15,7 @@
           $username = $_POST['username'];
           $pass = $_POST['pass'];
 
-          $sql = "SELECT * FROM users WHERE username = '$username' AND pass = '$pass'";
+          $sql = "SELECT * FROM donors WHERE username = '$username' AND pass = '$pass'";
           $result = mysqli_query($conn, $sql);
           $row = mysqli_fetch_array($result);
 

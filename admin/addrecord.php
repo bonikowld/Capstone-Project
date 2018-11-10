@@ -56,7 +56,7 @@ if(!empty($_POST)){
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item active">Add Record</li>
-     <input type="search">
+        <button type="button"  >Regular Donor</button>
       </ol>
  <!--    sticky footer start here -->
  
@@ -84,7 +84,6 @@ if(!empty($_POST)){
            <label>Bloodtype</label>
              <select type="text" name="bloodtype" id="bloodtype" class="form-control" required>
              <option value="" selected="selected" disabled="disabled">-- select one --</option>
-              <option value="O">O</option>
               <option value="O-">O-</option>
               <option value="O+">O+</option>
               <option value="A-">A-</option>
