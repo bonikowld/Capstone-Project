@@ -43,11 +43,14 @@ session_start();
         <div class="card-header" >
           <div style="float:right;" id="txt"></div>
           <i class="fa fa-table" ></i> Blood Records 
-          <select>
-          <option value="All Records">All Records</option>
-          <option value="Successfull">Successfull</option>
-          <option value="Unseccessfull">Unsuccessfull</option>
+          <form action="" method="post">
+          <select name="type">
+          <option value="allblood">All Records</option>
+          <option value="successfull">Successfull</option>
+          <option value="unsuccessfull">Unsuccessfull</option>
+          <input type="submit" name="submit" value="SUBMIT">
           </select>
+          </form>
           
           </div>
 
@@ -88,13 +91,30 @@ session_start();
               
               <tbody>
                 <?php include 'php/connection.php';?>
+                <!-- filtering results whether successfull or not (BUG FOUND HERE NEED TO FIX!!!!!!!!!!!) -->
+                <?php
+                   if(isset($_POST['submit'])){
+                    if($_POST['type'] == 'allblood' ){
+                      $result = mysqli_query($conn,"SELECT * FROM blood WHERE city = '" . $_SESSION['city'] . "' ");
+                    }
+                    elseif($_POST['type'] == 'successfull' ){
+                      $result = mysqli_query($conn,"SELECT * FROM blood WHERE city = '" . $_SESSION['city'] . "' AND remarks = 'Successfull' ");
+                    }
+                    elseif($_POST['type'] == 'unsuccessfull' ){
+                      $result = mysqli_query($conn,"SELECT * FROM blood WHERE city = '" . $_SESSION['city'] . "' AND remarks = 'Unsuccessfull' ");
+                    }
+                    else{
+                     
+                      }
+                    } 
+                    while($row = mysqli_fetch_array($result))  
+                    {                                               
                 
-                <?php 
-                $result = mysqli_query($conn,"SELECT * FROM blood WHERE city = '" . $_SESSION['city'] . "' ");
                 ?>
-
-                <?php while($row = mysqli_fetch_array($result))  
-                { ?>
+                <!-- Until here!!!!!!!!!!!!! -->
+                <?php 
+                
+                ?>
           
                 <tr class='row-data' data-href='url://'>
                 <td class='serialnumber'> <?php echo $row['serialnumber']; ?> </td>

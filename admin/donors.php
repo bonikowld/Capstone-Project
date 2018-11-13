@@ -41,7 +41,18 @@ session_start();
       <div class="card mb-3">
         <div class="card-header" >
           <div style="float:right;" id="txt"></div>
-          <i class="fa fa-table" ></i> List Of Donors </div>
+          <i class="fa fa-table" ></i> List Of Donors 
+          <!-- form for dropdown base on donors status -->
+          <form action="" method="POST">
+          <select name="type">
+          <option value="alldonors">All Donors</option>
+          <option value="reactive">Reactive Donors</option>
+          <option value="nonreactive">Non-Reactive Donors</option>
+          <input type="submit" name="submit" value="SUBMIT">
+          </select>
+          </form>
+
+          </div>
         <div class="card-body" >
           <div class="table-responsive">
             <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
@@ -54,7 +65,8 @@ session_start();
                   <th>Contact Number</th>
                   <th>Home Address</th>
                   <th>Email Address</th>     
-                  
+                  <th>Status</th>    
+                  <th>Diagnosis</th> 
                 </tr>
               </thead>
               <tfoot>
@@ -66,21 +78,61 @@ session_start();
                   <th>Contact Number</th>
                   <th>Home Address</th>
                   <th>Email Address</th>
+                  <th>Status</th>    
+                  <th>Diagnosis</th> 
         
                 </tr>
               </tfoot>
-              
-              <tbody>
-                <?php include 'php/connection.php';?>
-                
-                <?php 
-                $result = mysqli_query($conn,"SELECT * FROM donors ");
-                ?>
 
-                <?php while($row = mysqli_fetch_array($result))  
-                { ?>
-          
-                <tr class='row-data' data-href='url://'>
+              <?php include 'php/connection.php';?>
+              <?php 
+
+              
+              // if(isset($_POST['submit']))
+              //   {
+              //     if(isset($_POST['type']))
+              //       {                                 
+              //       if($_POST['type'] == "reactive")
+              //           {
+              //             $result = mysqli_query($conn,"SELECT * FROM donors WHERE donorstatus = 'Reactive' ");
+                          
+              //           }
+                        
+              //       elseif($_POST['type'] == "nonreactive")
+              //           {
+              //             $result = mysqli_query($conn,"SELECT * FROM donors WHERE donorstatus = 'NonReactive' ");
+              //           }
+
+              //       }
+              //       else{
+
+              //       }
+
+              //   }
+                
+
+              // Code for filtering results whether reactive or non reactive bug found
+                if(isset($_POST['submit'])){
+                  if($_POST['type'] == 'alldonors' ){
+                    $result = mysqli_query($conn,"SELECT * FROM donors  ");
+                  }
+                  elseif($_POST['type'] == 'reactive' ){
+                    $result = mysqli_query($conn,"SELECT * FROM donors WHERE donorstatus = 'Reactive' ");
+                  }
+                  elseif($_POST['type'] == 'nonreactive' ){
+                    $result = mysqli_query($conn,"SELECT * FROM donors WHERE donorstatus = 'NonReactive' ");
+                  }
+                  else{
+                   
+                    }
+                  } 
+                  while($row = mysqli_fetch_array($result)) 
+                 {
+              ?>
+              <!-- until here -->
+
+              <tbody>
+                <tr class='clickable-row'  data-href='url://'>
                 <td class='lastname'> <?php echo $row['lastname']; ?> </td>
                 <td class='firstname'> <?php echo $row['firstname']; ?> </td>
                 <td class='middlename'> <?php echo $row['middlename']; ?> </td>
@@ -88,6 +140,8 @@ session_start();
                 <td class='contactnum'> <?php echo $row['contactnum'];?> </td>
                 <td class='homeaddress'> <?php echo $row['homeaddress']; ?> </td>
                 <td class='email'> <?php echo $row['email']; ?> </td>
+                <td class='donorstatus'> <?php echo $row['donorstatus']; ?> </td>
+                <td class='diagnosis'> <?php echo $row['diagnosis']; ?> </td>
      
               </tr>
                 <?php }; ?>                    
@@ -119,8 +173,26 @@ session_start();
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
-    <script type="text/javascript" src="../admin/js/update.js"></script>
-    
+    <script>
+        function startTime() {
+          var today = new Date();
+          var h = today.getHours();
+          var m = today.getMinutes();
+          var s = today.getSeconds();
+          m = checkTime(m);
+          s = checkTime(s);
+          document.getElementById('txt').innerHTML =
+          h + ":" + m + ":" + s;
+          var t = setTimeout(startTime, 500);
+      }
+      function checkTime(i) {
+          if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+          return i;
+      }
+
+     
+    </script>
+
   </div>
 </body>
 
