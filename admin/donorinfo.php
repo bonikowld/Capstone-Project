@@ -47,13 +47,41 @@ session_start();
           </div>            
         </div>
     </div>
-    <!-- /.container-fluid-->
+    <!-- /.container-fluid--> 
     <!-- /.content-wrapper-->
-  <?php 
- 
-  
-  ?>
+    <?php include 'php/connection.php';?>
+   <?php 
+  $donorid = $_GET['donorid'];
 
+  $sql = "SELECT * FROM donors WHERE donorid = '$donorid' ";
+ 
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<b>Name: </b>" . $row["firstname"]. " " . $row["middlename"]." ". $row["lastname"].        "<br>"; 
+        echo "<b>Date Of Birth: </b>" . $row["dateofbirth"]. "<br>";
+        echo "<b>Contact Number: </b>" . $row["contactnum"]. "<br>";
+        echo "<b>Home Address: </b>" . $row["homeaddress"]. "<br>";
+        echo "<b>Email Address: </b>" . $row["email"]. "<br>";
+        echo "<b>Last Date Of Donation: </b>" . $row["lastdonation"]. "<br>";
+        echo "<b>Remarks: </b>" . $row["remarks"]. "<br>";
+        echo "<b>Donor Status: </b>" . $row["donorstatus"]. "<br>";
+        echo "<b>Diagnosis: </b>" . $row["diagnosis"]. "<br>";
+
+    }
+    
+}
+else {
+  
+}
+$conn->close();
+
+?>
+</br>
+<button class='btn btn-danger btn-sm'>Donate Blood</button>
+<button class='btn btn-success btn-sm'>Edit Record</button>
 
 <?php include 'php/logoutfooter.php';?>
 

@@ -61,12 +61,13 @@ session_start();
                   <th>Last Name</th>
                   <th>First Name</th>
                   <th>Middle Name</th>
-                  <th>Date Of Birth</th>
+                  <th>Birthday</th>
                   <th>Contact Number</th>
                   <th>Home Address</th>
-                  <th>Email Address</th>     
+                  <th>Email</th>     
                   <th>Status</th>    
                   <th>Diagnosis</th> 
+                  <th>Details</th>
                 </tr>
               </thead>
               <tfoot>
@@ -77,14 +78,19 @@ session_start();
                   <th>Date Of Birth</th>
                   <th>Contact Number</th>
                   <th>Home Address</th>
-                  <th>Email Address</th>
+                  <th>Email</th>
                   <th>Status</th>    
                   <th>Diagnosis</th> 
+                  <th>Details</th>
         
                 </tr>
               </tfoot>
 
               <?php include 'php/connection.php';?>
+
+              <?php 
+                $result = mysqli_query($conn,"SELECT * FROM donors  ");
+              ?>
               <?php 
 
               
@@ -110,8 +116,6 @@ session_start();
 
               //   }
                 
-
-              // Code for filtering results whether reactive or non reactive bug found
                 if(isset($_POST['submit'])){
                   if($_POST['type'] == 'alldonors' ){
                     $result = mysqli_query($conn,"SELECT * FROM donors  ");
@@ -129,10 +133,9 @@ session_start();
                   while($row = mysqli_fetch_array($result)) 
                  {
               ?>
-              <!-- until here -->
-
+            
               <tbody>
-                <tr class='clickable-row'  data-href='url://'>
+                <tr>
                 <td class='lastname'> <?php echo $row['lastname']; ?> </td>
                 <td class='firstname'> <?php echo $row['firstname']; ?> </td>
                 <td class='middlename'> <?php echo $row['middlename']; ?> </td>
@@ -142,15 +145,23 @@ session_start();
                 <td class='email'> <?php echo $row['email']; ?> </td>
                 <td class='donorstatus'> <?php echo $row['donorstatus']; ?> </td>
                 <td class='diagnosis'> <?php echo $row['diagnosis']; ?> </td>
-     
+                <td><a href="donorinfo.php?donorid=<?php echo $row['donorid']?>" class='btn btn-success btn-sm'>View</a></td>
               </tr>
-                <?php }; ?>                    
+                <?php }; ?>   
 
+                                
                 <?php mysqli_close($conn); ?>        
 
               </tbody>
               
             </table>
+
+
+
+
+
+
+
           </div>
         </div>
       </div>

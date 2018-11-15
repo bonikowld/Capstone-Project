@@ -91,7 +91,10 @@ session_start();
               
               <tbody>
                 <?php include 'php/connection.php';?>
-                <!-- filtering results whether successfull or not (BUG FOUND HERE NEED TO FIX!!!!!!!!!!!) -->
+                <?php
+                 $result = mysqli_query($conn,"SELECT * FROM blood WHERE city = '" . $_SESSION['city'] . "' ");
+                ?>
+                 <!-- filtering results whether successfull or not (BUG FOUND HERE NEED TO FIX!!!!!!!!!!!) -->
                 <?php
                    if(isset($_POST['submit'])){
                     if($_POST['type'] == 'allblood' ){

@@ -38,5 +38,7 @@ function checkTime(i) {
     return i;
 }
 
+document.body.style.zoom="85%";
+
 
 

@@ -235,27 +235,7 @@
                 echo "</tr>";                                        
               } 
             }      
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
+            }             
               if(isset($_POST['reserve'])){
 
                 $row['bloodtype'] = $bloodtype;
