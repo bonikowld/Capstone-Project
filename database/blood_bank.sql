@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2018 at 11:59 AM
+-- Generation Time: Nov 18, 2018 at 11:08 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -140,18 +140,20 @@ CREATE TABLE `donors` (
   `pass` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `lastdonation` varchar(45) DEFAULT NULL,
-  `remarks` varchar(45) DEFAULT NULL
+  `remarks` varchar(45) DEFAULT NULL,
+  `donorstatus` varchar(45) DEFAULT NULL,
+  `diagnosis` varchar(45) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `donors`
 --
 
-INSERT INTO `donors` (`donorid`, `lastname`, `firstname`, `middlename`, `dateofbirth`, `contactnum`, `homeaddress`, `username`, `pass`, `email`, `lastdonation`, `remarks`) VALUES
-(2, 'Rosario', 'Angelita', 'Cabanglit', '9-24-1997', '09097675643', 'Aloran', 'Donor', '12345', 'test@gmail.com', NULL, NULL),
-(5, 'Gamboa', 'Juros', 'Gago', '12-12-1983', '09094358434', 'Mobod Oroquieta City', 'juros', 'test', 'jurosgamboa@gmail.com', NULL, NULL),
-(9, 'Padilla', 'Bonnie Jefferson', 'Manliquez', '12-1-1997', '09093435202', 'Mobod Oroquieta City', 'Bonikowld', 'test', 'bonniepadilla40@yahoo.com', NULL, NULL),
-(8, 'Dela Cruz', 'Juan', 'Tamad', '1-1-1967', '09098887764', 'Carangan Ozamiz City', 'Juan', 'test', 'juantamad@gmail.com', NULL, NULL);
+INSERT INTO `donors` (`donorid`, `lastname`, `firstname`, `middlename`, `dateofbirth`, `contactnum`, `homeaddress`, `username`, `pass`, `email`, `lastdonation`, `remarks`, `donorstatus`, `diagnosis`) VALUES
+(2, 'Rosario', 'Angelita', 'Cabanglit', '9-24-1997', '09097675643', 'Aloran', 'Donor', '12345', 'test@gmail.com', NULL, NULL, 'Reactive', 'Healthy'),
+(5, 'Gamboa', 'Juros', 'Gago', '12-12-1983', '09094358434', 'Mobod Oroquieta City', 'juros', 'test', 'jurosgamboa@gmail.com', NULL, NULL, 'Reactive', 'Healthy'),
+(9, 'Padilla', 'Bonnie Jefferson', 'Manliquez', '12-1-1997', '09093435202', 'Mobod Oroquieta City', 'Bonikowld', 'test', 'bonniepadilla40@yahoo.com', NULL, NULL, 'NonReactive', 'Healthy'),
+(8, 'Dela Cruz', 'Juan', 'Tamad', '1-1-1967', '09098887764', 'Carangan Ozamiz City', 'Juan', 'test', 'juantamad@gmail.com', NULL, NULL, 'NonReactive', 'Healthy');
 
 -- --------------------------------------------------------
 
