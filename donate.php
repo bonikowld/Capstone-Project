@@ -2,6 +2,38 @@
 session_start();
 include 'assets/lib/login.php';
 ?>
+
+<?php
+  if (isset($_POST['request'])) {
+    $lastname = $_POST['lastname'];
+    $firstname = $_POST['firstname'];
+    $middlename = $_POST['middlename'];
+    $age = $_POST['age'];
+    $birthmonth = $_POST['birthmonth'];
+    $birthday = $_POST['birthday'];
+    $birthyear = $_POST['birthyear'];
+    $sex = $_POST['sex'];
+    $nationality = $_POST['nationality'];
+    $civilstatus = $_POST['civilstatus'];
+    $education = $_POST['education'];
+    $occupation = $_POST['occupation'];
+    $contactnum = $_POST['contactnum'];
+    $address = $_POST['address'];
+    $email = $_POST['email'];
+    $identificationno = $_POST['identificationno'];
+    $bloodbank = $_POST['bloodbank'];
+    
+    
+    
+    $secretKey = "6LfIoXsUAAAAAPGeftRQh1BfA_GbxBAQVPne8gYf";
+    $responseKey = $_POST['g-recaptcha-response'];
+    $userIP = $_SERVER['REMOTE_ADDR'];
+
+    $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$responseKey&remoteip=$userIP";
+    $response = file_get_contents($url);
+  }
+?>
+
 <!DOCTYPE html>
 <html class="no-js">
     <head>
@@ -267,9 +299,11 @@ if(!empty($_POST)){
           </select>
         </div>
       </div>
-    </div>
-      <button class="button"> DONATE</button>
+    </div><br>
+          <center><div class="g-recaptcha" name="captcha" data-sitekey="6LfIoXsUAAAAALXHdXSwMTD1znd_o419bnCP0R3E"></div></center>
+      <button class="button" name="donate" id="donate"> DONATE</button>
     </form>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </div>
 
 <div class="footer"> 
@@ -318,6 +352,18 @@ if(!empty($_POST)){
 
 
 </body>
+
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="assets/js/snbutton.js"></script>
+  <script>
+     $().ready(function(){
+         SNButton.init("donate",{
+             fields: ["lastname","firstname","middlename","birthmonth","birthday","birthyear","sex","civilstatus","age","address","identificationno","email","nationality","education","occupation","contactnum","bloodbank","captcha"],
+             enabletext: "Request",
+             disabletext: "Please input all the required fields"
+         })
+     })
+  </script>
 
 </html>
 

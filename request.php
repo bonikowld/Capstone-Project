@@ -348,7 +348,7 @@ if(!empty($_POST)){
         </div>
       </div>
 
-<div class="g-recaptcha" name="captcha" data-sitekey="6LfIoXsUAAAAALXHdXSwMTD1znd_o419bnCP0R3E"></div>
+<center><div class="g-recaptcha" name="captcha" data-sitekey="6LfIoXsUAAAAALXHdXSwMTD1znd_o419bnCP0R3E"></div></center>
 <button class="button" type="submit" name="request" id="request"> REQUEST</button>
 
 </div>
