@@ -3,6 +3,34 @@
         include 'assets/lib/login.php';
 ?>
 
+<?php
+  if (isset($_POST['request'])) {
+    $lastname = $_POST['lastname'];
+    $firstname = $_POST['firstname'];
+    $middlename = $_POST['middlename'];
+    $birthmonth = $_POST['birthmonth'];
+    $birthday = $_POST['birthday'];
+    $birthyear = $_POST['birthyear'];
+    $sex = $_POST['sex'];
+    $requestmonth = $_POST['requestmonth'];
+    $requestday = $_POST['requestday'];
+    $requestyear = $_POST['requestyear'];
+    $bloodtype = $_POST['bloodtype'];
+    $hospital = $_POST['hospital'];
+    $roomnum = $_POST['roomnum'];
+    $age = $_POST['age'];
+    $cellphonenum = $_POST['cellphonenum'];
+    $physician = $_POST['physician'];
+    $diagnosis = $_POST['diagnosis'];
+    $secretKey = "6LfIoXsUAAAAAPGeftRQh1BfA_GbxBAQVPne8gYf";
+    $responseKey = $_POST['g-recaptcha-response'];
+    $userIP = $_SERVER['REMOTE_ADDR'];
+
+    $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$responseKey&remoteip=$userIP";
+    $response = file_get_contents($url);
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en" >
 
@@ -38,6 +66,7 @@
            color:red
           }
         </style> -->
+
 
     </head>
 
@@ -173,7 +202,7 @@ if(!empty($_POST)){
     margin-top: 2%;
     margin-bottom: 5%;
 ">
-  <form method="post" action="" >
+  <form method="post" action="">
    <strong><center><H2>PATIENT INFORMATION</H2></center> </strong>
     <div class="form-group row">
 
@@ -317,14 +346,17 @@ if(!empty($_POST)){
         <input class = "form-group"  type="message" name="diagnosis" id="diagnosis" placeholder="Clinical Diagnosis" required>
         <div class="input-icon"><i class="fa fa-stethoscope"></i></div>
         </div>
-    </div>
+      </div>
 
-<button class="button" name="request"> REQUEST</button>
+<div class="g-recaptcha" name="captcha" data-sitekey="6LfIoXsUAAAAALXHdXSwMTD1znd_o419bnCP0R3E"></div>
+<button class="button" type="submit" name="request" id="request"> REQUEST</button>
 
 </div>
 
 
 </form>
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
 
 <div class="footer"> 
         <div class="row">
@@ -360,12 +392,24 @@ if(!empty($_POST)){
         </div>
 </div>
   
-
+  <!-- JavaScript for enable/disable button-->
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script  src="js/index.js"></script> -->
     <!-- <script  src="js/index.js"></script> -->
 </body>
+  
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="assets/js/snbutton.js"></script>
+  <script>
+     $().ready(function(){
+         SNButton.init("request",{
+             fields: ["lastname","firstname","middlename","birthmonth","birthday","birthyear","sex","requestmonth","requestday","requestyear","bloodtype","hospital","roomnum","age","cellphonenum","physician","diagnosis","captcha"],
+             enabletext: "Request",
+             disabletext: "Please input all the required fields"
+         })
+     })
+  </script>
 
 </html>
 
