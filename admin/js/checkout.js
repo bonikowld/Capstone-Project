@@ -1,5 +1,5 @@
 // data-toggle='modal' data-target='#myModal'
-    $('.row-data').click(function(){
+$('.row-data').click(function(){
     $('#updateModal .serialnumber').text( $('.serialnumber', this).text() );
     $('#updateModal .donor').text( $('.donor', this).text() );
     $('#updateModal .bloodtype').text( $('.bloodtype', this).text() );
@@ -9,6 +9,7 @@
     $('#updateModal .extractiondate').text( $('.extractiondate', this).text() );
     $('#updateModal .expirationdate').text( $('.expirationdate', this).text() );
     $('#updateModal .remarks').text( $('.remarks', this).text() );
+    $('#updateModal .status').text( $('.status', this).text() );
    
     
     document.getElementById("serialnumber").value = $('.serialnumber', this).text();
@@ -20,29 +21,8 @@
     document.getElementById("extractiondate").value = $('.extractiondate', this).text();
     document.getElementById("expirationdate").value = $('.expirationdate', this).text();
     document.getElementById("remarks").value = $('.remarks', this).text();
+    document.getElementById("status").value = $('.status', this).text();
 
 
     $('#updateModal').modal();
   });
-
-
-  function startTime() {
-    var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
-    var s = today.getSeconds();
-    m = checkTime(m);
-    s = checkTime(s);
-    document.getElementById('txt').innerHTML =
-    h + ":" + m + ":" + s;
-    var t = setTimeout(startTime, 500);
-}
-function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;
-}
-
-document.body.style.zoom="85%";
-
-
-

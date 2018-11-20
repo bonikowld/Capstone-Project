@@ -60,7 +60,7 @@ session_start();
   if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<b>Name: </b>" . $row["firstname"]. " " . $row["middlename"]." ". $row["lastname"].        "<br>"; 
+        echo "<b>Name: </b>" . $row["firstname"]. " " . $row["middlename"]." ". $row["lastname"].      "<br>"; 
         echo "<b>Date Of Birth: </b>" . $row["dateofbirth"]. "<br>";
         echo "<b>Contact Number: </b>" . $row["contactnum"]. "<br>";
         echo "<b>Home Address: </b>" . $row["homeaddress"]. "<br>";
@@ -80,8 +80,118 @@ $conn->close();
 
 ?>
 </br>
-<button class='btn btn-danger btn-sm'>Donate Blood</button>
+<button class='btn btn-danger btn-sm donor-data'  data-toggle="modal" data-target="#donateModal">Donate Blood</button>
 <button class='btn btn-success btn-sm'>Edit Record</button>
+
+
+<div id="donateModal" class="modal fade " role="dialog" >
+  <div class="modal-dialog modal-md">
+
+    <!-- Modal content-->
+    <div class="modal-content ">
+      <div class="modal-header ">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+
+      
+    <div class="modal-bodyUpdate">
+    <form method='post' action=''>
+      <table class="table table-bordered table-condensed">
+      <tbody>
+        <tr>
+          <td>
+          <b>Serial Number</b>
+          <p><input type="text" class="form-control serialnumber" id="serialnumber" name="serialnumber" ></p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+          <b>Donor</b>
+          <input type="text" id="donor" name="donor" class="form-control donor" readonly>
+          </td>
+        </tr>
+     
+        <tr>
+          <td>
+          <b>Blood Type</b>
+          <input type="text" id="bloodtype" name="bloodtype" class="form-control bloodtype" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Component</b>
+          <input type="text" id="component" name="component" class="form-control component" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Quantity</b>
+          <input type="text" id="quantity" name="quantity" class="form-control quantity" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Extraction Date</b>
+          <input type="text" id="extractiondate"  name="extractiondate" class="form-control extractiondate" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Expiration Date</b>
+          <input type="text"  id="expirationdate"  name="expirationdate" class="form-control expirationdate" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>City</b>
+         
+          <input type="text" name="city" class="form-control" required>
+          </td>
+        </tr>
+
+           <tr>
+          <td>
+          <b>Contact Number</b>
+          <input type="text" name="contactnumber" class="form-control" required>
+          </td>
+        </tr>
+
+      </tbody>
+           
+      </table>
+      <div class="modal-footer" method="get">
+        <button type="submit" class="btn btn-success" name="update">Add Record</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+      </div>    
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <?php include 'php/logoutfooter.php';?>
 
@@ -97,7 +207,7 @@ $conn->close();
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
-    <script type="text/javascript" src="../admin/js/update.js"></script>
+    <script type="text/javascript" src="../admin/js/donordonate.js"></script>
     
   </div>
 </body>

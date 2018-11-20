@@ -25,7 +25,7 @@ session_start();
 
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top" onload="startTime()">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top" >
 <!-- Navigation-->
   <?php include 'php/sidenav.php';?>
     
@@ -42,16 +42,7 @@ session_start();
       <div class="card mb-3">
         <div class="card-header" >
           <div style="float:right;" id="txt"></div>
-          <i class="fa fa-table" ></i> Blood Records 
-          <form action="" method="post">
-          <select name="type">
-          <option value="allblood">All Records</option>
-          <option value="successfull">Successfull</option>
-          <option value="unsuccessfull">Unsuccessfull</option>
-          <input type="submit" name="submit" value="SUBMIT">
-          </select>
-          </form>
-          
+          <i class="fa fa-table" ></i> Blood Records      
           </div>
 
 
@@ -65,13 +56,13 @@ session_start();
                   <th>Blood Type</th>
                   <th>Component</th>
                   <th>Unit</th>
-                  <th>City</th>
                   <th>Extraction Date</th>
                   <th>Expiration Date</th>
                   <th>Remarks</th>
-                  <th>Delete</th>
-                  <th>Examine</th>
-         
+                  <th>Status</th>
+                  <th>Checkout</th>
+                  
+                  
                   
                 </tr>
               </thead>
@@ -82,65 +73,43 @@ session_start();
                   <th>Blood Type</th>
                   <th>Component</th>
                   <th>Unit</th>
-                  <th>City</th>
                   <th>Extraction Date</th>
                   <th>Expiration Date</th>
                   <th>Remarks</th>
-                  <th>Delete</th>
-                  <th>Examine</th>
-                             
-       
+                  <th>Status</th>
+                  <th>Checkout</th>
+        
                 </tr>
               </tfoot>
               
               <tbody>
-                <?php include 'php/connection.php';?>
-                <?php
-                 $result = mysqli_query($conn,"SELECT * FROM blood WHERE city = '" . $_SESSION['city'] . "' ");
+                <?php include 'php/connection.php';
+              
+              $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' ");
+           
+                 while($row = mysqli_fetch_array($result))  
+                    {  
                 ?>
-                 <!-- filtering results whether successfull or not (BUG FOUND HERE NEED TO FIX!!!!!!!!!!!) -->
-                <?php
-                   if(isset($_POST['submit'])){
-                    if($_POST['type'] == 'allblood' ){
-                      $result = mysqli_query($conn,"SELECT * FROM blood WHERE city = '" . $_SESSION['city'] . "' ");
-                    }
-                    elseif($_POST['type'] == 'successfull' ){
-                      $result = mysqli_query($conn,"SELECT * FROM blood WHERE city = '" . $_SESSION['city'] . "' AND remarks = 'Successfull' ");
-                    }
-                    elseif($_POST['type'] == 'unsuccessfull' ){
-                      $result = mysqli_query($conn,"SELECT * FROM blood WHERE city = '" . $_SESSION['city'] . "' AND remarks = 'Unsuccessfull' ");
-                    }
-                    else{
-                     
-                      }
-                    } 
-                    while($row = mysqli_fetch_array($result))  
-                    {                                               
-                
-                ?>
-                <!-- Until here!!!!!!!!!!!!! -->
-                <?php 
-                
-                ?>
-          
                 <tr class='row-data' data-href='url://'>
                 <td class='serialnumber'> <?php echo $row['serialnumber']; ?> </td>
                 <td class='donor'> <?php echo $row['donor']; ?> </td>
                 <td class='bloodtype'> <?php echo $row['bloodtype']; ?> </td>
                 <td class='component'> <?php echo $row['component']; ?> </td>
-                <td class='quantity'> <?php echo $row['quantity']; ?> </td>
-                <td class='city'> <?php echo $row['city']; ?> </td>
+                <td class='quantity'> <?php echo $row['unit']; ?> </td>
                 <td class='extractiondate'> <?php echo $row['extractiondate']; ?> </td>
                 <td class='expirationdate'> <?php echo $row['expirationdate']; ?> </td>
                 <td class='remarks'> <?php echo $row['remarks']; ?> </td>
+                <td class='findings'> <?php echo $row['findings']; ?> </td>
                 <form method='get' action=''>
-                <td> <a href="?serial=<?php echo $row['serialnumber']?>" onclick="return confirm ('Are You Sure?');" class="btn btn-danger btn-sm">Delete</a></td>
-                <td><button type='button' onclick="updateBtn()"class='btn btn-success btn-sm' data-toggle="modal" data-target="#updateModal" >Examine</button> </td>
+                <td><button type='button' onclick="updateBtn()"class='btn btn-success btn-sm' data-toggle="modal" data-target="#updateModal" >Checkout</button> </td>
               </form>       
-              </tr>
-                <?php }; ?>                    
+              </tr>  
 
-                <?php mysqli_close($conn); ?>  
+                <?php
+                };
+              mysqli_close($conn); 
+              
+              ?>  
 
 
 
@@ -171,14 +140,16 @@ session_start();
                     $bloodtype = $_POST['bloodtype'];
                     $component = $_POST['component'];
                     $quantity = $_POST['quantity'];
-                    $city = $_POST['city'];
                     $extractiondate = $_POST['extractiondate'];
                     $expirationdate = $_POST['expirationdate'];
-                    $remarks = $_POST['remarks'];
-    
+                    $bloodbank = $_POST['city'];
+                    $borrowersname = $_POST['borrowedby'];
+                    $borrowersaddress = $_POST['borrowersaddress'];
+                    $borrowerscontactnum = $_POST['contactnumber'];
+                    $ornum = $_POST['ornumber'];
 
-                    $sql = "INSERT INTO inventory (serialnumber, donor, bloodtype, component, unit, city, extractiondate, expirationdate, remarks, findings )
-                            VALUES ('".$_POST["serialnumber"]."', '".$_POST["donor"]."','".$_POST["bloodtype"]."', '".$_POST["component"]."', '".$_POST["quantity"]."', '".$_POST["city"]."', '".$_POST["extractiondate"]."', '".$_POST["expirationdate"]."', '".$_POST["remarks"]."', '".$_POST["status"]."' )";
+                    $sql = "INSERT INTO report (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, bloodbank, borrowersname, borrowersaddress, borrowerscontactnum, ornum, checkoutmonth, checkoutyear)
+                            VALUES ('".$_POST["serialnumber"]."', '".$_POST["donor"]."','".$_POST["bloodtype"]."', '".$_POST["component"]."', '".$_POST["quantity"]."', '".$_POST["extractiondate"]."', '".$_POST["expirationdate"]."', '".$_POST["city"]."', '".$_POST["borrowedby"]."', '".$_POST["borrowersaddress"]."', '".$_POST["contactnumber"]."', '".$_POST["ornumber"]."', '".$_POST["checkoutmonth"]."', '".$_POST["checkoutyear"]."')";
                                                
                     if($conn->query($sql) == TRUE){
                 ?>
@@ -230,7 +201,7 @@ session_start();
         <tr>
           <td>
           <b>Serial Number</b>
-          <input type="text" class="form-control serialnumber" id="serialnumber" name="serialnumber">
+          <p><input type="text" class="form-control serialnumber" id="serialnumber" name="serialnumber" readonly></p>
           </td>
         </tr>
 
@@ -261,12 +232,6 @@ session_start();
         </tr>
         <tr>
           <td>
-          <b>City</b>
-          <input type="text" id="city" name="city" class="form-control" readonly>
-          </td>
-        </tr>
-        <tr>
-          <td>
           <b>Extraction Date</b>
           <input type="text" id="extractiondate"  name="extractiondate" class="form-control extractiondate" readonly>
           </td>
@@ -280,17 +245,52 @@ session_start();
         <tr>
           <td>
           <b>Remarks</b>
-          <input type="text"  id="remarks"  name="remarks" class="form-control remarks" readonly>
+          <input type="text" id="remarks" name="remarks" class="form-control remarks" readonly>
           </td>
         </tr>
         <tr>
-
           <td>
           <b>Status</b>
-          <input type="text" id="status" name="status" class="form-control" required>
+          <input type="text" id="findings" name="findings" class="form-control status" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>City</b>
+          <input type="text" name="city" class="form-control" required>
           </td>
         </tr>
 
+         <tr>
+          <td>
+          <b>Borrowed By</b>
+          <input type="text" name="borrowedby" class="form-control" required>
+          </td>
+        </tr>
+
+         <tr>
+          <td>
+          <b>Borrowers Address</b>
+          <input type="text" name="borrowersaddress" class="form-control" required>
+          </td>
+        </tr>
+
+           <tr>
+          <td>
+          <b>Contact Number</b>
+          <input type="text" name="contactnumber" class="form-control" required>
+          </td>
+        </tr>
+
+           <tr>
+          <td>
+          <b>OR Number</b>
+          <input type="text" name="ornumber" class="form-control" required>
+          <input type="hidden" name="checkoutmonth" id="checkoutmonth" value="<?php echo date("F")?>" class="form-control" required>
+          <input type="hidden" name="checkoutyear" id="checkoutyear" value="<?php echo date("Y")?>" class="form-control" required>
+         
+          </td>
+        </tr>
 
       </tbody>
            
@@ -320,7 +320,7 @@ session_start();
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
-    <script type="text/javascript" src="../admin/js/update.js"></script>
+    <script type="text/javascript" src="../admin/js/checkout.js"></script>
     
   </div>
 </body>

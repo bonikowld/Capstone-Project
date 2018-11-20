@@ -5,8 +5,8 @@
 
 <?php
 if(!empty($_POST)){
-            $sql = "INSERT INTO blood (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, city, status)
-            VALUES ('".$_POST["serialnumber"]."','".$_POST["donor"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["quantity"]."','".$_POST["extractiondate"]."','".$_POST["expirationdate"]."','".$_SESSION['city']."','0')";
+            $sql = "INSERT INTO blood (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, city, remarks)
+            VALUES ('".$_POST["serialnumber"]."','".$_POST["donor"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["quantity"]."','".$_POST["extractiondate"]."','".$_POST["expirationdate"]."','".$_SESSION['city']."','".$_POST['remarks']."')";
 
             if ($conn->query($sql) == TRUE) {
               echo "<script type='text/javascript'>alert('New record created successfully');</script>";
@@ -108,7 +108,7 @@ if(!empty($_POST)){
              <!-- <span class="error_form" id="component_error_message"></span> -->
             </td>
             <td>
-           <label>Quantity</label>
+           <label>Unit</label>
              <input type="number" class="form-control" name="quantity" id="quantity" required/>
              <!-- <span class="error_form" id="quantity_error_message"></span> -->
             </td>
@@ -122,6 +122,17 @@ if(!empty($_POST)){
              <input class="form-control" name="expirationdate" id="expirationdate" type="date" placeholder="mm/dd/yyyy" required/>
              <!-- <span class="error_form" id="expdate_error_message"></span> -->
             </td> 
+            <td>
+           <label>Remarks</label>
+             <select type="text" name="remarks" id="remarks" class="form-control" required>
+             <option value="" selected="selected" disabled="disabled">-- select one --</option>
+              <option value="Successfull">Successfull</option>
+              <option value="Unsuccessfull">Unsuccessfull</option>
+       
+             </select>
+             <!-- <span class="error_form" id="component_error_message"></span> -->
+            </td>
+        
           
        
         </tr>

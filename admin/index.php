@@ -39,6 +39,14 @@ session_start();
           </a>
         </li>
 
+        
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+          <a class="nav-link" href="inventory.php">
+            <i class="fa fa-fw fa-list-alt"></i>
+            <span class="nav-link-text">Inventory</span>
+          </a>
+        </li>
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-table"></i>
