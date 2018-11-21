@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2018 at 11:08 AM
+-- Generation Time: Nov 21, 2018 at 11:47 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -58,7 +58,8 @@ INSERT INTO `blood` (`idblood`, `serialnumber`, `donor`, `bloodtype`, `component
 (75, '7200-000000-1', 'Bobot Vidanes', 'O', 'Whole Blood', '1', '2018-09-27', '2018-10-27', 'Ozamiz City', 'Unsuccessfull', NULL, NULL, 1),
 (76, '7200-999999-1', 'Dodong Gadon', 'O', 'Whole Blood', '1', '2018-09-27', '2018-10-28', 'Ozamiz City', 'Unsuccessfull', NULL, NULL, 0),
 (77, '7200-888888-1', 'Harlem Shake', 'O', 'Whole Blood', '1', '2018-09-27', '2018-10-28', 'Ozamiz City', 'Unsuccessfull', NULL, NULL, 0),
-(78, '7200-454545-1', 'Aljan', 'O', 'Whole Blood', '1', '2018-09-28', '2018-10-31', 'Ozamiz City', 'Unsuccessfull', NULL, NULL, 0);
+(78, '7200-454545-1', 'Aljan', 'O', 'Whole Blood', '1', '2018-09-28', '2018-10-31', 'Ozamiz City', 'Unsuccessfull', NULL, NULL, 0),
+(82, '7200-222222-1', 'Eva Mapendo', 'O-', 'Whole Blood', '1', '2018-11-20', '2018-12-23', 'Ozamiz City', 'Successfull', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -130,15 +131,12 @@ INSERT INTO `donate_blood` (`iddonate_blood`, `lastname`, `firstname`, `middlena
 
 CREATE TABLE `donors` (
   `donorid` int(11) NOT NULL,
-  `lastname` varchar(45) NOT NULL,
-  `firstname` varchar(45) NOT NULL,
-  `middlename` varchar(45) NOT NULL,
+  `name` varchar(45) NOT NULL,
   `dateofbirth` varchar(45) NOT NULL,
   `contactnum` varchar(45) NOT NULL,
   `homeaddress` varchar(45) NOT NULL,
-  `username` varchar(45) NOT NULL,
-  `pass` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
+  `bloodtype` varchar(45) DEFAULT NULL,
   `lastdonation` varchar(45) DEFAULT NULL,
   `remarks` varchar(45) DEFAULT NULL,
   `donorstatus` varchar(45) DEFAULT NULL,
@@ -149,11 +147,42 @@ CREATE TABLE `donors` (
 -- Dumping data for table `donors`
 --
 
-INSERT INTO `donors` (`donorid`, `lastname`, `firstname`, `middlename`, `dateofbirth`, `contactnum`, `homeaddress`, `username`, `pass`, `email`, `lastdonation`, `remarks`, `donorstatus`, `diagnosis`) VALUES
-(2, 'Rosario', 'Angelita', 'Cabanglit', '9-24-1997', '09097675643', 'Aloran', 'Donor', '12345', 'test@gmail.com', NULL, NULL, 'Reactive', 'Healthy'),
-(5, 'Gamboa', 'Juros', 'Gago', '12-12-1983', '09094358434', 'Mobod Oroquieta City', 'juros', 'test', 'jurosgamboa@gmail.com', NULL, NULL, 'Reactive', 'Healthy'),
-(9, 'Padilla', 'Bonnie Jefferson', 'Manliquez', '12-1-1997', '09093435202', 'Mobod Oroquieta City', 'Bonikowld', 'test', 'bonniepadilla40@yahoo.com', NULL, NULL, 'NonReactive', 'Healthy'),
-(8, 'Dela Cruz', 'Juan', 'Tamad', '1-1-1967', '09098887764', 'Carangan Ozamiz City', 'Juan', 'test', 'juantamad@gmail.com', NULL, NULL, 'NonReactive', 'Healthy');
+INSERT INTO `donors` (`donorid`, `name`, `dateofbirth`, `contactnum`, `homeaddress`, `email`, `bloodtype`, `lastdonation`, `remarks`, `donorstatus`, `diagnosis`) VALUES
+(2, 'Rosario', '9-24-1997', '09097675643', 'Aloran', 'test@gmail.com', '', NULL, NULL, '', ''),
+(5, 'Gamboa', '12-12-1983', '09094358434', 'Mobod Oroquieta City', 'jurosgamboa@gmail.com', '', NULL, NULL, '', ''),
+(9, 'Padilla', '12-1-1997', '09093435202', 'Mobod Oroquieta City', 'bonniepadilla40@yahoo.com', '', NULL, NULL, '', ''),
+(8, 'Dela Cruz', '1-1-1967', '09098887764', 'Carangan Ozamiz City', 'juantamad@gmail.com', '', NULL, NULL, '', ''),
+(10, 'Manny Pacquiao', '1981-02-10', '09676575675', 'General Santos City', 'manny@gmail.com', 'O-', '2018-11-21', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inventory`
+--
+
+CREATE TABLE `inventory` (
+  `idinventory` int(11) NOT NULL,
+  `serialnumber` varchar(45) NOT NULL,
+  `donor` varchar(45) NOT NULL,
+  `bloodtype` varchar(45) NOT NULL,
+  `component` varchar(45) NOT NULL,
+  `unit` varchar(45) NOT NULL,
+  `city` varchar(45) NOT NULL,
+  `extractiondate` varchar(45) NOT NULL,
+  `expirationdate` varchar(45) NOT NULL,
+  `remarks` varchar(45) NOT NULL,
+  `findings` varchar(45) NOT NULL,
+  `checkoutmonth` varchar(45) DEFAULT NULL,
+  `checkoutyear` varchar(45) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `inventory`
+--
+
+INSERT INTO `inventory` (`idinventory`, `serialnumber`, `donor`, `bloodtype`, `component`, `unit`, `city`, `extractiondate`, `expirationdate`, `remarks`, `findings`, `checkoutmonth`, `checkoutyear`) VALUES
+(25, ' 7200-999999-1 ', ' Dodong Gadon ', ' O ', ' Whole Blood ', ' 1 ', ' Ozamiz City ', ' 2018-09-27 ', ' 2018-10-28 ', ' Unsuccessfull ', 'Active', NULL, NULL),
+(24, ' 7200-999999-1 ', ' Dodong Gadon ', ' O ', ' Whole Blood ', ' 1 ', 'Ozamiz City ', ' 2018-09-27 ', ' 2018-10-28 ', ' Unsuccessfull ', 'Active', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -170,11 +199,13 @@ CREATE TABLE `report` (
   `quantity` varchar(45) NOT NULL,
   `extractiondate` varchar(45) NOT NULL,
   `expirationdate` varchar(45) NOT NULL,
+  `remarks` varchar(45) NOT NULL,
+  `findings` varchar(45) NOT NULL,
   `bloodbank` varchar(45) NOT NULL,
-  `borrowersname` varchar(45) NOT NULL,
-  `borrowersaddress` varchar(45) NOT NULL,
-  `borrowerscontactnum` varchar(45) NOT NULL,
-  `ornum` varchar(45) NOT NULL,
+  `reciever` varchar(45) NOT NULL,
+  `recieveraddress` varchar(45) NOT NULL,
+  `contactnumber` varchar(45) NOT NULL,
+  `ornumber` varchar(45) NOT NULL,
   `checkoutmonth` varchar(45) DEFAULT NULL,
   `checkoutyear` varchar(45) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -183,8 +214,8 @@ CREATE TABLE `report` (
 -- Dumping data for table `report`
 --
 
-INSERT INTO `report` (`idreport`, `serialnumber`, `donor`, `bloodtype`, `component`, `quantity`, `extractiondate`, `expirationdate`, `bloodbank`, `borrowersname`, `borrowersaddress`, `borrowerscontactnum`, `ornum`, `checkoutmonth`, `checkoutyear`) VALUES
-(44, ' 7200-000000-1 ', ' Bobot Vidanes ', ' O ', ' Whole Blood ', ' 1 ', ' 2018-09-27 ', ' 2018-10-27 ', 'Ozamiz City', 'Aljan', 'Ozamiz', '0909546450', '54560463', 'September', '2018');
+INSERT INTO `report` (`idreport`, `serialnumber`, `donor`, `bloodtype`, `component`, `quantity`, `extractiondate`, `expirationdate`, `remarks`, `findings`, `bloodbank`, `reciever`, `recieveraddress`, `contactnumber`, `ornumber`, `checkoutmonth`, `checkoutyear`) VALUES
+(45, '  7200-999999-1  ', '  Dodong Gadon  ', '  O  ', '  Whole Blood  ', '  1  ', '  2018-09-27  ', '  2018-10-28  ', '  Unsuccessfull  ', ' Active ', 'Ozamiz City  ', 'Xao Yu', 'China', '0909878878', '97978686', 'November', '2018');
 
 -- --------------------------------------------------------
 
@@ -269,6 +300,12 @@ ALTER TABLE `donors`
   ADD UNIQUE KEY `userid_UNIQUE` (`donorid`);
 
 --
+-- Indexes for table `inventory`
+--
+ALTER TABLE `inventory`
+  ADD PRIMARY KEY (`idinventory`,`serialnumber`);
+
+--
 -- Indexes for table `report`
 --
 ALTER TABLE `report`
@@ -294,7 +331,7 @@ ALTER TABLE `reserve_blood`
 -- AUTO_INCREMENT for table `blood`
 --
 ALTER TABLE `blood`
-  MODIFY `idblood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `idblood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 --
 -- AUTO_INCREMENT for table `branch`
 --
@@ -309,12 +346,17 @@ ALTER TABLE `donate_blood`
 -- AUTO_INCREMENT for table `donors`
 --
 ALTER TABLE `donors`
-  MODIFY `donorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `donorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `inventory`
+--
+ALTER TABLE `inventory`
+  MODIFY `idinventory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `idreport` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `idreport` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `request_blood`
 --
