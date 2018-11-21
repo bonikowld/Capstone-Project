@@ -60,12 +60,13 @@ session_start();
   if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<b>Name: </b>" . $row["firstname"]. " " . $row["middlename"]." ". $row["lastname"].      "<br>"; 
+        echo "<b>Name: </b>" . $row["name"]. "<br>"; 
         echo "<b>Date Of Birth: </b>" . $row["dateofbirth"]. "<br>";
         echo "<b>Contact Number: </b>" . $row["contactnum"]. "<br>";
-        echo "<b>Home Address: </b>" . $row["homeaddress"]. "<br>";
-        echo "<b>Email Address: </b>" . $row["email"]. "<br>";
+        echo "<b>Address: </b>" . $row["homeaddress"]. "<br>";
+        echo "<b>Email: </b>" . $row["email"]. "<br>";
         echo "<b>Last Date Of Donation: </b>" . $row["lastdonation"]. "<br>";
+        echo "<b>Blood Type: </b>" . $row["bloodtype"]. "<br>";
         echo "<b>Remarks: </b>" . $row["remarks"]. "<br>";
         echo "<b>Donor Status: </b>" . $row["donorstatus"]. "<br>";
         echo "<b>Diagnosis: </b>" . $row["diagnosis"]. "<br>";
@@ -81,9 +82,15 @@ $conn->close();
 ?>
 </br>
 <button class='btn btn-danger btn-sm donor-data'  data-toggle="modal" data-target="#donateModal">Donate Blood</button>
-<button class='btn btn-success btn-sm'>Edit Record</button>
+<button class='btn btn-success btn-sm' data-toggle="modal" data-target="#editModal">Edit Record</button>
 
 
+
+
+
+
+
+<!-- Donate Blood Modal -->
 <div id="donateModal" class="modal fade " role="dialog" >
   <div class="modal-dialog modal-md">
 
@@ -171,26 +178,106 @@ $conn->close();
     </div>
   </div>
 </div>
+<!-- Until Here -->
 
 
 
 
+<!-- Edit Donor Modal -->
+<div id="editModal" class="modal fade " role="dialog" >
+  <div class="modal-dialog modal-md">
+
+    <!-- Modal content-->
+    <div class="modal-content ">
+      <div class="modal-header ">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+
+      
+    <div class="modal-bodyUpdate">
+    <form method='post' action=''>
+      <table class="table table-bordered table-condensed">
+      <tbody>
+        <tr>
+          <td>
+          <b>Name</b>
+          <p><input type="text" class="form-control serialnumber" id="name" name="name" ></p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+          <b>Date Of Birth</b>
+          <input type="text" id="dateofbirth" name="dateofbirth" class="form-control " >
+          </td>
+        </tr>
+     
+        <tr>
+          <td>
+          <b>Contact Number</b>
+          <input type="text" id="contactnumber" name="contactnumber" class="form-control bloodtype">
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Address</b>
+          <input type="text" id="address" name="address" class="form-control component" >
+          </td>
+        </tr> 
+        <tr>
+          <td>
+          <b>Email</b>
+          <input type="text" id="email" name="email" class="form-control quantity" >
+          </td>
+        </tr>
+
+           <tr>
+          <td>
+          <b>Last Date of Donation</b>
+          <input type="text" name="dateofdonation" class="form-control" required>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Blood Type</b>
+          <input type="text" name="bloodtype" class="form-control" required>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Remarks</b>
+          <input type="text" name="remarks" class="form-control" required>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Donor Status</b>
+          <input type="text" name="donorstatus" class="form-control" required>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Diagnosis</b>
+          <input type="text" name="diagnosis" class="form-control" required>
+          </td>
+        </tr>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      </tbody>
+           
+      </table>
+      <div class="modal-footer" method="get">
+        <button type="submit" class="btn btn-success" name="update">Add Record</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+      </div>    
+      
+    </div>
+  </div>
+</div>
+<!-- Until Here -->
 
 
 <?php include 'php/logoutfooter.php';?>

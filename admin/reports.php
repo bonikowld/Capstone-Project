@@ -264,10 +264,12 @@
                   <th>Quantity</th>
                   <th>Extraction Date</th>
                   <th>Expiration Date</th>
+                  <th>Remarks</th>
+                  <th>Findings</th>
                   <th>Blood Bank</th>
-                  <th>Borrowers Name</th>
-                  <th>Borrowers Address</th>
-                  <th>Borrowers Contact Number</th>
+                  <th>Reciever Name</th>
+                  <th>Reciever Address</th>
+                  <th>Contact Number</th>
                   <th>OR Number</th>
                   
                 </tr>
@@ -281,6 +283,8 @@
                   <th>Quantity</th>
                   <th>Extraction Date</th>
                   <th>Expiration Date</th>
+                  <th>Remarks</th>
+                  <th>Findings</th>
                   <th>Blood Bank</th>
                   <th>Borrowers Name</th>
                   <th>Borrowers Address</th>
@@ -318,11 +322,13 @@
                 <td class='quantity'> <?php echo $row['quantity'];?> </td>
                 <td class='extractiondate'> <?php echo $row['extractiondate']; ?> </td>
                 <td class='expirationdate'> <?php echo $row['expirationdate']; ?> </td>
+                <td class='remarks'> <?php echo $row['remarks']; ?> </td>
+                <td class='findings'> <?php echo $row['findings']; ?> </td>
                 <td class='bloodbank'> <?php echo $row['bloodbank']; ?> </td>
-                <td class='borrowersname'> <?php echo $row['borrowersname'];?> </td>
-                <td class='borrowersaddress'> <?php echo $row['borrowersaddress']; ?> </td>
-                <td class='borrowerscontactnum'> <?php echo $row['borrowerscontactnum']; ?> </td>
-                <td class='ornum'> <?php echo $row['ornum']; ?> </td>
+                <td class='borrowersname'> <?php echo $row['reciever'];?> </td>
+                <td class='borrowersaddress'> <?php echo $row['recieveraddress']; ?> </td>
+                <td class='borrowerscontactnum'> <?php echo $row['contactnumber']; ?> </td>
+                <td class='ornum'> <?php echo $row['ornumber']; ?> </td>
                 
               </tr>
                 <?php }; ?>

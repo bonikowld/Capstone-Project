@@ -60,6 +60,7 @@ session_start();
                   <th>Expiration Date</th>
                   <th>Remarks</th>
                   <th>Status</th>
+                  <th>City</th>
                   <th>Checkout</th>
                   
                   
@@ -77,6 +78,7 @@ session_start();
                   <th>Expiration Date</th>
                   <th>Remarks</th>
                   <th>Status</th>
+                  <th>City</th>
                   <th>Checkout</th>
         
                 </tr>
@@ -100,6 +102,7 @@ session_start();
                 <td class='expirationdate'> <?php echo $row['expirationdate']; ?> </td>
                 <td class='remarks'> <?php echo $row['remarks']; ?> </td>
                 <td class='findings'> <?php echo $row['findings']; ?> </td>
+                <td class='city'> <?php echo $row['city']; ?> </td>
                 <form method='get' action=''>
                 <td><button type='button' onclick="updateBtn()"class='btn btn-success btn-sm' data-toggle="modal" data-target="#updateModal" >Checkout</button> </td>
               </form>       
@@ -143,13 +146,15 @@ session_start();
                     $extractiondate = $_POST['extractiondate'];
                     $expirationdate = $_POST['expirationdate'];
                     $bloodbank = $_POST['city'];
-                    $borrowersname = $_POST['borrowedby'];
-                    $borrowersaddress = $_POST['borrowersaddress'];
-                    $borrowerscontactnum = $_POST['contactnumber'];
-                    $ornum = $_POST['ornumber'];
+                    $remarks = $_POST['remarks'];
+                    $findings = $_POST['findings'];
+                    $reciever = $_POST['reciever'];
+                    $recieveraddress = $_POST['recieveraddress'];
+                    $contactnumber = $_POST['contactnumber'];
+                    $ornumber = $_POST['ornumber'];
 
-                    $sql = "INSERT INTO report (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, bloodbank, borrowersname, borrowersaddress, borrowerscontactnum, ornum, checkoutmonth, checkoutyear)
-                            VALUES ('".$_POST["serialnumber"]."', '".$_POST["donor"]."','".$_POST["bloodtype"]."', '".$_POST["component"]."', '".$_POST["quantity"]."', '".$_POST["extractiondate"]."', '".$_POST["expirationdate"]."', '".$_POST["city"]."', '".$_POST["borrowedby"]."', '".$_POST["borrowersaddress"]."', '".$_POST["contactnumber"]."', '".$_POST["ornumber"]."', '".$_POST["checkoutmonth"]."', '".$_POST["checkoutyear"]."')";
+                    $sql = "INSERT INTO report (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, remarks, findings, bloodbank, reciever, recieveraddress, contactnumber, ornumber, checkoutmonth, checkoutyear)
+                            VALUES ('".$_POST["serialnumber"]."', '".$_POST["donor"]."','".$_POST["bloodtype"]."', '".$_POST["component"]."', '".$_POST["quantity"]."', '".$_POST["extractiondate"]."', '".$_POST["expirationdate"]."', '".$_POST["remarks"]."', '".$_POST["findings"]."', '".$_POST["city"]."', '".$_POST["reciever"]."', '".$_POST["recieveraddress"]."', '".$_POST["contactnumber"]."', '".$_POST["ornumber"]."', '".$_POST["checkoutmonth"]."', '".$_POST["checkoutyear"]."')";
                                                
                     if($conn->query($sql) == TRUE){
                 ?>
@@ -226,7 +231,7 @@ session_start();
         </tr>
         <tr>
           <td>
-          <b>Quantity</b>
+          <b>Unit</b>
           <input type="text" id="quantity" name="quantity" class="form-control quantity" readonly>
           </td>
         </tr>
@@ -257,21 +262,21 @@ session_start();
         <tr>
           <td>
           <b>City</b>
-          <input type="text" name="city" class="form-control" required>
+          <input type="text" id="city" name="city" class="form-control" readonly>
           </td>
         </tr>
 
          <tr>
           <td>
           <b>Borrowed By</b>
-          <input type="text" name="borrowedby" class="form-control" required>
+          <input type="text" name="reciever" class="form-control" required>
           </td>
         </tr>
 
          <tr>
           <td>
           <b>Borrowers Address</b>
-          <input type="text" name="borrowersaddress" class="form-control" required>
+          <input type="text" name="recieveraddress" class="form-control" required>
           </td>
         </tr>
 
@@ -286,6 +291,7 @@ session_start();
           <td>
           <b>OR Number</b>
           <input type="text" name="ornumber" class="form-control" required>
+
           <input type="hidden" name="checkoutmonth" id="checkoutmonth" value="<?php echo date("F")?>" class="form-control" required>
           <input type="hidden" name="checkoutyear" id="checkoutyear" value="<?php echo date("Y")?>" class="form-control" required>
          
@@ -295,7 +301,7 @@ session_start();
       </tbody>
            
       </table>
-      <div class="modal-footer" method="get">
+      <div class="modal-footer" method="post">
         <button type="submit" class="btn btn-success" name="update">Done</button>
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
       </div>

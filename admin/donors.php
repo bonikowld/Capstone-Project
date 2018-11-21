@@ -42,45 +42,29 @@ session_start();
         <div class="card-header" >
           <div style="float:right;" id="txt"></div>
           <i class="fa fa-table" ></i> List Of Donors 
-          <!-- form for dropdown base on donors status -->
-          <form action="" method="POST">
-          <select name="type">
-          <option value="alldonors">All Donors</option>
-          <option value="reactive">Reactive Donors</option>
-          <option value="nonreactive">Non-Reactive Donors</option>
-          <input type="submit" name="submit" value="SUBMIT">
-          </select>
-          </form>
-
+          <button class="btn btn-success" name="update" data-toggle="modal" data-target="#addDonor">Add Donor</button>
           </div>
         <div class="card-body" >
           <div class="table-responsive">
-            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Last Name</th>
-                  <th>First Name</th>
-                  <th>Middle Name</th>
+                  <th>Full Name</th>
                   <th>Birthday</th>
                   <th>Contact Number</th>
                   <th>Home Address</th>
-                  <th>Email</th>     
-                  <th>Status</th>    
-                  <th>Diagnosis</th> 
-                  <th>Details</th>
+                  <th>Email</th>   
+                  <th>Details</th>  
+    
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                  <th>Last Name</th>
-                  <th>First Name</th>
-                  <th>Middle Name</th>
+                  <th>Full Name</th>
                   <th>Date Of Birth</th>
                   <th>Contact Number</th>
                   <th>Home Address</th>
                   <th>Email</th>
-                  <th>Status</th>    
-                  <th>Diagnosis</th> 
                   <th>Details</th>
         
                 </tr>
@@ -89,62 +73,19 @@ session_start();
               <?php include 'php/connection.php';?>
 
               <?php 
-                $result = mysqli_query($conn,"SELECT * FROM donors  ");
-              ?>
-              <?php 
-
-              
-              // if(isset($_POST['submit']))
-              //   {
-              //     if(isset($_POST['type']))
-              //       {                                 
-              //       if($_POST['type'] == "reactive")
-              //           {
-              //             $result = mysqli_query($conn,"SELECT * FROM donors WHERE donorstatus = 'Reactive' ");
-                          
-              //           }
-                        
-              //       elseif($_POST['type'] == "nonreactive")
-              //           {
-              //             $result = mysqli_query($conn,"SELECT * FROM donors WHERE donorstatus = 'NonReactive' ");
-              //           }
-
-              //       }
-              //       else{
-
-              //       }
-
-              //   }
-                
-                if(isset($_POST['submit'])){
-                  if($_POST['type'] == 'alldonors' ){
-                    $result = mysqli_query($conn,"SELECT * FROM donors  ");
-                  }
-                  elseif($_POST['type'] == 'reactive' ){
-                    $result = mysqli_query($conn,"SELECT * FROM donors WHERE donorstatus = 'Reactive' ");
-                  }
-                  elseif($_POST['type'] == 'nonreactive' ){
-                    $result = mysqli_query($conn,"SELECT * FROM donors WHERE donorstatus = 'NonReactive' ");
-                  }
-                  else{
-                   
-                    }
-                  } 
+                $result = mysqli_query($conn,"SELECT * FROM donors  ");                             
+                    
                   while($row = mysqli_fetch_array($result)) 
                  {
               ?>
             
               <tbody>
                 <tr>
-                <td class='lastname'> <?php echo $row['lastname']; ?> </td>
-                <td class='firstname'> <?php echo $row['firstname']; ?> </td>
-                <td class='middlename'> <?php echo $row['middlename']; ?> </td>
+                <td class='name'> <?php echo $row['name']; ?> </td>
                 <td class='dateofbirth'> <?php echo $row['dateofbirth']; ?> </td>
                 <td class='contactnum'> <?php echo $row['contactnum'];?> </td>
                 <td class='homeaddress'> <?php echo $row['homeaddress']; ?> </td>
                 <td class='email'> <?php echo $row['email']; ?> </td>
-                <td class='donorstatus'> <?php echo $row['donorstatus']; ?> </td>
-                <td class='diagnosis'> <?php echo $row['diagnosis']; ?> </td>
                 <td><a href="donorinfo.php?donorid=<?php echo $row['donorid']?>" class='btn btn-success btn-sm'>View</a></td>
               </tr>
                 <?php }; ?>   
@@ -156,18 +97,97 @@ session_start();
               
             </table>
 
-
-
-
-
-
-
           </div>
         </div>
       </div>
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
+
+<?php
+include 'php/connection.php';
+
+
+if(!empty($_POST)){
+            $sql = "INSERT INTO donors (name, dateofbirth, contactnum, homeaddress, email, lastdonation, bloodtype )
+            VALUES ('".$_POST["name"]."','".$_POST["dateofbirth"]."','".$_POST["contactnum"]."','".$_POST["homeaddress"]."','".$_POST["email"]."','".$_POST["lastdonation"]."','".$_POST["bloodtype"]."' )";
+
+            if ($conn->query($sql) == TRUE) {
+              echo "<script type='text/javascript'>alert('New record created successfully');</script>";
+              } else {
+              echo "<script type='text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
+              }
+              
+              $conn->close();
+           
+            }
+
+?>
+
+
+    <!-- Modal -->
+<div id="addDonor" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Donor</h4>
+      </div>
+      <div class="modal-body">
+       <form action="" method="post">
+       <div class="form-group">
+            <b>Full Name</b>
+            <input type="text" class="form-control" name="name" placeholder="Donor Name">           
+       </div>
+       <div class="form-group">
+            <b>Date of Birth</b>
+            <input type="date" class="form-control" name="dateofbirth" placeholder="Date of Birth">
+       </div>
+       <div class="form-group">
+            <b>Contact Number</b>
+            <input type="text" class="form-control" name="contactnum" placeholder="Contact Number">        
+       </div>
+       <div class="form-group">
+            <b>Address</b>
+            <input type="text" class="form-control" name="homeaddress" placeholder="Address">      
+       </div>
+       <div class="form-group">
+            <b>Email</b>
+            <input type="email" class="form-control" name="email" placeholder="Email">  
+       </div>
+       <div class="form-group">
+            <b>Donation Date</b>
+            <input type="date" class="form-control" name="lastdonation" placeholder="Status">   
+       </div>
+       <div class="form-group">
+            <b>Blood Type</b>
+            <select class="form-control" id="select" name="bloodtype">
+            <option value="" selected="selected" disabled="disabled">-- select one --</option>
+              <option value="O-">O-</option>
+              <option value="O+">O+</option>
+              <option value="A-">A-</option>
+              <option value="A+">A+</option>
+              <option value="B-">B-</option>
+              <option value="B+">B+</option>
+              <option value="AB-">AB-</option>
+              <option value="AB+">AB+</option>
+            </select>
+       </div>
+
+
+      
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" name="add" id="id" class="btn btn-success" >Add Donor</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
 
 
 <?php include 'php/logoutfooter.php';?>
