@@ -27,8 +27,43 @@ session_start();
 
         <link href="../css/loginadmin.css" rel="stylesheet" type="text/css" />
 
+        <style>
+          .button {
+            padding: 5px 15px;
+            font-size: 18px;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            color: #fff;
+            background-color: #800000;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px #4d0000;
+          }
+
+          .button:hover {background-color: #330000}
+
+          .button:active {
+            background-color: #330000;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+          }
+
+          .adminlogin{
+          background-image: url("../images/search.jpg");
+          background-repeat: no-repeat;
+          background-attachment: scroll;
+          background-position: center center;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+          height: 700px;
+          }
+        </style>
+
 </head>
-<body>
+<body class="adminlogin">
 
 
 
@@ -65,8 +100,12 @@ if(isset($_POST['adminSignin'])){
 
 ?>
 
+
+<input class="button" type="button" value="Go Back!" onclick="history.back(-1)" />
+
  <div class="login-page">
   <div class="form">
+    <center><h3>ADMINISTRATOR</h3></center>
     <form class="login-form" method="post" action="">
       <input type="text" name="username" placeholder="username"/>
       <input type="password" name="password" placeholder="password"/>
