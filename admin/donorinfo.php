@@ -25,7 +25,7 @@ session_start();
 
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top" onload="startTime()">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
   <?php include 'php/sidenav.php';?>
     
@@ -60,7 +60,7 @@ session_start();
   if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<b>Name: </b>" . $row["name"]. "<br>"; 
+        echo "<b>Full Name: </b> <span class='donor'>". $row["name"]. "</span> <br>"; 
         echo "<b>Date Of Birth: </b>" . $row["dateofbirth"]. "<br>";
         echo "<b>Contact Number: </b>" . $row["contactnum"]. "<br>";
         echo "<b>Address: </b>" . $row["homeaddress"]. "<br>";
@@ -81,14 +81,31 @@ $conn->close();
 
 ?>
 </br>
-<button class='btn btn-danger btn-sm donor-data'  data-toggle="modal" data-target="#donateModal">Donate Blood</button>
+<button class='btn btn-danger btn-sm' id="donorDetails" data-toggle="modal" data-target="#donateModal">Donate Blood</button>
 <button class='btn btn-success btn-sm' data-toggle="modal" data-target="#editModal">Edit Record</button>
 
 
+<?php
+include 'php/connection.php';
 
+if(isset($_POST['add'])){
+            $donorid = $_GET['donorid'];
 
+            $sql = "INSERT INTO blood (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, city, remarks )
+            VALUES ('".$_POST["serialnumber"]."','".$_POST["donor"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["quantity"]."','".$_POST["extractiondate"]."','".$_POST["expirationdate"]."', '".$_POST["city"]."', '".$_POST["remarks"]."')";
+            $sql = "UPDATE donors SET lastdonation = '".$_POST["extractiondate"]."' WHERE donorid = '$donorid' ";
+            
+           if (mysqli_multi_query($conn,$sql)) {
+              echo "<script type='text/javascript'>alert('Blood Added Successfully');</script>";
+              } else {
+              echo "<script type='text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
+              }
+              
+              mysqli_close($conn);
+           
+            }
 
-
+?>
 
 <!-- Donate Blood Modal -->
 <div id="donateModal" class="modal fade " role="dialog" >
@@ -109,59 +126,78 @@ $conn->close();
         <tr>
           <td>
           <b>Serial Number</b>
-          <p><input type="text" class="form-control serialnumber" id="serialnumber" name="serialnumber" ></p>
+          <p><input type="text" class="form-control serialnumber" id="serialnumber" name="serialnumber" required ></p>
           </td>
         </tr>
 
         <tr>
           <td>
-          <b>Donor</b>
-          <input type="text" id="donor" name="donor" class="form-control donor" readonly>
+          <b>Donor Name</b>
+          <input type="text" id="donor" name="donor" class="form-control donor" required>
           </td>
         </tr>
      
         <tr>
           <td>
           <b>Blood Type</b>
-          <input type="text" id="bloodtype" name="bloodtype" class="form-control bloodtype" readonly>
+          <select class="form-control" id="select" name="bloodtype">
+            <option value="" selected="selected" disabled="disabled">-- select one --</option>
+              <option value="O-">O-</option>
+              <option value="O+">O+</option>
+              <option value="A-">A-</option>
+              <option value="A+">A+</option>
+              <option value="B-">B-</option>
+              <option value="B+">B+</option>
+              <option value="AB-">AB-</option>
+              <option value="AB+">AB+</option>
+            </select>
           </td>
         </tr>
         <tr>
           <td>
           <b>Component</b>
-          <input type="text" id="component" name="component" class="form-control component" readonly>
+          <select class="form-control" id="select" name="component">
+            <option value="" selected="selected" disabled="disabled">-- select one --</option>
+              <option value="Whole Blood">Whole Blood</option>
+              <option value="Red Cells">Red Cells</option>
+              <option value="Platelets">Platelets</option>
+              <option value="Plasma">Plasma</option>
+              <option value="Cyroprecipitated AHF">Cyroprecipitated AHF</option>
+            </select>
           </td>
         </tr>
         <tr>
           <td>
-          <b>Quantity</b>
-          <input type="text" id="quantity" name="quantity" class="form-control quantity" readonly>
+          <b>Unit</b>
+          <input type="text" id="quantity" name="quantity" class="form-control quantity" required>
           </td>
         </tr>
         <tr>
           <td>
           <b>Extraction Date</b>
-          <input type="text" id="extractiondate"  name="extractiondate" class="form-control extractiondate" readonly>
+          <input type="date" id="extractiondate"  name="extractiondate" class="form-control extractiondate" required>
           </td>
         </tr>
         <tr>
           <td>
           <b>Expiration Date</b>
-          <input type="text"  id="expirationdate"  name="expirationdate" class="form-control expirationdate" readonly>
+          <input type="date"  id="expirationdate"  name="expirationdate" class="form-control expirationdate" required>
           </td>
         </tr>
         <tr>
           <td>
           <b>City</b>
-         
           <input type="text" name="city" class="form-control" required>
           </td>
         </tr>
-
-           <tr>
+        <tr>
           <td>
-          <b>Contact Number</b>
-          <input type="text" name="contactnumber" class="form-control" required>
+          <b>Remarks</b>
+          <select class="form-control" id="remarks" name="remarks">
+            <option value="" selected="selected" disabled="disabled">-- select one --</option>
+              <option value="Successfull">Successfull</option>
+              <option value="Unsuccessfull">Unsuccessfull</option>
+            </select>
           </td>
         </tr>
 
@@ -169,7 +205,7 @@ $conn->close();
            
       </table>
       <div class="modal-footer" method="get">
-        <button type="submit" class="btn btn-success" name="update">Add Record</button>
+        <button type="submit" class="btn btn-success" name="add">Donate</button>
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
       </div>
       </form>

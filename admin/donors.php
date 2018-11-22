@@ -139,23 +139,23 @@ if(!empty($_POST)){
        <form action="" method="post">
        <div class="form-group">
             <b>Full Name</b>
-            <input type="text" class="form-control" name="name" placeholder="Donor Name">           
+            <input type="text" class="form-control" name="name" placeholder="Donor Name" required>           
        </div>
        <div class="form-group">
             <b>Date of Birth</b>
-            <input type="date" class="form-control" name="dateofbirth" placeholder="Date of Birth">
+            <input type="date" class="form-control" name="dateofbirth" placeholder="Date of Birth" required>
        </div>
        <div class="form-group">
             <b>Contact Number</b>
-            <input type="text" class="form-control" name="contactnum" placeholder="Contact Number">        
+            <input type="text" class="form-control" name="contactnum" placeholder="Contact Number" required>        
        </div>
        <div class="form-group">
             <b>Address</b>
-            <input type="text" class="form-control" name="homeaddress" placeholder="Address">      
+            <input type="text" class="form-control" name="homeaddress" placeholder="Address" required>      
        </div>
        <div class="form-group">
             <b>Email</b>
-            <input type="email" class="form-control" name="email" placeholder="Email">  
+            <input type="email" class="form-control" name="email" placeholder="Email" required>  
        </div>
        <div class="form-group">
             <b>Donation Date</b>

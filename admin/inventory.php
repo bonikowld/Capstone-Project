@@ -92,7 +92,7 @@ session_start();
                  while($row = mysqli_fetch_array($result))  
                     {  
                 ?>
-                <tr class='row-data' data-href='url://'>
+                <tr class='row-data'>
                 <td class='serialnumber'> <?php echo $row['serialnumber']; ?> </td>
                 <td class='donor'> <?php echo $row['donor']; ?> </td>
                 <td class='bloodtype'> <?php echo $row['bloodtype']; ?> </td>
