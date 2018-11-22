@@ -89,25 +89,24 @@ include 'assets/lib/login.php';
                         <ul class="nav navbar-nav">
                           <li><a href="index.php">Home</a></li>
                           <li><a href="search.php">Search</a></li>
-                          <li><a href="request.php">Request</a></li>
+                          <!-- <li><a href="request.php">Request</a></li> -->
                           <li class="active"><a href="donate.php">Donate</a></li>
                            <li><a href="assets/lib/loginadmin.php">Admin</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                         <b class='navbar-text'>
-                      
-                        <?php 
-                                if(isset($_SESSION['username'])){
-                                  echo $_SESSION['username'];
-                                 
-                                }
-                                else{ 
-                                  echo "Session not set";
-                                  
-                                }
-                              ?>
-                              </b>  
-                              <li><a href='admin/logout.php'><span class='glyphicon glyphicon-log-out'></span> Log-out</a></li>              
+                            <?php 
+                                    // if(isset($_SESSION['username'])){
+                                    //   echo $_SESSION['username'];
+                                    
+                                    // }
+                                    // else{ 
+                                    //   echo "Session not set";
+                                      
+                                    // }
+                            ?>
+                        </b>  
+                              <!-- <li><a href='admin/logout.php'><span class='glyphicon glyphicon-log-out'></span> Log-out</a></li>               -->
                         </ul>
                       </div>
                     </div>
