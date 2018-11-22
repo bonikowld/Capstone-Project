@@ -85,40 +85,41 @@
                         <ul class="nav navbar-nav">
                           <li><a href="index.php">Home</a></li>
                           <li><a href="search.php">Search</a></li>
-                          <li class="active"><a href="request.php">Request</a></li>  
+                          <li><a href="donate.php">Donate</a></li>
+                          <!-- <li class="active"><a href="request.php">Request</a></li>   -->
                           <li>
                               <?php
-                                            if(isset($_SESSION['username'])){
-                                                echo "<li><a href='donate.php'>Donate</a></li>";
+                                            // if(isset($_SESSION['username'])){
+                                            //     echo "<li><a href='donate.php'>Donate</a></li>";
                                             
-                                            }
-                                            else{
-                                                echo "<a data-toggle='modal' data-target='#loginModal'>Donate</a></li>";
-                                            }
-                                    ?>
-                                     <li><a href="assets/lib/loginadmin.php">Admin</a></li>
+                                            // }
+                                            // else{
+                                            //     echo "<a data-toggle='modal' data-target='#loginModal'>Donate</a></li>";
+                                            // }
+                              ?>
+                          <li><a href="assets/lib/loginadmin.php">Admin</a></li>
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                         <b class='navbar-text'>
-                        <?php 
-                                if(isset($_SESSION['username'])){                             
-                                  echo $_SESSION['username'];
-                                  
-                                }
-                                else{ 
-                                  
-                                }
+                              <?php 
+                                      // if(isset($_SESSION['username'])){                             
+                                      //   echo $_SESSION['username'];
+                                        
+                                      // }
+                                      // else{ 
+                                        
+                                      // }
                               ?>
-                              </b>
-                            <?php
-                            if(isset($_SESSION['username'])){   
-                             echo "<li><a href='admin/logout.php'><span class='glyphicon glyphicon-log-out'></span> Log-out</a></li>";
-                            }
-                            else{
-                             echo "<li><a data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Log-in</a></li>";
-                            }
-                            ?>
+                        </b>
+                              <?php
+                                      // if(isset($_SESSION['username'])){   
+                                      // echo "<li><a href='admin/logout.php'><span class='glyphicon glyphicon-log-out'></span> Log-out</a></li>";
+                                      // }
+                                      // else{
+                                      // echo "<li><a data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Log-in</a></li>";
+                                      // }
+                              ?>
                               
                         </ul>
                       </div>
