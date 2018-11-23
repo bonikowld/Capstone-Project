@@ -198,14 +198,16 @@
       <th class="style">Donor</th>
       <th class="style">Blood Type</th>
       <th class="style">Component</th>
-      <th class="style">Quantity</th>
+      <th class="style">Qty.</th>
       <th class="style">Extraction Date</th>
       <th class="style">Expiration Date</th>
+      <th class="style">Findings</th>
       <th class="style">Blood Bank</th>
-      <th class="style">Borrowers Name</th>
-      <th class="style">Borrowers Address</th>
-      <th class="style">Borrowers Contact Number</th>
+      <th class="style">Reciever Name</th>
+      <th class="style">Reciever Address</th>
+      <th class="style">Contact Number</th>
       <th class="style">OR Number</th>
+      <th class="style">Remarks</th>
   </tr>
   </thead>
   <tbody>
@@ -227,18 +229,20 @@
   <?php while($row = mysqli_fetch_array($result))  
   { ?>
 
-  <td class='serialnumber' id="style2"> <?php echo $row['serialnumber']; ?> </td>
-  <td class='donor' id="style2"> <?php echo $row['donor']; ?> </td>
-  <td class='bloodtype' id="style2"> <?php echo $row['bloodtype']; ?> </td>
-  <td class='component' id="style2"> <?php echo $row['component']; ?> </td>
-  <td class='quantity' id="style2"> <?php echo $row['quantity'];?> </td>
-  <td class='extractiondate' id="style2"> <?php echo $row['extractiondate']; ?> </td>
-  <td class='expirationdate' id="style2"> <?php echo $row['expirationdate']; ?> </td>
-  <td class='bloodbank' id="style2"> <?php echo $row['bloodbank']; ?> </td>
-  <td class='borrowersname' id="style2"> <?php echo $row['borrowersname'];?> </td>
-  <td class='borrowersaddress' id="style2"> <?php echo $row['borrowersaddress']; ?> </td>
-  <td class='borrowerscontactnum' id="style2"> <?php echo $row['borrowerscontactnum']; ?> </td>
-  <td class='ornum' id="style2"> <?php echo $row['ornum']; ?> </td>
+  <td class='serialnumber style1'> <?php echo $row['serialnumber']; ?> </td>
+  <td class='donor style1'> <?php echo $row['donor']; ?> </td>
+  <td class='bloodtype style1'> <?php echo $row['bloodtype']; ?> </td>
+  <td class='component style1'> <?php echo $row['component']; ?> </td>
+  <td class='quantity style1'> <?php echo $row['quantity'];?> </td>
+  <td class='extractiondate style1'> <?php echo $row['extractiondate']; ?> </td>
+  <td class='expirationdate style1'> <?php echo $row['expirationdate']; ?> </td>
+  <td class='findings style1'> <?php echo $row['findings']; ?> </td>
+  <td class='bloodbank style1'> <?php echo $row['bloodbank']; ?> </td>
+  <td class='borrowersname style1'> <?php echo $row['reciever'];?> </td>
+  <td class='borrowersaddress style1'> <?php echo $row['recieveraddress']; ?> </td>
+  <td class='borrowerscontactnum style1'> <?php echo $row['contactnumber']; ?> </td>
+  <td class='ornum style1'> <?php echo $row['ornumber']; ?> </td>
+  <td class='remarks style1'> <?php echo $row['remarks']; ?> </td>
 
   </tr>
   <?php }; ?>
