@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2018 at 11:47 AM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Generation Time: Nov 23, 2018 at 05:36 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -237,17 +239,21 @@ CREATE TABLE `request_blood` (
   `cellphonenum` varchar(45) NOT NULL,
   `diagnosis` varchar(100) NOT NULL,
   `dateofrequest` varchar(45) NOT NULL,
-  `bloodtype` varchar(45) NOT NULL
+  `bloodtype` varchar(45) NOT NULL,
+  `component` varchar(45) NOT NULL,
+  `units` varchar(45) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `request_blood`
 --
 
-INSERT INTO `request_blood` (`idrequestBlood`, `lastname`, `firstname`, `middlename`, `age`, `birthdate`, `sex`, `hospital`, `roomnum`, `physician`, `cellphonenum`, `diagnosis`, `dateofrequest`, `bloodtype`) VALUES
-(50, 'Padilla', 'Bonnie', 'Manliquez', 16, '12-08-1998', 'Male', 'Faith Hospital', 'LS212', 'Dr. Wong', '9093778040', 'Dengue', '27-09-2018', 'O'),
-(49, 'Racal', 'Maris', 'Boss', 38, '12-08-1998', 'Male', 'Medina Hospital', 'LS214', 'Dr. Wong', '09090978987', 'Dengue', '27-09-2018', 'O'),
-(48, 'dsad', 'das', 'dsad', 45, '34-43-4343', 'Male', 'ds', 'rwe4', 'asdas', '35345', 'dasd', '67-76-76', 'O');
+INSERT INTO `request_blood` (`idrequestBlood`, `lastname`, `firstname`, `middlename`, `age`, `birthdate`, `sex`, `hospital`, `roomnum`, `physician`, `cellphonenum`, `diagnosis`, `dateofrequest`, `bloodtype`, `component`, `units`) VALUES
+(50, 'Padilla', 'Bonnie', 'Manliquez', 16, '12-08-1998', 'Male', 'Faith Hospital', 'LS212', 'Dr. Wong', '9093778040', 'Dengue', '27-09-2018', 'O', '', ''),
+(49, 'Racal', 'Maris', 'Boss', 38, '12-08-1998', 'Male', 'Medina Hospital', 'LS214', 'Dr. Wong', '09090978987', 'Dengue', '27-09-2018', 'O', '', ''),
+(48, 'dsad', 'das', 'dsad', 45, '34-43-4343', 'Male', 'ds', 'rwe4', 'asdas', '35345', 'dasd', '67-76-76', 'O', '', ''),
+(51, 'Largosa', 'Aljanly', 'Acapulco', 20, '24-02-1998', 'Male', 'MUMC', '232', 'Dr. Tagalog', '09951572533', 'Dengue', '19-11-2018', 'O', '', ''),
+(52, 'Largosa', 'Jane', 'Wakwak', 20, '24-01-1998', 'Female', 'MUMC', '454', 'Dr. Tagalog', '09951572533', 'Hepatitis B', '20-11-2018', 'O+', 'Whole Blood', '1');
 
 -- --------------------------------------------------------
 
@@ -332,41 +338,50 @@ ALTER TABLE `reserve_blood`
 --
 ALTER TABLE `blood`
   MODIFY `idblood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+
 --
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
   MODIFY `branchid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `donate_blood`
 --
 ALTER TABLE `donate_blood`
   MODIFY `iddonate_blood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT for table `donors`
 --
 ALTER TABLE `donors`
   MODIFY `donorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
   MODIFY `idinventory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
   MODIFY `idreport` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
 --
 -- AUTO_INCREMENT for table `request_blood`
 --
 ALTER TABLE `request_blood`
-  MODIFY `idrequestBlood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `idrequestBlood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
 --
 -- AUTO_INCREMENT for table `reserve_blood`
 --
 ALTER TABLE `reserve_blood`
   MODIFY `idblood` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -16,6 +16,8 @@
     $requestday = $_POST['requestday'];
     $requestyear = $_POST['requestyear'];
     $bloodtype = $_POST['bloodtype'];
+    $component = $_POST['component'];
+    $units = $_POST['units'];
     $hospital = $_POST['hospital'];
     $roomnum = $_POST['roomnum'];
     $age = $_POST['age'];
@@ -180,8 +182,8 @@ if(!empty($_POST)){
         $_POST["requestdate"] = $requestday."-".$requestmonth."-".$requestyear;
 
 
-        $sql = "INSERT INTO request_blood (lastname, firstname, middlename, age, birthdate, sex, hospital, roomnum, physician, cellphonenum, diagnosis, dateofrequest, bloodtype)
-                VALUES ('".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["hospital"]."','".$_POST["roomnum"]."','".$_POST["physician"]."','".$_POST["cellphonenum"]."','".$_POST["diagnosis"]."','".$_POST["requestdate"]."','".$_POST["bloodtype"]."')";
+        $sql = "INSERT INTO request_blood (lastname, firstname, middlename, age, birthdate, sex, hospital, roomnum, physician, cellphonenum, diagnosis, dateofrequest, bloodtype, component, units)
+                VALUES ('".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["hospital"]."','".$_POST["roomnum"]."','".$_POST["physician"]."','".$_POST["cellphonenum"]."','".$_POST["diagnosis"]."','".$_POST["requestdate"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["units"]."')";
 
         if ($conn->query($sql) == TRUE) {
           echo "<script type='text/javascript'>alert('Request Successfull');</script>";
@@ -277,37 +279,59 @@ if(!empty($_POST)){
         <h4>Blood Type</h4>
         <div class="input-group">
           <div class="col-twothirds">
-          <select name="bloodtype" id="bloodtype" class="form-control" style="width: 246px; height: 54px;" required>
-              <option value="" selected="selected" disabled="disabled">-- select one --</option>
-              <option value="O">O</option>
-              <option value="O-">O-</option>
-              <option value="O+">O+</option>
-              <option value="A-">A-</option>
-              <option value="A+">A+</option>
-              <option value="B-">B-</option>
-              <option value="B+">B+</option>
-              <option value="AB-">AB-</option>
-              <option value="AB+">AB+</option>
-  </select>
-</div>
+            <select name="bloodtype" id="bloodtype" class="form-control" style="width: 246px; height: 54px;" required>
+                <option value="" selected="selected" disabled="disabled">-- select one --</option>
+                <option value="O">O</option>
+                <option value="O-">O-</option>
+                <option value="O+">O+</option>
+                <option value="A-">A-</option>
+                <option value="A+">A+</option>
+                <option value="B-">B-</option>
+                <option value="B+">B+</option>
+                <option value="AB-">AB-</option>
+                <option value="AB+">AB+</option>
+            </select>
+          </div>
         </div>
+      </div>
+</div>
+
+    <div class="row">
+        <div class="col-half" style="margin-left: 15px; width: 255px;">
+          <h4>Component</h4>
+          <div class="input-group">
+                <div class="col-twothirds">
+                  <select name="component" id="component" class="form-control" style="width: 246px; height: 54px;" required>
+                      <option value="" selected="selected" disabled="disabled">-- select one --</option>
+                      <option value="Whole Blood">Whole Blood</option>
+                      <option value="Red Cells">Red Cells</option>
+                      <option value="Platelets">Platelets</option>
+                      <option value="Plasma">Plasma</option>
+                      <option value="Cryoprecipitated AHF">Cryoprecipitated AHF</option>
+                  </select>
+                </div>
+          </div>
+        </div>
+        <div class="col-half" style="width: 245px">
+          <h4>Units</h4>
+          <div class="form-group-2">
+            <input type="text" name="units" id="units" placeholder="No. of units" required>
+          </div>
       </div>
     </div>
 
-
-     <div class="row">
-      <div class="col-half" style="margin-left: 15px;
-    width: 255px;">
-        <h4>Hospital</h4>
-        <div class="form-group-2">
-            <input type="Text" name="hospital"id="hospital" placeholder="Hospital" required>
+    <div class="row">
+        <div class="col-half" style="margin-left: 15px; width: 255px;">
+          <h4>Hospital</h4>
+          <div class="form-group-2">
+              <input type="Text" name="hospital"id="hospital" placeholder="Hospital" required>
+          </div>
         </div>
-      </div>
-      <div class="col-half" style="width: 245px">
-        <h4>Room No</h4>
-        <div class="form-group-2">
-           <input type="text" name="roomnum" id="roomnum" placeholder="Room No." required>
-        </div>
+        <div class="col-half" style="width: 245px">
+          <h4>Room No</h4>
+          <div class="form-group-2">
+            <input type="text" name="roomnum" id="roomnum" placeholder="Room No." required>
+          </div>
       </div>
     </div>
 
@@ -405,7 +429,7 @@ if(!empty($_POST)){
   <script>
      $().ready(function(){
          SNButton.init("request",{
-             fields: ["lastname","firstname","middlename","birthmonth","birthday","birthyear","sex","requestmonth","requestday","requestyear","bloodtype","hospital","roomnum","age","cellphonenum","physician","diagnosis","captcha"],
+             fields: ["lastname","firstname","middlename","birthmonth","birthday","birthyear","sex","requestmonth","requestday","requestyear","bloodtype","component","units","hospital","roomnum","age","cellphonenum","physician","diagnosis","captcha"],
              enabletext: "Request",
              disabletext: "Please input all the required fields"
          })

@@ -26,6 +26,8 @@
     $("#reqday_error_message").hide();
     $("#reqyear_error_message").hide();
     $("#btype_error_message").hide();
+    $("#component_error_message").hide();
+    $("#units_error_message").hide();
     $("#hospital_error_message").hide();
     $("#roomnum_error_message").hide();
     $("#cellphonenum_error_message").hide();
@@ -59,6 +61,8 @@
     var error_reqday = false;
     var error_reqyear = false;
     var error_btype = false;
+    var error_component = false;
+    var error_units = false;
     var error_hospital = false;
     var error_roomnum = false;
     var error_cellphonenum = false;
@@ -169,6 +173,14 @@
 
     $("#bloodtype").focusout(function(){
       check_btype();
+      });
+
+    $("#component").focusout(function(){
+      check_component();
+      });
+
+    $("#units").focusout(function(){
+      check_units();
       });
 
     $("#hospital").focusout(function(){
@@ -566,6 +578,35 @@
         error_btype = true;
       }
     }
+
+    function check_component() {
+    var btype = $("#component").val();
+
+      if (component && component !== '') {
+        $("#component_error_message").hide();
+        $("#component").css("border-bottom","3px solid #34F458");
+      } else {
+        $("#component_error_message").html("Should select an item in the list");
+        $("#component_error_message").show();
+        $("#component").css("border-bottom","2px solid #F90A0A");
+        error_component = true;
+      }
+    }
+
+    function check_units() {
+      var pattern = /^[0-9--]+$/;
+      var units = $("#units").val();
+
+        if (pattern.test(units) && units !== '') {
+            $("#units_error_message").hide();
+            $("#units").css("border-bottom","3px solid #34F458");
+        } else {
+            $("#units_error_message").html("Required and should contain numbers");
+            $("#units_error_message").show();
+            $("#units").css("border-bottom","2px solid #F90A0A");
+            error_units = true;
+        }
+      }
 
     function check_hospital() {
       var pattern = /^[a-z0-9-,.#&* ]+$/i;

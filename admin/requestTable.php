@@ -49,6 +49,9 @@
                   <th>Age</th>
                   <th>Birthdate</th>
                   <th>Sex</th>
+                  <th>Bloodtype</th>
+                  <th>Components</th>
+                  <th>Units</th>
                   <th>Hospital</th>
                   <th>Room Number</th>
                   <th>Physician</th>
@@ -66,6 +69,9 @@
                   <th>Age</th>
                   <th>Birthdate</th>
                   <th>Sex</th>
+                  <th>Bloodtype</th>
+                  <th>Components</th>
+                  <th>Units</th>
                   <th>Hospital</th>
                   <th>Room Number</th>
                   <th>Physician</th>
@@ -75,6 +81,7 @@
                 </tr>
               </tfoot>
               
+              <center>
               <tbody>
               <?php include 'php/connection.php';?>
                 <?php 
@@ -91,11 +98,14 @@
                 <td class='age'><?php echo $row['age']; ?></td>
                 <td class='birthdate'><?php echo $row['birthdate']; ?></td>
                 <td class='sex'><?php echo $row['sex']; ?></td>
+                <td class='bloodtype'><?php echo $row['bloodtype']; ?></td>
+                <td class='component'><?php echo $row['component']; ?></td>
+                <td class='units'><?php echo $row['units']; ?></td>
                 <td class='hospital'><?php echo $row['hospital']; ?></td>
                 <td class='roomnum'><?php echo $row['roomnum']; ?></td>
                 <td class='physician'><?php echo $row['physician']; ?></td>
                 <td class='cellphonenum'><?php echo $row['cellphonenum']; ?></td>
-                <td class='diagnosis'><?php echo $row['diagnosis']; ?></td> 
+                <td class='diagnosis'><?php echo $row['diagnosis']; ?></td>
                 <form method='get' action=''>
                   <td> <a onclick="return confirm ('Are You Sure?')" href="?id=<?php echo $row['idrequestBlood']?>" class="btn btn-danger btn-sm">Delete</a>
                 </tr>
@@ -128,6 +138,7 @@
             
               
               </tbody>
+              </center>
               
             </table>
           </div>

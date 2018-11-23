@@ -173,9 +173,11 @@
     <thead>
         <tr>
         <th class="text-center"><h4><b>Component</b></h4></th>
-        <th class="text-center"><h4><b>Blood Type</b></h4></th>
-          <th class="text-center"><h4><b>City</b></h4></th>
-            <th class="text-center"><h4><b>Status</b></h4></th>
+          <th class="text-center"><h4><b>Blood Type</b></h4></th>
+            <th class="text-center"><h4><b>City</b></h4></th>
+              <th class="text-center"><h4><b>Units</b></h4></th>
+                <th class="text-center"><h4><b>Status</b></h4></th>
+                  <th class="text-center"><h4><b></b></h4></th>
         </tr>
     </thead>
     
@@ -211,6 +213,7 @@
                 echo "<td class='text-center'>".$row['bloodtype']."</td>";
                 echo "<td class='text-center'>".$row['city']."</td>";
                 echo "<td class='text-center'><a class='btn btn-info btn-xs row-data'><span class='glyphicon glyphicon-ok' data-toggle='modal' data-target='#reserveModal'></span> Available</a></td>";
+                echo "<td class='text-center'><a class='btn btn-info btn-xs row-data'>Request</td>";
                 echo "</tr>";                                        
               } 
             }      
@@ -231,7 +234,9 @@
                 echo "<td class='text-center component'>".$row['component']."</td>";
                 echo "<td class='text-center'>".$row['bloodtype']."</td>";
                 echo "<td class='text-center'>".$row['city']."</td>";
-                echo "<td class='text-center'><a class='btn btn-info btn-xs row-data'><span class='glyphicon glyphicon-ok' data-toggle='modal' data-target='#reserveModal'></span> Available</a></td>";
+                echo "<td class='text-center'>".$row['city']."</td>";
+                echo "<td class='text-center'><a class='btn btn-warning btn-xs row-data'><span class='glyphicon glyphicon-ok' data-toggle='modal' data-target='#reservemodal'></span> Available</a></td>";
+                echo "<td class='text-center'><a href='request.php' target='rightframe'><input type='button' class='btn btn-danger' value='Request'/></td>";
                 echo "</tr>";                                        
               } 
             }      
@@ -286,11 +291,13 @@
     </div>
 </div>
 
+<br><br>
 
 
-  <div id="reserveModal" class="modal fade " role="dialog">
+   <!-- <center>
+   <div id="reserveModal" class="modal fade " role="dialog">
             <div class="modal-dialog modal-md">
-              <!-- Modal content-->
+              
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -342,7 +349,7 @@
                             </div></br>
                         </form>
 
-            </div>                                               
+     </div></center> -->
                     
                 </div>
              
