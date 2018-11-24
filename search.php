@@ -212,9 +212,10 @@
                 echo "<td class='text-center component'>".$row['component']."</td>";
                 echo "<td class='text-center'>".$row['bloodtype']."</td>";
                 echo "<td class='text-center'>".$row['city']."</td>";
-                echo "<td class='text-center'><a class='btn btn-info btn-xs row-data'><span class='glyphicon glyphicon-ok' data-toggle='modal' data-target='#reserveModal'></span> Available</a></td>";
-                echo "<td class='text-center'><a class='btn btn-info btn-xs row-data'>Request</td>";
-                echo "</tr>";                                        
+                echo "<td class='text-center'><h6>Units here</h6></td>";
+                echo "<td class='text-center'><a class='btn btn-success btn-xs row-data'><span class='glyphicon glyphicon-ok' data-toggle='modal' data-target='#reserveModal'></span> Available</a></td>";
+                echo "<td class='text-center'><a href='request.php' target='rightframe'><input type='button' class='btn btn-danger' value='Request'/></td>";
+                echo "</tr>";                                          
               } 
             }      
             }
@@ -234,8 +235,8 @@
                 echo "<td class='text-center component'>".$row['component']."</td>";
                 echo "<td class='text-center'>".$row['bloodtype']."</td>";
                 echo "<td class='text-center'>".$row['city']."</td>";
-                echo "<td class='text-center'>".$row['city']."</td>";
-                echo "<td class='text-center'><a class='btn btn-warning btn-xs row-data'><span class='glyphicon glyphicon-ok' data-toggle='modal' data-target='#reservemodal'></span> Available</a></td>";
+                echo "<td class='text-center'><h6>Units here</h6></td>";
+                echo "<td class='text-center'><a class='btn btn-success btn-xs row-data'><span class='glyphicon glyphicon-ok' data-toggle='modal' data-target='#reserveModal'></span> Available</a></td>";
                 echo "<td class='text-center'><a href='request.php' target='rightframe'><input type='button' class='btn btn-danger' value='Request'/></td>";
                 echo "</tr>";                                        
               } 
@@ -294,8 +295,8 @@
 <br><br>
 
 
-   <!-- <center>
-   <div id="reserveModal" class="modal fade " role="dialog">
+   
+   <!-- <div id="reserveModal" class="modal fade " role="dialog">
             <div class="modal-dialog modal-md">
               
               <div class="modal-content">
@@ -304,7 +305,7 @@
                   <h4 class="modal-title">Reservation Form</h4>
                 </div>
                 <div class='modal-body'>
-                    <form method="post" action=""> 
+                    <form method="post" action="" style="margin-left: 70px; margin-right: 70px;"> 
                       
                       <div class="form-group2">
                         
@@ -314,42 +315,125 @@
                           
                         <label class="col-md-4 control-label">Last Name</label>  
                         <div class="form-group2" style="width: 376px;">
-                       <input  name="lastname" placeholder="Last Name" class="form-control"  type="text">
+                       <input  name="lastname" id="lastname" placeholder="Last Name" class="form-control"  type="text">
                           </div>  </br>                    
                       
                         <label class="col-md-4 control-label">First Name</label> 
                           <div class="form-group2" style="width: 376px;">
-                        <input name="firstname" placeholder="First Name" class="form-control"  type="text">
+                        <input name="firstname" id="firstname" placeholder="First Name" class="form-control"  type="text">
                           </div>  </br>                        
                   
                         <label class="col-md-4 control-label">Middle Name</label>  
                         <div class="input-group2" style="width: 376px;">
-                        <input  name="middlename" placeholder="Middle Name" class="form-control"  type="text">
+                        <input  name="middlename" id="middlename" placeholder="Middle Name" class="form-control"  type="text">
                           </div></br>
+                        
+                        <label class="col-md-4 control-label">Date of Birth</label>  
+                        <div class="input-group1" style="width: 376px;">
+                        <input  name="birthmonth" id="birthmonth" placeholder="MM" class="form-control"  type="text">
+                        </div>
+                        <div class="input-group2" style="width: 376px;">
+                        <input  name="birthday" id="birthday" placeholder="DD" class="form-control"  type="text">
+                        </div>
+                        <div class="input-group2" style="width: 376px;">
+                        <input  name="birthyear" id="birthyear" placeholder="YYYY" class="form-control"  type="text">
+                        </div><br>
+                        
+                        <label class="col-md-4 control-label" >Gender</label> 
+                        <div class="form-group2" style="width: 376px;">
+                        <select name="sex" id="sex" class="form-control" required>
+                          <option value="" selected="selected" disabled="disabled">-- select one --</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                        </select> 
+                        </div></br>
 
-                        <label class="col-md-4 control-label" >Address</label> 
+                        <label class="col-md-4 control-label">Date of request</label>  
+                        <div class="input-group1" style="width: 376px;">
+                        <input  name="requestmonth" id="requestmonth" placeholder="MM" class="form-control"  type="text">
+                        </div>
+                        <div class="input-group2" style="width: 376px;">
+                        <input  name="requestday" id="requestday" placeholder="DD" class="form-control"  type="text">
+                        </div>
+                        <div class="input-group2" style="width: 376px;">
+                        <input  name="requestyear" id="requestyear" placeholder="YYYY" class="form-control"  type="text">
+                        </div><br>
+                        
+                        <label class="col-md-4 control-label" >City Chapter</label> 
                           <div class="form-group2" style="width: 376px;">
-                        <input name="address" placeholder="Address" class="form-control"  type="Text"> 
-                          </div></br>
+                          <input  name="city" id="city" placeholder="(eg. Oroquieta City, Ozamiz City, Tangub City, etc.)" class="form-control"  type="text">
+                        </div></br>
 
-                          <label class="col-md-4 control-label" >Contact Number</label> 
+                        <label class="col-md-4 control-label" >Bloodtype</label> 
                           <div class="form-group2" style="width: 376px;">
-                        <input name="contactnum" placeholder="Contact Number" class="form-control"  type="Text"> 
-                          </div></br>
+                          <select name="bloodtype" id="bloodtype" class="form-control" required>
+                            <option value="" selected="selected" disabled="disabled">-- select one --</option>
+                            <option value="O">O</option>
+                            <option value="O-">O-</option>
+                            <option value="O+">O+</option>
+                            <option value="A-">A-</option>
+                            <option value="A+">A+</option>
+                            <option value="B-">B-</option>
+                            <option value="B+">B+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="AB+">AB+</option>
+                          </select>
+                        </div></br>
 
-                          <label class="col-md-4 control-label" >Purpose</label>                 
-                             <div class="form-group2" style="width: 376px;">
-                          <textarea name="purpose" class="form-control" placeholder="Purpose" required></textarea>
-                            </div></br>
+                        <label class="col-md-4 control-label" >Component</label> 
+                          <div class="form-group2" style="width: 376px;">
+                          <select name="component" id="component" class="form-control" required>
+                            <option value="" selected="selected" disabled="disabled">-- select one --</option>
+                            <option value="Whole Blood">Whole Blood</option>
+                            <option value="Red Cells">Red Cells</option>
+                            <option value="Platelets">Platelets</option>
+                            <option value="Plasma">Plasma</option>
+                            <option value="Cryoprecipitated AHF">Cryoprecipitated AHF</option>
+                          </select>
+                        </div></br>
 
+                        <label class="col-md-4 control-label" >Units</label> 
+                        <div class="form-group2" style="width: 376px;">
+                        <input name="units" id="units" placeholder="No. of units" class="form-control"  type="Text"> 
+                        </div></br>
+                        
+                        <label class="col-md-4 control-label" >Hospital</label> 
+                        <div class="form-group2" style="width: 376px;">
+                        <input name="hospital" id="hospital" placeholder="Hospital" class="form-control"  type="Text"> 
+                        </div></br>
+
+                        <label class="col-md-4 control-label" >Room No.</label> 
+                        <div class="form-group2" style="width: 376px;">
+                        <input name="roomnum" id="roomnum" placeholder="Room No." class="form-control"  type="Text"> 
+                        </div></br>
+
+                        <label class="col-md-4 control-label" >Age</label> 
+                        <div class="form-group2" style="width: 376px;">
+                        <input name="age" id="age" placeholder="Age" class="form-control"  type="Text"> 
+                        </div></br>
+
+                        <label class="col-md-4 control-label" >Contact No.</label> 
+                        <div class="form-group2" style="width: 376px;">
+                        <input name="cellphonenum" id="cellphonenum" placeholder="Contact No." class="form-control"  type="Text"> 
+                        </div></br>
+
+                        <label class="col-md-4 control-label" >Attending Physician</label> 
+                        <div class="form-group2" style="width: 376px;">
+                        <input name="physician" id="physician" placeholder="Attending Physician" class="form-control"  type="Text"> 
+                        </div></br>
+                        
+                        <label class="col-md-4 control-label" >Clinical Diagnosis</label> 
+                        <div class="form-group2" style="width: 376px;">
+                        <input name="diagnosis" id="diagnosis" placeholder="Clinical Diagnosis" class="form-control"> 
+                        </div></br>
                   
                             <label class="col-md-4 control-label"></label>
                             <div class="col-md-4">
-                              <button type="submit" name="reserve" class="btn btn-primary">Reserve</button>
+                              <button type="submit" name="request" class="btn btn-primary">Reserve</button>
                             </div></br>
                         </form>
 
-     </div></center> -->
+     </div> -->
                     
                 </div>
              

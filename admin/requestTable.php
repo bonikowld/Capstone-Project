@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,8 +88,9 @@
               <center>
               <tbody>
               <?php include 'php/connection.php';?>
-                <?php 
-                $result = mysqli_query($conn,"SELECT * FROM request_blood");
+                <?php  
+                $result = mysqli_query($conn,"SELECT * FROM request_blood WHERE city = '" . $_SESSION['city'] . "' ");
+                //$result = mysqli_query($conn,"SELECT * FROM request_blood");
                 ?>
 
                 <?php 

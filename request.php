@@ -182,8 +182,8 @@ if(!empty($_POST)){
         $_POST["requestdate"] = $requestday."-".$requestmonth."-".$requestyear;
 
 
-        $sql = "INSERT INTO request_blood (lastname, firstname, middlename, age, birthdate, sex, hospital, roomnum, physician, cellphonenum, diagnosis, dateofrequest, bloodtype, component, units)
-                VALUES ('".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["hospital"]."','".$_POST["roomnum"]."','".$_POST["physician"]."','".$_POST["cellphonenum"]."','".$_POST["diagnosis"]."','".$_POST["requestdate"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["units"]."')";
+        $sql = "INSERT INTO request_blood (lastname, firstname, middlename, age, birthdate, sex, hospital, roomnum, physician, cellphonenum, diagnosis, dateofrequest, bloodtype, component, units, city)
+                VALUES ('".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["hospital"]."','".$_POST["roomnum"]."','".$_POST["physician"]."','".$_POST["cellphonenum"]."','".$_POST["diagnosis"]."','".$_POST["requestdate"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["units"]."','".$_POST["city"]."')";
 
         if ($conn->query($sql) == TRUE) {
           echo "<script type='text/javascript'>alert('Request Successfull');</script>";
@@ -355,23 +355,25 @@ if(!empty($_POST)){
 
 <div class="row">
   <h4 style="margin-left: 2%;">Attending Physician</h4>
-    
-        <input class = "form-group" type="text" name="physician" id="physician" placeholder="Attending Physician" required style="
-    margin-left: 2%;
-    margin-right: 2%;
-    width: 94%;
-">
-      
-        
+    <div>
+        <input class = "form-group" type="text" name="physician" id="physician" placeholder="Attending Physician" required style="margin-left: 2%;margin-right: 2%;width: 94%;">   
     </div>
-    </div>
-    <div class="row">
+</div>
+
+<div class="row">
   <h4>Clinical Diagnosis</h4>
       <div class="input-group input-group-icon">
         <input class = "form-group"  type="message" name="diagnosis" id="diagnosis" placeholder="Clinical Diagnosis" required>
         <div class="input-icon"><i class="fa fa-stethoscope"></i></div>
-        </div>
       </div>
+</div>
+
+<div class="row">
+  <h4 style="margin-left: 2%;">City Chapter</h4>
+    <div>
+        <input class = "form-group" type="text" name="city" id="city" placeholder="(eg. Oroquieta City, Ozamiz City, Tangub City)" required style="margin-left: 2%;margin-right: 2%;width: 94%;">   
+    </div>
+</div>
 
 <center><div class="g-recaptcha" name="captcha" data-sitekey="6LfIoXsUAAAAALXHdXSwMTD1znd_o419bnCP0R3E"></div></center>
 <button class="button" type="submit" name="request" id="request"> REQUEST</button>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2018 at 05:36 AM
+-- Generation Time: Nov 24, 2018 at 01:23 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -241,19 +241,23 @@ CREATE TABLE `request_blood` (
   `dateofrequest` varchar(45) NOT NULL,
   `bloodtype` varchar(45) NOT NULL,
   `component` varchar(45) NOT NULL,
-  `units` varchar(45) NOT NULL
+  `units` varchar(45) NOT NULL,
+  `city` varchar(45) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `request_blood`
 --
 
-INSERT INTO `request_blood` (`idrequestBlood`, `lastname`, `firstname`, `middlename`, `age`, `birthdate`, `sex`, `hospital`, `roomnum`, `physician`, `cellphonenum`, `diagnosis`, `dateofrequest`, `bloodtype`, `component`, `units`) VALUES
-(50, 'Padilla', 'Bonnie', 'Manliquez', 16, '12-08-1998', 'Male', 'Faith Hospital', 'LS212', 'Dr. Wong', '9093778040', 'Dengue', '27-09-2018', 'O', '', ''),
-(49, 'Racal', 'Maris', 'Boss', 38, '12-08-1998', 'Male', 'Medina Hospital', 'LS214', 'Dr. Wong', '09090978987', 'Dengue', '27-09-2018', 'O', '', ''),
-(48, 'dsad', 'das', 'dsad', 45, '34-43-4343', 'Male', 'ds', 'rwe4', 'asdas', '35345', 'dasd', '67-76-76', 'O', '', ''),
-(51, 'Largosa', 'Aljanly', 'Acapulco', 20, '24-02-1998', 'Male', 'MUMC', '232', 'Dr. Tagalog', '09951572533', 'Dengue', '19-11-2018', 'O', '', ''),
-(52, 'Largosa', 'Jane', 'Wakwak', 20, '24-01-1998', 'Female', 'MUMC', '454', 'Dr. Tagalog', '09951572533', 'Hepatitis B', '20-11-2018', 'O+', 'Whole Blood', '1');
+INSERT INTO `request_blood` (`idrequestBlood`, `lastname`, `firstname`, `middlename`, `age`, `birthdate`, `sex`, `hospital`, `roomnum`, `physician`, `cellphonenum`, `diagnosis`, `dateofrequest`, `bloodtype`, `component`, `units`, `city`) VALUES
+(50, 'Padilla', 'Bonnie', 'Manliquez', 16, '12-08-1998', 'Male', 'Faith Hospital', 'LS212', 'Dr. Wong', '9093778040', 'Dengue', '27-09-2018', 'O', '', '', ''),
+(49, 'Racal', 'Maris', 'Boss', 38, '12-08-1998', 'Male', 'Medina Hospital', 'LS214', 'Dr. Wong', '09090978987', 'Dengue', '27-09-2018', 'O', '', '', ''),
+(48, 'dsad', 'das', 'dsad', 45, '34-43-4343', 'Male', 'ds', 'rwe4', 'asdas', '35345', 'dasd', '67-76-76', 'O', '', '', ''),
+(51, 'Largosa', 'Aljanly', 'Acapulco', 20, '24-02-1998', 'Male', 'MUMC', '232', 'Dr. Tagalog', '09951572533', 'Dengue', '19-11-2018', 'O', '', '', ''),
+(52, 'Largosa', 'Jane', 'Wakwak', 20, '24-01-1998', 'Female', 'MUMC', '454', 'Dr. Tagalog', '09951572533', 'Hepatitis B', '20-11-2018', 'O+', 'Whole Blood', '1', ''),
+(53, 'Gonzaga', 'Jane', 'Abution', 20, '24-01-1998', 'Female', 'MUMC', '256', 'Dr. Tagalog', '09128755846', 'Dengue', '24-11-2018', 'A+', 'Whole Blood', '1', 'Tangub City'),
+(54, 'Lapanta', 'Camille', 'Gansol', 20, '25-03-1997', 'Female', 'Medina hospital', '256', 'Dr. Tagalog', '09128755846', 'Dengue', '24-11-1998', 'O', 'Whole Blood', '1', 'Ozamiz City'),
+(55, 'Espinoza', 'Erwin', 'Salazar', 22, '24-05-1996', 'Male', 'Medina hospital', '212', 'Dr. Tagalog', '09128755867', 'Hepatitis B', '24-11-2018', 'A+', 'Whole Blood', '1', 'Tangub City');
 
 -- --------------------------------------------------------
 
@@ -273,6 +277,14 @@ CREATE TABLE `reserve_blood` (
   `purpose` varchar(100) NOT NULL,
   `city` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `reserve_blood`
+--
+
+INSERT INTO `reserve_blood` (`idblood`, `serialnumber`, `bloodtype`, `lastname`, `firstname`, `middlename`, `homeaddress`, `contactnum`, `purpose`, `city`) VALUES
+(1, '', '', 'Gonzaga', 'Jane', 'Abution', 'Tangub City', 2147483647, 'Dengue', ''),
+(2, '', '', 'Gonzaga', 'Jane', 'Abution', 'Tangub City', 2147483647, 'Dengue', '');
 
 --
 -- Indexes for dumped tables
@@ -373,13 +385,13 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `request_blood`
 --
 ALTER TABLE `request_blood`
-  MODIFY `idrequestBlood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `idrequestBlood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `reserve_blood`
 --
 ALTER TABLE `reserve_blood`
-  MODIFY `idblood` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idblood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
