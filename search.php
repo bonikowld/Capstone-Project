@@ -199,7 +199,7 @@
   
               $bloodtype = $_GET['bloodtype'];
             
-              $result = mysqli_query($conn,"SELECT * FROM blood WHERE bloodtype = '$bloodtype' AND status = '';");                    
+              $result = mysqli_query($conn,"SELECT * FROM blood WHERE bloodtype = '$bloodtype';"); //AND status = ''                    
               
              
             if(mysqli_num_rows($result) <= 0){

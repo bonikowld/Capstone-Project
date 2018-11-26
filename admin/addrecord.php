@@ -201,7 +201,7 @@ if(!empty($_POST)){
     <script>
      $(document).ready(function(){
          SNButton.init("add",{
-             fields: ["serialnumber","donor","bloodtype","component","quantity","extractiondate","expirationdate"],
+             fields: ["serialnumber","donor","bloodtype","component","quantity","extractiondate","expirationdate","remarks"],
              enabletext: "Add Record",
              disabletext: "Add Record"
          })

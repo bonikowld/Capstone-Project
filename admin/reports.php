@@ -167,7 +167,7 @@
 <!-- Printable Area -->
 <div class="hidden" id="printableArea">
 <center>
-  <img src="../assets/images/Philippine_Red_Cross_logo.jpg" alt="logo" style="width:50px">
+  <img src="../assets/images/Philippine_Red_Cross_logo.jpg" alt="logo" style="width:70px; height:60px;">
   <h6 class="style">Republic of the Philippines</h6>
   <h6 class="style">Region X - Northern Mindanao</h6>
   <h6 class="style">Philippine National Red Cross <?php 
@@ -185,13 +185,16 @@
             }
           ?></h6>
   <br>
-  <h6 class="style1"><?php 
+  <h2 class="style1"><?php 
   $checkoutmonth = $_GET['month'];
+  $checkoutyear = $_GET['year'];
   echo $checkoutmonth;
-  ?>&nbspMonthly Report</h6>
-  <hr>
+  echo ' ';
+  echo $checkoutyear;
+  ?>&nbspMonthly Report</h2>
+  
 </center>
-<table>
+<table class="table table-rounded custab">
   <thead>
   <tr>
       <th class="style">Serial Number</th>

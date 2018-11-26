@@ -7,6 +7,7 @@
     $("#component_error_message").hide();
     $("#extdate_error_message").hide();
     $("#expdate_error_message").hide();
+    $("#remarks_error_message").hide();
 
     // for add record
     var error_snum = false;
@@ -16,6 +17,7 @@
     var error_component = false;
     var error_extdate = false;
     var error_expdate = false;
+    var error_remarks = false;
 
     // for add record
     $("#serialnumber").focusout(function(){
@@ -44,6 +46,10 @@
 
     $("#expirationdate").focusout(function() {
         check_expdate();
+        });
+
+    $("#remarks").focusout(function() {
+        check_remarks();
         });
 
     })
@@ -149,4 +155,18 @@
         error_extdate = true;
       }
     }
+    
+    function check_remarks() {
+      var remarks = $("#remarks").val();
+  
+        if (remarks && remarks !== '') {
+          $("#remarks_error_message").hide();
+          $("#remarks").css("border-bottom","3px solid #34F458");
+        } else {
+          $("#remarks_error_message").html("Should select an item in the list");
+          $("#remarks_error_message").show();
+          $("#remarks").css("border-bottom","2px solid #F90A0A");
+          error_remarks = true;
+        }
+      }
 
