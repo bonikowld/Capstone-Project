@@ -47,9 +47,7 @@ session_start();
             <table class="table table-bordered table-hover " id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Last Name</th>
-                  <th>First Name</th>
-                  <th>Middle Name</th>
+                  <th>Full Name</th>
                   <th>Age</th>
                   <th>Birthdate</th>
                   <th>Sex</th>
@@ -68,9 +66,7 @@ session_start();
               </thead>
               <tfoot>
                 <tr>
-                <th>Last Name</th>
-                  <th>First Name</th>
-                  <th>Middle Name</th>
+                  <th>FullName</th>
                   <th>Age</th>
                   <th>Birthdate</th>
                   <th>Sex</th>
@@ -100,9 +96,7 @@ session_start();
                 {?>
                 <tr class='row-data' data-href='url://'>
                
-                <td class='lastname'> <?php echo $row['lastname']; ?></td>
-                <td class='firstname'> <?php echo $row['firstname']; ?></td>
-                <td class='middlename'> <?php echo $row['middlename']; ?></td>
+                <td class='fullname'> <?php echo $row['fullname']; ?></td>
                 <td class='age'> <?php echo $row['age'] ?></td>
                 <td class='birthdate'> <?php echo $row['birthdate']; ?></td>
                 <td class='sex'> <?php echo $row['sex']; ?></td>

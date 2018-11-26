@@ -5,9 +5,7 @@
 
 <?php
   if (isset($_POST['request'])) {
-    $lastname = $_POST['lastname'];
-    $firstname = $_POST['firstname'];
-    $middlename = $_POST['middlename'];
+    $fullname = $_POST['fullname'];
     $birthmonth = $_POST['birthmonth'];
     $birthday = $_POST['birthday'];
     $birthyear = $_POST['birthyear'];
@@ -182,8 +180,8 @@ if(!empty($_POST)){
         $_POST["requestdate"] = $requestday."-".$requestmonth."-".$requestyear;
 
 
-        $sql = "INSERT INTO request_blood (lastname, firstname, middlename, age, birthdate, sex, hospital, roomnum, physician, cellphonenum, diagnosis, dateofrequest, bloodtype, component, units, city)
-                VALUES ('".$_POST["lastname"]."','".$_POST["firstname"]."','".$_POST["middlename"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["hospital"]."','".$_POST["roomnum"]."','".$_POST["physician"]."','".$_POST["cellphonenum"]."','".$_POST["diagnosis"]."','".$_POST["requestdate"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["units"]."','".$_POST["city"]."')";
+        $sql = "INSERT INTO request_blood (fullname, age, birthdate, sex, dateofrequest, bloodtype, component, units, hospital, roomnum, cellphonenum, physician, diagnosis, city )
+                VALUES ('".$_POST["fullname"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["requestdate"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["units"]."','".$_POST["hospital"]."','".$_POST["roomnum"]."','".$_POST["cellphonenum"]."','".$_POST["physician"]."','".$_POST["diagnosis"]."','".$_POST["city"]."')";
 
         if ($conn->query($sql) == TRUE) {
           echo "<script type='text/javascript'>alert('Request Successfull');</script>";
@@ -210,21 +208,9 @@ if(!empty($_POST)){
     <div class="form-group row">
 
       <div class="input-group input-group-icon">
-        <input class = "form-group" type="text" name="lastname" id="lastname" placeholder="Last Name"/ style="width: 195%" required>
+        <input class = "form-group" type="text" name="fullname" id="fullname" placeholder="Full Name"/ style="width: 195%" required>
         <div class="input-icon"><i class="fa fa-user" ></i></div>
         </div>
-
-
-        <div class="input-group input-group-icon">
-        <input class="form-group" type="text" name="firstname" id="firstname" placeholder="First Name" style="width: 195%" required>
-        <div class="input-icon"><i class="fa fa-user" ></i></div>
-      </div>
-
-
-      <div class="input-group input-group-icon">
-        <input class="form-group" type="text" name="middlename" id="middlename" placeholder="Middle Name" style="width: 195%" required>
-        <div class="input-icon"><i class="fa fa-user" ></i></div>
-      </div>
 
     </div>
 

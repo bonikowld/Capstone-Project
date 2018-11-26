@@ -43,6 +43,9 @@
             <li>
               <a href="reservedBloods.php">Reserved Bloods</a>
             </li>
+            <li>
+              <a href="donors.php">Donors</a>
+            </li>
             
           </ul>
         </li>
@@ -52,6 +55,13 @@
             <i class="fa fa-fw fa-file"></i>
             <span class="nav-link-text">Reports</span>
           </a>
+
+           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+          <a class="nav-link" href="addbranch.php">
+            <i class="fa fa-fw fa-home"></i>
+            <span class="nav-link-text">Add Branch</span>
+          </a>
+        </li>
           <!-- <ul class="sidenav-second-level collapse" id="collapseExamplePages">
           <li>
               <a href="login.html">Login Page</a>

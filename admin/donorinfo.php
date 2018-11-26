@@ -65,6 +65,7 @@ session_start();
         echo "<b>Contact Number: </b>" . $row["contactnum"]. "<br>";
         echo "<b>Address: </b>" . $row["homeaddress"]. "<br>";
         echo "<b>Email: </b>" . $row["email"]. "<br>";
+        echo "<h5>Last Donation Details------------------</h5>";
         echo "<b>Last Date Of Donation: </b>" . $row["lastdonation"]. "<br>";
         echo "<b>Blood Type: </b>" . $row["bloodtype"]. "<br>";
         echo "<b>Remarks: </b>" . $row["remarks"]. "<br>";
@@ -81,8 +82,8 @@ $conn->close();
 
 ?>
 </br>
-<button class='btn btn-danger btn-sm' id="donorDetails" data-toggle="modal" data-target="#donateModal">Donate Blood</button>
-<button class='btn btn-success btn-sm' data-toggle="modal" data-target="#editModal">Edit Record</button>
+<button class='btn btn-success btn-sm' id="donorDetails" data-toggle="modal" data-target="#donateModal" onclick="checkDate();">Donate Blood</button>
+<a class='btn btn-danger btn-sm' href="donors.php">Back</a>
 
 
 <?php
@@ -331,6 +332,14 @@ if(isset($_POST['add'])){
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
     <script type="text/javascript" src="../admin/js/donordonate.js"></script>
+    <script>
+   
+    // var currentDate = new Date();
+    // console.log(currentDate.toLocaleDateString());
+    // currentDate.setMonth(currentDate.getMonth() + 3);
+    // console.log(currentDate.toLocaleDateString());
+  
+    </script>
     
   </div>
 </body>

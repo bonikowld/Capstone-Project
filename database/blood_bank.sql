@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2018 at 01:23 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Nov 26, 2018 at 11:25 AM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -61,7 +59,8 @@ INSERT INTO `blood` (`idblood`, `serialnumber`, `donor`, `bloodtype`, `component
 (76, '7200-999999-1', 'Dodong Gadon', 'O', 'Whole Blood', '1', '2018-09-27', '2018-10-28', 'Ozamiz City', 'Unsuccessfull', NULL, NULL, 0),
 (77, '7200-888888-1', 'Harlem Shake', 'O', 'Whole Blood', '1', '2018-09-27', '2018-10-28', 'Ozamiz City', 'Unsuccessfull', NULL, NULL, 0),
 (78, '7200-454545-1', 'Aljan', 'O', 'Whole Blood', '1', '2018-09-28', '2018-10-31', 'Ozamiz City', 'Unsuccessfull', NULL, NULL, 0),
-(82, '7200-222222-1', 'Eva Mapendo', 'O-', 'Whole Blood', '1', '2018-11-20', '2018-12-23', 'Ozamiz City', 'Successfull', NULL, NULL, NULL);
+(82, '7200-222222-1', 'Eva Mapendo', 'O-', 'Whole Blood', '1', '2018-11-20', '2018-12-23', 'Ozamiz City', 'Successfull', NULL, NULL, NULL),
+(84, '7200-555555-1', 'Manny Pacquiao', 'O-', 'Whole Blood', '1', '2018-11-22', '2018-12-23', 'Ozamiz City', 'Successfull', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -99,9 +98,7 @@ INSERT INTO `branch` (`branchid`, `branchname`, `branchaddress`, `adminname`, `a
 
 CREATE TABLE `donate_blood` (
   `iddonate_blood` int(11) NOT NULL,
-  `lastname` varchar(45) NOT NULL,
-  `firstname` varchar(45) NOT NULL,
-  `middlename` varchar(45) NOT NULL,
+  `fullname` varchar(45) NOT NULL,
   `age` varchar(45) NOT NULL,
   `birthdate` varchar(45) NOT NULL,
   `sex` varchar(45) NOT NULL,
@@ -120,10 +117,11 @@ CREATE TABLE `donate_blood` (
 -- Dumping data for table `donate_blood`
 --
 
-INSERT INTO `donate_blood` (`iddonate_blood`, `lastname`, `firstname`, `middlename`, `age`, `birthdate`, `sex`, `nationality`, `civilstatus`, `education`, `occupation`, `cellphonenum`, `email`, `identificationno`, `bloodbank`, `homeaddress`) VALUES
-(19, 'Ponce', 'Jerome', 'Tan', '24', '12-09-1998', 'Male', 'Filipino', 'Single', 'No formal education', 'Fisherman', '090978675', 'ponce@gmail.com', 'Ozamiz City', '1145679087574', 'Tudela'),
-(20, 'Santos', 'Selva', 'Ino', '24', '12-08-1998', 'Male', 'Filipino', 'Single', 'No formal education', 'Dishwasher', '0989078766', 'santos@gmail.com', 'Ozamiz City', '18909789687587', 'Clarin'),
-(17, 'Sarosa', 'Hernan', 'Miguel', '45', '24-05-1998', 'Male', 'Filipino', 'Single', 'No formal education', 'Carpenter', '090978686', 'hernan@gmail.com', 'Ozamiz City', '11444655', 'Sinacaban');
+INSERT INTO `donate_blood` (`iddonate_blood`, `fullname`, `age`, `birthdate`, `sex`, `nationality`, `civilstatus`, `education`, `occupation`, `cellphonenum`, `email`, `identificationno`, `bloodbank`, `homeaddress`) VALUES
+(19, 'Jerome', '24', '12-09-1998', 'Male', 'Filipino', 'Single', 'No formal education', 'Fisherman', '090978675', 'ponce@gmail.com', 'Ozamiz City', '1145679087574', 'Tudela'),
+(20, 'Selva', '24', '12-08-1998', 'Male', 'Filipino', 'Single', 'No formal education', 'Dishwasher', '0989078766', 'santos@gmail.com', 'Ozamiz City', '18909789687587', 'Clarin'),
+(17, 'Hernan', '45', '24-05-1998', 'Male', 'Filipino', 'Single', 'No formal education', 'Carpenter', '090978686', 'hernan@gmail.com', 'Ozamiz City', '11444655', 'Sinacaban'),
+(21, 'Kim Atienza', '45', '24-10-1978', 'Male', 'Filipino', 'Single', 'No formal education', 'Fisherman', '09096765756', 'kim@gmail.com', 'Ozamiz City', '789789796', 'Ozamiz City');
 
 -- --------------------------------------------------------
 
@@ -150,11 +148,11 @@ CREATE TABLE `donors` (
 --
 
 INSERT INTO `donors` (`donorid`, `name`, `dateofbirth`, `contactnum`, `homeaddress`, `email`, `bloodtype`, `lastdonation`, `remarks`, `donorstatus`, `diagnosis`) VALUES
-(2, 'Rosario', '9-24-1997', '09097675643', 'Aloran', 'test@gmail.com', '', NULL, NULL, '', ''),
+(2, 'Rosario', '9-24-1997', '09097675643', 'Aloran', 'test@gmail.com', '', '2018-11-22', NULL, '', ''),
 (5, 'Gamboa', '12-12-1983', '09094358434', 'Mobod Oroquieta City', 'jurosgamboa@gmail.com', '', NULL, NULL, '', ''),
 (9, 'Padilla', '12-1-1997', '09093435202', 'Mobod Oroquieta City', 'bonniepadilla40@yahoo.com', '', NULL, NULL, '', ''),
 (8, 'Dela Cruz', '1-1-1967', '09098887764', 'Carangan Ozamiz City', 'juantamad@gmail.com', '', NULL, NULL, '', ''),
-(10, 'Manny Pacquiao', '1981-02-10', '09676575675', 'General Santos City', 'manny@gmail.com', 'O-', '2018-11-21', NULL, NULL, NULL);
+(10, 'Manny Pacquiao', '1981-02-10', '09676575675', 'General Santos City', 'manny@gmail.com', 'O-', '2018-11-23', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -183,7 +181,6 @@ CREATE TABLE `inventory` (
 --
 
 INSERT INTO `inventory` (`idinventory`, `serialnumber`, `donor`, `bloodtype`, `component`, `unit`, `city`, `extractiondate`, `expirationdate`, `remarks`, `findings`, `checkoutmonth`, `checkoutyear`) VALUES
-(25, ' 7200-999999-1 ', ' Dodong Gadon ', ' O ', ' Whole Blood ', ' 1 ', ' Ozamiz City ', ' 2018-09-27 ', ' 2018-10-28 ', ' Unsuccessfull ', 'Active', NULL, NULL),
 (24, ' 7200-999999-1 ', ' Dodong Gadon ', ' O ', ' Whole Blood ', ' 1 ', 'Ozamiz City ', ' 2018-09-27 ', ' 2018-10-28 ', ' Unsuccessfull ', 'Active', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -227,21 +224,19 @@ INSERT INTO `report` (`idreport`, `serialnumber`, `donor`, `bloodtype`, `compone
 
 CREATE TABLE `request_blood` (
   `idrequestBlood` int(11) NOT NULL,
-  `lastname` varchar(45) NOT NULL,
-  `firstname` varchar(45) NOT NULL,
-  `middlename` varchar(45) NOT NULL,
-  `age` int(11) NOT NULL,
+  `fullname` varchar(45) NOT NULL,
   `birthdate` varchar(45) NOT NULL,
+  `age` int(11) NOT NULL,
   `sex` varchar(10) NOT NULL,
-  `hospital` varchar(45) NOT NULL,
-  `roomnum` varchar(45) NOT NULL,
-  `physician` varchar(45) NOT NULL,
-  `cellphonenum` varchar(45) NOT NULL,
-  `diagnosis` varchar(100) NOT NULL,
   `dateofrequest` varchar(45) NOT NULL,
   `bloodtype` varchar(45) NOT NULL,
   `component` varchar(45) NOT NULL,
   `units` varchar(45) NOT NULL,
+  `hospital` varchar(45) NOT NULL,
+  `roomnum` varchar(45) NOT NULL,
+  `cellphonenum` varchar(45) NOT NULL,
+  `physician` varchar(45) NOT NULL,
+  `diagnosis` varchar(100) NOT NULL,
   `city` varchar(45) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -249,15 +244,8 @@ CREATE TABLE `request_blood` (
 -- Dumping data for table `request_blood`
 --
 
-INSERT INTO `request_blood` (`idrequestBlood`, `lastname`, `firstname`, `middlename`, `age`, `birthdate`, `sex`, `hospital`, `roomnum`, `physician`, `cellphonenum`, `diagnosis`, `dateofrequest`, `bloodtype`, `component`, `units`, `city`) VALUES
-(50, 'Padilla', 'Bonnie', 'Manliquez', 16, '12-08-1998', 'Male', 'Faith Hospital', 'LS212', 'Dr. Wong', '9093778040', 'Dengue', '27-09-2018', 'O', '', '', ''),
-(49, 'Racal', 'Maris', 'Boss', 38, '12-08-1998', 'Male', 'Medina Hospital', 'LS214', 'Dr. Wong', '09090978987', 'Dengue', '27-09-2018', 'O', '', '', ''),
-(48, 'dsad', 'das', 'dsad', 45, '34-43-4343', 'Male', 'ds', 'rwe4', 'asdas', '35345', 'dasd', '67-76-76', 'O', '', '', ''),
-(51, 'Largosa', 'Aljanly', 'Acapulco', 20, '24-02-1998', 'Male', 'MUMC', '232', 'Dr. Tagalog', '09951572533', 'Dengue', '19-11-2018', 'O', '', '', ''),
-(52, 'Largosa', 'Jane', 'Wakwak', 20, '24-01-1998', 'Female', 'MUMC', '454', 'Dr. Tagalog', '09951572533', 'Hepatitis B', '20-11-2018', 'O+', 'Whole Blood', '1', ''),
-(53, 'Gonzaga', 'Jane', 'Abution', 20, '24-01-1998', 'Female', 'MUMC', '256', 'Dr. Tagalog', '09128755846', 'Dengue', '24-11-2018', 'A+', 'Whole Blood', '1', 'Tangub City'),
-(54, 'Lapanta', 'Camille', 'Gansol', 20, '25-03-1997', 'Female', 'Medina hospital', '256', 'Dr. Tagalog', '09128755846', 'Dengue', '24-11-1998', 'O', 'Whole Blood', '1', 'Ozamiz City'),
-(55, 'Espinoza', 'Erwin', 'Salazar', 22, '24-05-1996', 'Male', 'Medina hospital', '212', 'Dr. Tagalog', '09128755867', 'Hepatitis B', '24-11-2018', 'A+', 'Whole Blood', '1', 'Tangub City');
+INSERT INTO `request_blood` (`idrequestBlood`, `fullname`, `birthdate`, `age`, `sex`, `dateofrequest`, `bloodtype`, `component`, `units`, `hospital`, `roomnum`, `cellphonenum`, `physician`, `diagnosis`, `city`) VALUES
+(54, 'Arjo Bagawisan', '2-09-1978', 35, 'Male', '26-11-2018', 'O-', 'Whole Blood', '1', 'Faith Hospital', 'LS212', '09090944848', 'Dr. Si', 'Dengue', 'Ozamiz City');
 
 -- --------------------------------------------------------
 
@@ -277,14 +265,6 @@ CREATE TABLE `reserve_blood` (
   `purpose` varchar(100) NOT NULL,
   `city` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `reserve_blood`
---
-
-INSERT INTO `reserve_blood` (`idblood`, `serialnumber`, `bloodtype`, `lastname`, `firstname`, `middlename`, `homeaddress`, `contactnum`, `purpose`, `city`) VALUES
-(1, '', '', 'Gonzaga', 'Jane', 'Abution', 'Tangub City', 2147483647, 'Dengue', ''),
-(2, '', '', 'Gonzaga', 'Jane', 'Abution', 'Tangub City', 2147483647, 'Dengue', '');
 
 --
 -- Indexes for dumped tables
@@ -349,51 +329,42 @@ ALTER TABLE `reserve_blood`
 -- AUTO_INCREMENT for table `blood`
 --
 ALTER TABLE `blood`
-  MODIFY `idblood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
-
+  MODIFY `idblood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 --
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
   MODIFY `branchid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `donate_blood`
 --
 ALTER TABLE `donate_blood`
-  MODIFY `iddonate_blood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
+  MODIFY `iddonate_blood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `donors`
 --
 ALTER TABLE `donors`
-  MODIFY `donorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
+  MODIFY `donorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
   MODIFY `idinventory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
   MODIFY `idreport` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
-
 --
 -- AUTO_INCREMENT for table `request_blood`
 --
 ALTER TABLE `request_blood`
-  MODIFY `idrequestBlood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
-
+  MODIFY `idrequestBlood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 --
 -- AUTO_INCREMENT for table `reserve_blood`
 --
 ALTER TABLE `reserve_blood`
-  MODIFY `idblood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
-
+  MODIFY `idblood` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
