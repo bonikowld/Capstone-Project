@@ -212,8 +212,9 @@
                 echo "<td class='text-center component'>".$row['component']."</td>";
                 echo "<td class='text-center'>".$row['bloodtype']."</td>";
                 echo "<td class='text-center'>".$row['city']."</td>";
-                 $city = array("Ozamiz City");
-                echo "<td class='text-center'> ".count($city)."</td>";
+                echo "<td class='text-center'>".$row['quantity']."</td>";
+                 //$city = array("Ozamiz City");
+                //echo "<td class='text-center'> ".count($city)."</td>";
                 echo "<td class='text-center'><a class='btn btn-success btn-xs row-data'><span class='glyphicon glyphicon-ok' data-toggle='modal' data-target='#reserveModal'></span> Available</a></td>";
                 echo "<td class='text-center'><a href='request.php' target='rightframe'><input type='button' class='btn btn-danger' value='Request'/></td>";
                 echo "</tr>";                                          
@@ -236,8 +237,9 @@
                 echo "<td class='text-center component'>".$row['component']."</td>";
                 echo "<td class='text-center'>".$row['bloodtype']."</td>";
                 echo "<td class='text-center'>".$row['city']."</td>";
-                $city = array("Ozamiz City");
-                echo "<td class='text-center'> ".count($city)."</td>";
+                echo "<td class='text-center'>".$row['quantity']."</td>";
+                //$city = array("Ozamiz City");
+                //echo "<td class='text-center'> ".count($city)."</td>";
                 echo "<td class='text-center'><a class='btn btn-success btn-xs row-data'><span class='glyphicon glyphicon-ok' data-toggle='modal' data-target='#reserveModal'></span> Available</a></td>";
                 echo "<td class='text-center'><a href='request.php' target='rightframe'><input type='button' class='btn btn-danger' value='Request'/></td>";
                 echo "</tr>";                                        
