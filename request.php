@@ -22,6 +22,7 @@
     $cellphonenum = $_POST['cellphonenum'];
     $physician = $_POST['physician'];
     $diagnosis = $_POST['diagnosis'];
+    $city = $_POST['city'];
     $secretKey = "6LfIoXsUAAAAAPGeftRQh1BfA_GbxBAQVPne8gYf";
     $responseKey = $_POST['g-recaptcha-response'];
     $userIP = $_SERVER['REMOTE_ADDR'];
@@ -360,6 +361,7 @@ if(!empty($_POST)){
         <input class = "form-group" type="text" name="city" id="city" placeholder="(eg. Oroquieta City, Ozamiz City, Tangub City)" required style="margin-left: 2%;margin-right: 2%;width: 94%;">   
     </div>
 </div>
+<br>
 
 <center><div class="g-recaptcha" name="captcha" data-sitekey="6LfIoXsUAAAAALXHdXSwMTD1znd_o419bnCP0R3E"></div></center>
 <button class="button" type="submit" name="request" id="request"> REQUEST</button>
@@ -417,7 +419,7 @@ if(!empty($_POST)){
   <script>
      $().ready(function(){
          SNButton.init("request",{
-             fields: ["lastname","firstname","middlename","birthmonth","birthday","birthyear","sex","requestmonth","requestday","requestyear","bloodtype","component","units","hospital","roomnum","age","cellphonenum","physician","diagnosis","captcha"],
+             fields: ["lastname","firstname","middlename","birthmonth","birthday","birthyear","sex","requestmonth","requestday","requestyear","bloodtype","component","units","hospital","roomnum","age","cellphonenum","physician","diagnosis","city","captcha"],
              enabletext: "Request",
              disabletext: "Please input all the required fields"
          })
