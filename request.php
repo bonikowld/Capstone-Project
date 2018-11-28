@@ -181,8 +181,8 @@ if(!empty($_POST)){
         $_POST["requestdate"] = $requestday."-".$requestmonth."-".$requestyear;
 
 
-        $sql = "INSERT INTO request_blood (fullname, age, birthdate, sex, dateofrequest, bloodtype, component, units, hospital, roomnum, cellphonenum, physician, diagnosis, city )
-                VALUES ('".$_POST["fullname"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["requestdate"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["units"]."','".$_POST["hospital"]."','".$_POST["roomnum"]."','".$_POST["cellphonenum"]."','".$_POST["physician"]."','".$_POST["diagnosis"]."','".$_POST["city"]."')";
+        $sql = "INSERT INTO request_blood (serialnumber, fullname, age, birthdate, sex, dateofrequest, bloodtype, component, units, hospital, roomnum, cellphonenum, physician, diagnosis, city )
+                VALUES ('".$_POST["serialnumber"]."','".$_POST["fullname"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["requestdate"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["units"]."','".$_POST["hospital"]."','".$_POST["roomnum"]."','".$_POST["cellphonenum"]."','".$_POST["physician"]."','".$_POST["diagnosis"]."','".$_POST["city"]."')";
 
         if ($conn->query($sql) == TRUE) {
           echo "<script type='text/javascript'>alert('Request Successfull');</script>";
@@ -196,15 +196,7 @@ if(!empty($_POST)){
  
 ?>
 
-<?php 
-  $serialnumber = $_GET['serialnumber'];
 
-  $sql = "SELECT * FROM donors WHERE serialnumber = '$serialnumber' ";
- 
-  $result = $conn->query($sql);
-  $conn->close();
-
-?>
 
 
 
@@ -220,6 +212,17 @@ if(!empty($_POST)){
         <input class = "form-group" type="text" name="fullname" id="fullname" placeholder="Full Name"/ style="width: 195%" required>
         <div class="input-icon"><i class="fa fa-user" ></i></div>
         </div>
+      
+      <h4>Serial Number</h4>
+      <div class="input-group input-group-icon">
+        <input class = "form-group" type="text" name="serialnumber" id="serialnumber" value="<?php 
+                                                                                              $serialnumber = $_GET['serialnumber'];
+
+                                                                                              $sql = "SELECT * FROM donors WHERE serialnumber = '$serialnumber' ";
+ 
+                                                                                              echo $serialnumber;
+                                                                                              ?>" style="width: 195%" readonly>
+      </div>
 
     </div>
 

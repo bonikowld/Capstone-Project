@@ -47,6 +47,7 @@ session_start();
             <table class="table table-bordered table-hover " id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
+                  <th>Serial Number</th>
                   <th>Full Name</th>
                   <th>Age</th>
                   <th>Birthdate</th>
@@ -66,7 +67,8 @@ session_start();
               </thead>
               <tfoot>
                 <tr>
-                <th>Full Name</th>
+                  <th>Serial Number</th>
+                  <th>Full Name</th>
                   <th>Age</th>
                   <th>Birthdate</th>
                   <th>Sex</th>
@@ -95,6 +97,7 @@ session_start();
                 while($row = mysqli_fetch_array($result))  
                 { ?>
                 <!-- <tr class='clickable-row row-data' data-href='url://'> -->
+                <td class='serialnumber'><?php echo $row['serialnumber']; ?></td>
                 <td class='fullname'><?php echo $row['fullname']; ?></td>
                 <td class='age'><?php echo $row['age']; ?></td>
                 <td class='birthdate'><?php echo $row['birthdate']; ?></td>
