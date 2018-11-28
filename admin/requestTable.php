@@ -60,6 +60,7 @@ session_start();
                   <th>Cellphone Number</th>
                   <th>Diagnosis</th>
                   <th>Action</th>
+                  <th>Examine</th>
 
                 </tr>
               </thead>
@@ -78,6 +79,7 @@ session_start();
                   <th>Cellphone Number</th>
                   <th>Diagnosis</th>
                   <th>Action</th>
+                  <th>Examine</th>
                 </tr>
               </tfoot>
               
@@ -107,7 +109,9 @@ session_start();
                 <td class='diagnosis'><?php echo $row['diagnosis']; ?></td>
                 <form method='get' action=''>
                   <td> <a onclick="return confirm ('Are You Sure?')" href="?id=<?php echo $row['idrequestBlood']?>" class="btn btn-danger btn-sm">Delete</a>
+                  <td> <a class="btn btn-success btn-sm">Examine</a>
                 </tr>
+                 
               </form>  
               <?php };?>
               <?php

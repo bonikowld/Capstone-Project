@@ -321,6 +321,9 @@ session_start();
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
     <script type="text/javascript" src="../admin/js/update.js"></script>
+    <script>
+      document.body.style.zoom="75%";
+    </script>
     
   </div>
 </body>

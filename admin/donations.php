@@ -61,6 +61,7 @@ session_start();
                   <th>Identification No.</th>
                   <th>Donor Address</th>
                   <th>Delete</th>
+                  <th>Add Donor</th>
 
                 </tr>
               </thead>
@@ -80,6 +81,7 @@ session_start();
                   <th>Identification No.</th>
                   <th>Donor Address</th>
                   <th>Delete</th>
+                  <th>Add Donor</th>
                 </tr>
               </tfoot>
               
@@ -95,7 +97,6 @@ session_start();
                 while($row = mysqli_fetch_array($result))  
                 {?>
                 <tr class='row-data' data-href='url://'>
-               
                 <td class='fullname'> <?php echo $row['fullname']; ?></td>
                 <td class='age'> <?php echo $row['age'] ?></td>
                 <td class='birthdate'> <?php echo $row['birthdate']; ?></td>
@@ -110,8 +111,9 @@ session_start();
                 <td class='bloodbank'> <?php echo $row['bloodbank']; ?></td> 
                 <td class='homeaddress'> <?php echo $row['homeaddress']; ?></td>
                 <form method='get' action=''>
-                <td> <a href="?iddonate=<?php echo $row['iddonate_blood']?>" onclick="return confirm ('Are You Sure?');" class="btn btn-danger btn-sm">Delete</a></td>
+                <td> <a href="?iddonate=<?php echo $row['iddonate_blood']?>" onclick="return confirm ('Are You Sure?');" class="btn btn-danger btn-sm">Delete</a></td>     
                 </form>  
+                <td> <button data-toggle="modal" data-target="#addDonor" class="btn btn-success btn-sm">Add Donor</button></td>
                 </tr>
 
                 <?php }; ?>
@@ -180,79 +182,86 @@ session_start();
                   }
                 }
 
+
+                if(isset($_POST['add'])){
+
+                  $sql = "INSERT INTO donors (name, dateofbirth, contactnum, homeaddress, email, lastdonation, bloodtype )
+                  VALUES ('".$_POST["fullname"]."','".$_POST["birthdate"]."','".$_POST["cellphonenum"]."','".$_POST["homeaddress"]."','".$_POST["email"]."','".$_POST["lastdonation"]."','".$_POST["bloodtype"]."' )";
+
+                    if ($conn->query($sql) == TRUE) {
+                      echo "<script type='text/javascript'>alert('New record created successfully');</script>";
+                      } else {
+                      echo "<script type='text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
+                      }
+              
+              }
+
+
                 mysqli_close($conn); 
     ?>
 
+  
 
-<!-- Modal for updating record -->
-<div id="updateModal" class="modal fade " role="dialog">
-  <div class="modal-dialog modal-xl">
+<div id="addDonor" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
-    <div class="modal-content ">
-      <div class="modal-header ">
+    <div class="modal-content">
+      <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" modal-lg></h4>
-        
+        <h4 class="modal-title">Add Donor</h4>
       </div>
-      <table class="table table-bordered table-condensed">
-      <tbody>
-        <tr>
-          <td>
-          <label>Serial Number</label>
-          <input type="text" name="serialnumber" class="form-control" >
-          </td>
-          <td>
-          <label>Donor</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Blood Type</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Component</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Quantity</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Expiration Date</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Borrowed By</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>OR number</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Contact</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Amount</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Remarks</label>
-          <input type="text" class="form-control" >
-          </td>
-        </tr>
-      </tbody>
+      <div class="modal-body">
+       <form action="" method="post">
+       <div class="form-group">
+            <b>Full Name</b>
+            <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Donor Name" required>           
+       </div>
+       <div class="form-group">
+            <b>Date of Birth</b>
+            <input type="text" class="form-control" name="birthdate" id="birthdate" placeholder="Date of Birth" required>
+       </div>
+       <div class="form-group">
+            <b>Contact Number</b>
+            <input type="text" class="form-control" name="cellphonenum" id="cellphonenum" placeholder="Contact Number" required>        
+       </div>
+       <div class="form-group">
+            <b>Address</b>
+            <input type="text" class="form-control" name="homeaddress" id="homeaddress" placeholder="Address" required>      
+       </div>
+       <div class="form-group">
+            <b>Email</b>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>  
+       </div>
+       <div class="form-group">
+            <b>Donation Date</b>
+            <input type="date" class="form-control" name="lastdonation" placeholder="Status">   
+       </div>
+       <div class="form-group">
+            <b>Blood Type</b>
+            <select class="form-control" id="select" name="bloodtype">
+            <option value="" selected="selected" disabled="disabled">-- select one --</option>
+              <option value="O-">O-</option>
+              <option value="O+">O+</option>
+              <option value="A-">A-</option>
+              <option value="A+">A+</option>
+              <option value="B-">B-</option>
+              <option value="B+">B+</option>
+              <option value="AB-">AB-</option>
+              <option value="AB+">AB+</option>
+            </select>
+       </div>
+
+
       
-      </table>
+
+      </div>
       <div class="modal-footer">
-      <form action="" method="get">
-        <button type="button" class="btn btn-success" data-dismiss="modal" >Done</button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-      </form>
+        <button type="submit" name="add" id="id" class="btn btn-success" >Add Donor</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
+    </form>
   </div>
 </div>
 
@@ -275,15 +284,27 @@ session_start();
 
   //data-toggle='modal' data-target='#myModal'
   $('.row-data').click(function(){
-    $('#myModal .serialnumber').text( $('.serialnumber', this).text() );
-    $('#myModal .donor').text( $('.donor', this).text() );
-    $('#myModal .bloodtype').text( $('.bloodtype', this).text() );
-    $('#myModal .component').text( $('.component', this).text() );
-    $('#myModal .quantity').text( $('.quantity', this).text() );
-    $('#myModal .extractiondate').text( $('.extractiondate', this).text() );
-    $('#myModal .expirationdate').text( $('.expirationdate', this).text() );
+    $('#addDonor .fullname').text( $('.fullname', this).text() );
+    $('#addDonor .birthdate').text( $('.birthdate', this).text() );
+    $('#addDonor .cellphonenum').text( $('.cellphonenum', this).text() );
+    $('#addDonor .homeaddress').text( $('.homeaddress', this).text() );
+    $('#addDonor .email').text( $('.email', this).text() );
+    // $('#addDonor .fullname').text( $('.fullname', this).text() );
+    // $('#addDonor .fullname').text( $('.fullname', this).text() );
+    // $('#addDonor .fullname').text( $('.fullname', this).text() );
+    // $('#addDonor .fullname').text( $('.fullname', this).text() );
 
-    $('#myModal').modal();
+     document.getElementById("fullname").value = $('.fullname', this).text();
+     document.getElementById("birthdate").value = $('.birthdate', this).text();
+     document.getElementById("cellphonenum").value = $('.cellphonenum', this).text();
+     document.getElementById("homeaddress").value = $('.homeaddress', this).text();
+     document.getElementById("email").value = $('.email', this).text();
+    //  document.getElementById("fullname").value = $('.fullname', this).text();
+    //  document.getElementById("fullname").value = $('.fullname', this).text();
+    //  document.getElementById("fullname").value = $('.fullname', this).text();
+
+
+    $('#addDonor').modal();
   });
 
 //})(jQuery);

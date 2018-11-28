@@ -67,9 +67,7 @@ session_start();
               <a href="requestTable.php">Requested Bloods</a>
 
             </li>
-            <li>
-              <a href="reservedBloods.php">Reserved Bloods</a>
-            </li>
+         
             <li>
               <a href="donors.php">Donors</a>
             </li>

@@ -60,7 +60,7 @@ session_start();
   if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<b>Full Name: </b> <span class='donor'>". $row["name"]. "</span> <br>"; 
+        echo "<b class='fullname'>Full Name: </b> ". $row["name"]. "<br>"; 
         echo "<b>Date Of Birth: </b>" . $row["dateofbirth"]. "<br>";
         echo "<b>Contact Number: </b>" . $row["contactnum"]. "<br>";
         echo "<b>Address: </b>" . $row["homeaddress"]. "<br>";
@@ -82,7 +82,7 @@ $conn->close();
 
 ?>
 </br>
-<button class='btn btn-success btn-sm' id="donorDetails" data-toggle="modal" data-target="#donateModal" onclick="checkDate();">Donate Blood</button>
+<button class='btn btn-success btn-sm' id="donorDetails" class="row-data" data-toggle="modal" data-target="#donateModal">Donate Blood</button>
 <a class='btn btn-danger btn-sm' href="donors.php">Back</a>
 
 
@@ -134,7 +134,7 @@ if(isset($_POST['add'])){
         <tr>
           <td>
           <b>Donor Name</b>
-          <input type="text" id="donor" name="donor" class="form-control donor" required>
+          <input type="text" id="fullname" name="fullname" class="form-control fullname" required>
           </td>
         </tr>
      
@@ -331,14 +331,22 @@ if(isset($_POST['add'])){
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
-    <script type="text/javascript" src="../admin/js/donordonate.js"></script>
+    <!-- <script type="text/javascript" src="../admin/js/donordonate.js"></script> -->
     <script>
    
+      
     // var currentDate = new Date();
     // console.log(currentDate.toLocaleDateString());
     // currentDate.setMonth(currentDate.getMonth() + 3);
     // console.log(currentDate.toLocaleDateString());
   
+    $('.row-data').click(function(){
+      $('#donateModal .fullname').text( $('.fullname', this).text() );
+
+      document.getElementById("fullname").value = $('.fullname', this).text();
+
+       $('#donateModal').modal();
+  });
     </script>
     
   </div>
