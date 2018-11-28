@@ -196,7 +196,15 @@ if(!empty($_POST)){
  
 ?>
 
+<?php 
+  $serialnumber = $_GET['serialnumber'];
 
+  $sql = "SELECT * FROM donors WHERE serialnumber = '$serialnumber' ";
+ 
+  $result = $conn->query($sql);
+  $conn->close();
+
+?>
 
 
 
