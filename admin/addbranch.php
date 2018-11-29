@@ -142,25 +142,41 @@ if(!empty($_POST)){
 ?>
 <form action="" method="POST">
  <div class="jumbotron">
+  <div class="col-half">
  <label>Blood Bank Branch</label>
  <input class="form-control" type="text" name="branchname" placeholder="Branch" required>
+</div>
+ <div class="col-half">
  <label>Blood Bank Address</label>
  <input class="form-control" type="text" name="branchaddress" placeholder="Blood Bank Address" required>
+</div>
+  <div class="col-half">
  <label>Admin Name</label>
  <input class="form-control" type="text" name="adminname" placeholder="Admin Name" required>
+</div>
+  <div class="col-half">
  <label>Admin Address</label>
  <input class="form-control" type="text" name="adminaddress" placeholder="Admin Address" required>
+</div>
+  <div class="col-half">
  <label>Contact Number</label>
  <input class="form-control" type="text" name="contactnumber" placeholder="Contact Number" required>
+</div>
+  <div class="col-half">
  <label>Email</label>
  <input class="form-control" type="text" name="email" placeholder="Email" required>
+ </div>
+ <div class="col-half">
  <label>Username</label>
  <input class="form-control" type="text" name="username" placeholder="Username" required>
+ </div>
+ <div class="col-half">
  <label>Password</label>
  <input class="form-control" type="password" name="password" placeholder="Password" required>
+ </div>
   <br>         
- <button class="btn btn-success" type="submit" >Add Branch</button>
- <a href="index.php" class="btn btn-danger" type="button" >Cancel</a>
+ <button class="btn btn-success" type="submit" style="margin-top: 3%;" >Add Branch</button>
+ <a href="index.php" class="btn btn-danger" type="button" style="margin-top: 3%;" >Cancel</a>
 </form>
 
  <!--    sticky footer start here -->

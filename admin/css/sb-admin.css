@@ -518,4 +518,11 @@ footer.sticky-footer {
 /* .container-fluid{
   width: 1500px !important;
 } */
-
+.col-half{
+      padding-right: 10px;
+    float: left;
+    width: 50%;
+}
+label{
+  margin-top: 15px;
+}
