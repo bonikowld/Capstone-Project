@@ -90,11 +90,21 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+
+        <li class="nav-item">        
+          <a class="btn btn-info btn-lg print_button" id="buttonPrint" onclick="printDiv('printableArea')" href="#"><i class="fa fa-print"></i> <b>Print</br><!--<input type="button" class="btn-primary" id="buttonPrint" onclick="printDiv('printableArea')" value="Print Report"/>--></a>
         </li>
+
+        <li class="nav-item">        
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-fw fa-sign-out"></i>Logout
+          </a>
+        </li>
+
       </ul>
     </div>
   </nav>
+
+
+  
 
