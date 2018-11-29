@@ -58,8 +58,7 @@ include 'assets/lib/login.php';
 
         <!-- Template main Css -->
         <link rel="stylesheet" href="assets/css/stylerequest.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-
+     
         
         <!-- Modernizr -->
         <!-- <script src="assets/js/modernizr-2.6.2.min.js"></script>
@@ -142,11 +141,10 @@ if(!empty($_POST)){
   <form method="post" action="">
    <strong><center><h2>DONOR'S INFORMATION</h2></center> </strong>
     <div class="row">
-      <div class="input-group input-group-icon">
-        <input type="text" class="form-group"  name="fullname" id="fullname" placeholder="Full Name" required>
-        <div class="input-icon"><i class="fa fa-user"></i></div>
+        <input type="text" class="form-group"  name="fullname" id="fullname" placeholder="Full Name" required style="width: 100%">
+  
         </div>
-    
+     
     <div class="row">
       <div class="col-half">
         <h4>Date of Birth</h4>
@@ -167,7 +165,7 @@ if(!empty($_POST)){
         <h4>Gender</h4>
         <div class="input-group">
           <div class="col-twothirds">
-          <select name="sex" id="sex" class="form-control" style="width: 246px; height: 54px;" required>
+          <select name="sex" id="sex" class="form-control" style="width: 255px; height: 54px;" required>
               <option value="" selected="selected" disabled="disabled">-- select one --</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
