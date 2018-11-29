@@ -185,7 +185,7 @@ if(!empty($_POST)){
                 VALUES ('".$_POST["serialnumber"]."','".$_POST["fullname"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["requestdate"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["units"]."','".$_POST["hospital"]."','".$_POST["roomnum"]."','".$_POST["cellphonenum"]."','".$_POST["physician"]."','".$_POST["diagnosis"]."','".$_POST["city"]."')";
 
         if ($conn->query($sql) == TRUE) {
-          echo "<script type='text/javascript'>alert('Request Successfull');</script>";
+          echo "<script type='text/javascript'>alert('Request Successfull and Wait for the Confirmation');</script>";
           } else {
           echo "<script type='text/javascript'>alert('Error: " . $sql . "<br>" . $conn->error."');</script>";
           }

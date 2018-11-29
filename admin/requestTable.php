@@ -48,13 +48,14 @@ session_start();
               <thead>
                 <tr>
                   <th>Serial Number</th>
+                  <th>Bloodtype</th>
+                  <th>Components</th>
+                  <th>Units</th>
+                  <th>City</th>
                   <th>Full Name</th>
                   <th>Age</th>
                   <th>Birthdate</th>
                   <th>Sex</th>
-                  <th>Bloodtype</th>
-                  <th>Components</th>
-                  <th>Units</th>
                   <th>Hospital</th>
                   <th>Room Number</th>
                   <th>Physician</th>
@@ -68,13 +69,14 @@ session_start();
               <tfoot>
                 <tr>
                   <th>Serial Number</th>
+                  <th>Bloodtype</th>
+                  <th>Components</th>
+                  <th>Units</th>
+                  <th>City</th>
                   <th>Full Name</th>
                   <th>Age</th>
                   <th>Birthdate</th>
                   <th>Sex</th>
-                  <th>Bloodtype</th>
-                  <th>Components</th>
-                  <th>Units</th>
                   <th>Hospital</th>
                   <th>Room Number</th>
                   <th>Physician</th>
@@ -98,13 +100,14 @@ session_start();
                 { ?>
                 <!-- <tr class='clickable-row row-data' data-href='url://'> -->
                 <td class='serialnumber'><?php echo $row['serialnumber']; ?></td>
-                <td class='fullname'><?php echo $row['fullname']; ?></td>
-                <td class='age'><?php echo $row['age']; ?></td>
-                <td class='birthdate'><?php echo $row['birthdate']; ?></td>
-                <td class='sex'><?php echo $row['sex']; ?></td>
                 <td class='bloodtype'><?php echo $row['bloodtype']; ?></td>
                 <td class='component'><?php echo $row['component']; ?></td>
                 <td class='units'><?php echo $row['units']; ?></td>
+                <td class='city'><?php echo $row['city']; ?></td>
+                <td class='fullname'><?php echo $row['fullname']; ?></td>
+                <td class='age'><?php echo $row['age']; ?></td>
+                <td class='birthdate'><?php echo $row['birthdate']; ?></td>
+                <td class='sex'><?php echo $row['sex']; ?></td>               
                 <td class='hospital'><?php echo $row['hospital']; ?></td>
                 <td class='roomnum'><?php echo $row['roomnum']; ?></td>
                 <td class='physician'><?php echo $row['physician']; ?></td>
