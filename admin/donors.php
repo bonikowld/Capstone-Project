@@ -42,7 +42,7 @@ session_start();
         <div class="card-header" >
           <div style="float:right;" id="txt"></div>
           <i class="fa fa-table" ></i> List Of Donors 
-          <button class="btn btn-success" name="update" data-toggle="modal" data-target="#addDonor">Add Donor</button>
+          <button class="btn btn-success" name="update" data-toggle="modal" data-target="#addDonor" style=" margin-left: 10px;">Add Donor</button>
           </div>
         <div class="card-body" >
           <div class="table-responsive">

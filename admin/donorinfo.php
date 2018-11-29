@@ -60,17 +60,28 @@ session_start();
   if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<b class='fullname'>Full Name: </b> ". $row["name"]. "<br>"; 
-        echo "<b>Date Of Birth: </b>" . $row["dateofbirth"]. "<br>";
-        echo "<b>Contact Number: </b>" . $row["contactnum"]. "<br>";
-        echo "<b>Address: </b>" . $row["homeaddress"]. "<br>";
-        echo "<b>Email: </b>" . $row["email"]. "<br>";
-        echo "<h5>Last Donation Details------------------</h5>";
-        echo "<b>Last Date Of Donation: </b>" . $row["lastdonation"]. "<br>";
-        echo "<b>Blood Type: </b>" . $row["bloodtype"]. "<br>";
-        echo "<b>Remarks: </b>" . $row["remarks"]. "<br>";
-        echo "<b>Donor Status: </b>" . $row["donorstatus"]. "<br>";
-        echo "<b>Diagnosis: </b>" . $row["diagnosis"]. "<br>";
+        echo "<b class='fullname ' style='
+    margin-left: 1.5%;' >Full Name: </b> ". $row["name"]. "<br>"; 
+        echo "<b style='
+    margin-left: 1.5%;' >Date Of Birth: </b>" . $row["dateofbirth"]. "<br>";
+        echo "<b style='
+    margin-left: 1.5%;' >Contact Number: </b>" . $row["contactnum"]. "<br>";
+        echo "<b style='
+    margin-left: 1.5%;'>Address: </b>" . $row["homeaddress"]. "<br>";
+        echo "<b style='
+    margin-left: 1.5%;'>Email: </b>" . $row["email"]. "<br>";
+        echo "<h5 style='
+    margin-left: 1.5%;'>Last Donation Details------------------</h5>";
+        echo "<b style='
+    margin-left: 1.5%;'>Last Date Of Donation: </b>" . $row["lastdonation"]. "<br>";
+        echo "<b style='
+    margin-left: 1.5%;'>Blood Type: </b>" . $row["bloodtype"]. "<br>";
+        echo "<b style='
+    margin-left: 1.5%;'>Remarks: </b>" . $row["remarks"]. "<br>";
+        echo "<b style='
+    margin-left: 1.5%;'>Donor Status: </b>" . $row["donorstatus"]. "<br>";
+        echo "<b style='
+    margin-left: 1.5%;'>Diagnosis: </b>" . $row["diagnosis"]. "<br>";
 
     }
     
@@ -82,7 +93,7 @@ $conn->close();
 
 ?>
 </br>
-<button class='btn btn-success btn-sm' id="donorDetails" class="row-data" data-toggle="modal" data-target="#donateModal">Donate Blood</button>
+<button class='btn btn-success btn-sm' id="donorDetails" class="row-data" data-toggle="modal" data-target="#donateModal" style=" margin-left: 1.5%;">Donate Blood</button>
 <a class='btn btn-danger btn-sm' href="donors.php">Back</a>
 
 
