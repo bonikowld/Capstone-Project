@@ -3,11 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2018 at 01:27 AM
+-- Generation Time: Nov 29, 2018 at 01:31 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -246,7 +248,11 @@ CREATE TABLE `request_blood` (
 --
 
 INSERT INTO `request_blood` (`idrequestBlood`, `fullname`, `birthdate`, `age`, `sex`, `dateofrequest`, `bloodtype`, `component`, `units`, `hospital`, `roomnum`, `cellphonenum`, `physician`, `diagnosis`, `city`, `serialnumber`) VALUES
-(54, 'Arjo Bagawisan', '2-09-1978', 35, 'Male', '26-11-2018', 'O-', 'Whole Blood', '1', 'Faith Hospital', 'LS212', '09090944848', 'Dr. Si', 'Dengue', 'Ozamiz City', '');
+(54, 'Arjo Bagawisan', '2-09-1978', 35, 'Male', '26-11-2018', 'O-', 'Whole Blood', '1', 'Faith Hospital', 'LS212', '09090944848', 'Dr. Si', 'Dengue', 'Ozamiz City', ''),
+(75, 'John Vincent R. Acapulco', '11-01-1998', 20, 'Male', '29-11-2018', 'B+', 'Whole Blood', '1', 'MUMC', '537', '09951549836', 'Dr. Rasonable', 'Hepatitis B', 'Oroquieta City', '7200-789654-1'),
+(76, 'Jane Veloso', '24-02-1998', 20, 'Female', '30-11-2018', 'O-', 'Whole Blood', '1', 'Mhars', '112', '07934345656767', 'Dr. Sy', 'Gibarang', 'Oroquieta City', '7201-854390-1'),
+(73, 'Shiela M. Gonzalez', '24-02-1998', 20, 'Female', '28-11-2018', 'A+', 'Whole Blood', '1', 'MUMC', '470', '09951549836', 'Dr. Rasonable', 'Hepatitis B', 'Tangub City', '7200-890345-1'),
+(72, 'Aljanly S. Tayone', '24-01-1998', 20, 'Male', '29-11-2018', 'O-', 'Whole Blood', '1', 'MUMC', '267', '09951572533', 'Dr. Tagalog', 'Dengue', 'Ozamiz City', '7200-555555-1');
 
 -- --------------------------------------------------------
 
@@ -366,7 +372,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `request_blood`
 --
 ALTER TABLE `request_blood`
-  MODIFY `idrequestBlood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `idrequestBlood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `reserve_blood`
