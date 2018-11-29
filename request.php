@@ -199,7 +199,6 @@ if(!empty($_POST)){
 
 
 
-
 <div class="container" style="
     margin-top: 2%;
     margin-bottom: 5%;
@@ -212,18 +211,21 @@ if(!empty($_POST)){
         <input class = "form-group" type="text" name="fullname" id="fullname" placeholder="Full Name"/ style="width: 195%" required>
         <div class="input-icon"><i class="fa fa-user" ></i></div>
         </div>
-      
-      <h4>Serial Number</h4>
-      <div class="input-group input-group-icon">
-        <input class = "form-group" type="text" name="serialnumber" id="serialnumber" value="<?php 
-                                                                                              $serialnumber = $_GET['serialnumber'];
 
-                                                                                              $sql = "SELECT * FROM donors WHERE serialnumber = '$serialnumber' ";
- 
-                                                                                              echo $serialnumber;
-                                                                                              ?>" style="width: 195%" readonly>
+      <div class="input-group">
+        <input class = "form-group" type="text" name="serialnumber" id="serialnumber" value="<?php $idblood = $_GET['idblood']; $sql = "SELECT * FROM blood WHERE idblood = '$idblood' "; $result = $conn->query($sql);
+                                                                                              if ($result->num_rows > 0) {
+                                                                                              // output data of each row
+                                                                                              while($row = $result->fetch_assoc()) {
+                                                                                                echo $row["serialnumber"];          
+                                                                                                }    
+                                                                                              }
+                                                                                              else {       
+                                                                                              } 
+                                                                                              ?>"style="width: 195%" hidden>
+        
       </div>
-
+      
     </div>
 
 
@@ -273,62 +275,66 @@ if(!empty($_POST)){
           </div>
         </div>
       </div>
+      
       <div class="col-half">
-        <h4>Blood Type</h4>
+        <h4>Hospital</h4>                                                                                      
         <div class="input-group">
-          <div class="col-twothirds">
-            <select name="bloodtype" id="bloodtype" class="form-control" style="width: 246px; height: 54px;" required>
-                <option value="" selected="selected" disabled="disabled">-- select one --</option>
-                <option value="O">O</option>
-                <option value="O-">O-</option>
-                <option value="O+">O+</option>
-                <option value="A-">A-</option>
-                <option value="A+">A+</option>
-                <option value="B-">B-</option>
-                <option value="B+">B+</option>
-                <option value="AB-">AB-</option>
-                <option value="AB+">AB+</option>
-            </select>
-          </div>
+        <input class = "form-group" type="text" name="hospital" id="hospital" value=""style="width: 118%" >
+        </div>
+      </div>                                                                                     
+      
+      
+      <div class="col-half">
+        <div class="input-group">
+        <input class = "form-group" type="text" name="bloodtype" id="bloodtype" value="<?php $idblood = $_GET['idblood']; $sql = "SELECT * FROM blood WHERE idblood = '$idblood' "; $result = $conn->query($sql);
+                                                                                        if ($result->num_rows > 0) {
+                                                                                        // output data of each row
+                                                                                        while($row = $result->fetch_assoc()) {
+                                                                                          echo $row["bloodtype"]; 
+                                                                                          }    
+                                                                                        }
+                                                                                        else {                                                                                         
+                                                                                        }                                                                                                                                                                        
+                                                                                        ?>"style="width: 118%" hidden>
         </div>
       </div>
+
+                <input class = "form-group" type="text" name="component" id="component" value="<?php $idblood = $_GET['idblood']; $sql = "SELECT * FROM blood WHERE idblood = '$idblood' "; $result = $conn->query($sql);
+                                                                                        if ($result->num_rows > 0) {
+                                                                                        // output data of each row
+                                                                                        while($row = $result->fetch_assoc()) { 
+                                                                                          echo $row["component"];                                                                                   
+                                                                                          }    
+                                                                                        }
+                                                                                        else {                                                                                          
+                                                                                        }                                                                                      
+                                                                                        ?>"style="width: 116%" hidden>
+                
+                <input class = "form-group" type="text" name="units" id="units" value="<?php $idblood = $_GET['idblood']; $sql = "SELECT * FROM blood WHERE idblood = '$idblood' "; $result = $conn->query($sql);
+                                                                                        if ($result->num_rows > 0) {
+                                                                                        // output data of each row
+                                                                                        while($row = $result->fetch_assoc()) {      
+                                                                                          echo $row["quantity"];                                                                                        
+                                                                                          }    
+                                                                                        }
+                                                                                        else {                                                                                         
+                                                                                        }                                                                                                                                                                              
+                                                                                        ?>"style="width: 100%" hidden>
+                
+      
 </div>
 
     <div class="row">
         <div class="col-half" style="margin-left: 15px; width: 255px;">
-          <h4>Component</h4>
-          <div class="input-group">
-                <div class="col-twothirds">
-                  <select name="component" id="component" class="form-control" style="width: 246px; height: 54px;" required>
-                      <option value="" selected="selected" disabled="disabled">-- select one --</option>
-                      <option value="Whole Blood">Whole Blood</option>
-                      <option value="Red Cells">Red Cells</option>
-                      <option value="Platelets">Platelets</option>
-                      <option value="Plasma">Plasma</option>
-                      <option value="Cryoprecipitated AHF">Cryoprecipitated AHF</option>
-                  </select>
-                </div>
+          <h4>Room No.</h4>
+          <div class="form-group-2">
+              <input type="Text" name="roomnum"id="roomnum" placeholder="Room No." required>
           </div>
         </div>
         <div class="col-half" style="width: 245px">
-          <h4>Units</h4>
+          <h4>Age</h4>
           <div class="form-group-2">
-            <input type="text" name="units" id="units" placeholder="No. of units" required>
-          </div>
-      </div>
-    </div>
-
-    <div class="row">
-        <div class="col-half" style="margin-left: 15px; width: 255px;">
-          <h4>Hospital</h4>
-          <div class="form-group-2">
-              <input type="Text" name="hospital"id="hospital" placeholder="Hospital" required>
-          </div>
-        </div>
-        <div class="col-half" style="width: 245px">
-          <h4>Room No</h4>
-          <div class="form-group-2">
-            <input type="text" name="roomnum" id="roomnum" placeholder="Room No." required>
+            <input type="text" name="age" id="age" placeholder="Age" required>
           </div>
       </div>
     </div>
@@ -336,19 +342,10 @@ if(!empty($_POST)){
 
 
     <div class="row">
-      <div class="col-half" style="margin-left: 15px;
-    width: 255px;">
-        <h4>Age</h4>
-        <div class="form-group-2" >
-            <input type="Text" name="age" id="age" placeholder="Age" required>
+        <h4 style="margin-left: 2%;">Telephone No.</h4>
+        <div>
+           <input class = "form-group" type="text" name="cellphonenum" id="cellphonenum" placeholder="Tel No." required style="margin-left: 2%;margin-right: 2%;width: 94%;">
         </div>
-      </div>
-      <div class="col-half" style="width: 245px">
-        <h4>Telephone No.</h4>
-        <div class="form-group-2">
-           <input type="text" name="cellphonenum" id="cellphonenum" placeholder="Tel No." required>
-        </div>
-      </div>
     </div>
 
 <div class="row">
@@ -367,9 +364,17 @@ if(!empty($_POST)){
 </div>
 
 <div class="row">
-  <h4 style="margin-left: 2%;">City Chapter</h4>
     <div>
-        <input class = "form-group" type="text" name="city" id="city" placeholder="(eg. Oroquieta City, Ozamiz City, Tangub City)" required style="margin-left: 2%;margin-right: 2%;width: 94%;">   
+        <input class = "form-group" type="text" name="city" id="city" value="<?php $idblood = $_GET['idblood']; $sql = "SELECT * FROM blood WHERE idblood = '$idblood' "; $result = $conn->query($sql);
+                                                                                        if ($result->num_rows > 0) {
+                                                                                        // output data of each row
+                                                                                        while($row = $result->fetch_assoc()) {      
+                                                                                          echo $row["city"];                                                                                        
+                                                                                          }    
+                                                                                        }
+                                                                                        else {                                                                                         
+                                                                                        }                                                                                                                                                                              
+                                                                                        ?>" hidden style="margin-left: 2%;margin-right: 2%;width: 94%;">   
     </div>
 </div>
 <br>

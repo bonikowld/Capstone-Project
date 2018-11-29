@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2018 at 11:25 AM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Generation Time: Nov 29, 2018 at 01:27 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -237,15 +237,16 @@ CREATE TABLE `request_blood` (
   `cellphonenum` varchar(45) NOT NULL,
   `physician` varchar(45) NOT NULL,
   `diagnosis` varchar(100) NOT NULL,
-  `city` varchar(45) NOT NULL
+  `city` varchar(45) NOT NULL,
+  `serialnumber` varchar(45) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `request_blood`
 --
 
-INSERT INTO `request_blood` (`idrequestBlood`, `fullname`, `birthdate`, `age`, `sex`, `dateofrequest`, `bloodtype`, `component`, `units`, `hospital`, `roomnum`, `cellphonenum`, `physician`, `diagnosis`, `city`) VALUES
-(54, 'Arjo Bagawisan', '2-09-1978', 35, 'Male', '26-11-2018', 'O-', 'Whole Blood', '1', 'Faith Hospital', 'LS212', '09090944848', 'Dr. Si', 'Dengue', 'Ozamiz City');
+INSERT INTO `request_blood` (`idrequestBlood`, `fullname`, `birthdate`, `age`, `sex`, `dateofrequest`, `bloodtype`, `component`, `units`, `hospital`, `roomnum`, `cellphonenum`, `physician`, `diagnosis`, `city`, `serialnumber`) VALUES
+(54, 'Arjo Bagawisan', '2-09-1978', 35, 'Male', '26-11-2018', 'O-', 'Whole Blood', '1', 'Faith Hospital', 'LS212', '09090944848', 'Dr. Si', 'Dengue', 'Ozamiz City', '');
 
 -- --------------------------------------------------------
 
@@ -330,41 +331,50 @@ ALTER TABLE `reserve_blood`
 --
 ALTER TABLE `blood`
   MODIFY `idblood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+
 --
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
   MODIFY `branchid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `donate_blood`
 --
 ALTER TABLE `donate_blood`
   MODIFY `iddonate_blood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT for table `donors`
 --
 ALTER TABLE `donors`
   MODIFY `donorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
   MODIFY `idinventory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
   MODIFY `idreport` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
 --
 -- AUTO_INCREMENT for table `request_blood`
 --
 ALTER TABLE `request_blood`
-  MODIFY `idrequestBlood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `idrequestBlood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+
 --
 -- AUTO_INCREMENT for table `reserve_blood`
 --
 ALTER TABLE `reserve_blood`
   MODIFY `idblood` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
