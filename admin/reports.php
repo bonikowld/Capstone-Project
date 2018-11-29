@@ -84,7 +84,8 @@
     </tbody>
 </table>
 </form>
-</div>  
+</div> 
+
 
 <!-- Printable Area -->
 <div class="hidden" id="printableArea">
@@ -270,6 +271,7 @@
       </div>
     </div>
 </div>
+<a class="navbar-brand" href="#"><input type="button" class="btn-primary print_button" id="buttonPrint" onclick="printDiv('printableArea')" value="Print Report"/></a>
 
     <div class="no-print">
     <!-- /.content-wrapper-->

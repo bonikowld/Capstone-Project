@@ -507,7 +507,9 @@ footer.sticky-footer {
   outline: none;
 }
 .table{ 
-    overflow-x: scroll;
+  overflow: scroll;
+  overflow: auto; 
+
     
 }
 .reportsTable{

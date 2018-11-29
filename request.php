@@ -213,7 +213,7 @@ if(!empty($_POST)){
         </div>
 
       <div class="input-group">
-        <input class = "form-group" type="text" name="serialnumber" id="serialnumber" value="<?php $idblood = $_GET['idblood']; $sql = "SELECT * FROM blood WHERE idblood = '$idblood' "; $result = $conn->query($sql);
+        <input class = "form-group" type="text" name="serialnumber" id="serialnumber" valu  e="<?php $idblood = $_GET['idblood']; $sql = "SELECT * FROM blood WHERE idblood = '$idblood' "; $result = $conn->query($sql);
                                                                                               if ($result->num_rows > 0) {
                                                                                               // output data of each row
                                                                                               while($row = $result->fetch_assoc()) {
