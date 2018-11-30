@@ -29,7 +29,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
 
-    <?php include 'php/sidenav.php';?>
+    <?php include 'php/reportprint.php';?>
       <!-- End of side navbar -->
   
     </div>
