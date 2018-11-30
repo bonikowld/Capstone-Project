@@ -58,7 +58,7 @@ session_start();
           -moz-background-size: cover;
           -o-background-size: cover;
           background-size: cover;
-          height: 700px;
+          height: 900px;
           }
         </style>
 

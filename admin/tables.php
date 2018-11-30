@@ -48,7 +48,8 @@ session_start();
           <option value="allblood">All Records</option>
           <option value="successfull">Successfull</option>
           <option value="unsuccessfull">Unsuccessfull</option>
-          <input type="submit" name="submit" value="SUBMIT">
+
+          <input type="submit" name="submit" value="Submit" class='btn btn-success btn-sm' style=" margin-left: 10px; margin-bottom: 2px;">
           </select>
           </form>
           

@@ -162,7 +162,7 @@
   <button class="btn btn-default hidden-print"  name="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
 </form>
 <form method="get" action="">
-<button class="btn btn-default hidden-print"  name="showall"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Show All</button>
+<button class="btn btn-default hidden-print"  name="showall" style=" margin-top: 10px;"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Show All</button>
 </form>
 </center>
 
