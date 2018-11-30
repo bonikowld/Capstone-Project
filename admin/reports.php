@@ -84,7 +84,8 @@
     </tbody>
 </table>
 </form>
-</div>  
+</div> 
+
 
 <!-- Printable Area -->
 <div class="hidden" id="printableArea">
@@ -270,6 +271,7 @@
       </div>
     </div>
 </div>
+
 
     <div class="no-print">
     <!-- /.content-wrapper-->

@@ -54,10 +54,7 @@ if(!empty($_POST)){
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item active">Add Record</li>
-        <button type="button"  >Regular Donor</button>
-      </ol>
+
  <!--    sticky footer start here -->
  
  <?php include 'php/logoutfooter.php';?>
@@ -113,16 +110,6 @@ if(!empty($_POST)){
              <!-- <span class="error_form" id="quantity_error_message"></span> -->
             </td>
             <td>
-           <label>Extraction Date</label>
-             <input class="form-control" name="extractiondate" id="extractiondate" type="date" placeholder="mm/dd/yyyy" required/>
-             <!-- <span class="error_form" id="extdate_error_message"></span> -->
-            </td>
-            <td>
-           <label>Expiration Date</label>
-             <input class="form-control" name="expirationdate" id="expirationdate" type="date" placeholder="mm/dd/yyyy" required/>
-             <!-- <span class="error_form" id="expdate_error_message"></span> -->
-            </td> 
-            <td>
            <label>Remarks</label>
              <select type="text" name="remarks" id="remarks" class="form-control" required>
              <option value="" selected="selected" disabled="disabled">-- select one --</option>
@@ -132,6 +119,17 @@ if(!empty($_POST)){
              </select>
              <!-- <span class="error_form" id="component_error_message"></span> -->
             </td>
+            <td>
+           <label>Extraction Date</label>
+             <input class="form-control" name="extractiondate" id="extractiondate" type="date" placeholder="mm/dd/yyyy" required/>
+             <!-- <span class="error_form" id="extdate_error_message"></span> -->
+            </td>
+            <td>
+           <label>Expiration Date</label>
+             <input class="form-control" name="expirationdate" id="expirationdate" type="date" placeholder="mm/dd/yyyy" required/>
+             <!-- <span class="error_form" id="expdate_error_message"></span> -->
+            </td> 
+           
         
           
        
@@ -222,6 +220,9 @@ if(!empty($_POST)){
     <script src="js/sb-admin-datatables.min.js"></script>
     <script src="js/sb-admin-charts.min.js"></script>
     <script type="text/javascript" src="../admin/js/update.js"></script>
+    <script>
+      document.body.style.zoom="75%";
+    </script>
   </div>
 </body>
 

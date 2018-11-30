@@ -183,13 +183,13 @@ session_start();
                                                
                     if($conn->query($sql) == TRUE){
                 ?>
-                    <script type= 'text/javascript'>alert('Checkout Successfull');</script>
+                    <script type= 'text/javascript'>alert('Examine Successfull');</script>
                     
 
                     <?php 
                     }else{
                       ?>
-                      <script type= 'text/javascript'>alert('Checkout Failed');</script>
+                      <script type= 'text/javascript'>alert('Examine Failed');</script>
  
                   <?php
                     }
@@ -288,7 +288,11 @@ session_start();
 
           <td>
           <b>Status</b>
-          <input type="text" id="status" name="status" class="form-control" required>
+          <select class="form-control" id="status" name="status">
+            <option value="" selected="selected" disabled="disabled">-- select one --</option>
+              <option value="Active">Active</option>
+              <option value="Reactive">Reactive</option>
+            </select>
           </td>
         </tr>
 

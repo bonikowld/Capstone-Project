@@ -139,7 +139,6 @@
  <div class="btn-group">
      <select name="bloodtype" id="bloodType" class="form-control form-control-lg" required>
               <option value="" selected="selected" disabled="disabled">-- Select Blood Type --</option>
-              <option value="O">O</option>
               <option value="O-">O-</option>
               <option value="O+">O+</option>
               <option value="A-">A-</option>
