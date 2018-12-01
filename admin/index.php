@@ -389,7 +389,6 @@ session_start();
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
     <script src="js/sb-admin-charts.min.js"></script>
-    <script type="text/javascript" src="../admin/js/updatebranch.js"></script>
   </div>
 </body>
 
