@@ -33,7 +33,7 @@ session_start();
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.php">
+          <a class="nav-link" href="index.php?branchid=<?php echo $row['branchid']?>">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
@@ -130,10 +130,219 @@ session_start();
         <li class="breadcrumb-item active">My Dashboard</li>
       </ol>
 
- <div class="jumbotron">
+<div class="jumbotron">
+      <div class="table-responsive-lg">
+        <table class="table" style="width:600px;">
+          
+              <tbody>
+                  <?php include 'php/connection.php';?>
+                  <?php 
+                  $sql = "SELECT * FROM branch WHERE branchaddress = '" . $_SESSION['city'] . "' ";
+                
+                  $result = $conn->query($sql);
 
+                  if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                      echo "<tr>";
+                      echo "<td><h5>PRC Branch Name</h5></td>";
+                      echo "<td style='font-size:20px; font-family: Comic Sans MS;'>".$row['branchname']."</td>";
+                      echo "</tr>";
+                      echo "<tr>";
+                      echo "<td><h5>Name</h5></td>";
+                      echo "<td style='font-size:20px; font-family: Comic Sans MS;'>".$row['adminname']."</td>";
+                      echo "</tr>";
+                      echo "<tr>";
+                      echo "<td><h5>Contact Number</h5></td>";
+                      echo "<td style='font-size:20px; font-family: Comic Sans MS;'>".$row['contactnumber']."</td>";
+                      echo "</tr>";
+                      echo "<tr>";
+                      echo "<td><h5>Email Address</h5></td>";
+                      echo "<td style='font-size:20px; font-family: Comic Sans MS;'>".$row['email']."</td>";
+                      echo "</tr>";
+                      echo "<tr>";
+                      echo "<td><h5>Username</h5></td>";
+                      echo "<td style='font-size:20px; font-family: Comic Sans MS;'>".$row['username']."</td>";
+                      echo "</tr>";
+                      echo "<tr>";
+                      echo "<td></td>";
+                      echo "<td><button type='button' onclick='updateBtn()' class='btn btn-success btn-sm' data-toggle='modal' data-target='#updateModal'>Change Information</button></td>";
+                      echo "</tr>";
 
-  
+                      //echo "<td>".$row['branchname']."</td>";
+                      //echo "<b style='margin-left: 1.5%;' >PRC Branch:</b> ". $row["branchname"]. "<br>";
+                      //echo "<b style='margin-left: 1.5%;' >Name:</b> ". $row["adminname"]. "<br>"; 
+                      //echo "<b style='margin-left: 1.5%;' >Contact Number:</b> ". $row["contactnumber"]. "<br>";
+                      //echo "<b style='margin-left: 1.5%;' >Email Address:</b> ". $row["email"]. "<br>"; 
+                    }   
+                  }
+                  else {
+                  
+                  }
+                  $conn->close();
+                  ?>
+
+                  <?php
+                   include 'php/connection.php';
+                   
+
+                  if(isset($_POST['update'])){
+
+                    $adminname = $_POST['adminname'];
+                    $contactnumber = $_POST['contactnumber'];
+                    $email = $_POST['email'];
+                    $username = $_POST['username'];
+                    $password = $_POST['password'];
+
+                    $sql = "UPDATE branch
+                            SET adminname='$adminname', contactnumber='$contactnumber' , email='$email', username='$username', password='$password' 
+                            WHERE branchaddress = '" . $_SESSION['city'] . "'";
+                                               
+                    if($conn->query($sql) == TRUE){
+                ?>
+                    <script type= 'text/javascript'>alert('Successfully Change');</script>
+                    
+
+                    <?php 
+                    }else{
+                      ?>
+                      <script type= 'text/javascript'>alert('Change Failed');</script>
+ 
+                  <?php
+                    }
+                  }
+                
+                    ?>
+        
+
+                <?php mysqli_close($conn); ?>
+              </tbody>
+
+        </table>
+      </div>
+      
+</div>
+
+<div id="updateModal" class="modal fade " role="dialog" >
+  <div class="modal-dialog modal-md">
+
+    <!-- Modal content-->
+    <div class="modal-content ">
+      <div class="modal-header ">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+
+      
+    <div class="modal-bodyUpdate">
+    <form method='post' action=''>
+      <table class="table table-bordered table-condensed">
+      <tbody>
+        <tr>
+          <td>
+          <b>Branch Address</b>
+          <p><input type="text" class="form-control adminname" id="adminname" name="adminname" value="<?php include 'php/connection.php'; $sql = "SELECT * FROM branch WHERE branchaddress = '" . $_SESSION['city'] . "' "; $result = $conn->query($sql);
+                                                                                              if ($result->num_rows > 0) {
+                                                                                              // output data of each row
+                                                                                              while($row = $result->fetch_assoc()) {
+                                                                                                echo $row["branchaddress"];          
+                                                                                                }    
+                                                                                              }
+                                                                                              else {       
+                                                                                              } 
+                                                                                              ?>" readonly></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Name</b>
+          <p><input type="text" class="form-control adminname" id="adminname" name="adminname" value="<?php include 'php/connection.php'; $sql = "SELECT * FROM branch WHERE branchaddress = '" . $_SESSION['city'] . "' "; $result = $conn->query($sql);
+                                                                                              if ($result->num_rows > 0) {
+                                                                                              // output data of each row
+                                                                                              while($row = $result->fetch_assoc()) {
+                                                                                                echo $row["adminname"];          
+                                                                                                }    
+                                                                                              }
+                                                                                              else {       
+                                                                                              } 
+                                                                                              ?>"></p>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+          <b>Contact Number</b>
+          <input type="text" id="contactnumber" name="contactnumber" class="form-control contactnumber" value="<?php include 'php/connection.php'; $sql = "SELECT * FROM branch WHERE branchaddress = '" . $_SESSION['city'] . "' "; $result = $conn->query($sql);
+                                                                                              if ($result->num_rows > 0) {
+                                                                                              // output data of each row
+                                                                                              while($row = $result->fetch_assoc()) {
+                                                                                                echo $row["contactnumber"];          
+                                                                                                }    
+                                                                                              }
+                                                                                              else {       
+                                                                                              } 
+                                                                                              ?>">
+          </td>
+        </tr>
+     
+        <tr>
+          <td>
+          <b>Email Address</b>
+          <input type="text" id="email" name="email" class="form-control email" value="<?php include 'php/connection.php'; $sql = "SELECT * FROM branch WHERE branchaddress = '" . $_SESSION['city'] . "' "; $result = $conn->query($sql);
+                                                                                              if ($result->num_rows > 0) {
+                                                                                              // output data of each row
+                                                                                              while($row = $result->fetch_assoc()) {
+                                                                                                echo $row["email"];          
+                                                                                                }    
+                                                                                              }
+                                                                                              else {       
+                                                                                              } 
+                                                                                              ?>">
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Username</b>
+          <input type="text" id="username" name="username" class="form-control username" value="<?php include 'php/connection.php'; $sql = "SELECT * FROM branch WHERE branchaddress = '" . $_SESSION['city'] . "' "; $result = $conn->query($sql);
+                                                                                              if ($result->num_rows > 0) {
+                                                                                              // output data of each row
+                                                                                              while($row = $result->fetch_assoc()) {
+                                                                                                echo $row["username"];          
+                                                                                                }    
+                                                                                              }
+                                                                                              else {       
+                                                                                              } 
+                                                                                              ?>">
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Password</b>
+          <input type="text" id="password" name="password" class="form-control password" value="<?php include 'php/connection.php'; $sql = "SELECT * FROM branch WHERE branchaddress = '" . $_SESSION['city'] . "' "; $result = $conn->query($sql);
+                                                                                              if ($result->num_rows > 0) {
+                                                                                              // output data of each row
+                                                                                              while($row = $result->fetch_assoc()) {
+                                                                                                echo $row["password"];          
+                                                                                                }    
+                                                                                              }
+                                                                                              else {       
+                                                                                              } 
+                                                                                              ?>">
+          </td>
+        </tr>
+
+      </tbody>
+           
+      </table>
+      <div class="modal-footer" method="post">
+        <button type="submit" class="btn btn-success" name="update">Done</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+      </div>    
+      
+    </div>
+  </div>
 </div>
 
  <!--    sticky footer start here -->
@@ -180,6 +389,7 @@ session_start();
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
     <script src="js/sb-admin-charts.min.js"></script>
+    <script type="text/javascript" src="../admin/js/updatebranch.js"></script>
   </div>
 </body>
 
