@@ -64,6 +64,7 @@ session_start();
                   <th>Action</th>
                   <th>Examine</th>
 
+
                 </tr>
               </thead>
               <tfoot>
@@ -84,6 +85,8 @@ session_start();
                   <th>Diagnosis</th>
                   <th>Action</th>
                   <th>Examine</th>
+
+
                 </tr>
               </tfoot>
               
@@ -99,7 +102,7 @@ session_start();
                 while($row = mysqli_fetch_array($result))  
                 { ?>
                 <!-- <tr class='clickable-row row-data' data-href='url://'> -->
-                <td class='serialnumber'><?php echo $row['serialnumber']; ?></td>
+                <td class='serialnumber' id="serialnumber"><?php echo $row['serialnumber']; ?></td>
                 <td class='bloodtype'><?php echo $row['bloodtype']; ?></td>
                 <td class='component'><?php echo $row['component']; ?></td>
                 <td class='units'><?php echo $row['units']; ?></td>
@@ -114,8 +117,9 @@ session_start();
                 <td class='cellphonenum'><?php echo $row['cellphonenum']; ?></td>
                 <td class='diagnosis'><?php echo $row['diagnosis']; ?></td>
                 <form method='get' action=''>
-                  <td> <a onclick="return confirm ('Are You Sure?')" href="?id=<?php echo $row['idrequestBlood']?>" class="btn btn-danger btn-sm">Delete</a>
-                  <td> <a class="btn btn-success btn-sm">Examine</a>
+                  <td> <a onclick="return confirm ('Are You Sure?')" href="?id=<?php echo $row['idrequestBlood']?>" class="btn btn-danger btn-sm">Delete</a></td>
+                  <td> <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#updateModal" >Examine</a></td>
+                  
                 </tr>
                  
               </form>  
@@ -193,75 +197,95 @@ session_start();
     
 
 <!-- Modal for updating record -->
-<div id="updateModal" class="modal fade " role="dialog">
-  <div class="modal-dialog modal-xl">
+<<div id="updateModal" class="modal fade " role="dialog" >
+  <div class="modal-dialog modal-md">
 
     <!-- Modal content-->
     <div class="modal-content ">
       <div class="modal-header ">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" modal-lg></h4>
-        
+        <h4 class="modal-title"></h4>
       </div>
+
+      
+    <div class="modal-bodyUpdate">
+    <form method='post' action=''>
       <table class="table table-bordered table-condensed">
       <tbody>
         <tr>
           <td>
-          <label>Serial Number</label>
-          <input type="text" name="serialnumber" class="form-control" >
-          </td>
-          <td>
-          <label>Donor</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Blood Type</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Component</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Quantity</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Expiration Date</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Borrowed By</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>OR number</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Contact</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Amount</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Remarks</label>
-          <input type="text" class="form-control" >
+          <b>Serial Number</b>
+          <input type="text" class="form-control serialnumber" id="myInput" name="serialnumber">
           </td>
         </tr>
+
+        <tr>
+          <td>
+          <b>Donor</b>
+          <input type="text" id="donor" name="donor" class="form-control donor" value="" readonly>
+          </td>
+        </tr>
+     
+        <tr>
+          <td>
+          <b>Blood Type</b>
+          <input type="text" id="bloodtype" name="bloodtype" class="form-control bloodtype" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Component</b>
+          <input type="text" id="component" name="component" class="form-control component" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>Quantity</b>
+          <input type="text" id="quantity" name="quantity" class="form-control quantity" readonly>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <b>City</b>
+          <input type="text" id="city" name="city" class="form-control" readonly>
+          </td>
+        </tr>
+
+          <td>
+          <b>Status</b>
+          <select class="form-control" id="status" name="status">
+            <option value="" selected="selected" disabled="disabled">-- select one --</option>
+              <option value="Active">Active</option>
+              <option value="Reactive">Reactive</option>
+            </select>
+          </td>
+        </tr>
+
+
       </tbody>
-      
+           
       </table>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" >Done</button>
+      <div class="modal-footer" method="get">
+        <button type="submit" class="btn btn-success" name="update">Done</button>
+       <button onclick="myFunction()" class="btn btn-success">Copy Serial</button>
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+
       </div>
+      </form>
+      </div>    
+      
     </div>
   </div>
 </div>
 
+<script>
+function myFunction() {
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  document.execCommand("copy");
+  alert("Copied the text: " + copyText.value);
+}
+</script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
