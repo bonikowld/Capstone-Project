@@ -33,7 +33,7 @@ session_start();
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.php?branchid=<?php echo $row['branchid']?>">
+          <a class="nav-link" href="index.php">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
@@ -166,7 +166,10 @@ session_start();
                       echo "</tr>";
                       echo "<tr>";
                       echo "<td></td>";
-                      echo "<td><button type='button' onclick='updateBtn()' class='btn btn-success btn-sm' data-toggle='modal' data-target='#updateModal'>Change Information</button></td>";
+                      echo "<td>
+                                <button type='button' onclick='updateBtn()' class='btn btn-success btn-sm' data-toggle='modal' data-target='#updateModal'>Change Information</button>
+                                <button type='button' onclick='updateBtn()' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#updatePassword'>Change Password</button>
+                            </td>";
                       echo "</tr>";
 
                       //echo "<td>".$row['branchname']."</td>";
@@ -182,20 +185,53 @@ session_start();
                   $conn->close();
                   ?>
 
+                  <!-- update for Information-->
                   <?php
                    include 'php/connection.php';
                    
 
-                  if(isset($_POST['update'])){
+                  if(isset($_POST['updateInformation'])){
 
                     $adminname = $_POST['adminname'];
                     $contactnumber = $_POST['contactnumber'];
                     $email = $_POST['email'];
                     $username = $_POST['username'];
+                    
+
+                    $sql = "UPDATE branch
+                            SET adminname='$adminname', contactnumber='$contactnumber' , email='$email', username='$username' 
+                            WHERE branchaddress = '" . $_SESSION['city'] . "'";
+                                               
+                    if($conn->query($sql) == TRUE){
+                ?>
+                    <script type= 'text/javascript'>alert('Successfully Change');</script>
+                    
+
+                    <?php 
+                    }else{
+                      ?>
+                      <script type= 'text/javascript'>alert('Change Failed');</script>
+ 
+                  <?php
+                    }
+                  }
+                
+                    ?>
+        
+
+                <?php mysqli_close($conn); ?>
+
+                <!-- update for password-->
+                <?php
+                   include 'php/connection.php';
+                   
+
+                  if(isset($_POST['updatePassword'])){
+
                     $password = $_POST['password'];
 
                     $sql = "UPDATE branch
-                            SET adminname='$adminname', contactnumber='$contactnumber' , email='$email', username='$username', password='$password' 
+                            SET password='$password' 
                             WHERE branchaddress = '" . $_SESSION['city'] . "'";
                                                
                     if($conn->query($sql) == TRUE){
@@ -222,6 +258,64 @@ session_start();
       </div>
       
 </div>
+
+<!-- Modal for password-->
+<div id="updatePassword" class="modal fade " role="dialog" >
+  <div class="modal-dialog modal-md">
+
+    <!-- Modal content-->
+    <div class="modal-content ">
+      <div class="modal-header ">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+
+      
+    <div class="modal-bodyUpdate">
+      <form method='post' action=''>
+        <table class="table table-bordered table-condensed">
+        <tbody>
+          
+          <tr>
+            <td>
+            <b>Password</b>
+            <input type="password" id="password1" name="password1" class="form-control password" value="<?php include 'php/connection.php'; $sql = "SELECT * FROM branch WHERE branchaddress = '" . $_SESSION['city'] . "' "; $result = $conn->query($sql);
+                                                                                                if ($result->num_rows > 0) {
+                                                                                                // output data of each row
+                                                                                                while($row = $result->fetch_assoc()) {
+                                                                                                  echo $row["password"];          
+                                                                                                  }    
+                                                                                                }
+                                                                                                else {       
+                                                                                                } 
+                                                                                                ?>">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+            <b>Confirm Password</b>
+            <input type="password" id="password" name="password" class="form-control password" value="">
+            </td>
+          </tr>
+
+        </tbody>
+            
+        </table>
+        <div class="modal-footer" method="post">
+          <button type="submit" class="btn btn-success" name="updatePassword">Done</button>
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>    
+      
+    </div>
+  </div>
+</div>
+
+<!-- Modal for password end here-->
+
+<!-- Modal for Information-->
 
 <div id="updateModal" class="modal fade " role="dialog" >
   <div class="modal-dialog modal-md">
@@ -315,27 +409,12 @@ session_start();
                                                                                               ?>">
           </td>
         </tr>
-        <tr>
-          <td>
-          <b>Password</b>
-          <input type="text" id="password" name="password" class="form-control password" value="<?php include 'php/connection.php'; $sql = "SELECT * FROM branch WHERE branchaddress = '" . $_SESSION['city'] . "' "; $result = $conn->query($sql);
-                                                                                              if ($result->num_rows > 0) {
-                                                                                              // output data of each row
-                                                                                              while($row = $result->fetch_assoc()) {
-                                                                                                echo $row["password"];          
-                                                                                                }    
-                                                                                              }
-                                                                                              else {       
-                                                                                              } 
-                                                                                              ?>">
-          </td>
-        </tr>
 
       </tbody>
            
       </table>
       <div class="modal-footer" method="post">
-        <button type="submit" class="btn btn-success" name="update">Done</button>
+        <button type="submit" class="btn btn-success" name="updateInformation">Done</button>
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
       </div>
       </form>
@@ -344,6 +423,8 @@ session_start();
     </div>
   </div>
 </div>
+
+<!-- Modal for Information end here-->
 
  <!--    sticky footer start here -->
     <footer class="sticky-footer">
