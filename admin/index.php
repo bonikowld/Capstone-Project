@@ -167,11 +167,10 @@ session_start();
                       echo "<tr>";
                       echo "<td></td>";
                       echo "<td>
-                                <button type='button' onclick='updateBtn()' class='btn btn-success btn-sm' data-toggle='modal' data-target='#updateModal'>Change Information</button>
-                                <button type='button' onclick='updateBtn()' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#updatePassword'>Change Password</button>
+                                <button type='button' onclick='updateBtn()' class='btn btn-success btn-sm' data-toggle='modal' data-target='#updateModal'>Change Information</button>                              
                             </td>";
                       echo "</tr>";
-
+                      // <button type='button' onclick='updateBtn()' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#updatePassword'>Change Password</button>
                       //echo "<td>".$row['branchname']."</td>";
                       //echo "<b style='margin-left: 1.5%;' >PRC Branch:</b> ". $row["branchname"]. "<br>";
                       //echo "<b style='margin-left: 1.5%;' >Name:</b> ". $row["adminname"]. "<br>"; 
@@ -196,10 +195,11 @@ session_start();
                     $contactnumber = $_POST['contactnumber'];
                     $email = $_POST['email'];
                     $username = $_POST['username'];
+                    $password = $_POST['password'];
                     
 
                     $sql = "UPDATE branch
-                            SET adminname='$adminname', contactnumber='$contactnumber' , email='$email', username='$username' 
+                            SET adminname='$adminname', contactnumber='$contactnumber' , email='$email', username='$username', password='$password'  
                             WHERE branchaddress = '" . $_SESSION['city'] . "'";
                                                
                     if($conn->query($sql) == TRUE){
@@ -223,35 +223,35 @@ session_start();
 
                 <!-- update for password-->
                 <?php
-                   include 'php/connection.php';
+                  //  include 'php/connection.php';
                    
 
-                  if(isset($_POST['updatePassword'])){
+                  // if(isset($_POST['updatePassword'])){
 
-                    $password = $_POST['password'];
+                  //   $password = $_POST['password'];
 
-                    $sql = "UPDATE branch
-                            SET password='$password' 
-                            WHERE branchaddress = '" . $_SESSION['city'] . "'";
+                  //   $sql = "UPDATE branch
+                  //           SET password='$password' 
+                  //           WHERE branchaddress = '" . $_SESSION['city'] . "'";
                                                
-                    if($conn->query($sql) == TRUE){
+                  //   if($conn->query($sql) == TRUE){
                 ?>
-                    <script type= 'text/javascript'>alert('Successfully Change');</script>
+                    <!-- <script type= 'text/javascript'>alert('Successfully Change');</script> -->
                     
 
                     <?php 
-                    }else{
+                    // }else{
                       ?>
-                      <script type= 'text/javascript'>alert('Change Failed');</script>
+                      <!-- <script type= 'text/javascript'>alert('Change Failed');</script> -->
  
                   <?php
-                    }
-                  }
+                  //   }
+                  // }
                 
                     ?>
         
 
-                <?php mysqli_close($conn); ?>
+                <?php //mysqli_close($conn); ?>
               </tbody>
 
         </table>
@@ -260,11 +260,11 @@ session_start();
 </div>
 
 <!-- Modal for password-->
-<div id="updatePassword" class="modal fade " role="dialog" >
-  <div class="modal-dialog modal-md">
+<!-- <div id="updatePassword" class="modal fade " role="dialog" >
+  <div class="modal-dialog modal-md"> -->
 
     <!-- Modal content-->
-    <div class="modal-content ">
+    <!-- <div class="modal-content ">
       <div class="modal-header ">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"></h4>
@@ -279,16 +279,16 @@ session_start();
           <tr>
             <td>
             <b>Password</b>
-            <input type="password" id="password1" name="password1" class="form-control password" value="<?php include 'php/connection.php'; $sql = "SELECT * FROM branch WHERE branchaddress = '" . $_SESSION['city'] . "' "; $result = $conn->query($sql);
-                                                                                                if ($result->num_rows > 0) {
+            <input type="password" id="password1" name="password1" class="form-control password" value=""><?php //include 'php/connection.php'; $sql = "SELECT * FROM branch WHERE branchaddress = '" . $_SESSION['city'] . "' "; $result = $conn->query($sql);
+                                                                                                //if ($result->num_rows > 0) {
                                                                                                 // output data of each row
-                                                                                                while($row = $result->fetch_assoc()) {
-                                                                                                  echo $row["password"];          
-                                                                                                  }    
-                                                                                                }
-                                                                                                else {       
-                                                                                                } 
-                                                                                                ?>">
+                                                                                                //while($row = $result->fetch_assoc()) {
+                                                                                                  //echo $row["password"];          
+                                                                                                  //}    
+                                                                                                //}
+                                                                                                //else {       
+                                                                                                //} 
+                                                                                                ?>
             </td>
           </tr>
 
@@ -311,7 +311,7 @@ session_start();
       
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Modal for password end here-->
 
@@ -402,6 +402,22 @@ session_start();
                                                                                               // output data of each row
                                                                                               while($row = $result->fetch_assoc()) {
                                                                                                 echo $row["username"];          
+                                                                                                }    
+                                                                                              }
+                                                                                              else {       
+                                                                                              } 
+                                                                                              ?>">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+          <b>Password</b>
+          <input type="password" id="password" name="password" class="form-control username" value="<?php include 'php/connection.php'; $sql = "SELECT * FROM branch WHERE branchaddress = '" . $_SESSION['city'] . "' "; $result = $conn->query($sql);
+                                                                                              if ($result->num_rows > 0) {
+                                                                                              // output data of each row
+                                                                                              while($row = $result->fetch_assoc()) {
+                                                                                                echo $row["password"];          
                                                                                                 }    
                                                                                               }
                                                                                               else {       

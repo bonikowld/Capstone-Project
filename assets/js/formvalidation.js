@@ -339,7 +339,7 @@
       }
 
     function check_education() {
-      var pattern = /^[a-zA-Z-. ]*$/;
+      var pattern = /^[a-zA-Z-' ]*$/;
       var education = $("#education").val();
   
         if (pattern.test(education) && education !== '') {
