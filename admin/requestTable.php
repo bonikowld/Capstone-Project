@@ -101,8 +101,8 @@ session_start();
                 <?php 
                 while($row = mysqli_fetch_array($result))  
                 { ?>
-                <!-- <tr class='clickable-row row-data' data-href='url://'> -->
-                <td class='serialnumber' id="serialnumber"><?php echo $row['serialnumber']; ?></td>
+                <tr class='row-data' data-href='url://'>
+                <td class='serialnumber'><?php echo $row['serialnumber']; ?></td>
                 <td class='bloodtype'><?php echo $row['bloodtype']; ?></td>
                 <td class='component'><?php echo $row['component']; ?></td>
                 <td class='units'><?php echo $row['units']; ?></td>
@@ -219,49 +219,6 @@ session_start();
           </td>
         </tr>
 
-        <tr>
-          <td>
-          <b>Donor</b>
-          <input type="text" id="donor" name="donor" class="form-control donor" value="" readonly>
-          </td>
-        </tr>
-     
-        <tr>
-          <td>
-          <b>Blood Type</b>
-          <input type="text" id="bloodtype" name="bloodtype" class="form-control bloodtype" readonly>
-          </td>
-        </tr>
-        <tr>
-          <td>
-          <b>Component</b>
-          <input type="text" id="component" name="component" class="form-control component" readonly>
-          </td>
-        </tr>
-        <tr>
-          <td>
-          <b>Quantity</b>
-          <input type="text" id="quantity" name="quantity" class="form-control quantity" readonly>
-          </td>
-        </tr>
-        <tr>
-          <td>
-          <b>City</b>
-          <input type="text" id="city" name="city" class="form-control" readonly>
-          </td>
-        </tr>
-
-          <td>
-          <b>Status</b>
-          <select class="form-control" id="status" name="status">
-            <option value="" selected="selected" disabled="disabled">-- select one --</option>
-              <option value="Active">Active</option>
-              <option value="Reactive">Reactive</option>
-            </select>
-          </td>
-        </tr>
-
-
       </tbody>
            
       </table>
@@ -305,15 +262,11 @@ function myFunction() {
 
   //data-toggle='modal' data-target='#myModal'
   $('.row-data').click(function(){
-    $('#myModal .serialnumber').text( $('.serialnumber', this).text() );
-    $('#myModal .donor').text( $('.donor', this).text() );
-    $('#myModal .bloodtype').text( $('.bloodtype', this).text() );
-    $('#myModal .component').text( $('.component', this).text() );
-    $('#myModal .quantity').text( $('.quantity', this).text() );
-    $('#myModal .extractiondate').text( $('.extractiondate', this).text() );
-    $('#myModal .expirationdate').text( $('.expirationdate', this).text() );
+    $('#updateModal .serialnumber').text( $('.serialnumber', this).text() );
 
-    $('#myModal').modal();
+    document.getElementById("serialnumber").value = $('.serialnumber', this).text();
+
+    $('#updateModal').modal();
   });
 
 //})(jQuery);

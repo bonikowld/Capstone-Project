@@ -104,8 +104,8 @@ if(isset($_POST['add'])){
             $donorid = $_GET['donorid'];
 
             $sql = "INSERT INTO blood (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, city, remarks )
-            VALUES ('".$_POST["serialnumber"]."','".$_POST["donor"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["quantity"]."','".$_POST["extractiondate"]."','".$_POST["expirationdate"]."', '".$_POST["city"]."', '".$_POST["remarks"]."')";
-            $sql = "UPDATE donors SET lastdonation = '".$_POST["extractiondate"]."' WHERE donorid = '$donorid' ";
+            VALUES ('".$_POST["serialnumber"]."','".$_POST["fullname"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["quantity"]."','".$_POST["extractiondate"]."','".$_POST["expirationdate"]."', '".$_POST["city"]."', '".$_POST["remarks"]."')";
+            // $sql = "UPDATE donors SET lastdonation = '".$_POST["extractiondate"]."' WHERE donorid = '$donorid' ";
             
            if (mysqli_multi_query($conn,$sql)) {
               echo "<script type='text/javascript'>alert('Blood Added Successfully');</script>";
@@ -216,7 +216,7 @@ if(isset($_POST['add'])){
       </tbody>
            
       </table>
-      <div class="modal-footer" method="get">
+      <div class="modal-footer" method="post">
         <button type="submit" class="btn btn-success" name="add">Donate</button>
         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
       </div>
