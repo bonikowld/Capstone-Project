@@ -177,7 +177,6 @@
 </div>
 <!-- End of Printable Area -->
 
-
 <div class="no-print">
 <div class="card mb-3">
         <div class="card-header">
@@ -236,10 +235,10 @@
                   $checkoutyear = $_GET['year'];
                   $city = $_SESSION['city'];
 
-                  $result = mysqli_query($conn,"SELECT * FROM report WHERE checkoutmonth = '$checkoutmonth' AND bloodbank = '$city' AND checkoutyear = '$checkoutyear'; ");
+                  $result = mysqli_query($conn,"SELECT * FROM report WHERE checkoutmonth = '$checkoutmonth' AND bloodbank = '$city'; ");
                   
                  }
-               
+             
                 ?>
                       
                 <?php while($row = mysqli_fetch_array($result))  
@@ -305,112 +304,6 @@
         </div>
       </div>
     </div>
-
-<!-- Modal for editing and deleting data-->
-<div id="myModal" class="modal fade " role="dialog">
-  <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"></h4>
-      </div>
-      <div class="modal-body" id="orderDetails">
-      <div class="bloodData" >
-      <b>Serial Number:</b> <span class="serialnumber"></span><br>
-      <b>Donor:</b> <span class="donor"></span><br> 
-      <b>Blood Type: </b> <span class="bloodtype"></span><br>
-      <b>Component:</b> <span class="component"></span><br>
-      <b>Quantity: </b> <span class="quantity"></span><br>
-      <b>Extraction Date:</b> <span class="extractiondate"></span>
-      </div>
-      <p id="bloodpic"><img class="bloodimg" src="../admin/img/img.jpg" alt="Blood" height="218px" width="207px" ></p>
-      
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle='modal' data-target='#updateModal'>Update</button>
-        <button type="button" method="POST" action="table.php" class="btn btn-danger" data-dismiss="modal" id="delete" name="delete" >Delete</button>   
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end of modal -->
-
-
-
-
-<!-- Modal for updating record -->
-<div id="updateModal" class="modal fade " role="dialog">
-  <div class="modal-dialog modal-xl">
-
-    <!-- Modal content-->
-    <div class="modal-content ">
-      <div class="modal-header ">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" modal-lg></h4>
-        
-      </div>
-      <table class="table table-bordered table-condensed">
-      <tbody>
-        <tr>
-        
-          <td>
-          <label>Serial Number</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Donor</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Blood Type</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Component</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Quantity</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Expiration Date</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Borrowed By</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>OR number</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Contact</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Amount</label>
-          <input type="text" class="form-control" >
-          </td>
-          <td>
-          <label>Remarks</label>
-          <input type="text" class="form-control" >
-          </td>
-        </tr>
-      </tbody>
-      
-      </table>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" >Done</button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
     <!-- Bootstrap core JavaScript-->
