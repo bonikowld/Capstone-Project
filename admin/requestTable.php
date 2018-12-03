@@ -118,7 +118,7 @@ session_start();
                 <td class='diagnosis'><?php echo $row['diagnosis']; ?></td>
                 <form method='get' action=''>
                   <td> <a onclick="return confirm ('Are You Sure?')" href="?id=<?php echo $row['idrequestBlood']?>" class="btn btn-danger btn-sm">Delete</a></td>
-                  <td> <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#updateModal" >Examine</a></td>
+                  <td> <a class="btn btn-success btn-sm" data-toggle="modal" data-target="#updateModal" >Copy Serial</a></td>
                   
                 </tr>
                  
@@ -208,14 +208,16 @@ session_start();
       </div>
 
       
-    <div class="modal-bodyUpdate">
+    <div class="modal-bodyUpdate" style="
+    height: 210px;
+">
     <form method='post' action=''>
       <table class="table table-bordered table-condensed">
       <tbody>
         <tr>
           <td>
           <b>Serial Number</b>
-          <input type="text" class="form-control serialnumber" id="myInput" name="serialnumber">
+          <input type="text" class="form-control serialnumber" id="serialnumber" name="serialnumber">
           </td>
         </tr>
 
@@ -223,9 +225,8 @@ session_start();
            
       </table>
       <div class="modal-footer" method="get">
-        <button type="submit" class="btn btn-success" name="update">Done</button>
        <button onclick="myFunction()" class="btn btn-success">Copy Serial</button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
       </div>
       </form>
@@ -237,7 +238,7 @@ session_start();
 
 <script>
 function myFunction() {
-  var copyText = document.getElementById("myInput");
+  var copyText = document.getElementById("serialnumber");
   copyText.select();
   document.execCommand("copy");
   alert("Copied the text: " + copyText.value);
