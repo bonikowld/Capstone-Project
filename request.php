@@ -4,32 +4,32 @@
 ?>
 
 <?php
-  if (isset($_POST['request'])) {
-    $fullname = $_POST['fullname'];
-    $birthmonth = $_POST['birthmonth'];
-    $birthday = $_POST['birthday'];
-    $birthyear = $_POST['birthyear'];
-    $sex = $_POST['sex'];
-    $requestmonth = $_POST['requestmonth'];
-    $requestday = $_POST['requestday'];
-    $requestyear = $_POST['requestyear'];
-    $bloodtype = $_POST['bloodtype'];
-    $component = $_POST['component'];
-    $units = $_POST['units'];
-    $hospital = $_POST['hospital'];
-    $roomnum = $_POST['roomnum'];
-    $age = $_POST['age'];
-    $cellphonenum = $_POST['cellphonenum'];
-    $physician = $_POST['physician'];
-    $diagnosis = $_POST['diagnosis'];
-    $city = $_POST['city'];
-    $secretKey = "6LfIoXsUAAAAAPGeftRQh1BfA_GbxBAQVPne8gYf";
-    $responseKey = $_POST['g-recaptcha-response'];
-    $userIP = $_SERVER['REMOTE_ADDR'];
+  // if (isset($_POST['request'])) {
+  //   $fullname = $_POST['fullname'];
+  //   $birthmonth = $_POST['birthmonth'];
+  //   $birthday = $_POST['birthday'];
+  //   $birthyear = $_POST['birthyear'];
+  //   $sex = $_POST['sex'];
+  //   $requestmonth = $_POST['requestmonth'];
+  //   $requestday = $_POST['requestday'];
+  //   $requestyear = $_POST['requestyear'];
+  //   $bloodtype = $_POST['bloodtype'];
+  //   $component = $_POST['component'];
+  //   $units = $_POST['units'];
+  //   $hospital = $_POST['hospital'];
+  //   $roomnum = $_POST['roomnum'];
+  //   $age = $_POST['age'];
+  //   $cellphonenum = $_POST['cellphonenum'];
+  //   $physician = $_POST['physician'];
+  //   $diagnosis = $_POST['diagnosis'];
+  //   $city = $_POST['city'];
+  //   $secretKey = "6LfIoXsUAAAAAPGeftRQh1BfA_GbxBAQVPne8gYf";
+  //   $responseKey = $_POST['g-recaptcha-response'];
+  //   $userIP = $_SERVER['REMOTE_ADDR'];
 
-    $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$responseKey&remoteip=$userIP";
-    $response = file_get_contents($url);
-  }
+  //   $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$responseKey&remoteip=$userIP";
+  //   $response = file_get_contents($url);
+  // }
 ?>
 
 <!DOCTYPE html>
@@ -377,9 +377,9 @@ if(!empty($_POST)){
                                                                                         ?>" hidden style="margin-left: 2%;margin-right: 2%;width: 94%;">   
     </div>
 </div>
-<br>
 
-<center><div class="g-recaptcha" name="captcha" data-sitekey="6LfIoXsUAAAAALXHdXSwMTD1znd_o419bnCP0R3E"></div></center>
+<!-- <br>
+<center><div class="g-recaptcha" name="captcha" data-sitekey="6LfIoXsUAAAAALXHdXSwMTD1znd_o419bnCP0R3E"></div></center> -->
 <button class="button" type="submit" name="request" id="request"> REQUEST</button>
 
 </div>
@@ -387,7 +387,7 @@ if(!empty($_POST)){
 
 </form>
 
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<!-- <script src='https://www.google.com/recaptcha/api.js'></script> -->
 
 <div class="footer"> 
         <div class="row">
@@ -435,7 +435,7 @@ if(!empty($_POST)){
   <script>
      $().ready(function(){
          SNButton.init("request",{
-             fields: ["lastname","firstname","middlename","birthmonth","birthday","birthyear","sex","requestmonth","requestday","requestyear","bloodtype","component","units","hospital","roomnum","age","cellphonenum","physician","diagnosis","city","captcha"],
+             fields: ["lastname","firstname","middlename","birthmonth","birthday","birthyear","sex","requestmonth","requestday","requestyear","bloodtype","component","units","hospital","roomnum","age","cellphonenum","physician","diagnosis","city"],
              enabletext: "Request",
              disabletext: "Please input all the required fields"
          })

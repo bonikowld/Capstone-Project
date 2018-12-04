@@ -4,34 +4,34 @@ include 'assets/lib/login.php';
 ?>
 
 <?php
-  if (isset($_POST['request'])) {
-    $lastname = $_POST['lastname'];
-    $firstname = $_POST['firstname'];
-    $middlename = $_POST['middlename'];
-    $age = $_POST['age'];
-    $birthmonth = $_POST['birthmonth'];
-    $birthday = $_POST['birthday'];
-    $birthyear = $_POST['birthyear'];
-    $sex = $_POST['sex'];
-    $nationality = $_POST['nationality'];
-    $civilstatus = $_POST['civilstatus'];
-    $education = $_POST['education'];
-    $occupation = $_POST['occupation'];
-    $contactnum = $_POST['contactnum'];
-    $address = $_POST['address'];
-    $email = $_POST['email'];
-    $identificationno = $_POST['identificationno'];
-    $bloodbank = $_POST['bloodbank'];
+  // if (isset($_POST['request'])) {
+  //   $lastname = $_POST['lastname'];
+  //   $firstname = $_POST['firstname'];
+  //   $middlename = $_POST['middlename'];
+  //   $age = $_POST['age'];
+  //   $birthmonth = $_POST['birthmonth'];
+  //   $birthday = $_POST['birthday'];
+  //   $birthyear = $_POST['birthyear'];
+  //   $sex = $_POST['sex'];
+  //   $nationality = $_POST['nationality'];
+  //   $civilstatus = $_POST['civilstatus'];
+  //   $education = $_POST['education'];
+  //   $occupation = $_POST['occupation'];
+  //   $contactnum = $_POST['contactnum'];
+  //   $address = $_POST['address'];
+  //   $email = $_POST['email'];
+  //   $identificationno = $_POST['identificationno'];
+  //   $bloodbank = $_POST['bloodbank'];
     
     
     
-    $secretKey = "6LfIoXsUAAAAAPGeftRQh1BfA_GbxBAQVPne8gYf";
-    $responseKey = $_POST['g-recaptcha-response'];
-    $userIP = $_SERVER['REMOTE_ADDR'];
+  //   $secretKey = "6LfIoXsUAAAAAPGeftRQh1BfA_GbxBAQVPne8gYf";
+  //   $responseKey = $_POST['g-recaptcha-response'];
+  //   $userIP = $_SERVER['REMOTE_ADDR'];
 
-    $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$responseKey&remoteip=$userIP";
-    $response = file_get_contents($url);
-  }
+  //   $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$responseKey&remoteip=$userIP";
+  //   $response = file_get_contents($url);
+  // }
 ?>
 
 <!DOCTYPE html>
@@ -235,8 +235,8 @@ if(!empty($_POST)){
         <option value="Secondary education">Secondary education or high school</option>
         <option value="GED">GED</option>
         <option value="Vocational qualification">Vocational qualification</option>
-        <option value="Bachelor's degree">Bachelor's degree</option>
-        <option value="Master's degree">Master's degree</option>
+        <option value="Bachelors degree">Bachelor's degree</option>
+        <option value="Masters degree">Master's degree</option>
         <option value="Doctorate or higher">Doctorate or higher</option>
         </select>
         </div>
@@ -288,10 +288,10 @@ if(!empty($_POST)){
         </div>
       </div>
     </div><br>
-          <center><div class="g-recaptcha" name="captcha" data-sitekey="6LfIoXsUAAAAALXHdXSwMTD1znd_o419bnCP0R3E"></div></center>
+          <!-- <center><div class="g-recaptcha" data-sitekey="6LfIoXsUAAAAALXHdXSwMTD1znd_o419bnCP0R3E"></div></center> -->
       <button class="button" name="donate" id="donate"> DONATE</button>
     </form>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <!-- <script src='https://www.google.com/recaptcha/api.js'></script> -->
 </div>
 
 <div class="footer"> 
@@ -346,7 +346,7 @@ if(!empty($_POST)){
   <script>
      $().ready(function(){
          SNButton.init("donate",{
-             fields: ["lastname","firstname","middlename","birthmonth","birthday","birthyear","sex","civilstatus","age","address","identificationno","email","nationality","education","occupation","contactnum","bloodbank","captcha"],
+             fields: ["lastname","firstname","middlename","birthmonth","birthday","birthyear","sex","civilstatus","age","address","identificationno","email","nationality","education","occupation","contactnum","bloodbank"],
              enabletext: "Request",
              disabletext: "Please input all the required fields"
          })

@@ -155,20 +155,20 @@
   <?php while($row = mysqli_fetch_array($result))  
   { ?>
 
-  <td class='serialnumber style1'> <?php echo $row['serialnumber']; ?> </td>
-  <td class='donor style1'> <?php echo $row['donor']; ?> </td>
-  <td class='bloodtype style1'> <?php echo $row['bloodtype']; ?> </td>
-  <td class='component style1'> <?php echo $row['component']; ?> </td>
-  <td class='quantity style1'> <?php echo $row['quantity'];?> </td>
-  <td class='extractiondate style1'> <?php echo $row['extractiondate']; ?> </td>
-  <td class='expirationdate style1'> <?php echo $row['expirationdate']; ?> </td>
-  <td class='findings style1'> <?php echo $row['findings']; ?> </td>
-  <td class='bloodbank style1'> <?php echo $row['bloodbank']; ?> </td>
-  <td class='borrowersname style1'> <?php echo $row['reciever'];?> </td>
-  <td class='borrowersaddress style1'> <?php echo $row['recieveraddress']; ?> </td>
-  <td class='borrowerscontactnum style1'> <?php echo $row['contactnumber']; ?> </td>
-  <td class='ornum style1'> <?php echo $row['ornumber']; ?> </td>
-  <td class='remarks style1'> <?php echo $row['remarks']; ?> </td>
+  <td class='serialnumber style1'><?php echo $row['serialnumber']; ?></td>
+  <td class='donor style1'><?php echo $row['donor']; ?></td>
+  <td class='bloodtype style1'><?php echo $row['bloodtype']; ?></td>
+  <td class='component style1'><?php echo $row['component']; ?></td>
+  <td class='quantity style1'><?php echo $row['quantity'];?></td>
+  <td class='extractiondate style1'><?php echo $row['extractiondate']; ?></td>
+  <td class='expirationdate style1'><?php echo $row['expirationdate']; ?></td>
+  <td class='findings style1'><?php echo $row['findings']; ?></td>
+  <td class='bloodbank style1'><?php echo $row['bloodbank']; ?></td>
+  <td class='borrowersname style1'><?php echo $row['reciever'];?></td>
+  <td class='borrowersaddress style1'><?php echo $row['recieveraddress']; ?></td>
+  <td class='borrowerscontactnum style1'><?php echo $row['contactnumber']; ?></td>
+  <td class='ornum style1'><?php echo $row['ornumber']; ?></td>
+  <td class='remarks style1'><?php echo $row['remarks']; ?></td>
 
   </tr>
   <?php }; ?>
@@ -235,7 +235,7 @@
                   $checkoutyear = $_GET['year'];
                   $city = $_SESSION['city'];
 
-                  $result = mysqli_query($conn,"SELECT * FROM report WHERE checkoutmonth = '$checkoutmonth' AND bloodbank = '$city'; ");
+                  $result = mysqli_query($conn,"SELECT * FROM report WHERE checkoutmonth = '$checkoutmonth' AND bloodbank = '$city' AND checkoutyear = '$checkoutyear'; ");
                   
                  }
              
@@ -244,20 +244,20 @@
                 <?php while($row = mysqli_fetch_array($result))  
                 { ?>
                
-                <td class='serialnumber'> <?php echo $row['serialnumber']; ?> </td>
-                <td class='donor'> <?php echo $row['donor']; ?> </td>
-                <td class='bloodtype'> <?php echo $row['bloodtype']; ?> </td>
-                <td class='component'> <?php echo $row['component']; ?> </td>
-                <td class='quantity'> <?php echo $row['quantity'];?> </td>
-                <td class='extractiondate'> <?php echo $row['extractiondate']; ?> </td>
-                <td class='expirationdate'> <?php echo $row['expirationdate']; ?> </td>
-                <td class='remarks'> <?php echo $row['remarks']; ?> </td>
-                <td class='findings'> <?php echo $row['findings']; ?> </td>
-                <td class='bloodbank'> <?php echo $row['bloodbank']; ?> </td>
-                <td class='borrowersname'> <?php echo $row['reciever'];?> </td>
-                <td class='borrowersaddress'> <?php echo $row['recieveraddress']; ?> </td>
-                <td class='borrowerscontactnum'> <?php echo $row['contactnumber']; ?> </td>
-                <td class='ornum'> <?php echo $row['ornumber']; ?> </td>
+                <td class='serialnumber'><?php echo $row['serialnumber']; ?></td>
+                <td class='donor'><?php echo $row['donor']; ?></td>
+                <td class='bloodtype'><?php echo $row['bloodtype']; ?></td>
+                <td class='component'><?php echo $row['component']; ?></td>
+                <td class='quantity'><?php echo $row['quantity'];?></td>
+                <td class='extractiondate'><?php echo $row['extractiondate']; ?></td>
+                <td class='expirationdate'><?php echo $row['expirationdate']; ?></td>
+                <td class='remarks'><?php echo $row['remarks']; ?></td>
+                <td class='findings'><?php echo $row['findings']; ?></td>
+                <td class='bloodbank'><?php echo $row['bloodbank']; ?></td>
+                <td class='borrowersname'><?php echo $row['reciever'];?></td>
+                <td class='borrowersaddress'><?php echo $row['recieveraddress']; ?></td>
+                <td class='borrowerscontactnum'><?php echo $row['contactnumber']; ?></td>
+                <td class='ornum'><?php echo $row['ornumber']; ?></td>
                 
               </tr>
                 <?php }; ?>

@@ -125,15 +125,15 @@ session_start();
                 ?>
           
                 <tr class='row-data' data-href='url://'>
-                <td class='serialnumber'> <?php echo $row['serialnumber']; ?> </td>
-                <td class='donor'> <?php echo $row['donor']; ?> </td>
-                <td class='bloodtype'> <?php echo $row['bloodtype']; ?> </td>
-                <td class='component'> <?php echo $row['component']; ?> </td>
-                <td class='quantity'> <?php echo $row['quantity']; ?> </td>
-                <td class='city'> <?php echo $row['city']; ?> </td>
-                <td class='extractiondate'> <?php echo $row['extractiondate']; ?> </td>
-                <td class='expirationdate'> <?php echo $row['expirationdate']; ?> </td>
-                <td class='remarks'> <?php echo $row['remarks']; ?> </td>
+                <td class='serialnumber'><?php echo $row['serialnumber']; ?></td>
+                <td class='donor'><?php echo $row['donor']; ?></td>
+                <td class='bloodtype'><?php echo $row['bloodtype']; ?></td>
+                <td class='component'><?php echo $row['component']; ?></td>
+                <td class='quantity'><?php echo $row['quantity']; ?></td>
+                <td class='city'><?php echo $row['city']; ?></td>
+                <td class='extractiondate'><?php echo $row['extractiondate']; ?></td>
+                <td class='expirationdate'><?php echo $row['expirationdate']; ?></td>
+                <td class='remarks'><?php echo $row['remarks']; ?></td>
                 <form method='get' action=''>
                 <td> <a href="?serial=<?php echo $row['serialnumber']?>" onclick="return confirm ('Are You Sure?');" class="btn btn-danger btn-sm">Delete</a></td>
                 <td><button type='button' onclick="updateBtn()"class='btn btn-success btn-sm' data-toggle="modal" data-target="#updateModal" >Examine</button> </td>
