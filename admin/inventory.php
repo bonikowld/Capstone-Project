@@ -56,11 +56,6 @@ session_start();
           <option value="AB+">AB+</option>
           <input type="submit" name="submit" value="Submit" class='btn btn-success btn-sm' style=" margin-left: 10px; margin-bottom: 2px;">
           </select>
-          
-          <input type="text" name="count" id="count" value="">
-          
-
-          
           </form>
             
           </div>
@@ -110,6 +105,7 @@ session_start();
                  $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' ");
                  $row_cnt = $result->num_rows;
                  echo "Total Number of Bloods: " .$row_cnt;
+                 echo "<br>";
                 ?>
               
               <!-- filtering results of bloodtype-->
