@@ -42,7 +42,27 @@ session_start();
       <div class="card mb-3">
         <div class="card-header" >
           <div style="float:right;" id="txt"></div>
-          <i class="fa fa-table" ></i> Blood Records      
+          <i class="fa fa-table" ></i> Blood Records
+          <form action="" method="post">
+          <select name="type">
+          <option value="allblood">All Records</option>
+          <option value="O-">O-</option>
+              <option value="O+">O+</option>
+              <option value="A-">A-</option>
+              <option value="A+">A+</option>
+              <option value="B-">B-</option>
+              <option value="B+">B+</option>
+              <option value="AB-">AB-</option>
+          <option value="AB+">AB+</option>
+          <input type="submit" name="submit" value="Submit" class='btn btn-success btn-sm' style=" margin-left: 10px; margin-bottom: 2px;">
+          </select>
+          
+          <input type="text" name="count" id="count" value="">
+          
+
+          
+          </form>
+            
           </div>
 
 
@@ -85,13 +105,73 @@ session_start();
               </tfoot>
               
               <tbody>
-                <?php include 'php/connection.php';
-              
-              $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' ");
-           
-                 while($row = mysqli_fetch_array($result))  
-                    {  
+                <?php include 'php/connection.php';?>
+                <?php
+                 $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' ");
+                 $row_cnt = $result->num_rows;
+                 echo "Total Number of Bloods: " .$row_cnt;
                 ?>
+              
+              <!-- filtering results of bloodtype-->
+           
+              <?php
+
+                   if(isset($_POST['submit'])){
+                    if($_POST['type'] == 'allblood' ){
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' ");
+                    }
+                    elseif($_POST['type'] == 'O-' ){
+                      
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'O-' ");
+                      $row_cnt = $result->num_rows;
+                      echo "Total Number of Bloodtype O-: " .$row_cnt;
+                      
+                    }
+                    elseif($_POST['type'] == 'O+' ){
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'O+' ");
+                      $row_cnt = $result->num_rows;
+                      echo "Total Number of Bloodtype O+: " .$row_cnt;
+                    }
+                    elseif($_POST['type'] == 'A-' ){
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'A-' ");
+                      $row_cnt = $result->num_rows;
+                      echo "Total Number of Bloodtype A-: " .$row_cnt;
+                    }
+                    elseif($_POST['type'] == 'A+' ){
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'A+' ");
+                      $row_cnt = $result->num_rows;
+                      echo "Total Number of Bloodtype A+: " .$row_cnt;
+                    }
+                    elseif($_POST['type'] == 'B-' ){
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'B-' ");
+                      $row_cnt = $result->num_rows;
+                      echo "Total Number of Bloodtype B-: " .$row_cnt;
+                    }
+                    elseif($_POST['type'] == 'B+'){
+                      $result = mysqli_query($conn, "SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'B+' ");
+                      $row_cnt = $result->num_rows;
+                      echo "Total Number of Bloodtype B+: " .$row_cnt;
+                    }
+                    elseif($_POST['type'] == 'AB-' ){
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'AB-' ");
+                      $row_cnt = $result->num_rows;
+                      echo "Total Number of Bloodtype AB-: " .$row_cnt;
+                    }
+                    elseif($_POST['type'] == 'AB+' ){
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'AB+' ");
+                      $row_cnt = $result->num_rows;
+                      echo "Total Number of Bloodtype AB+: " .$row_cnt;
+                    }
+                    else{
+                     
+                      }
+                    } 
+                    while($row = mysqli_fetch_array($result))  
+                    {                                               
+                
+                ?>
+                <!-- Until here!!!!!!!!!!!!! -->
+                 
                 <tr class='row-data'>
                 <td class='serialnumber'><?php echo $row['serialnumber']; ?></td>
                 <td class='donor'><?php echo $row['donor']; ?></td>
