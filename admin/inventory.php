@@ -102,7 +102,7 @@ session_start();
               <tbody>
                 <?php include 'php/connection.php';?>
                 <?php
-                 $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' ");
+                 $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' and flag='0' ");
                  $row_cnt = $result->num_rows;
                  echo "<h5>Total Number of Bloods : $row_cnt</h5>";
                  echo "<br>";
@@ -232,7 +232,7 @@ session_start();
 
                     $sql = "INSERT INTO report (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, remarks, findings, bloodbank, reciever, recieveraddress, contactnumber, ornumber, checkoutmonth, checkoutyear)
                             VALUES ('".$_POST["serialnumber"]."', '".$_POST["donor"]."','".$_POST["bloodtype"]."', '".$_POST["component"]."', '".$_POST["quantity"]."', '".$_POST["extractiondate"]."', '".$_POST["expirationdate"]."', '".$_POST["remarks"]."', '".$_POST["findings"]."', '".$_POST["city"]."', '".$_POST["reciever"]."', '".$_POST["recieveraddress"]."', '".$_POST["contactnumber"]."', '".$_POST["ornumber"]."', '".$_POST["checkoutmonth"]."', '".$_POST["checkoutyear"]."')";
-                                               
+                              $sql=" UPDATE inventory SET flag='1'WHERE serialnumber='$serialnumber'";                 
                     if($conn->query($sql) == TRUE){
                 ?>
                     <script type= 'text/javascript'>alert('Checkout Successfull');</script>
