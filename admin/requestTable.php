@@ -93,9 +93,14 @@ session_start();
               <center>
               <tbody>
               <?php include 'php/connection.php';?>
-                <?php  
-                $result = mysqli_query($conn,"SELECT * FROM request_blood WHERE city = '" . $_SESSION['city'] . "' ");
-                //$result = mysqli_query($conn,"SELECT * FROM request_blood");
+              <?php
+              $date = new DateTime();
+              echo $date->format('Y-m-d H:i:s') . "\n";
+              ?>
+                <?php 
+
+                $result = mysqli_query($conn,"SELECT * FROM request_blood WHERE city = '" . $_SESSION['city'] . "' AND timerequested>=DATE_SUB(NOW(), INTERVAL 1 DAY)");
+                //$result = mysqli_query($conn,"SELECT * FROM request_blo od");
                 ?>
 
                 <?php 

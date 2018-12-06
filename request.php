@@ -181,8 +181,8 @@ if(!empty($_POST)){
         $_POST["requestdate"] = $requestday."-".$requestmonth."-".$requestyear;
 
 
-        $sql = "INSERT INTO request_blood (serialnumber, fullname, age, birthdate, sex, dateofrequest, bloodtype, component, units, hospital, roomnum, cellphonenum, physician, diagnosis, city )
-                VALUES ('".$_POST["serialnumber"]."','".$_POST["fullname"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["requestdate"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["units"]."','".$_POST["hospital"]."','".$_POST["roomnum"]."','".$_POST["cellphonenum"]."','".$_POST["physician"]."','".$_POST["diagnosis"]."','".$_POST["city"]."')";
+        $sql = "INSERT INTO request_blood (serialnumber, fullname, age, birthdate, sex, dateofrequest, bloodtype, component, units, hospital, roomnum, cellphonenum, physician, diagnosis, city, timerequested)
+                VALUES ('".$_POST["serialnumber"]."','".$_POST["fullname"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["requestdate"]."','".$_POST["bloodtype"]."','".$_POST["component"]."','".$_POST["units"]."','".$_POST["hospital"]."','".$_POST["roomnum"]."','".$_POST["cellphonenum"]."','".$_POST["physician"]."','".$_POST["diagnosis"]."','".$_POST["city"]."','".$_POST["time"]."')";
 
         if ($conn->query($sql) == TRUE) {
           echo "<script type='text/javascript'>alert('Request Successfull, Please bring the request form within 24 hours.');</script>";
@@ -377,6 +377,15 @@ if(!empty($_POST)){
                                                                                         ?>" hidden style="margin-left: 2%;margin-right: 2%;width: 94%;">   
     </div>
 </div>
+        <?php
+        $date = new DateTime();
+        echo $date->format('Y-m-d H:i:s') . "\n";
+        ?>
+
+<input class = "form-group" type="text" name="time" id="time" value="<?php
+             $date = new DateTime();
+             echo $date->format('Y-m-d H:i:s');
+              ?>" hidden>
 
 <!-- <br>
 <center><div class="g-recaptcha" name="captcha" data-sitekey="6LfIoXsUAAAAALXHdXSwMTD1znd_o419bnCP0R3E"></div></center> -->
