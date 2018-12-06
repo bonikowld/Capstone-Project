@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2018 at 01:29 PM
+-- Generation Time: Dec 06, 2018 at 01:59 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -54,12 +54,10 @@ INSERT INTO `blood` (`idblood`, `serialnumber`, `donor`, `bloodtype`, `component
 (24, '7201-854390-1', 'Jay Harold Reazol', 'O-', 'Whole Blood', '1', '2018-03-12', '2018-04-27', 'Oroquieta City', 'Successfull', '', '', 0),
 (40, '7200-980986-1', 'Dianne Estrada', 'AB+', 'Whole Blood', '1', '2018-05-10', '2018-06-20', 'Tangub City', 'Successfull', '', '', 0),
 (42, '7207-000000-1', 'Aljanly Tayone', 'AB+', 'Whole Blood', '1', '2018-05-10', '2018-06-20', 'Oroquieta City', 'Successfull', '', '', 0),
-(73, '7200-678555-1', 'Dove', 'O', 'Whole Blood', '1', '2018-09-24', '2018-10-21', 'Ozamiz City', 'Successfull', NULL, NULL, 1),
-(74, '7200-456654-1', 'Datu Puti', 'O', 'Whole Blood', '1', '2018-09-24', '2018-10-28', 'Ozamiz City', 'Successfull', NULL, NULL, 1),
-(75, '7200-000000-1', 'Bobot Vidanes', 'O', 'Whole Blood', '1', '2018-09-27', '2018-10-27', 'Ozamiz City', 'Unsuccessfull', NULL, NULL, 1),
-(76, '7200-999999-1', 'Dodong Gadon', 'O', 'Whole Blood', '1', '2018-09-27', '2018-10-28', 'Ozamiz City', 'Unsuccessfull', NULL, NULL, 0),
-(77, '7200-888888-1', 'Harlem Shake', 'O', 'Whole Blood', '1', '2018-09-27', '2018-10-28', 'Ozamiz City', 'Unsuccessfull', NULL, NULL, 0),
-(78, '7200-454545-1', 'Aljan', 'O', 'Whole Blood', '1', '2018-09-28', '2018-10-31', 'Ozamiz City', 'Unsuccessfull', NULL, NULL, 0),
+(74, '7200-456654-1', 'Datu Puti', 'O-', 'Whole Blood', '1', '2018-09-24', '2018-10-28', 'Ozamiz City', 'Successfull', NULL, NULL, 1),
+(75, '7200-000000-1', 'Bobot Vidanes', 'O+', 'Whole Blood', '1', '2018-09-27', '2018-10-27', 'Ozamiz City', 'Unsuccessfull', NULL, NULL, 1),
+(76, '7200-999999-1', 'Dodong Gadon', 'O-', 'Whole Blood', '1', '2018-09-27', '2018-10-28', 'Ozamiz City', 'Unsuccessfull', NULL, NULL, 0),
+(77, '7200-888888-1', 'Harlem Shake', 'O+', 'Whole Blood', '1', '2018-09-27', '2018-10-28', 'Ozamiz City', 'Unsuccessfull', NULL, NULL, 0),
 (82, '7200-222222-1', 'Eva Mapendo', 'O-', 'Whole Blood', '1', '2018-11-20', '2018-12-23', 'Ozamiz City', 'Successfull', NULL, NULL, NULL),
 (84, '7200-555555-1', 'Manny Pacquiao', 'O-', 'Whole Blood', '1', '2018-11-22', '2018-12-23', 'Ozamiz City', 'Successfull', NULL, NULL, NULL),
 (87, '7200-343454-2', 'Jane L. Loslos', 'O+', 'Whole Blood', '1', '2018-12-04', '2019-01-18', 'Ozamiz City', 'Successfull', NULL, NULL, NULL),
@@ -148,7 +146,8 @@ INSERT INTO `donate_blood` (`iddonate_blood`, `fullname`, `age`, `birthdate`, `s
 (40, 'Loychris', '20', '24-03-1997', 'Male', 'Filipino', 'Single', 'Masters degree', 'Accounting Clerk', '09246739279', 'jane@gmail.com', '11435567', 'Ozamiz City', 'Pulot, Ozamiz City'),
 (41, 'Hannah Acapulco', '20', '24-03-1998', 'Female', 'Filipino', 'Single', 'Masters degree', 'Accounting Clerk', '09246739279', 'hannah@gmail.com', '11435567', 'Ozamiz City', 'Pulot, Ozamiz City'),
 (42, 'Hannah Acapulco', '20', '24-03-1998', 'Female', 'Filipino', 'Single', 'Masters degree', 'Accounting Clerk', '09246739279', 'hannah@gmail.com', '11435567', 'Ozamiz City', 'Pulot, Ozamiz City'),
-(43, 'Virginia Blazer', '20', '25-02-1998', 'Female', 'Filipino', 'Single', 'Bachelors degree', 'Teacher', '09125764680', 'virginia@gmail.com', '114556788', 'Tawi Tawi City', 'Lamak, Tawi Tawi City');
+(43, 'Virginia Blazer', '20', '25-02-1998', 'Female', 'Filipino', 'Single', 'Bachelors degree', 'Teacher', '09125764680', 'virginia@gmail.com', '114556788', 'Tawi Tawi City', 'Lamak, Tawi Tawi City'),
+(44, 'John Vincent T. Roa', '20', '20-03-1998', 'Male', 'Filipino', 'Single', 'Masters degree', 'Master Teacher II', '09136782748', 'jvincent@gmail.com', '114256633', 'Tawi Tawi City', 'Lamak, Tawi Tawi City');
 
 -- --------------------------------------------------------
 
@@ -189,7 +188,8 @@ INSERT INTO `donors` (`donorid`, `name`, `dateofbirth`, `contactnum`, `homeaddre
 (22, ' Hannah Acapulco', ' 24-03-1998', ' 09246739279', ' Pulot, Ozamiz City', 'hannah@gmail.com', 'O+', '2018-12-06', NULL, NULL, NULL, 'Ozamiz City'),
 (27, 'Virginia Blazer', '25-02-1998', '09125764680', 'Lamak, Tawi Tawi City', 'virginia@gmail.com', 'A+', '2018-12-07', NULL, NULL, NULL, 'Tawi Tawi City'),
 (26, 'Janril S. Tayone', '12-02-1998', '09246739279', 'Lapak, Tawi Tawi City', 'janril@gmail.com', 'B-', '2018-12-07', NULL, NULL, NULL, 'Tawi Tawi City'),
-(28, 'John Mark Lampinig', '24-03-1998', '0976543678896', 'Gango', 'aljan@gmail.com', 'AB-', '2018-12-07', NULL, NULL, NULL, 'Oroquieta City');
+(28, 'John Mark Lampinig', '24-03-1998', '0976543678896', 'Gango', 'aljan@gmail.com', 'AB-', '2018-12-07', NULL, NULL, NULL, 'Oroquieta City'),
+(29, 'John Vincent T. Roa', '20-03-1998', '09136782748', 'Lamak, Tawi Tawi City', 'jvincent@gmail.com', 'A-', '2018-12-07', NULL, NULL, NULL, 'Tawi Tawi City');
 
 -- --------------------------------------------------------
 
@@ -229,7 +229,8 @@ INSERT INTO `inventory` (`idinventory`, `serialnumber`, `donor`, `bloodtype`, `c
 (31, '7200-343454-2', 'Jane L. Loslos', 'O+', 'Whole Blood', '1', 'Ozamiz City', '2018-12-04', '2019-01-18', 'Successfull', 'Active', NULL, NULL, 0),
 (32, '7200-789654-1', 'Jubilee Serna', 'B+', 'Whole Blood', '1', 'Oroquieta City', '2018-03-06', '2018-04-27', 'Successfull', 'Active', NULL, NULL, 0),
 (39, '7200-678555-1', 'Dove', 'O+', 'Whole Blood', '1', 'Ozamiz City', '2018-09-24', '2018-10-21', 'Successfull', 'Active', NULL, NULL, 0),
-(35, '7200-222222-1', 'Eva Mapendo', 'O-', 'Whole Blood', '1', 'Ozamiz City', '2018-11-20', '2018-12-23', 'Successfull', 'Active', NULL, NULL, 0);
+(35, '7200-222222-1', 'Eva Mapendo', 'O-', 'Whole Blood', '1', 'Ozamiz City', '2018-11-20', '2018-12-23', 'Successfull', 'Active', NULL, NULL, 0),
+(41, '7204-003567-3', 'John Vincent T. Roa', 'A-', 'Whole Blood', '1', 'Tawi Tawi City', '2018-12-06', '2019-12-16', 'Successfull', 'Active', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -318,7 +319,8 @@ INSERT INTO `request_blood` (`idrequestBlood`, `fullname`, `birthdate`, `age`, `
 (88, 'Janna Lapus', '21-03-1998', 20, 'Female', '04-12-2018', 'O', 'Whole Blood', '1', 'MUMC', '379', '09958365474', 'Dr. Acapulco', 'Dengue', 'Ozamiz City', '7200-678555-1', NULL),
 (89, 'John Mark Lampinig', '25-01-1998', 20, 'Male', '04-12-2018', 'O', 'Whole Blood', '1', 'MUMC', '379', '0976543678', 'Dr. Acapulco', 'Fever', 'Ozamiz City', '7200-456654-1', NULL),
 (90, 'Josefina Acalcal', '25-03-1998', 20, 'Female', '04-12-2018', 'B+', 'Whole Blood', '1', 'MUMC', '379', '09957835789', 'Dr. Acapulco', 'Dengue', 'Oroquieta City', '7200-789654-1', NULL),
-(91, 'Joebert Saavedra', '20-03-1997', 20, 'Male', '06-12-2018', 'O', 'Whole Blood', '1', 'MUMC', '232', '0324343', 'Dr. Sy', 'Dengue', 'Ozamiz City', '7200-678555-1', '2018-12-05 19:48:39.000000');
+(91, 'Joebert Saavedra', '20-03-1997', 20, 'Male', '06-12-2018', 'O', 'Whole Blood', '1', 'MUMC', '232', '0324343', 'Dr. Sy', 'Dengue', 'Ozamiz City', '7200-678555-1', '2018-12-05 19:48:39.000000'),
+(92, 'Liza Soberano', '13-03-1998', 20, 'Female', '06-12-2018', 'A-', 'Whole Blood', '1', 'MUMC', '479', '09108472956', 'Dr. Agohoy', 'Dengue', 'Tawi Tawi City', '7204-003567-3', '2018-12-06 05:44:06.000000');
 
 -- --------------------------------------------------------
 
@@ -402,7 +404,7 @@ ALTER TABLE `reserve_blood`
 -- AUTO_INCREMENT for table `blood`
 --
 ALTER TABLE `blood`
-  MODIFY `idblood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `idblood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `branch`
@@ -414,19 +416,19 @@ ALTER TABLE `branch`
 -- AUTO_INCREMENT for table `donate_blood`
 --
 ALTER TABLE `donate_blood`
-  MODIFY `iddonate_blood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `iddonate_blood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `donors`
 --
 ALTER TABLE `donors`
-  MODIFY `donorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `donorid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `idinventory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `idinventory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `report`
@@ -438,7 +440,7 @@ ALTER TABLE `report`
 -- AUTO_INCREMENT for table `request_blood`
 --
 ALTER TABLE `request_blood`
-  MODIFY `idrequestBlood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `idrequestBlood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `reserve_blood`
