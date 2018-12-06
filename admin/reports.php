@@ -237,6 +237,8 @@
 
                   $result = mysqli_query($conn,"SELECT * FROM report WHERE checkoutmonth = '$checkoutmonth' AND bloodbank = '$city' AND checkoutyear = '$checkoutyear'; ");
                   
+                  $row_cnt = $result->num_rows;
+                  echo "<h5>Total Number of Reports : $row_cnt</h5>";
                  }
              
                 ?>

@@ -121,7 +121,7 @@ if(!empty($_POST)){
         $_POST["birthdate"] = $birthday."-".$birthmonth."-".$birthyear;
 
         $sql = "INSERT INTO donate_blood (fullname, age, birthdate, sex, nationality, civilstatus, education, occupation, cellphonenum, email, identificationno, bloodbank, homeaddress)
-                VALUES ('".$_POST["fullname"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["nationality"]."','".$_POST["civilstatus"]."','".$_POST["education"]."','".$_POST["occupation"]."','".$_POST["contactnum"]."','".$_POST["email"]."','".$_POST["bloodbank"]."','".$_POST["identificationno"]."','".$_POST["address"]."')";
+                VALUES ('".$_POST["fullname"]."','".$_POST["age"]."','".$_POST["birthdate"]."','".$_POST["sex"]."','".$_POST["nationality"]."','".$_POST["civilstatus"]."','".$_POST["education"]."','".$_POST["occupation"]."','".$_POST["contactnum"]."','".$_POST["email"]."','".$_POST["identificationno"]."','".$_POST["bloodbank"]."','".$_POST["address"]."')";
 
         if ($conn->query($sql) == TRUE) {
           echo "<script type='text/javascript'>alert('Donate Successfull ');</script>";
@@ -131,6 +131,19 @@ if(!empty($_POST)){
           
           $conn->close();
 }
+
+?>
+
+<?php 
+      
+      $result=mysqli_query($conn,"SELECT * FROM branch ");
+   
+      $options = "";
+
+       while($row = mysqli_fetch_array($result))
+       {
+           $options = $options."<option>$row[2]</option>";
+       }
 
 ?>
 
@@ -280,10 +293,12 @@ if(!empty($_POST)){
         <div class="form-group-2">
           <div class="form-group-twothirds"> 
           <select name="bloodbank" id="bloodbank" class="form-control" style="width: 255px; height: 54px;" required>
-              <option value="" selected="selected" disabled="disabled">-- select one --</option>
+          <option value="" selected="selected" disabled="disabled">-- select one --</option>
+          <?php echo $options;?>
+              <!-- <option value="" selected="selected" disabled="disabled">-- select one --</option>
               <option value="Oroquieta City">Oroquieta City</option>
               <option value="Ozamiz City">Ozamiz City</option>
-              <option value="Tangub City">Tangub City</option>
+              <option value="Tangub City">Tangub City</option> -->
           </select>
         </div>
       </div>
@@ -347,7 +362,7 @@ if(!empty($_POST)){
      $().ready(function(){
          SNButton.init("donate",{
              fields: ["lastname","firstname","middlename","birthmonth","birthday","birthyear","sex","civilstatus","age","address","identificationno","email","nationality","education","occupation","contactnum","bloodbank"],
-             enabletext: "Request",
+             enabletext: "Donate",
              disabletext: "Please input all the required fields"
          })
      })

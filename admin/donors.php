@@ -73,7 +73,7 @@ session_start();
               <?php include 'php/connection.php';?>
 
               <?php 
-                $result = mysqli_query($conn,"SELECT * FROM donors  ");                             
+                $result = mysqli_query($conn,"SELECT * FROM donors WHERE bloodbank = '" . $_SESSION['city'] . "'");                             
                     
                   while($row = mysqli_fetch_array($result)) 
                  {

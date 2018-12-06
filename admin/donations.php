@@ -57,8 +57,8 @@ session_start();
                   <th>Occupation</th>
                   <th>Cellphone Number</th>
                   <th>Email Address</th>
-                  <th>Blood Bank</th>
                   <th>Identification No.</th>
+                  <th>Blood Bank</th>
                   <th>Donor Address</th>
                   <th>Delete</th>
                   <th>Add Donor</th>
@@ -77,8 +77,8 @@ session_start();
                   <th>Occupation</th>
                   <th>Cellphone Number</th>
                   <th>Email Address</th>
-                  <th>Blood Bank</th>
                   <th>Identification No.</th>
+                  <th>Blood Bank</th>
                   <th>Donor Address</th>
                   <th>Delete</th>
                   <th>Add Donor</th>
@@ -90,26 +90,26 @@ session_start();
               
               <?php         
 
-                $result = mysqli_query($conn,"SELECT * FROM donate_blood WHERE identificationno = '" . $_SESSION['city'] . "' ");
+                $result = mysqli_query($conn,"SELECT * FROM donate_blood WHERE bloodbank = '" . $_SESSION['city'] . "' ");
                 ?>
 
                 <?php     
                 while($row = mysqli_fetch_array($result))  
                 {?>
                 <tr class='row-data' data-href='url://'>
-                <td class='fullname'> <?php echo $row['fullname']; ?></td>
-                <td class='age'> <?php echo $row['age'] ?></td>
-                <td class='birthdate'> <?php echo $row['birthdate']; ?></td>
-                <td class='sex'> <?php echo $row['sex']; ?></td>
-                <td class='nationality'> <?php echo $row['nationality']; ?></td>
-                <td class='civilstatus'> <?php echo $row['civilstatus']; ?></td>
-                <td class='education'> <?php echo $row['education']; ?></td>
-                <td class='occupation'> <?php echo $row['occupation']; ?></td>
-                <td class='cellphonenum'> <?php echo $row['cellphonenum']; ?></td>
-                <td class='email'> <?php echo $row['email']; ?></td>
-                <td class='identificationno'> <?php echo $row['identificationno']; ?></td> 
-                <td class='bloodbank'> <?php echo $row['bloodbank']; ?></td> 
-                <td class='homeaddress'> <?php echo $row['homeaddress']; ?></td>
+                <td class='fullname'><?php echo $row['fullname']; ?></td>
+                <td class='age'><?php echo $row['age'] ?></td>
+                <td class='birthdate'><?php echo $row['birthdate']; ?></td>
+                <td class='sex'><?php echo $row['sex']; ?></td>
+                <td class='nationality'><?php echo $row['nationality']; ?></td>
+                <td class='civilstatus'><?php echo $row['civilstatus']; ?></td>
+                <td class='education'><?php echo $row['education']; ?></td>
+                <td class='occupation'><?php echo $row['occupation']; ?></td>
+                <td class='cellphonenum'><?php echo $row['cellphonenum']; ?></td>
+                <td class='email'><?php echo $row['email']; ?></td>
+                <td class='identificationno'><?php echo $row['identificationno']; ?></td> 
+                <td class='bloodbank'><?php echo $row['bloodbank']; ?></td> 
+                <td class='homeaddress'><?php echo $row['homeaddress']; ?></td>
                 <form method='get' action=''>
                 <td> <a href="?iddonate=<?php echo $row['iddonate_blood']?>" onclick="return confirm ('Are You Sure?');" class="btn btn-danger btn-sm">Delete</a></td>     
                 </form>  
@@ -185,8 +185,8 @@ session_start();
 
                 if(isset($_POST['add'])){
 
-                  $sql = "INSERT INTO donors (name, dateofbirth, contactnum, homeaddress, email, lastdonation, bloodtype )
-                  VALUES ('".$_POST["fullname"]."','".$_POST["birthdate"]."','".$_POST["cellphonenum"]."','".$_POST["homeaddress"]."','".$_POST["email"]."','".$_POST["lastdonation"]."','".$_POST["bloodtype"]."' )";
+                  $sql = "INSERT INTO donors (name, dateofbirth, contactnum, homeaddress, email, lastdonation, bloodtype, bloodbank )
+                  VALUES ('".$_POST["fullname"]."','".$_POST["birthdate"]."','".$_POST["cellphonenum"]."','".$_POST["homeaddress"]."','".$_POST["email"]."','".$_POST["lastdonation"]."','".$_POST["bloodtype"]."','".$_POST["bloodbank"]."' )";
 
                     if ($conn->query($sql) == TRUE) {
                       echo "<script type='text/javascript'>alert('New record created successfully');</script>";
@@ -232,6 +232,10 @@ session_start();
        <div class="form-group">
             <b>Email</b>
             <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>  
+       </div>
+       <div class="form-group">
+            <b>Bloodbank</b>
+            <input type="text" class="form-control" name="bloodbank" id="bloodbank"  required>  
        </div>
        <div class="form-group">
             <b>Donation Date</b>
@@ -289,6 +293,7 @@ session_start();
     $('#addDonor .cellphonenum').text( $('.cellphonenum', this).text() );
     $('#addDonor .homeaddress').text( $('.homeaddress', this).text() );
     $('#addDonor .email').text( $('.email', this).text() );
+    $('#addDonor .bloodbank').text( $('.bloodbank', this).text() );
     // $('#addDonor .fullname').text( $('.fullname', this).text() );
     // $('#addDonor .fullname').text( $('.fullname', this).text() );
     // $('#addDonor .fullname').text( $('.fullname', this).text() );
@@ -299,6 +304,7 @@ session_start();
      document.getElementById("cellphonenum").value = $('.cellphonenum', this).text();
      document.getElementById("homeaddress").value = $('.homeaddress', this).text();
      document.getElementById("email").value = $('.email', this).text();
+     document.getElementById("bloodbank").value = $('.bloodbank', this).text();
     //  document.getElementById("fullname").value = $('.fullname', this).text();
     //  document.getElementById("fullname").value = $('.fullname', this).text();
     //  document.getElementById("fullname").value = $('.fullname', this).text();

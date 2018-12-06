@@ -177,11 +177,13 @@ session_start();
                     $expirationdate = $_POST['expirationdate'];
                     $remarks = $_POST['remarks'];
     
-
-                    $sql = "INSERT INTO inventory (serialnumber, donor, bloodtype, component, unit, city, extractiondate, expirationdate, remarks, findings )
+                    
+                    $sql_insert = "INSERT INTO inventory (serialnumber, donor, bloodtype, component, unit, city, extractiondate, expirationdate, remarks, findings )
                             VALUES ('".$_POST["serialnumber"]."', '".$_POST["donor"]."','".$_POST["bloodtype"]."', '".$_POST["component"]."', '".$_POST["quantity"]."', '".$_POST["city"]."', '".$_POST["extractiondate"]."', '".$_POST["expirationdate"]."', '".$_POST["remarks"]."', '".$_POST["status"]."' )";
-                                               
-                    if($conn->query($sql) == TRUE){
+                    $sql_delete = "DELETE FROM blood WHERE serialnumber = '$serialnumber' ";
+
+                     $sql =$sql_insert.";".$sql_delete;                           
+                    if($conn->multi_query($sql) == TRUE){
                 ?>
                     <script type= 'text/javascript'>alert('Examine Successfull');</script>
                     

@@ -106,6 +106,7 @@ session_start();
                  $row_cnt = $result->num_rows;
                  echo "<h5>Total Number of Bloods : $row_cnt</h5>";
                  echo "<br>";
+                
                 ?>
               
               <!-- filtering results of bloodtype-->
@@ -114,48 +115,49 @@ session_start();
 
                    if(isset($_POST['submit'])){
                     if($_POST['type'] == 'allblood' ){
-                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' ");
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND flag='0' ");
+                      
                     }
                     elseif($_POST['type'] == 'O-' ){
                       
-                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'O-' ");
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'O-' AND flag='0' ");
                       $row_cnt = $result->num_rows;
                       echo "<h5>Total Number of Bloodtype O- : $row_cnt</h5>";
                       
                     }
                     elseif($_POST['type'] == 'O+' ){
-                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'O+' ");
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'O+' AND flag='0' ");
                       $row_cnt = $result->num_rows;
                       echo "<h5>Total Number of Bloodtype O+ : $row_cnt</h5>";
                     }
                     elseif($_POST['type'] == 'A-' ){
-                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'A-' ");
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'A-' AND flag='0' ");
                       $row_cnt = $result->num_rows;
                       echo "<h5>Total Number of Bloodtype A- : $row_cnt</h5>";
                     }
                     elseif($_POST['type'] == 'A+' ){
-                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'A+' ");
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'A+' AND flag='0' ");
                       $row_cnt = $result->num_rows;
                       echo "<h5>Total Number of Bloodtype A+ : $row_cnt</h5>";
                     }
                     elseif($_POST['type'] == 'B-' ){
-                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'B-' ");
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'B-' AND flag='0' ");
                       $row_cnt = $result->num_rows;
                       echo "<h5>Total Number of Bloodtype B- : $row_cnt</h5>";
                       
                     }
                     elseif($_POST['type'] == 'B+'){
-                      $result = mysqli_query($conn, "SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'B+' ");
+                      $result = mysqli_query($conn, "SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'B+' AND flag='0' ");
                       $row_cnt = $result->num_rows;
                       echo "<h5>Total Number of Bloodtype B+ : $row_cnt</h5>";
                     }
                     elseif($_POST['type'] == 'AB-' ){
-                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'AB-' ");
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'AB-' AND flag='0' ");
                       $row_cnt = $result->num_rows;
                       echo "<h5>Total Number of Bloodtype AB- : $row_cnt</h5>";
                     }
                     elseif($_POST['type'] == 'AB+' ){
-                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'AB+' ");
+                      $result = mysqli_query($conn,"SELECT * FROM inventory WHERE city = '" . $_SESSION['city'] . "' AND bloodtype = 'AB+' AND flag='0' ");
                       $row_cnt = $result->num_rows;
                       echo "<h5>Total Number of Bloodtype AB+ : $row_cnt</h5>";
                     }
@@ -230,10 +232,13 @@ session_start();
                     $contactnumber = $_POST['contactnumber'];
                     $ornumber = $_POST['ornumber'];
 
-                    $sql = "INSERT INTO report (serialnumber, donor, bloodtype, component, quantity, extractiondate, expirationdate, remarks, findings, bloodbank, reciever, recieveraddress, contactnumber, ornumber, checkoutmonth, checkoutyear)
-                            VALUES ('".$_POST["serialnumber"]."', '".$_POST["donor"]."','".$_POST["bloodtype"]."', '".$_POST["component"]."', '".$_POST["quantity"]."', '".$_POST["extractiondate"]."', '".$_POST["expirationdate"]."', '".$_POST["remarks"]."', '".$_POST["findings"]."', '".$_POST["city"]."', '".$_POST["reciever"]."', '".$_POST["recieveraddress"]."', '".$_POST["contactnumber"]."', '".$_POST["ornumber"]."', '".$_POST["checkoutmonth"]."', '".$_POST["checkoutyear"]."')";
-                              $sql=" UPDATE inventory SET flag='1'WHERE serialnumber='$serialnumber'";                 
-                    if($conn->query($sql) == TRUE){
+                    $sql_insert = "INSERT INTO report (serialnumber, donor, bloodtype, component,quantity, extractiondate, expirationdate, remarks, findings, bloodbank, reciever, recieveraddress, contactnumber, ornumber, checkoutmonth, checkoutyear)
+                            VALUES ('".$_POST["serialnumber"]."', '".$_POST["donor"]."','".$_POST["bloodtype"]."', '".$_POST["component"]."','".$_POST["quantity"]."', '".$_POST["extractiondate"]."', '".$_POST["expirationdate"]."', '".$_POST["remarks"]."', '".$_POST["findings"]."', '".$_POST["city"]."', '".$_POST["reciever"]."', '".$_POST["recieveraddress"]."', '".$_POST["contactnumber"]."', '".$_POST["ornumber"]."', '".$_POST["checkoutmonth"]."', '".$_POST["checkoutyear"]."')";
+                    $sql_update="UPDATE inventory SET flag='1' WHERE serialnumber='$serialnumber'"; 
+                    
+                    $sql =$sql_insert.";".$sql_update;
+                                             
+                    if($conn->multi_query($sql) == TRUE){
                 ?>
                     <script type= 'text/javascript'>alert('Checkout Successfull');</script>
                     

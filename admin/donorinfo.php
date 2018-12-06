@@ -145,7 +145,16 @@ if(isset($_POST['add'])){
         <tr>
           <td>
           <b>Donor Name</b>
-          <input type="text" id="fullname" name="fullname" class="form-control fullname" required>
+          <input type="text" id="fullname" name="fullname" class="form-control fullname" value="<?php $donorid = $_GET['donorid']; $sql = "SELECT * FROM donors WHERE donorid = '$donorid' "; $result = $conn->query($sql);
+                                                                                              if ($result->num_rows > 0) {
+                                                                                              // output data of each row
+                                                                                              while($row = $result->fetch_assoc()) {
+                                                                                                echo $row["name"];          
+                                                                                                }    
+                                                                                              }
+                                                                                              else {       
+                                                                                              } 
+                                                                                              ?>" required>
           </td>
         </tr>
      
@@ -181,7 +190,7 @@ if(isset($_POST['add'])){
         <tr>
           <td>
           <b>Unit</b>
-          <input type="text" id="quantity" name="quantity" class="form-control quantity" required>
+          <input type="text" id="quantity" name="quantity" class="form-control quantity" value="1" readonly>
           </td>
         </tr>
         <tr>
