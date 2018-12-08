@@ -134,18 +134,6 @@ if(!empty($_POST)){
 
 ?>
 
-<?php 
-      
-      $result=mysqli_query($conn,"SELECT * FROM branch ");
-   
-      $options = "";
-
-       while($row = mysqli_fetch_array($result))
-       {
-           $options = $options."<option>$row[2]</option>";
-       }
-
-?>
 
  <div class="container" style="
     margin-top: 2%;
@@ -294,12 +282,37 @@ if(!empty($_POST)){
           <div class="form-group-twothirds"> 
           <select name="bloodbank" id="bloodbank" class="form-control" style="width: 255px; height: 54px;" required>
           <option value="" selected="selected" disabled="disabled">-- select one --</option>
-          <?php echo $options;?>
+
+          <?php
+
+          $usertable="branch";
+          $columnname="branchaddress";
+
+       
+
+
+           $result=mysqli_query($conn, "SELECT * FROM branch");
+   
+     
+
+          if ($result)
+          {
+
+          while( $row = mysqli_fetch_array($result))
+                {
+                  $branchaddress=$row["$columnname"];
+                  echo"<option>$branchaddress</option>";
+                }
+
+          }
+           ?>
+
+
               <!-- <option value="" selected="selected" disabled="disabled">-- select one --</option>
               <option value="Oroquieta City">Oroquieta City</option>
               <option value="Ozamiz City">Ozamiz City</option>
               <option value="Tangub City">Tangub City</option> -->
-          </select>
+          $options="</select>";
         </div>
       </div>
     </div><br>
