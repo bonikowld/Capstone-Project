@@ -66,7 +66,7 @@
               <a href="#">Reactive/Active Bloods</a>
             </li>
              <li>
-              <a href="#">Successfull/Unsuccessfull</a>
+              <a href="bloodrecordremarks.php">Successfull/Unsuccessfull</a>
 
             </li>
             <li>
