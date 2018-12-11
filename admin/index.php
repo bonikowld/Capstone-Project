@@ -230,7 +230,17 @@ session_start();
                                                
                     if($conn->query($sql) == TRUE){
                 ?>
-                    <script type= 'text/javascript'>alert('Successfully Change');</script>
+                    <script type= 'text/javascript'>
+                    
+                    // window.location.reload(true);
+                    window.onload = function() {
+                    if(!window.location.hash) {
+                        window.location = window.location + '#loaded';
+                        window.location.reload();
+                    }
+                }
+                                             
+                    alert('Successfully Change');</script>
                     
 
                     <?php 
