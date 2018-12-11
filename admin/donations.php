@@ -215,27 +215,27 @@ session_start();
        <form action="" method="post">
        <div class="form-group">
             <b>Full Name</b>
-            <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Donor Name" required>           
+            <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Donor Name" readonly>           
        </div>
        <div class="form-group">
             <b>Date of Birth</b>
-            <input type="text" class="form-control" name="birthdate" id="birthdate" placeholder="Date of Birth" required>
+            <input type="text" class="form-control" name="birthdate" id="birthdate" placeholder="Date of Birth" readonly>
        </div>
        <div class="form-group">
             <b>Contact Number</b>
-            <input type="text" class="form-control" name="cellphonenum" id="cellphonenum" placeholder="Contact Number" required>        
+            <input type="text" class="form-control" name="cellphonenum" id="cellphonenum" placeholder="Contact Number" readonly>        
        </div>
        <div class="form-group">
             <b>Address</b>
-            <input type="text" class="form-control" name="homeaddress" id="homeaddress" placeholder="Address" required>      
+            <input type="text" class="form-control" name="homeaddress" id="homeaddress" placeholder="Address" readonly>      
        </div>
        <div class="form-group">
             <b>Email</b>
-            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>  
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email" readonly>  
        </div>
        <div class="form-group">
             <b>Bloodbank</b>
-            <input type="text" class="form-control" name="bloodbank" id="bloodbank"  required>  
+            <input type="text" class="form-control" name="bloodbank" id="bloodbank"  readonly>  
        </div>
        <div class="form-group">
             <b>Donation Date</b>

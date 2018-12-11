@@ -154,7 +154,7 @@ if(isset($_POST['add'])){
                                                                                               }
                                                                                               else {       
                                                                                               } 
-                                                                                              ?>" required>
+                                                                                              ?>" readonly>
           </td>
         </tr>
      

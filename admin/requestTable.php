@@ -94,8 +94,8 @@ session_start();
               <tbody>
               <?php include 'php/connection.php';?>
               <?php
-              $date = new DateTime();
-              echo $date->format('Y-m-d H:i:s') . "\n";
+              // $date = new DateTime();
+              // echo $date->format('Y-m-d H:i:s') . "\n";
               ?>
                 <?php 
 

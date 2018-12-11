@@ -78,7 +78,7 @@
               <option value="2020">2020</option>
              </select>
              <br>
-             <button type='submit' name="report" class='btn btn-success btn-sm' >View Reports</button>
+             <button type='submit' name="report" id="report" class='btn btn-success btn-sm' >View Reports</button>
             </td>
         </tr>
     </tbody>
@@ -239,30 +239,31 @@
                   
                   $row_cnt = $result->num_rows;
                   echo "<h5>Total Number of Reports : $row_cnt</h5>";
-                 }
+                 
              
-                ?>
-                      
-                <?php while($row = mysqli_fetch_array($result))  
-                { ?>
-               
-                <td class='serialnumber'><?php echo $row['serialnumber']; ?></td>
-                <td class='donor'><?php echo $row['donor']; ?></td>
-                <td class='bloodtype'><?php echo $row['bloodtype']; ?></td>
-                <td class='component'><?php echo $row['component']; ?></td>
-                <td class='quantity'><?php echo $row['quantity'];?></td>
-                <td class='extractiondate'><?php echo $row['extractiondate']; ?></td>
-                <td class='expirationdate'><?php echo $row['expirationdate']; ?></td>
-                <td class='remarks'><?php echo $row['remarks']; ?></td>
-                <td class='findings'><?php echo $row['findings']; ?></td>
-                <td class='bloodbank'><?php echo $row['bloodbank']; ?></td>
-                <td class='borrowersname'><?php echo $row['reciever'];?></td>
-                <td class='borrowersaddress'><?php echo $row['recieveraddress']; ?></td>
-                <td class='borrowerscontactnum'><?php echo $row['contactnumber']; ?></td>
-                <td class='ornum'><?php echo $row['ornumber']; ?></td>
                 
-              </tr>
-                <?php }; ?>
+                      
+                while($row = mysqli_fetch_array($result))
+                {
+                echo "<tr>";  
+                echo "<td class='text-center'>".$row['serialnumber']."</td>";
+                echo "<td class='text-center'>".$row['donor']."</td>";
+                echo "<td class='text-center'>".$row['bloodtype']."</td>";
+                echo "<td class='text-center'>".$row['component']."</td>";
+                echo "<td class='text-center'>".$row['quantity']."</td>";
+                echo "<td class='text-center'>".$row['extractiondate']."</td>";
+                echo "<td class='text-center'>".$row['expirationdate']."</td>";
+                echo "<td class='text-center'>".$row['remarks']."</td>";
+                echo "<td class='text-center'>".$row['findings']."</td>";
+                echo "<td class='text-center'>".$row['bloodbank']."</td>";
+                echo "<td class='text-center'>".$row['reciever']."</td>";
+                echo "<td class='text-center'>".$row['recieveraddress']."</td>";
+                echo "<td class='text-center'>".$row['contactnumber']."</td>";
+                echo "<td class='text-center'>".$row['ornumber']."</td>";
+                echo "</tr>";
+            
+                };
+              } ?>
              
               </tbody>
               

@@ -344,7 +344,7 @@ session_start();
         <tr>
           <td>
           <b>City</b>
-          <input type="text" id="city" name="city" class="form-control" >
+          <input type="text" id="city" name="city" class="form-control" readonly>
           </td>
         </tr>
 
