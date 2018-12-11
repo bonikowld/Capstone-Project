@@ -76,14 +76,37 @@ session_start();
         </li>
 
         
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
           <a class="nav-link" href="reports.php">
             <i class="fa fa-fw fa-file"></i>
             <span class="nav-link-text">Reports</span>
           </a>
        
-        </li>
+        </li> -->
 
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#reports" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">Reports</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="reports">
+             <li>
+              <a href="reports.php">Checkout Bloods</a>
+            </li>
+            <li>
+              <a href="#">Reactive/Active Bloods</a>
+            </li>
+             <li>
+              <a href="#">Successfull/Unsuccessfull</a>
+
+            </li>
+            <li>
+              <a href="#">Requested Bloods</a>
+
+            </li>
+            
+          </ul>
+        </li>
         
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
           <a class="nav-link" href="addbranch.php">
@@ -91,6 +114,9 @@ session_start();
             <span class="nav-link-text">Add Branch</span>
           </a>
         </li>
+
+
+
         
 
       </ul>
