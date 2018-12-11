@@ -70,13 +70,13 @@
 
             </li>
             <li>
-              <a href="#">Requested Bloods</a>
+              <a href="requestedbloodreport.php">Requested Bloods</a>
 
             </li>
             
           </ul>
         </li>
-        
+
 
            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
           <a class="nav-link" href="addbranch.php">

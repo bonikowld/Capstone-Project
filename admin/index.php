@@ -101,7 +101,7 @@ session_start();
 
             </li>
             <li>
-              <a href="#">Requested Bloods</a>
+              <a href="requestedbloodreport.php">Requested Bloods</a>
 
             </li>
             
