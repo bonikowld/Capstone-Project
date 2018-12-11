@@ -94,10 +94,10 @@ session_start();
               <a href="reports.php">Checkout Bloods</a>
             </li>
             <li>
-              <a href="#">Reactive/Active Bloods</a>
+              <a href="reactiveactive.php">Reactive/Active Bloods</a>
             </li>
              <li>
-              <a href="#">Successfull/Unsuccessfull</a>
+              <a href="bloodrecordremarks.php">Successfull/Unsuccessfull</a>
 
             </li>
             <li>
