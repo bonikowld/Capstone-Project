@@ -139,7 +139,7 @@
 
   <?php 
   $result = mysqli_query($conn,"SELECT * FROM request_blood; ");
-  
+ 
   ?>
       
   <?php while($row = mysqli_fetch_array($result))  
@@ -161,9 +161,18 @@
   <td class='remarks style1'><?php echo $row['remarks']; ?></td> -->
 
   </tr>
-  <?php }; ?>
+  <?php }; 
+  ?>
+
+
   </tbody>
 </table>
+<?php 
+ $row_cnt = $result->num_rows;
+ echo "<h5>&nbsp&nbsp&nbspTotal Requested Blood: $row_cnt</h5>";
+ echo "<br>";
+
+?>
 </div>
 <!-- End of Printable Area -->
 
